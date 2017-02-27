@@ -34,4 +34,18 @@ describe "Wave 1" do
       proc { Scrabble::Scoring.score("I'm a word") }.must_raise ArgumentError
     end
   end
+
+  describe "Scoring#highest_score_from(word_array)" do
+    it "returns highest scoring word from word array " do
+      my_array = [ "blue", "gum", "bumble", "feet"]
+      Scrabble::Scoring.highest_score_from(my_array).must_equal "BUMBLE"
+      #
+      # returns the word in the array with the highest score. In the case of tie, use these tiebreaking rules:
+
+    end
+
+  end
+
+
+
 end

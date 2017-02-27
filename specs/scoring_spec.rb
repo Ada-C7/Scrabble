@@ -1,18 +1,28 @@
+require 'minitest/autorun'
+require 'minitest/reporters'
+require 'minitest/skip_dsl'
+require_relative '../lib/scoring'
+
 describe "Scrabble::Scoring" do
 
-  before do
-    easy_word = Scrabble::Scoring.new("moo")
-    hard_word = Scrabble::Scoring.new("hipster")
+  # before do
+  #   @game = Scrabble::Scoring.new
+  # end
+
+  # test if letters have correct values attached
+  it "Letters have correct values" do
+
+    # 1_point = [:A, :E, :I, :O, :U, :L, :N, :R, :S, :T]
+    # 2_point = [:D, :G]
+    # 3_point = [:B, :C, :M, :P]
+    # 4_point = [:F, :H, :V, :W, :Y]
+    # 5_point = [:K]
+    # 8_point = [:J, :X]
+    # 10_point = [:Q, :Z]
+
+    LETTER_VALUES[:A].must_equal 1
+
   end
-
-# test we can initalize Scoring
-describe "New Scoring object is instance of Scrabble::Scoring class" do
-  easy_word.must_be_instance_of Scrabble::Scoring
-end
-# test if letters have correct values attached
-describe "Letters have correct values" do
-
-end
 
 # test that word is scored correctly
 # also correct in case of: 7 letter word

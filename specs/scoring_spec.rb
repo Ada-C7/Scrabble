@@ -20,7 +20,7 @@ describe "Scrabble::Scoring" do
     # 8_point = [:J, :X]
     # 10_point = [:Q, :Z]
 
-    LETTER_VALUES[:A].must_equal 1
+    Scrabble::Scoring::LETTER_VALUES[:A].must_equal 1
 
   end
 

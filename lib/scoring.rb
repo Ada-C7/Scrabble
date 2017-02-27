@@ -33,6 +33,10 @@ module Scrabble
     def self.score(word)
       raise ArgumentError.new "That word is invalid" if word.length > 7 || word.length == 0
 
+      if (word =~ /^[a-zA-Z]+$/) != 0
+        raise ArgumentError.new "That's not a word."
+      end
+
       word.upcase!
 
       score = 0
@@ -51,7 +55,7 @@ module Scrabble
   end
 end
 
-
+#puts Scrabble::Scoring.score("green")
 
     #
     # Create a Scrabble module at the project root.

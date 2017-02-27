@@ -10,6 +10,7 @@ module Scrabble
       #make new array of characters
       #convert chars to INT using each_index?
       #sum all numbers from letters in word
+      #
       #stores in array of scores
     end
 

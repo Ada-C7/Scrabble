@@ -3,11 +3,11 @@ require 'minitest/reporters'
 require 'minitest/skip_dsl'
 require_relative '../lib/scoring_class'
 
-describe "Score Metihd for Scoring Class" do
+describe "Score Method for Scoring Class" do
 
   it "Score Method outputs integer" do
 
-  end 
+  end
 
   it "Score method will total the value of each letter in the word" do
 

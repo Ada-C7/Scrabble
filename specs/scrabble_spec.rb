@@ -16,3 +16,15 @@ describe "Baseline" do
     Scrabble::Scoring.letter_value("K").must_equal 5
   end
 end
+
+
+describe "Wave 1" do
+
+it "Scores a word" do
+  Scrabble::Scoring.score("cat").must_be_instance_of Integer
+  end
+
+  it "letter value" do
+    Scrabble::Scoring.letter_value("A").must_be_instance_of Integer
+    end
+end

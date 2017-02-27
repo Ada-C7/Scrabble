@@ -18,5 +18,7 @@ describe "Baseline" do
 
   it "Iterates through the Hash key correctly" do
     @scrabble.letter_value("A").must_equal 1
+    @scrabble.letter_value("D").must_equal 2
+    @scrabble.letter_value("K").must_equal 5
   end
 end

@@ -22,6 +22,10 @@ describe "Scrabble Scoring" do
       proc{
         Scrabble::Scoring.score([1,2,3])
       }.must_raise ArgumentError
+
+      proc{
+        Scrabble::Scoring.score("Monalisa")
+      }.must_raise ArgumentError
     end
 
     it "Returns the word score as a positive integer value" do

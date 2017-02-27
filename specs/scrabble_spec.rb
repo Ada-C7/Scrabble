@@ -20,11 +20,20 @@ end
 
 describe "Wave 1" do
 
-it "Scores a word" do
-  Scrabble::Scoring.score("cat").must_be_instance_of Integer
+  it "Scores a word" do
+    Scrabble::Scoring.score("cat").must_be_instance_of Integer
+  end
+
+  it "Scores a word correctly" do
+    Scrabble::Scoring.score("cat").must_equal 5
   end
 
   it "letter value" do
     Scrabble::Scoring.letter_value("A").must_be_instance_of Integer
-    end
+  end
+
+  it "Scores a seven letter word correctly" do
+    Scrabble::Scoring.score("aaaaaaa").must_equal 57
+  end
+
 end

@@ -13,11 +13,16 @@ module Scrabble
 
 
     def self.score(word)
-      score = 0
+      if word.length == 7
+        score = 50
+      else
+        score = 0
+      end
       word_array = word.split("")
       word_array.each do |letter|
         score += Scoring.letter_value(letter.upcase)
       end
+
       return score
     end
 

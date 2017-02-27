@@ -39,6 +39,10 @@ module Scrabble
         score += @@tiles[letter]
       end
 
+      if word.length == 7
+        score += 50
+      end
+
       return score
     end
 

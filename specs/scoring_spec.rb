@@ -12,4 +12,10 @@ describe "Wave 1" do
     word_score.must_equal 6
   end
 
+  it "seven letter word gets 50 points bonus" do
+    word_score = Scrabble::Scoring.score("setting")
+
+    word_score.must_equal 58
+  end
+
 end

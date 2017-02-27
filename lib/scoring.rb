@@ -29,9 +29,12 @@ module Scrabble
       "Z" => 10
     }
 
+
+    def self.score(word)
+
+    end
+
   end
-
-
 end
 
 

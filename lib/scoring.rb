@@ -1,6 +1,6 @@
 module Scrabble
   class Scoring
-    tiles = {
+    @@tiles = {
       "A" => 1,
       "E" => 1,
       "I" => 1,
@@ -31,7 +31,15 @@ module Scrabble
 
 
     def self.score(word)
+      word.upcase!
 
+      score = 0
+
+      word.each_char do |letter|
+        score += @@tiles[letter]
+      end
+
+      return score
     end
 
   end

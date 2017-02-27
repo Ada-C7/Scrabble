@@ -1,0 +1,26 @@
+Create a MODULE named Scrabble to encapsulate all
+
+There will be a CLASS called Scoring.
+
+  and a CLASS METHOD self.score(word)
+    input: letter or word
+    output: corresponding value or score of word.
+
+    There should be a DATA Structure with letters and their corresponding values.
+    Hash - key is letter, value is score?
+
+    When the method is called, it takes an INPUT of a word as a string.
+
+    Then the method should ITERATE through the Data Structure and return the cumulative value or score of the word.
+
+    IF the word INPUT is 7 letters, they get a 50 point bonus.
+
+  and another CLASS METHOD of self.highest_score_from(array_of_words)
+    input: array of words
+    output: returns the array with the highest score.
+
+    IF there is a tie.
+      Return the letter with the shortest length or number of tiles used.
+      UNLESS one of the words is 7 letters.
+        Then that word wins.
+    IF there are multiple words with the same length and score, pick the FIRST in the array.

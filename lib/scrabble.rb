@@ -1,10 +1,7 @@
 module Scrabble
 
   class Scoring
-    attr_reader :score_chart
-
-    def initialize
-      @score_chart = {
+      SCORE_CHART = {
         ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"] => 1,
         ["D", "G"] => 2,
         ["B", "C", "M", "P"] => 3,
@@ -13,10 +10,9 @@ module Scrabble
         ["J", "X"] => 8,
         ["Q", "Z"] => 10
       }
-    end
 
-    def letter_value(letter)
-      @score_chart.each do |array, value|
+    def self.letter_value(letter)
+      SCORE_CHART.each do |array, value|
         if array.include?(letter)
           return value
         end

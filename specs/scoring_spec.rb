@@ -22,5 +22,9 @@ describe "Wave 1" do
     it "doesn't allow words > 7 letters" do
       proc { Scrabble::Scoring.score("discombobulated") }.must_raise ArgumentError
     end
+
+    it "doesn't allow blank words" do
+      proc { Scrabble::Scoring.score("") }.must_raise ArgumentError
+    end
   end
 end

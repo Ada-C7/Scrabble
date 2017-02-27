@@ -32,10 +32,31 @@ describe "Scoring is a class" do
   end
 
   describe "self.highest_score_from" do
+    it "If argument given is not an array, raise ArgumentError" do
+    end
+
+    it "Raise ArgumentError if its an empty array being passed in" do
+    end
+
+    it "Raise ArgumentError if array contains anything but string" do
+    end
+
     it "Scoring knows-about self.highest_score_from" do
     end
 
-    
+    it "Return should be a String" do
+    end
+
+    it "If tie for highest score, fewer letters wins" do
+    end
+
+    it "If tie includes a seven letter word then the seven letter word wins" do
+    end
+
+    it "If tie words are same length pick the first in max array" do
+    end
+
+
   end
 
 

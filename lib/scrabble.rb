@@ -12,7 +12,7 @@ module Scrabble
     }
 
     # Calculates and returns the total score for the given word
-    def self.score word
+    def self.score(word = nil)
       word_score = 0
       return word_score
     end

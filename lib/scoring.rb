@@ -31,6 +31,8 @@ module Scrabble
 
 
     def self.score(word)
+      raise ArgumentError.new "That word is too long" if word.length > 7
+
       word.upcase!
 
       score = 0

@@ -17,6 +17,10 @@ module Scrabble
       return word_score
     end
 
+    def self.highest_score_from(array_of_words)
+      score_length_pair = []
+      return ""
+    end
 
   end
 end

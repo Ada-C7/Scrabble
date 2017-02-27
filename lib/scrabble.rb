@@ -15,6 +15,14 @@ module Scrabble
       }
     end
 
+    def letter_value(letter)
+      @score_chart.each do |array, value|
+        if array.include?(letter)
+          return value
+        end
+      end
+    end
+
   end
 
 end

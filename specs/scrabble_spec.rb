@@ -17,6 +17,6 @@ describe "Baseline" do
   end
 
   it "Iterates through the Hash key correctly" do
-    skip
+    @scrabble.letter_value("A").must_equal 1
   end
 end

@@ -12,6 +12,15 @@ module Scrabble
         q: 10, z: 10
       }
 
+      #store word as characters in array
+      char_array = word.split("")
+      
+      #convert character array to symbol array
+      char_array.each do |char|
+        sym_array << char.to_sym
+      end
+
+
 
     end
 

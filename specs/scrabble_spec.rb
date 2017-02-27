@@ -12,8 +12,8 @@ describe "Baseline" do
     @scrabble.must_be_instance_of Scrabble::Scoring
   end
 
-  it "Initializes with a hash" do 
-  skip
+  it "Initializes with a hash" do
+    @scrabble.score_chart.must_be_instance_of Hash
   end
 
   it "Iterates through the Hash key correctly" do

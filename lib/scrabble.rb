@@ -1,6 +1,7 @@
 module Scrabble
 
   class Scoring
+    attr_reader :score_chart
 
     def initialize
       @score_chart = {

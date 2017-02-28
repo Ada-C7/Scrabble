@@ -9,10 +9,7 @@ describe "Wave 1" do
 
   describe "Score method" do
     it "total score for given word" do
-      scrabble = Scrabble::Scoring.new
-      scrabble.score("word")
 
-      scrabble.score.must_equal 12
 
     end
     it "word input must be string" do

@@ -1,8 +1,7 @@
 module Scrabble
   class Scoring
-    def initialize
-      @score = score
-      @letters_hash = {
+      SCORE = 12
+      LETTERS_HASH = {
         "A"=>1,
         "B"=>3,
         "C"=>3,
@@ -30,15 +29,14 @@ module Scrabble
         "Y"=>4,
         "Z"=>10
       }
+    def initialize
     end
 
     def self.score(word)
-      @score = 12
+      SCORE = 12
     end
 
     def self.highest_score_from(array_of_words)
     end
-
   end
-
 end

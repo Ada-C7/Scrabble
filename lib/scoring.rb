@@ -20,7 +20,7 @@ module Scrabble
       unless word.class == String
         raise ArgumentError.new "Input word must be a string"
       end
-      word_score = LETTER_SCORES.values_at(*word.chars).reduce(:+)
+      word_score = LETTER_SCORES.values_at(*word.downcase.chars).reduce(:+)
       word.length == 7 ? word_score += 50 : word_score
     end
 

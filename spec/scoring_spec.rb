@@ -26,6 +26,11 @@ describe "Scoring" do
       }.must_raise ArgumentError
     end
 
+    it "words are case insensitive" do
+      Scrabble::Scoring.score("WHat").must_equal 10
+    end
+
+
     it "returns a number" do
       Scrabble::Scoring.score("cat").must_be_kind_of Integer
     end

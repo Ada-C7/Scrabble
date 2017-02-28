@@ -17,8 +17,9 @@ module Scrabble
     # method to calculate & return score, given a word as an argument, call add_word method
     def self.score(word)
       raise ArgumentError.new("That is not String.") if word.class != String
-
+      raise ArgumentError.new("That word includes invalid characters!") if !word.match(/^[a-zA-Z]+$/)
       raise ArgumentError.new("That word is too long! Must be 7 characters or less.") if word.length > 7
+
       word_array = word.upcase.split("")
       word_score = 0
 
@@ -28,7 +29,6 @@ module Scrabble
       end
 
       word_array.each do |letter|
-        raise ArgumentError.new("That word includes invalid characters!") if !word.match(/^[a-zA-Z]+$/)
         word_score += LETTER_VALUES[letter.to_sym]
       end
 

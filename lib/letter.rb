@@ -27,9 +27,13 @@ module Scrabble
 
                end
 
-
-
           end
      end
 
 end
+
+l = Scrabble::Letter.new ("l")
+
+puts l.point.class
+
+puts l.point

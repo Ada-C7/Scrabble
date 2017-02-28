@@ -1,7 +1,13 @@
 module Scrabble
   class Scoring
-      SCORE = 12
-      LETTERS_HASH = {
+
+    SCORE = 12
+
+    def initialize
+    end
+
+    def variables
+      @letter_hash = {
         "A"=>1,
         "B"=>3,
         "C"=>3,
@@ -29,14 +35,17 @@ module Scrabble
         "Y"=>4,
         "Z"=>10
       }
-    def initialize
     end
 
     def self.score(word)
-      SCORE = 12
+      word_array = []
+      word.split('').map { |s| word_array << s }
+      return word_array
     end
 
     def self.highest_score_from(array_of_words)
     end
   end
 end
+
+print Scrabble::Scoring.score("apple")

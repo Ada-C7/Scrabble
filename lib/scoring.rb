@@ -33,17 +33,20 @@ module Scrabble
 
     def self.score(word)
       word_score = 0
-
       word.each_char do |letter|
         raise ArgumentError.new("Not a letter") if !(SCORE_CHART.keys.include?(letter.downcase))
-
         word_score += SCORE_CHART[letter.downcase]
       end
+      word_score += 50 if word.length == 7
       return word_score
     end
 
+    def self.highest_score_from(array)
+      return "happy"
+    end
 
   end
+
 end
 
 

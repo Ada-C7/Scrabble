@@ -69,6 +69,13 @@ module Scrabble
           end
         end
 
+    #handles tied scores by finding the shortest word
+      shortest= top_scores.min_by do |scorepair|
+          scorepair[0].length
+    end
+        return shortest[0]
+
+
         # tied_words.map do |str|
         #     str.length
         # end

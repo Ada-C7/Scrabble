@@ -10,6 +10,7 @@ module Scrabble
       8 => ["J", "X"],
       10 => ["Q", "Z"]
     }
+
     def initialize
     end
 

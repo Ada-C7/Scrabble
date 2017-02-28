@@ -30,8 +30,8 @@ describe Scrabble::Scoring do
         # SQUEEZE 75  7 letter
         # QUICKLY 75 7 letter
 
-        it 'Returns an String' do
-            Scrabble::Scoring.highest_score_from(array_of_words).must_be_instance_of String
+        it 'Returns an Array' do
+            Scrabble::Scoring.highest_score_from(array_of_words).must_be_kind_of Array
         end
 
         it 'Returns the correct word' do

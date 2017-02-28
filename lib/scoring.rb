@@ -6,18 +6,25 @@ module Scrabble
             2 => %w(D G),
             3 => %w(B C M P),
             4 => %w(F H V W Y),
-            5 => ['K'],
+            5 => %w(K),
             8 => %w(J X),
             10 => %w(Q Z)
         }.freeze
 
         def self.score(word)
-            letter_score = 0
-            @word_score = 0
+            # starting word_score is based on word.length
+            if word.length < 7 && !word.empty?
+                @word_score = 0
+            elsif word.length == 7
+                @word_score = 50
+            else
+                raise ArgumentError, 'invalid word length'
+            end
+
             word.each_char do |letter|
-                SCORE_CHART.each do |number, alpha|
-                    letter_score = number if alpha.include?(letter.upcase)
-                    @word_score += letter_score
+                @letter = letter.upcase
+                SCORE_CHART.each do |number, array|
+                    @word_score += number if array.include?(@letter)
                 end
             end
             @word_score
@@ -45,8 +52,9 @@ module Scrabble
                 end
             end
             @highest_word
-          end
         end
-      end
+    end
+end
 
-puts Scrabble::Scoring.highest_score_from(%w(words tofu))
+# puts Scrabble::Scoring.score("squeeze")
+# puts Scrabble::Scoring.highest_score_from(%w(words tofu))

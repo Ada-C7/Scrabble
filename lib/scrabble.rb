@@ -1,16 +1,28 @@
 module Scrabble
 
   class Scoring
+    SCOREBOARD = {
+      %w[a e i o u l n r s t]=>1, %w[d g]=> 2, %w[b c m p]=>3, %w[f h v w y]=> 4, %w[k]=> 5, %w[j x]=> 8, %w[q z]=> 10
+    }
 
     def self.score word
+      letter_values = []
 
-      word = 4
+      word_array = word.scan /\w/
 
-      return word
+      word_array.each do |letter|
+        SCOREBOARD.each do |key, value|
+          if key.include?(letter)
+            letter_values << value
+          else
+            letter_values << 0
+          end
+
+        end
+        return word
+      end
     end
-
   end
-end
 
 
-# puts Scoring.score(word)
+  puts Scoring.score(word)

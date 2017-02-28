@@ -1,0 +1,6 @@
+Chosen tests
+
+1. Class exists (A)
+2. self-score returns integer (A)
+3. self.highest word returns string (T)
+4. self.score throws argument error if given anything other than alphabet characters (T)

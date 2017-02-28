@@ -16,6 +16,7 @@ module Scrabble
     end
 
     def self.score(word)
+      raise ArgumentError.new("Argument must be an array") if word.class != String
       word_array = word.upcase.split("")
       total = 0
       word_array.each do |letter|
@@ -48,9 +49,15 @@ module Scrabble
           max_words = [word]
         end
       end
-      puts "MAX WORDS ARRAY:"
-      puts max_words
-      puts
+
+      if max_words.length > 1
+        return tie(max_words)
+      else
+        return max_words[0]
+      end
+    end
+
+    def self.tie(max_words)
       max_word = max_words.select{|word| word.length == 7}
         if !max_word.empty?
           return max_word[0]
@@ -59,6 +66,10 @@ module Scrabble
           return max_word
         end
     end
+
+
+
+
 
   end # end of class
 end # end of module

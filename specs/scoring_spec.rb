@@ -19,6 +19,13 @@ describe "Scoring class" do
       Scrabble::Scoring.score("Hello").class.must_equal Integer
     end
 
+    it "raise ArgumentError if parameter is not a string" do
+      proc {
+        Scrabble::Scoring.score(9)
+      }.must_raise ArgumentError
+
+    end
+
     it "Testing the right values" do
       Scrabble::Scoring.score("H").must_equal 4
       Scrabble::Scoring.score("Z").must_equal 10

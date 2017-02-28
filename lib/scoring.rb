@@ -56,6 +56,14 @@ module Scrabble
         raise ArgumentError.new "Your word must be a string!" if word.class != String
       end
 
+      scores_hash = {}
+      array_of_words.each do |word|
+        scores_hash[word] = Scrabble::Scoring.score(word)
+      end
+      max_score = scores_hash.values.max
+      return scores_hash.select {|word, score| score == max_score}
+
+
       # INPUT: array of words (array)
       # output: word with highest score, handling ties (string)
       #
@@ -78,4 +86,6 @@ module Scrabble
 
 end
 
-puts Scrabble::Scoring.score("word")
+# puts Scrabble::Scoring.score("word")
+
+puts Scrabble::Scoring.highest_score_from(%w(one one thirtae thirtee four five))

@@ -86,7 +86,8 @@ describe "Scoring is a class" do
 
 
     it "Return should be a String" do
-      skip
+      Scrabble::Scoring.highest_score_from(%w(cat dog piglet oink)).must_be_kind_of String
+      # skip
     end
 
     it "If tie for highest score, fewer letters wins" do

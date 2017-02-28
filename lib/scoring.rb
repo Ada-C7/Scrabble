@@ -18,7 +18,8 @@ module Scrabble
       #     @score_chart << line[1..-1]
       #   end
 
-    def self.score
+    def self.score(word)
+      4
     end
 
     def self.highest_score_from(array_of_words)

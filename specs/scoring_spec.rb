@@ -16,15 +16,43 @@ describe "Scoring" do
       score.must_be_instance_of Integer
 
     end
-    it "returns a scrabble score for any given letter" do
+
+    it "returns the correct scrabble score for a given letter" do
       Scrabble::Scoring.score("a").must_equal 1
       Scrabble::Scoring.score("f").must_equal 4
+    end
+
+    it "returns the total score for a given word" do
 
     end
 
-    it "returns a scrabble score of a word" do
+    it "returns the total score for a given word regardless of word case" do
 
     end
+
+    it "adds 50 points to the total socre if the word length is 7 letters" do
+
+    end
+
+    it "raises an argument error if the input is not a string" do
+
+    end
+
+    it "rasies an argument error if the given word is > 7 letters" do
+
+    end
+
+    it "raises an argument error if the given word has characters other than letters" do
+      # handle empty string too
+    end
+
+
+
+
+    #
+    # it "returns a scrabble score of a word" do
+    #
+    # end
   end
 end
 

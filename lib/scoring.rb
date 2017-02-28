@@ -15,10 +15,16 @@ module Scrabble
       }
 
 # method to calculate & return score, given a word as an argument, call add_word method
-# if word length is 7, 50 bonus points
     def self.score(word)
+      raise ArgumentError.new("That word is too long! Must be 7 characters or less.") if word.length > 7
       word_array = word.upcase.split("")
       word_score = 0
+
+      if word_array.length == 7
+        word_score += 50
+      end
+
+# if word length is 7, 50 bonus points
       word_array.each do |letter|
         word_score += LETTER_VALUES[letter.to_sym]
       end
@@ -29,13 +35,22 @@ module Scrabble
 # method to add a word and its score (as an array) to the @wordarray (from which high score will be calculated)
 
 # calculating highest score from @wordarray
-# def self.highest_score_from(array_of_words)
 # method to iterate through wordarray and return word with the highest score
+def self.highest_score_from(array_of_words)
+  highest_score = 0
+  highest_scoring_word = ""
+  array_of_words.each do |word|
+    word_score = self.score(word)
+    if word_score > highest_score
+      highest_score = word_score
+      highest_scoring_word = word
+    end
+  end
+  return highest_scoring_word
+end
 
 # if words are tied, tiebreaker method returns the shorter word
 # if multiple words are same length and score, just pick first word
-
-
 
 
 

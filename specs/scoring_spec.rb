@@ -20,14 +20,35 @@ describe "Scrabble::Scoring" do
     Scrabble::Scoring::LETTER_VALUES[:Z].must_equal 10
   end
 
-# test that word is scored correctly
+# check that word is no more than 7 letters long
+it "Word is 7 letters or less" do
+  proc {
+  Scrabble::Scoring.score("supercalifragilistic")}.must_raise ArgumentError
+end
+
+# test that word is scored correctly and returns that score
 it "Scores word correctly" do
   Scrabble::Scoring.score("moo").must_equal 5
 end
 
 # also correct in case of: 7 letter word
-# score method returns correct score
+it "Scores 7-letter word correctly" do
+  Scrabble::Scoring.score("hipster").must_equal 62
+end
+
 # word and score are pushed to @wordarray
+# it "adds new word & score element to words array" do
+#   Scrabble::Scoring.score("moo")
+# end
+# it "adds multiple word & score elements to words array" do
+# Scrabble::Scoring.score("moo")
+# Scrabble::Scoring.score("hipster")
+# end
+
+it "Scores all words correctly and returns highest scoring word" do
+Scrabble::Scoring.highest_score_from(["moo", "hipster", "hippo", "muzjiks"]).must_equal "muzjiks"
+end
+
 # test that highest score method calculates correctly
 # test that highest score is returned
 # test that highest score handles ties

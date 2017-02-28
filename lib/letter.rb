@@ -35,8 +35,8 @@ module Scrabble
 
 end
 
-l = Scrabble::Letter.new ("0")
-
-puts l.point.class
-
-puts l.point
+# l = Scrabble::Letter.new ("0")
+#
+# puts l.point.class
+#
+# puts l.point

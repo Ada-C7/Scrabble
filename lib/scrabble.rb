@@ -11,26 +11,43 @@ module Scrabble
       ["Q", "Z"] => 10
     }
 
+    #
+    # def self.score(word)
+    #  (word.length == 7) ? score = 50 : score = 0
+    #   word_array = word.split("")
+    #   word_array.each do |letter|
+    #     score += Scoring.letter_value(letter.upcase)
+    #   end
+    #   return score
+    # end
+    #
+    #
+    # def self.letter_value(letter)
+    #   letter_value = 0
+    #   SCORE_CHART.each do |array, value|
+    #     if array.include?(letter)
+    #       letter_value = value
+    #       return letter_value
+    #     end
+    #   end
+    # end
+
 
     def self.score(word)
-     (word.length == 7) ? score = 50 : score = 0
       word_array = word.split("")
-      word_array.each do |letter|
-        score += Scoring.letter_value(letter.upcase)
-      end
-      return score
-    end
-
-
-    def self.letter_value(letter)
       letter_value = 0
-      SCORE_CHART.each do |array, value|
-        if array.include?(letter)
-          letter_value = value
-          return letter_value
+      word_score = word_array.map do | letter |
+        SCORE_CHART.each do |array, value|
+            if array.include?(letter)
+              letter_value = value
+            end
         end
+        letter_value
       end
+        return  word_score.reduce(:+)
     end
+
+
 
     def self.highest_score_from_array(array_of_words)
       word_hash = Hash.new

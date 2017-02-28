@@ -56,74 +56,74 @@ end
 
 ### WAVE II NOTES
 
-describe "Scrabble::Player" do
-  describe "#initialize" do
-    it "creates a new instance of player" do
-      Scrabble::Player.new("Tofu").must_be_instance_of Scrabble::Player
+describe 'Scrabble::Player' do
+    describe '#initialize' do
+        it 'creates a new instance of player' do
+            Scrabble::Player.new('Tofu').must_be_instance_of Scrabble::Player
+        end
+
+        it 'returns .name as a string' do
+            Scrabble::Player.new('Danielle').name.must_be_kind_of String
+        end
+
+        it 'returns the name of the player correctly' do
+            Scrabble::Scoring.new('Tofu').name.must_equal 'Tofu'
+        end
+
+        it 'initializes @won with value of false' do
+            Scrabble::Scoring.new('Tofu').won.must_equal false # need attr for won
+        end
+
+        it 'initializes @player_score holds 0' do
+            Scrabble::Scoring.new('Tofu').player_score.must_equal 0
+        end
     end
 
-    it "returns .name as a string" do
-      Scrabble::Player.new("Danielle").name.must_be_kind_of String
+    describe '#plays' do
+        it 'returns .plays as an Array' do
+        end
+        it 'returns all 5 words played in order' do
+        end
     end
 
-    it "returns the name of the player correctly" do
-      Scrabble::Scoring.new("Tofu").name.must_equal "Tofu"
+    describe '#play(word)' do
+        it 'returns .play(word) as an Array' do
+        end
+        it 'returns the score of a 7-letter word' do
+        end
+        it 'returns false if @won is true' do
+        end
     end
 
-    it "initializes @won with value of false" do
-      Scrabble::Scoring.new("Tofu").won.must_equal false # need attr for won
+    describe '#total_score' do
+        it 'returns .total_score as an Integer' do
+        end
+        it 'returns sum of scores of played word' do
+        end
     end
 
-    it "initializes @player_score holds 0" do
-      Scrabble::Scoring.new("Tofu").player_score.must_equal 0
+    describe '#won?' do
+        it 'returns #won as a Boolean value' do
+        end
+        it 'returns true when the player has over 100 pts' do
+        end
+        it 'returns true when the player has exactly 100 pts' do # edge case
+        end
     end
-  end
 
-  describe "#plays" do
-    it "returns .plays as an Array" do
+    describe '#highest_scoring_word?' do # returns word
+        it 'returns .highest_scoring_word(array) as a String' do
+        end
+        it 'returns the first word for duplicate high scores' do
+        end
     end
-    it "returns all 5 words played in order" do
-    end
-  end
 
-  describe "#play(word)" do
-    it "returns .play(word) as an Array" do
+    describe '#highest_word_score?' do # returns score
+        it 'returns .highest_word_score(array) as an Integer' do
+        end
+        it 'returns the highest scoring word from unique scores' do
+        end
+        it 'returns one score from tied highest word scores' do
+        end
     end
-    it "returns the score of a 7-letter word" do
-    end
-    it "returns false if @won is true" do
-    end
-  end
-
-  describe "#total_score" do
-    it "returns .total_score as an Integer" do
-    end
-    it "returns sum of scores of played word" do
-    end
-  end
-
-  describe "#won?" do
-    it "returns #won as a Boolean value" do
-    end
-    it "returns true when the player has over 100 pts" do
-    end
-    it "returns true when the player has exactly 100 pts" do # edge case
-    end
-  end
-
-  describe "#highest_scoring_word?" do # returns word
-    it "returns .highest_scoring_word(array) as a String" do
-    end
-    it "returns the first word for duplicate high scores" do
-    end
-  end
-
-  describe "#highest_word_score?" do # returns score
-    it "returns .highest_word_score(array) as an Integer" do
-    end
-    it "returns the highest scoring word from unique scores" do
-    end
-    it "returns one score from tied highest word scores" do
-    end
-  end
 end

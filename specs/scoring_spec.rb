@@ -26,9 +26,9 @@ describe Scrabble::Scoring do
 
     describe 'self.highest_score_from(array_of_words)' do
         # ZIP 14
-        # JAZz 19 WHIZ 19 JERKY 19
-        # SQUEEZE 75  7 letter
-        # QUICKLY 75 7 letter
+        # JAZZ 29 WHIZ 19 JERKY 19
+        # SQUEEZE 75  7-letter
+        # QUICKLY 75 7-letter
 
         it 'Returns an String' do
             Scrabble::Scoring.highest_score_from(%w(cat dog zizzle)).must_be_kind_of String

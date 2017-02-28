@@ -44,7 +44,7 @@ module Scrabble
       winner = ""
       array_of_words.each do |word|
         word_score = self.score(word)
-        if word_score > highest_score
+        if word_score > highest_scoreA
           highest_score = word_score
           winner = word
         elsif word_score == highest_score

@@ -8,7 +8,6 @@ module Scrabble
 
     end
 
-
     SCORE_CHART = {
       "A" => 1,
       "E" => 1,
@@ -27,10 +26,10 @@ module Scrabble
       "M" => 3,
       "P" => 3,
       "F" => 4,
-      "H" => 5,
-      "V" => 5,
-      "W" => 5,
-      "Y" => 5,
+      "H" => 4,
+      "V" => 4,
+      "W" => 4,
+      "Y" => 4,
       "K" => 5,
       "J" => 8,
       "Q" => 10,
@@ -39,13 +38,16 @@ module Scrabble
 
 
     def self.score(word)
+      if word =~ /\W/
+        raise ArgumentError.new "Please enter a real word!"
+      end
       score_total = 0
-      word_array.upcase = word.split("")
+      word_array = word.upcase.split("")
+
       word_array.each do |letter|
         score_total += SCORE_CHART[letter]
       end
       return score_total
-
     end
 
     def self.highest_score_from(array_of_words)

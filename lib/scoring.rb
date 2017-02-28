@@ -32,30 +32,21 @@ module Scrabble
 
         def self.highest_score_from(array_of_words)
             @all_scores = []
-            @high_words = []
-            @highest_word = ''
-            @highest_score = 0
-            @word_length = 0
-            array_of_words.each do |word|
-                @all_scores << score(word)
-            end
+
+            array_of_words.map { |word| @all_scores << score(word) }
+
             @scored_words = Hash[array_of_words.zip(@all_scores)]
 
-            @scored_words.each do |word, score|
-                @high_words << word if score == @scored_words.values.max
-            end
+            @high_words = @scored_words.find_all { |_word, score| @scored_words.values.max == score }
 
-            if @high_words.length > 1
-                @high_words.each do |word|
-                    if (word.length < @word_length || word.length == 7 || @word_length == 0) && @word_length < 7
-                        @word_length = word.length
-                        @highest_word = word
-                    end
+            @highest_word = @high_words.min_by do |word|
+                if word[0].length == 7
+                    @high_words.index
+                else
+                    word[0].length
                 end
-            else
-                @highest_word = @high_words.pop
             end
-
+            @highest_word = @highest_word[0]
             @highest_word
             end
         end
@@ -73,4 +64,4 @@ module Scrabble
 
 
 # puts Scrabble::Scoring.score("squeeze")
-Scrabble::Scoring.highest_score_from(%w(words tofu fhizaa whizaa))
+Scrabble::Scoring.highest_score_from(%w(words tofu fhiz whiz))

@@ -33,7 +33,10 @@ describe "Scrabble Scoring" do
       Scrabble::Scoring.score("").must_be :>=, 0
       Scrabble::Scoring.score("").must_equal 0
       Scrabble::Scoring.score("hat").must_equal 6
+    end
 
+    it "Addes additional 50 points to the word passed if it's 7 letters" do
+      Scrabble::Scoring.score("bananas").must_equal 59
     end
 
   end
@@ -42,6 +45,28 @@ describe "Scrabble Scoring" do
     it "Method can be called without an error" do
       Scrabble::Scoring.must_respond_to :highest_score_from
     end
+
+    it "Array passed must be an array of strings" do
+      proc {
+        Scrabble::Scoring.highest_score_from("hello")
+      }.must_raise ArgumentError
+
+      proc {
+        Scrabble::Scoring.highest_score_from([890, "friend"])
+      }.must_raise ArgumentError
+    end
+
+    it "Returns the highest scoring word" do
+      #cat is 5, friend is 10
+      Scrabble::Scoring.highest_score_from(["cat", "friend"]).must_equal "friend"
+      #cat is 5, hi is 5
+      Scrabble::Scoring.highest_score_from(["cat", "hi"]).must_equal "hi"
+      #qqqqqq is 60, hiiiiii is 60
+      Scrabble::Scoring.highest_score_from(["qqqqqq", "hiiiiii"]).must_equal "hiiiiii"
+
+
+    end
+
   end
 
 end

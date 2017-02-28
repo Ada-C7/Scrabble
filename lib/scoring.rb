@@ -43,22 +43,26 @@ module Scrabble
       # iterate over word array
       # push each score into matching score array
       word_array.each do |word|
-        score_array << score(word)
+        score_array << self.score(word)
       end
 
-      return score_array
+    #   return score_array
+
       # case for one maximum
 
       # iterate over score array to find highest scores
-      # highest_score = 0
-      # top_word_index = 0
-      # max_index = score_array.each_with_index.max
-      # do |score, index|
-      #   if score > highest_score
-      #     top_word_index = index
-      #   end
-      # end
-      # return word_array[max_index]
+      max_score = 0
+      top_index = 0
+      score_array.each_with_index do |score, index|
+          if score > max_score
+              max_score = score
+              top_index = index
+          end
+        #return the highest scoring word
+      end
+
+      return word_array[top_index]
+
 
       # deal with ties
     end

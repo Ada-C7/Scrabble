@@ -46,15 +46,16 @@ describe "Wave 1" do
 
   end
 
-  describe "self.highest_score method" do
 
-    it "returns the word in the array with the highest score" do
-      word_array = %w(frog, jazzily, pencil)
-      Scrabble::Scoring.highest_score(word_array).must_equal [8, 85, 10]
-    end
 
-  end
+describe "highest score method returns word"do
 
+    it "returns word that has the highest score" do
+    word_array = ["frog", "jazzily", "pencil"]
+
+    Scrabble::Scoring.highest_score(word_array).must_equal "jazzily"
+end
+end
 
 
 

@@ -53,19 +53,12 @@ module Scrabble
     end
 
     def self.highest_score_from(array_of_words)
-      highest_score_words = []
-      highest_score = 0
-      array_of_words.each do |word|
-        if score(word) == highest_score
-          highest_score_words << word
-          highest_score = score(word)
-        elsif score(word) > highest_score
-          puts "I'm on #{word}"
-          highest_score_words = [word]
-          highest_score = score(word)
-        end
 
-      end
+      high_score_word = array_of_words.max_by { |word| score(word) }
+      high_score = score(high_score_word)
+
+      highest_score_words = array_of_words.select { |word| score(word) == high_score }
+
 
       if highest_score_words.length == 1
         return highest_score_words[0]

@@ -9,7 +9,7 @@ module Scrabble
     end
 
     def self.score(word)
-      raise ArgumentError.new "That words can't be longer than 7 letters." if word.length > 7
+      raise ArgumentError.new "Words can't be longer than 7 letters." if word.length > 7
       raise ArgumentError.new "Words must have at least one letter." if word.length == 0
       raise ArgumentError.new "Words must only have letters." if (word =~ /^[a-zA-Z]+$/) != 0
 

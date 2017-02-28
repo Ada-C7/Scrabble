@@ -32,8 +32,9 @@ describe "Scoring" do
   end
 
   describe "Scoring#score" do
+
     it "initializes" do
-      Scrabble::Scoring.score("hello").must_respond_to :score
+      Scrabble::Scoring.must_respond_to :score
     end
 
     it "Raises ArgumentError if no parameter given" do
@@ -54,5 +55,5 @@ describe "Scoring" do
         Scrabble::Scoring.score(word)
       }.must_raise ArgumentError
     end
-    
+  end
 end

@@ -6,5 +6,11 @@ module Scrabble
                       m: 3, l: 1, o: 1, n: 1, q: 10, p: 3, s: 1, r: 1, u: 1, t: 1, w: 4,
                       v: 4, y: 4, x: 8, z: 10 }
     end
+
+    def self.score(word)
+      unless word.class == String
+        raise ArgumentError.new "Input word must be a string"
+      end
+    end
   end
 end

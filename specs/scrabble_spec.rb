@@ -38,8 +38,12 @@ describe "Wave 1" do
 
   it "Finds the highest score in an array of words" do
     word = Scrabble::Scoring.highest_score_from_array(["Cat", "dog", "aaaaaaa"])
-    word.must_equal "aaaaaaa"
+    word.must_equal "AAAAAAA"
+  end
 
+  it "Breaks a tie" do
+    word = Scrabble::Scoring.highest_score_from_array(["aaaa", "dg"])
+    word.must_equal "DG"
   end
 
 end

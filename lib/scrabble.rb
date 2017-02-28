@@ -44,7 +44,19 @@ module Scrabble
         word_hash[word] = word_score
       end
         word = word_hash.max_by{|k, v| v}
-        return word[0]
+        max_score = word[1]
+        tie_winner = Scoring.tie(word_hash, max_score)
+        return tie_winner.upcase
+    end
+
+    def self.tie(word_hash, max_score)
+      tie_words = Array.new
+      word_hash.each do |key, value|
+        if value == max_score
+          tie_words << key
+        end
+      end
+      return tie_words.min_by { |x| x.length}
     end
 
   end

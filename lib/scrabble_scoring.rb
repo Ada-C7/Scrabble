@@ -1,14 +1,14 @@
 module Scrabble
   class Scoring
     LETTERS = {
-              1 => ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
-              2 => ["D","G"],
-              3 => ["B", "C", "M", "P"],
-              4 => ["F","H","V","W","Y"],
-              5 => ["K"],
-              8 => ["J", "X"],
-              10 => ["Q", "Z"]
-            }
+      1 => ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
+      2 => ["D","G"],
+      3 => ["B", "C", "M", "P"],
+      4 => ["F","H","V","W","Y"],
+      5 => ["K"],
+      8 => ["J", "X"],
+      10 => ["Q", "Z"]
+    }
     def letters
       return LETTERS
     end
@@ -29,26 +29,22 @@ module Scrabble
           end
         end
       end
-<<<<<<< HEAD
+
       if word.length != 7
         return total.inject(:+)
       else
         return total.inject(:+) + 50
-      return total.inject(:+)
       end
-=======
-     total.inject(:+)
->>>>>>> 4013dc041c71e7a8c2bcb5e6ac145594b1cb48a1
     end
 
+    def self.highest_score_from(array_of_words)
+      highest = 0
+      array_of_words.each do |word|
+        score = Scrabble::Scoring.score(word)
+        highest_word = word if score > highest
+        highest = score if score > highest
+      end
+      return highest_word
+    end
   end
 end
-
-<<<<<<< HEAD
-# print  a = Scrabble::Scoring.new
-# print a.letters.class
-# print Scrabble::Scoring.score("YAY")
-=======
-# a = Scrabble::Scoring.new
-# print Scrabble::Scoring.score("BIRD")
->>>>>>> 4013dc041c71e7a8c2bcb5e6ac145594b1cb48a1

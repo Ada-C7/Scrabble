@@ -14,8 +14,17 @@ describe "Wave 1" do
       Scrabble::Scoring.score("W").class.must_equal Integer
     end
 
-    it "find score for a letter" do
+    it "find score for a letter not case sensitive" do
       Scrabble::Scoring.score("W").must_equal 4
+      Scrabble::Scoring.score("w").must_equal 4
+    end
+
+    it "find score for a string" do
+      Scrabble::Scoring.score("Hello").must_equal 8
+    end
+
+    it "if array is 7 letters, add 50" do
+      Scrabble::Scoring.score("Rainbow").must_equal 62
     end
   end
 

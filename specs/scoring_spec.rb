@@ -2,8 +2,11 @@ require 'rake/testtask'
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
-require 'csv'
+# require 'csv'
 require_relative '../lib/scoring'
+
+Minitest::Reporters.use!
+Minitest::Reporters::SpecReporter.new
 
 describe "Wave 1" do
   describe "initialize" do
@@ -20,11 +23,6 @@ describe "Wave 1" do
     it "verifies there are max 7 letters" do
 
     end
-
-    it "adds
-
-    
-
 
 
   end

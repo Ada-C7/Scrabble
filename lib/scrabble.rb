@@ -49,13 +49,13 @@ module Scrabble
       word_hash.each do |word, score|
         (tie_words << word) if score == max_score
       end
-      # tie_words.each do |word|
-      #   return word if word.length == 7
-      # end
-        word = tie_words.find { |word|
-          word.length == 7
-          return word
-        }
+      tie_words.each do |word|
+        return word if word.length == 7
+      end
+        # word = tie_words.find { |word|
+        #   word.length == 7
+        #   return word
+        # }
         return tie_words.min_by { |x| x.length}
     end
 

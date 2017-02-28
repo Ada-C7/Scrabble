@@ -16,6 +16,7 @@ module Scrabble
     # @@letters = LETTERS
 
     def self.score(word)
+      word = word.upcase
       total = []
       word.each_char do |letter|
         # print "Letter: #{letter}  \n"
@@ -28,11 +29,17 @@ module Scrabble
           end
         end
       end
-      print total.inject(:+)
+      if word.length != 7
+        return total.inject(:+)
+      else
+        return total.inject(:+) + 50
+      return total.inject(:+)
+      end
     end
 
   end
 end
 
-# # a = Scrabble::Scoring.new
-# print Scrabble::Scoring.score("BIRD")
+# print  a = Scrabble::Scoring.new
+# print a.letters.class
+# print Scrabble::Scoring.score("YAY")

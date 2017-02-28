@@ -14,15 +14,22 @@ module Scrabble
 
       #store word as characters in array
       char_array = word.split("")
-      
-      #convert character array to symbol array
-      char_array.each do |char|
-        sym_array << char.to_sym
-      end
 
+    # convert character array to symbol array
+
+    sym_array = []
+
+    char_array.each do |char|
+        sym_array << char.to_sym
+    end
+
+    score = 0
+    sym_array.each do |symbol|
+        score += letter_scores[symbol]
+    end
+    score
 
 
     end
-
-  end
+end
 end

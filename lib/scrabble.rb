@@ -14,8 +14,9 @@ module Scrabble
     # Calculates and returns the total score for the given word
     def self.score(word)
       raise ArgumentError.new("Invalid data type entered for word") if (word.class) != String
-      word_score = 0
+      raise ArgumentError.new("Invalid word length: word length <= 7") if word.length > 7
 
+      word_score = 0
       char_array = word.upcase.chars.to_a
       return word_score
     end

@@ -42,12 +42,12 @@ module Scrabble
     end
 
     def self.highest_score_from(array)
-      return "happy"
+      first_highest_word = array.max_by {|word| score(word)}
+      highest_words = array.select { |word|
+         score(word) == score(first_highest_word)
+       }
+       highest_words.min_by {|word| word.length}
     end
 
   end
-
 end
-
-
-puts Scrabble::Scoring.score("WorD")

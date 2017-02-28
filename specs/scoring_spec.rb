@@ -50,18 +50,28 @@ describe "Scrabble::Scoring" do
 
     it "Returns a word in the given array" do
       words = %w(happy sleepy doc snowwhite snowblack)
-      # Scrabble::Scoring.highest_score_from(words)
       words.must_include Scrabble::Scoring.highest_score_from(words)
     end
-    #
+
     it "Returns the word with the highest score" do
       words = %w(happy sleepy doc snowwhite snowblack)
       Scrabble::Scoring.highest_score_from(words).must_equal "snowblack"
     end
 
-    # end
+    it "In case of tie, it returns the word with fewest letters" do
+      words = %w(jumped sleepy doc klutz zap)
+      Scrabble::Scoring.highest_score_from(words).must_equal "klutz"
+    end
+
+    it "In case of tie, returns the 7-letter word because of bonus" do
+      words = %w(jumped sleepy doc klutz zap subject)
+      Scrabble::Scoring.highest_score_from(words).must_equal "subject"
+    end
+
 
   end
 
 
 end
+
+    #puts Scrabble::Scoring.highest_score_from(words)

@@ -54,6 +54,11 @@ describe "Scrabble Scoring" do
       proc {
         Scrabble::Scoring.highest_score_from([890, "friend"])
       }.must_raise ArgumentError
+
+      proc {
+        Scrabble::Scoring.highest_score_from([])
+      }.must_raise ArgumentError
+
     end
 
     it "Returns the highest scoring word" do

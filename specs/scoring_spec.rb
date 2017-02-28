@@ -33,6 +33,15 @@ describe "Wave 1" do
       proc { Scrabble::Scoring.score("he11o")}.must_raise ArgumentError
       proc { Scrabble::Scoring.score("I'm a word") }.must_raise ArgumentError
     end
+
+    it "allows both uppercase/lowercase words" do
+      word_score1 = Scrabble::Scoring.score("SETTING")
+      word_score2 = Scrabble::Scoring.score("setting")
+
+      word_score1.must_equal 58
+      word_score2.must_equal 58
+    end
+
   end
 
   describe "Scoring#highest_score_from(word_array)" do
@@ -49,6 +58,12 @@ describe "Wave 1" do
     it "if there's a tie, prefer word with fewer letters" do
       my_array = ["love", "qzqz", "kkkkxx", "heyyy", "word"]
       Scrabble::Scoring.highest_score_from(my_array).must_equal "QZQZ"
+
+    end
+
+    it "chooses first word if tie words are same length" do
+      my_array = ["love", "qqqq", "zzzz", "heyyy", "word"]
+      Scrabble::Scoring.highest_score_from(my_array).must_equal "QQQQ"
 
     end
 

@@ -45,13 +45,19 @@ end
 # Scrabble::Scoring.score("hipster")
 # end
 
+# test that highest score method calculates correctly
+# test that highest score is returned
 it "Scores all words correctly and returns highest scoring word" do
 Scrabble::Scoring.highest_score_from(["moo", "hipster", "hippo", "muzjiks"]).must_equal "muzjiks"
 end
 
-# test that highest score method calculates correctly
-# test that highest score is returned
 # test that highest score handles ties
+it "Handles ties correctly" do
+  Scrabble::Scoring.highest_score_from(["cat", "bat", "l", "a"]).must_equal "cat"
+end
 
+it "Handles 7 letter word ties correctly" do
+  Scrabble::Scoring.highest_score_from(["cat", "moooooo", "fb"]).must_equal "moooooo"
+end
 
 end

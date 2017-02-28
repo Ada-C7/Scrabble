@@ -58,9 +58,9 @@ module Scrabble
     def self.tiebreaker(word, winner)
       tie_winner = ""
       if word.length < winner.length
-          highest_scoring_word.length == 7 ? tie_winner = highest_scoring_word : tie_winner = word
+          winner.length == 7 ? tie_winner = winner : tie_winner = word
       elsif word.length > winner.length
-          highest_scoring_word.length == 7 ? tie_winner = word : tie_winner = highest_scoring_word
+          highest_scoring_word.length == 7 ? tie_winner = word : tie_winner = winner
       else
         tie_winner = winner
       end

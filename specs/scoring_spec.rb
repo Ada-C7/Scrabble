@@ -46,16 +46,16 @@ describe "Scrabble::Scoring" do
   end
 
   describe "highest_score_from" do
-    it "Raises error if input is not a String" do
+    it "Raises error if argument is not an Array" do
         proc {
         Scrabble::Scoring.highest_score_from(55)}.must_raise ArgumentError
     end
 
-    it "Raises error if input has a non-word" do
+    it "Raises error if argument contains a non-word" do
         proc {
-        Scrabble::Scoring.highest_score_from("cat7!")}.must_raise ArgumentError
+        Scrabble::Scoring.highest_score_from(["cat7!", "dog"])}.must_raise ArgumentError
     end
-    
+
     it "Scores all words correctly and returns highest scoring word" do
     Scrabble::Scoring.highest_score_from(["moo", "hipster", "hippo", "muzjiks"]).must_equal "muzjiks"
     end
@@ -67,7 +67,7 @@ describe "Scrabble::Scoring" do
 
     # tests that it handles 7 letter tie correctly
     it "Handles 7 letter word ties correctly" do
-      Scrabble::Scoring.highest_score_from(["cat", "moooooo", "fb"]).must_equal "moooooo"
+      Scrabble::Scoring.highest_score_from(["cat", "goooooo", "zzzzzx"]).must_equal "goooooo"
     end
   end
 end

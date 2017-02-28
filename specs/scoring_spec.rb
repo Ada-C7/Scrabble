@@ -13,41 +13,49 @@ describe "Wave 1" do
   end
 
 
-    describe "self.score method" do
-      # not yet a functional test
-      it "accepts a word as input" do
-        Scrabble::Scoring.score("frog")
-      end
+  describe "self.score method" do
+    # not yet a functional test
+    it "accepts a word as input" do
+      Scrabble::Scoring.score("frog")
+    end
 
-      it "stores the word as an array of characters" do
-          skip
-          char_array = Scrabble::Scoring.score("frog")
-
-          char_array.must_equal ["f","r","o","g"]
-
-      end
-
-      it "converts the char array to a symbol array" do
+    it "stores the word as an array of characters" do
         skip
-        sym_array = Scrabble::Scoring.score("frog")
+        char_array = Scrabble::Scoring.score("Frog")
 
-        sym_array.must_equal [:f, :r, :o, :g]
-      end
-
-
-      it "returns correct score" do
-        Scrabble::Scoring.score("frog").must_equal 8
-      end
-
-
-      it "correctly adds bonus for seven-letter word" do
-
-      end
-
+        char_array.must_equal ["f","r","o","g"]
 
     end
 
+    it "converts the char array to a symbol array" do
+      skip
+      sym_array = Scrabble::Scoring.score("frog")
 
-  # end
+      sym_array.must_equal [:f, :r, :o, :g]
+    end
+
+
+    it "returns correct score" do
+      Scrabble::Scoring.score("frog").must_equal 8
+    end
+
+
+    it "correctly adds bonus for seven-letter word" do
+      Scrabble::Scoring.score("jazzily").must_equal 85
+    end
+
+  end
+
+  describe "self.highest_score method" do
+
+    it "returns the word in the array with the highest score" do
+      word_array = %w(frog, jazzily, pencil)
+      Scrabble::Scoring.highest_score(word_array).must_equal [8, 85, 10]
+    end
+
+  end
+
+
+
 
 end

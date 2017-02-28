@@ -13,7 +13,7 @@ module Scrabble
       }
 
       #store word as characters in array
-      char_array = word.split("")
+      char_array = word.downcase.split("")
 
     # convert character array to symbol array
 
@@ -23,13 +23,45 @@ module Scrabble
         sym_array << char.to_sym
     end
 
-    score = 0
+    word_score = 0
     sym_array.each do |symbol|
-        score += letter_scores[symbol]
+        word_score += letter_scores[symbol]
     end
-    score
+
+    if sym_array.length == 7
+      word_score += 50
+    end
+    word_score
 
 
+
     end
-end
+
+    def self.highest_score(word_array)
+      score_array = []
+
+      # iterate over word array
+      # push each score into matching score array
+      word_array.each do |word|
+        score_array << score(word)
+      end
+
+      return score_array
+      # case for one maximum
+
+      # iterate over score array to find highest scores
+      # highest_score = 0
+      # top_word_index = 0
+      # max_index = score_array.each_with_index.max
+      # do |score, index|
+      #   if score > highest_score
+      #     top_word_index = index
+      #   end
+      # end
+      # return word_array[max_index]
+
+      # deal with ties
+    end
+
+  end
 end

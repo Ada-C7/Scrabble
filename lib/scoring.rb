@@ -53,22 +53,42 @@ module Scrabble
     end
 
     def self.highest_score_from(array_of_words)
-      highest_score_word = ""
+      highest_score_words = []
       highest_score = 0
       array_of_words.each do |word|
-        if score(word) > highest_score
-          highest_score_word = word
+        if score(word) == highest_score
+          highest_score_words << word
+          highest_score = score(word)
+        elsif score(word) > highest_score
+          puts "I'm on #{word}"
+          highest_score_words = [word]
           highest_score = score(word)
         end
 
       end
-      return highest_score_word
+
+      if highest_score_words.length == 1
+        return highest_score_words[0]
+      else
+        shortest_word = ""
+        shortest_word_length = 7
+        highest_score_words.each do |word|
+          if word.length == 7
+            return word
+          elsif word.length < shortest_word_length
+            shortest_word = word
+            shortest_word_length = word.length
+          end
+        end
+        return shortest_word
+      end
     end
 
 
   end
 end
 
+Scrabble::Scoring.highest_score_from([ "blue", "gum", "bumble", "feet"])
 #puts Scrabble::Scoring.score("green")
 
     #

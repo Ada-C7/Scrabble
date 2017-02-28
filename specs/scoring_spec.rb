@@ -39,9 +39,11 @@ describe "Wave 1" do
     it "returns highest scoring word from word array " do
       my_array = [ "blue", "gum", "bumble", "feet"]
       Scrabble::Scoring.highest_score_from(my_array).must_equal "BUMBLE"
-      #
-      # returns the word in the array with the highest score. In the case of tie, use these tiebreaking rules:
+    end
 
+    it "if there's a tie, and one word used 7 letters, it wins" do
+      my_array = ["love", "qzqzqx", "aaaaaag", "heyyy", "word"]
+      Scrabble::Scoring.highest_score_from(my_array).must_equal "AAAAAAG"
     end
 
   end

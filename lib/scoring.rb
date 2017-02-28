@@ -3,6 +3,7 @@ module Scrabble
   # related to Play class, to be created
   class Scoring
 
+# constant to hold letter-points
    LETTER_VALUES = {
         A: 1, B: 3, C: 3, D: 2,
         E: 1, F: 4, G: 2, H: 4,
@@ -13,15 +14,17 @@ module Scrabble
         Y: 4,Z: 10
       }
 
-    def self.score(word)
-    end
-
-# class variable: assign values to letters using @@hash like A: 1, B: 3...
-
-# calculating one word's score
-# def self.score(word)
 # method to calculate & return score, given a word as an argument, call add_word method
 # if word length is 7, 50 bonus points
+    def self.score(word)
+      word_array = word.upcase.split("")
+      word_score = 0
+      word_array.each do |letter|
+        word_score += LETTER_VALUES[letter.to_sym]
+      end
+
+      return word_score
+    end
 
 # method to add a word and its score (as an array) to the @wordarray (from which high score will be calculated)
 

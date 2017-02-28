@@ -3,6 +3,9 @@ require 'minitest/reporters'
 require 'minitest/skip_dsl'
 require_relative '../lib/scoring'
 
+Minitest::Reporters.use!
+Minitest::Reporters::SpecReporter.new
+
 describe "Scrabble::Scoring" do
 
   # before do
@@ -11,20 +14,17 @@ describe "Scrabble::Scoring" do
 
   # test if letters have correct values attached
   it "Letters have correct values" do
-
-    # 1_point = [:A, :E, :I, :O, :U, :L, :N, :R, :S, :T]
-    # 2_point = [:D, :G]
-    # 3_point = [:B, :C, :M, :P]
-    # 4_point = [:F, :H, :V, :W, :Y]
-    # 5_point = [:K]
-    # 8_point = [:J, :X]
-    # 10_point = [:Q, :Z]
-
     Scrabble::Scoring::LETTER_VALUES[:A].must_equal 1
-
+    Scrabble::Scoring::LETTER_VALUES[:B].must_equal 3
+    Scrabble::Scoring::LETTER_VALUES[:K].must_equal 5
+    Scrabble::Scoring::LETTER_VALUES[:Z].must_equal 10
   end
 
 # test that word is scored correctly
+it "Scores word correctly" do
+  Scrabble::Scoring.score("moo").must_equal 5
+end
+
 # also correct in case of: 7 letter word
 # score method returns correct score
 # word and score are pushed to @wordarray

@@ -1,6 +1,6 @@
 module Scrabble
-  attr_reader :score
   class Scoring
+    attr_reader :word_score
     SCORE_CHART = {
       1 => ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
       2 => ["D", "G"],
@@ -15,17 +15,19 @@ module Scrabble
     end
 
     def self.score(word)
+      letter_score = 0
+      @word_score = 0
       word.each_char do |letter|
         SCORE_CHART.each do |number, alpha|
-          if alpha.includes?(letter)
+          if alpha.include?(letter.upcase)
             letter_score = number
           end
-          score += letter_score
+          @word_score += letter_score
         end
-        return score
       end
+      return @word_score
     end
   end
 end
 
-print Scrabble.score("rabbit")
+# print Scrabble::Scoring.score("rabbit")

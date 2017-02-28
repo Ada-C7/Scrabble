@@ -23,7 +23,12 @@ describe "Scoring class" do
       proc {
         Scrabble::Scoring.score(9)
       }.must_raise ArgumentError
+    end
 
+    it "raise ArgumentError if string parameter has number " do
+      proc {
+        Scrabble::Scoring.score("9")
+      }.must_raise ArgumentError
     end
 
     it "Testing the right values" do

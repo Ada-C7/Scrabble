@@ -15,8 +15,18 @@ module Scrabble
 
     end
 
+    def self.input_correct?(word)
+      if word[/[a-zA-Z]+/] == word
+        return true
+      else
+        false
+      end
+    end
+
     def self.score(word)
       raise ArgumentError.new("Argument must be an array") if word.class != String
+
+      raise ArgumentError.new("Words with just letters characters") if input_correct?(word) == false
       word_array = word.upcase.split("")
       total = 0
       word_array.each do |letter|
@@ -74,7 +84,7 @@ module Scrabble
   end # end of class
 end # end of module
 
-array_of_words = ["dddddx", "kkdddd"]
-puts Scrabble::Scoring.score("quizzes")
-puts Scrabble::Scoring.score("Qqqqqqqqf")
-puts Scrabble::Scoring.highest_score_from(array_of_words).class
+#array_of_words = ["dddddx", "kkdddd"]
+# puts Scrabble::Scoring.score("344")
+#puts Scrabble::Scoring.score("Qqqqqqqqf")
+#puts Scrabble::Scoring.highest_score_from(array_of_words).class

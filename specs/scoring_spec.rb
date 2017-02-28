@@ -54,7 +54,31 @@ describe "highest score method returns word"do
     word_array = ["frog", "jazzily", "pencil"]
 
     Scrabble::Scoring.highest_score(word_array).must_equal "jazzily"
-end
+    end
+
+    it "correctly handles tie by choosing seven-letter word" do
+      word_array = ["oysters", "qqqqqq"]
+      Scrabble::Scoring.highest_score(word_array).must_equal "oysters" #seven-letter word
+    end
+
+    it "correctly handles tie by choosing first seven-letter word" do
+      # skip
+      word_array = ["nettles", "surlier"]
+      Scrabble::Scoring.highest_score(word_array).must_equal "nettles"#first word
+    end
+
+
+    it "correctly handles tie by choosing shorter word" do
+      # skip
+      word_array = ["wav", "xi"]
+      Scrabble::Scoring.highest_score(word_array).must_equal "xi"#shorter word
+    end
+
+    it "correctly handles tie by choosing first word in list" do
+      # skip
+      word_array = ["zizit", "tazza"]
+      Scrabble::Scoring.highest_score(word_array).must_equal "zizit" #first word in list
+    end
 end
 
 

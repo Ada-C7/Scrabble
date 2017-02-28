@@ -29,5 +29,3 @@ module Scrabble
     end
   end
 end
-
-# print Scrabble::Scoring.score("rabbit")

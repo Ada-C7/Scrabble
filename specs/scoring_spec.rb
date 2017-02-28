@@ -25,21 +25,31 @@ describe Scrabble::Scoring do
   # raise error if there's non-alpha entered
 
   describe 'self.highest_score_from(array_of_words)' do
+# ZIP 14
+# JAZz 19 WHIZ 19 JERKY 19
+# SQUEEZE 75  7 letter
+# QUICKLY 75 7 letter
+
     it 'Returns an Array' do
       Scrabble::Scoring.highest_score_from(array_of_words).must_be_instance_of Array
     end
 
     it 'Returns the correct word' do
-
+      array_of_words = ['zip', 'jazz'] #14, 19
+      expected = 'jazz'
+      Scrabble::Scoring.highest_score_from(array_of_words).must_equal expected
     end
 
     it 'Breaks ties with shortest word' do
-    end
-
-    it 'Seven letter words get 50 pt. bonus' do
+      array_of_words = ['Jerky', 'zip', 'JAZZ'] #19, 14, 19
+      expected = 'JAZZ'
+      Scrabble::Scoring.highest_score_from(array_of_words).must_equal expected
     end
 
     it 'if there is a tie of same score and same length, return first found' do
+      array_of_words = ['whiZ', 'zip', 'jazz'] #19, 14, 19
+      expected = 'whiZ'
+      Scrabble::Scoring.highest_score_from(array_of_words).must_equal expected
     end
   end
 end

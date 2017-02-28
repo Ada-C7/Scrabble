@@ -63,13 +63,14 @@ describe "Wave 1" do
     it "if there's a tie, prefer word with fewer letters" do
       my_array = ["love", "qzqz", "kkkkxx", "heyyy", "word"]
       Scrabble::Scoring.highest_score_from(my_array).must_equal "QZQZ"
-
     end
 
     it "chooses first word if tie words are same length" do
-      my_array = ["love", "qqqq", "zzzz", "heyyy", "word"]
-      Scrabble::Scoring.highest_score_from(my_array).must_equal "QQQQ"
+      my_array1 = ["love", "qqqq", "zzzz", "heyyy", "word"]
+      my_array2 = ["zzzzzzz", "qqqqqqq"]
 
+      Scrabble::Scoring.highest_score_from(my_array1).must_equal "QQQQ"
+      Scrabble::Scoring.highest_score_from(my_array2).must_equal "ZZZZZZZ"
     end
 
   end

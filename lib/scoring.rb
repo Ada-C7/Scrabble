@@ -24,7 +24,6 @@ module Scrabble
     end
 
     def self.highest_score_from(array_of_words)
-
       raise ArgumentError.new "There are no words" if array_of_words.length == 0
 
       high_score_word = array_of_words.max_by { |word| score(word) }
@@ -32,9 +31,9 @@ module Scrabble
 
       highest_score_words = array_of_words.select { |word| score(word) == high_score }
 
-
       if highest_score_words.length == 1
         return highest_score_words[0]
+
       else
         return highest_score_words.min_by do |word|
           return word if word.length == 7
@@ -42,16 +41,5 @@ module Scrabble
         end
       end
     end
-
-
   end
 end
-
-Scrabble::Scoring.highest_score_from([ "blue", "gum", "bumble", "feet"])
-#puts Scrabble::Scoring.score("green")
-
-    #
-    # Create a Scrabble module at the project root.
-    # Create a Scrabble::Scoring class which contains some sort of data structure to store the individual letter scores listed below.
-    # Create a Spec file which corresponds to your Scrabble::Scoring class. This spec should contain one red test as a starting point (this test can be modified as your get further through the requirements).
-    # Be able to execute your one test using rake from the project root.

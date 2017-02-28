@@ -29,7 +29,10 @@ module Scrabble
 
 end
 
+# l = Scrabble::Letter.new ("0")
+
 # l = Scrabble::Letter.new ("l")
+
 #
 # puts l.point.class
 #

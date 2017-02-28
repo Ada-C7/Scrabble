@@ -68,35 +68,15 @@ module Scrabble
 
       winner = ""
       if word_lengths.max == 7
-        # amount of words at length 7
-        # find highest_score words (keys) that have length 7
-        # choose the first word
-      elsif
+        # if score is max_score and length is 7, that's the winner
+        winner = highest_scores.find {|word, score| score == max_score && word.length == 7}
+      elsif word_lengths.max < 7
         winner = highest_scores.keys.min { |word| word.length }
 
       else # highest_scores.length == 1
         winner = highest_scores.keys.first
-
-
-
       end
       return winner
-
-      # INPUT: array of words (array)
-      # output: word with highest score, handling ties (string)
-      #
-      # iterate over array_of_words and create a hash:
-      #   key is word
-      #   value is word_score, using self.score
-      #
-      # iterate over hash
-      # find highest score
-      # if there is > 1 word with highest score
-      #   if there's a 7-letter word, it wins
-      #   if there are more than one 7-letter words the first one wins
-      #   else if there's no 7-letter words the shortest tie word wins
-      #
-      #
 
     end
 

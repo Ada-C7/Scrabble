@@ -10,16 +10,19 @@ describe Scrabble::Scoring do
     end
 
     it "Calculates the score of word without case sensitivity" do
+    #skip
       Scrabble::Scoring.score("APPLE").must_equal 9
     end
 
     it "Raises error if input is not a string" do
+      #skip
       proc {
         Scrabble::Scoring.score(1)
       }.must_raise ArgumentError
     end
 
     it "Gives 50 bonus points for 7 letter words" do
+    #skip
       Scrabble::Scoring.score("chicken").must_equal 68
     end
   end
@@ -31,16 +34,19 @@ describe Scrabble::Scoring do
     end
 
     it "Returns word with fewer letters in a tie" do
+      #skip
       words = ["land", "dig", "so"]
       Scrabble::Scoring.highest_score_from(words).must_equal "dig"
     end
 
     it "Returns word with 7 characters in a tie" do
+      #skip
       words = ["pizzazz", "zzzzk", "pimp"]
       Scrabble::Scoring.highest_score_from(words).must_equal "pizzazz"
     end
 
     it "Returns first word in a score & letter tie" do
+      #skip
       words = ["pizzazz", "zzzzdga", "zzzzk"]
       Scrabble::Scoring.highest_score_from(words).must_equal "pizzazz"
     end

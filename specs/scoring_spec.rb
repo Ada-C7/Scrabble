@@ -46,6 +46,12 @@ describe "Wave 1" do
       Scrabble::Scoring.highest_score_from(my_array).must_equal "AAAAAAG"
     end
 
+    it "if there's a tie, prefer word with fewer letters" do
+      my_array = ["love", "qzqz", "kkkkxx", "heyyy", "word"]
+      Scrabble::Scoring.highest_score_from(my_array).must_equal "QZQZ"
+
+    end
+
   end
 
 

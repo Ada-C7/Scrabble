@@ -51,11 +51,6 @@ describe "Scrabble::Scoring" do
         Scrabble::Scoring.highest_score_from(55)}.must_raise ArgumentError
     end
 
-    it "Raises error if argument contains a non-word" do
-        proc {
-        Scrabble::Scoring.highest_score_from(["cat7!", "dog"])}.must_raise ArgumentError
-    end
-
     it "Scores all words correctly and returns highest scoring word" do
     Scrabble::Scoring.highest_score_from(["moo", "hipster", "hippo", "muzjiks"]).must_equal "muzjiks"
     end

@@ -39,6 +39,7 @@ module Scrabble
 
     # method to iterate through wordarray and return word with the highest score
     def self.highest_score_from(array_of_words)
+      raise ArgumentError.new("That's not an array") if array_of_words.class != Array
       highest_score = 0
       winner = ""
       array_of_words.each do |word|

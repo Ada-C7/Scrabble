@@ -44,35 +44,28 @@ module Scrabble
         score_array << self.score(word)
       end
 
+     #fingers crossed this saves them as corresponding words and scores in individual arrays
+      scorepairs = word_array.zip(score_array)
+
 
       # iterate over score array to find highest scores
 
-      top_indexes = []
-      score_array.each_with_index do |score, index|
-          if score == score_array.max
-
-              top_indexes << index
-          end
-      end
+    top_scores = []
+    scorepairs.each do |scorepair|
+        if scorepair[1] == score_array.max
+            top_scores <<scorepair
+        end
+    end
 
       #no tie, nominal case returns the undisputed winner
-      if top_indexes.length == 1
-        return word_array[top_indexes[0]]
-      else
+        if top_scores.length == 1
+            return top_scores[0][0]
+        end
+
       # handle ties
-
-        tied_words = []
-        top_indexes.each do |index|
-          # creates array of tied words
-          tied_words << word_array[index]
-
-          # if word has seven letters it should win
-          # if more than one word has seven letters, first should win
-          if word_array[index].length == 7
-            return word_array[index]
-          else
-            return tied_words.min_by {|word| word.length}
-
+      top_scores.each do |scorepair|
+          if scorepair[0].length == 7
+              return scorepair[0]
           end
         end
 
@@ -82,8 +75,6 @@ module Scrabble
 
         #this is just returning the length of the string that wins, not the word
         # winner = tied_words.min
-
-      end
 
 
 

@@ -31,7 +31,15 @@ module Scrabble
 
       return total
 
-    end #end of def
+    end #end of score method
+
+    def self.highest_score_from(array_of_words)
+      scores = array_of_words.map { |word| Scoring.score(word) }
+
+      max_score = array_of_words.zip(scores).to_h.max_by { |k, v| v }
+
+      return max_score
+    end
 
   end #end of class
 

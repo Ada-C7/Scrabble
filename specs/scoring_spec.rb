@@ -29,7 +29,20 @@ describe "Wave 1" do
   end
 
   describe "Scoring#highest_score_from" do
+    it "returns a string" do
+      Scrabble::Scoring.highest_score_from(["x"]).class.must_equal String
+    end
 
+    it "calculate score for each string and return the string with highest score" do
+      array_of_strings = %w(Hello Max)
+      Scrabble::Scoring.highest_score_from(array_of_strings).must_equal "Max"
+
+    end
+   #   it "Test if input is an array" do
+  #   proc {
+  #     Scrabble::Scoring.highest_score_from("x")
+  #   }.must_raise ArgumentError
+  # end
   end
   # Create a Scrabble module at the project root"
 

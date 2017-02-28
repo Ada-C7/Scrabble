@@ -10,8 +10,19 @@ module Scrabble
       if input_array.length == 7
         score += 50
       end
-      
+
       return score
     end
-  end
-end
+
+    def self.highest_score_from(array_of_words)
+      score_array = array_of_words.map {|str| self.score(str)}
+      word_hash = Hash[array_of_words.zip score_array]
+      max = word_hash.max_by {|key, value| value}
+      # word_hash.each { |k, v|  k if v == word_hash.values.max }
+
+      return max[0]
+
+    end
+
+  end # End of class Scoring
+end # End of module Scrabble

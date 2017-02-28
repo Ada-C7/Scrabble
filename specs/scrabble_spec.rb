@@ -17,7 +17,7 @@ describe Scrabble::Letter do
     my_letter = Scrabble::Letter.new(letter)
 
     my_letter.must_respond_to :name
-    my_letter.name.must_equal "w"
+    my_letter.name.must_equal "W"
   end
 
   it "Is a kind of Letter" do

@@ -17,11 +17,11 @@ module Scrabble
     end
 
     def self.score(word)
-      raise ArgumentError.new "Sorry, your word contains a non-letter character" if word.class != String
+      raise ArgumentError.new "Sorry, your word must by a String class type" if word.class != String
 
       raise ArgumentError.new "Sorry, your word contains a non-letter character" if !word.match?(/^[a-zA-Z]+$/)
 
-      raise ArgumentError.new "Sorry, your word contains a non-letter character" if word.length > 7 || word.length == 0
+      raise ArgumentError.new "Your word must be less than or equal to 7 characters" if word.length > 7 || word.length == 0
 
       # puts LETTER_SCORES
       word_score = 0
@@ -53,7 +53,7 @@ module Scrabble
       raise ArgumentError.new "Array can't be empty!" if array_of_words.empty?
 
       array_of_words.each do |word|
-        raise ArgumentError.new "must be string!" if word.class != String
+        raise ArgumentError.new "Your word must be a string!" if word.class != String
       end
 
       # INPUT: array of words (array)

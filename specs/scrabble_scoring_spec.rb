@@ -12,12 +12,11 @@ end
 
 it "the class contains a data structure" do
   game_1 = Scrabble::Scoring.new
-  game_1.letters.must_be_kind_of Array
+  game_1.letters.must_be_kind_of Hash
 end
 
 it "the method self.score(word) should return total score" do
-  game_1 = Scrabble::Scoring.new
-  game_1.score("yay").must_equal 9
+  Scrabble::Scoring.score("yay").must_equal 9
 end
 
 

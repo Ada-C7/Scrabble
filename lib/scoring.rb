@@ -26,7 +26,7 @@ module Scrabble
     def self.score(word)
       raise ArgumentError.new("Argument must be an array") if word.class != String
 
-      raise ArgumentError.new("Words with just letters characters") if input_correct?(word) == false
+      raise ArgumentError.new("Words with just letters characters") if !input_correct?(word) 
       word_array = word.upcase.split("")
       total = 0
       word_array.each do |letter|

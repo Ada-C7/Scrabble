@@ -17,11 +17,6 @@ describe "Scoring is a class" do
       @scoring = Scrabble::Scoring.new
     end
 
-    it "Scoring knows-about self.score" do
-      skip
-      Scrabble::Scoring.must_respond_to Scrabble::Scoring.score
-    end
-
     it "Returns the total score for a given word" do
       test_word = "word"
       # Scrabble::Scoring.new
@@ -67,20 +62,28 @@ describe "Scoring is a class" do
   describe "self.highest_score_from" do
 
     it "If argument given is not an array, raise ArgumentError" do
-      skip
+      # string
+      proc {Scrabble::Scoring.highest_score_from("string")}.must_raise ArgumentError
+      # integer
+      # skip
+      proc {Scrabble::Scoring.highest_score_from(1)}.must_raise ArgumentError
+      # nil
+      proc {Scrabble::Scoring.highest_score_from(nil)}.must_raise ArgumentError
+      # skip
     end
 
-    it "Raise ArgumentError if its an empty array being passed in" do
-      skip
+    it "Raise ArgumentError if it's an empty array being passed in" do
+      test_array = []
+      proc {Scrabble::Scoring.highest_score_from(test_array)}.must_raise ArgumentError
+      # skip
     end
 
     it "Raise ArgumentError if array contains anything but string" do
-      skip
+      test_array = ["cat", 1, "blah"]
+      proc {Scrabble::Scoring.highest_score_from(test_array)}.must_raise ArgumentError
+      # skip
     end
 
-    it "Scoring knows-about self.highest_score_from" do
-      skip
-    end
 
     it "Return should be a String" do
       skip

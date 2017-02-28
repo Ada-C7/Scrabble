@@ -42,21 +42,36 @@ module Scrabble
       if word.length == 7
         word_score += 50
       end
-      
+
       word_score
-      # letters.each do |letter|
-      #
-      # end
-      # input: word (string)
-      # output: score (integer)
-      #
-      # string has to be spliced into array of letters
-      # reference a hash/array of values for each letter
-      # loop through and add the letters' values
-      # return total
+
     end
 
-    def self.highest_score_from
+    def self.highest_score_from(array_of_words)
+      raise ArgumentError.new "Must give an array!" if array_of_words.class != Array
+
+      raise ArgumentError.new "Array can't be empty!" if array_of_words.empty?
+
+      array_of_words.each do |word|
+        raise ArgumentError.new "must be string!" if word.class != String
+      end
+
+      # INPUT: array of words (array)
+      # output: word with highest score, handling ties (string)
+      #
+      # iterate over array_of_words and create a hash:
+      #   key is word
+      #   value is word_score, using self.score
+      #
+      # iterate over hash
+      # find highest score
+      # if there is > 1 word with highest score
+      #   if there's a 7-letter word, it wins
+      #   if there are more than one 7-letter words the first one wins
+      #   else if there's no 7-letter words the shortest tie word wins
+      #
+      #
+
     end
 
   end

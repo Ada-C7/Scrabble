@@ -13,16 +13,11 @@ module Scrabble
 
 
     def self.score(word)
-      if word.length == 7
-        score = 50
-      else
-        score = 0
-      end
+     (word.length == 7) ? score = 50 : score = 0
       word_array = word.split("")
       word_array.each do |letter|
         score += Scoring.letter_value(letter.upcase)
       end
-
       return score
     end
 
@@ -43,7 +38,7 @@ module Scrabble
         word_score = Scoring.score(word)
         word_hash[word] = word_score
       end
-        word = word_hash.max_by{|k, v| v}
+        word = word_hash.max_by{|k, v| v }
         max_score = word[1]
         tie_winner = Scoring.tie(word_hash, max_score)
         return tie_winner.upcase
@@ -51,17 +46,17 @@ module Scrabble
 
     def self.tie(word_hash, max_score)
       tie_words = Array.new
-      word_hash.each do |key, value|
-        if value == max_score
-          tie_words << key
-        end
+      word_hash.each do |word, score|
+        (tie_words << word) if score == max_score
       end
-      tie_words.each do |word|
-        if word.length == 7
+      # tie_words.each do |word|
+      #   return word if word.length == 7
+      # end
+        word = tie_words.find { |word|
+          word.length == 7
           return word
-        end
-      end
-      return tie_words.min_by { |x| x.length}
+        }
+        return tie_words.min_by { |x| x.length}
     end
 
   end

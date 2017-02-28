@@ -52,11 +52,6 @@ module Scrabble
         end
       end
 
-      all_scores = array_or_words.map {|word| score(word)}
-      scored_words = Hash[array_of_words.zip(@all_scores)]
-      scored_words.select {|k,v| k if v == all_scores.max}
-      return hash.values[0]
-
 
 
 
@@ -64,4 +59,4 @@ module Scrabble
 
 
 # puts Scrabble::Scoring.score("squeeze")
-Scrabble::Scoring.highest_score_from(%w(words tofu fhiz whiz))
+# Scrabble::Scoring.highest_score_from(%w(words tofu fhiz whiz))

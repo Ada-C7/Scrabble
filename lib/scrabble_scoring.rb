@@ -29,17 +29,26 @@ module Scrabble
           end
         end
       end
+<<<<<<< HEAD
       if word.length != 7
         return total.inject(:+)
       else
         return total.inject(:+) + 50
       return total.inject(:+)
       end
+=======
+     total.inject(:+)
+>>>>>>> 4013dc041c71e7a8c2bcb5e6ac145594b1cb48a1
     end
 
   end
 end
 
+<<<<<<< HEAD
 # print  a = Scrabble::Scoring.new
 # print a.letters.class
 # print Scrabble::Scoring.score("YAY")
+=======
+# a = Scrabble::Scoring.new
+# print Scrabble::Scoring.score("BIRD")
+>>>>>>> 4013dc041c71e7a8c2bcb5e6ac145594b1cb48a1

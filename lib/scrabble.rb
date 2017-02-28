@@ -42,7 +42,7 @@ module Scrabble
               letter_value = value
             end
         end
-        letter_value
+      letter_value
       end
         return  word_score.reduce(:+)
     end

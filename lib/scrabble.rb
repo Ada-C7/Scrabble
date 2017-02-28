@@ -56,23 +56,20 @@ module Scrabble
 
     # returns the word in the array with the highest score
 
-    def self.highest_score_from(array_of_words)
-      word_amount = 0
-      highest_word = ""
-      array_of_words.each do |word|
-        if Scrabble::Scoring.score(word) > word_amount
-          highest_word = word
-          word_amount = Scrabble::Scoring.score(word)
+      def self.highest_score_from(array_of_words)
+        word_scores = {}
+        array_of_words.each do |word|
+          word_scores[word] = Scrabble::Scoring.score(word)
         end
+
+        # tie = Array.new
+        winner = []
+        word_scores.each do |word, score|
+          if score == word_scores.values.max
+          winner << word
+          end
+        end
+        return winner.min_by {|word| word.length}
       end
-
-      return highest_word
-      # in the case of a tie, prefer the word with the fewest letters.
-
-
-
-
-    end
-
   end
 end

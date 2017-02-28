@@ -32,4 +32,35 @@ describe "Scrabble::Scoring" do
       }.must_raise ArgumentError
     end
   end
+
+  describe "self.highest_score_from" do
+
+
+    it "returns a string" do
+      array = ["zzz", "aaa"]
+      Scrabble::Scoring.highest_score_from(array).must_be_instance_of String
+    end
+
+    it "returns word with highest score" do
+      array = ["zzz", "aaa"]
+      Scrabble::Scoring.highest_score_from(array).must_equal "zzz"
+    end
+
+    it "picks word with fewer letters in a point tie" do
+      array = ["dog", "louie"]
+      Scrabble::Scoring.highest_score_from(array).must_equal "dog"
+    end
+
+    it "picks 7 letter word if there is a point tie" do
+      array = ["aaaaaad", "zzzzzx"]
+      Scrabble::Scoring.highest_score_from(array).must_equal "aaaaaaa"
+    end
+
+    it "picks first word as winner if letters and point are equal" do
+      array = ["dog", "gog"]
+      Scrabble::Scoring.highest_score_from(array).must_equal "dog"
+    end
+
+
+  end
 end

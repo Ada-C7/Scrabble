@@ -6,7 +6,7 @@ require_relative '../lib/scoring'
 describe Scrabble::Scoring do
   describe 'self.score(word)' do
     it 'Returns an integer' do
-      Scrabble::Scoring.score('word').must_be_instance_of Integer
+      Scrabble::Scoring.score('word').must_be_kind_of Integer
     end
 
     it 'Returns the correct score' do
@@ -31,22 +31,26 @@ describe Scrabble::Scoring do
 # QUICKLY 75 7 letter
 
     it 'Returns an Array' do
-      Scrabble::Scoring.highest_score_from(array_of_words).must_be_instance_of Array
+      skip
+      Scrabble::Scoring.highest_score_from(array_of_words).must_be_kind_of Array
     end
 
     it 'Returns the correct word' do
+      skip
       array_of_words = ['zip', 'jazz'] #14, 19
       expected = 'jazz'
       Scrabble::Scoring.highest_score_from(array_of_words).must_equal expected
     end
 
     it 'Breaks ties with shortest word' do
+      skip
       array_of_words = ['Jerky', 'zip', 'JAZZ'] #19, 14, 19
       expected = 'JAZZ'
       Scrabble::Scoring.highest_score_from(array_of_words).must_equal expected
     end
 
     it 'if there is a tie of same score and same length, return first found' do
+      skip
       array_of_words = ['whiZ', 'zip', 'jazz'] #19, 14, 19
       expected = 'whiZ'
       Scrabble::Scoring.highest_score_from(array_of_words).must_equal expected

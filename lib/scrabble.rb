@@ -37,6 +37,16 @@ module Scrabble
       end
     end
 
+    def self.highest_score_from_array(array_of_words)
+      word_hash = Hash.new
+      array_of_words.each do |word|
+        word_score = Scoring.score(word)
+        word_hash[word] = word_score
+      end
+        word = word_hash.max_by{|k, v| v}
+        return word[0]
+    end
+
   end
 
 end

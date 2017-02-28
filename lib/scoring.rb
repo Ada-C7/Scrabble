@@ -1,6 +1,6 @@
 module Scrabble
     class Scoring
-        attr_reader :score
+        attr_reader :word_score
         SCORE_CHART = {
             1 => %w(A E I O U L N R S T),
             2 => %w(D G),
@@ -11,6 +11,18 @@ module Scrabble
             10 => %w(Q Z)
         }.freeze
 
+        def self.score(word)
+            letter_score = 0
+            @word_score = 0
+            word.each_char do |letter|
+                SCORE_CHART.each do |number, alpha|
+                    letter_score = number if alpha.include?(letter.upcase)
+                    @word_score += letter_score
+                end
+            end
+            @word_score
+        end
+
         def self.highest_score_from(array_of_words)
             @all_scores = []
             @highest_word = ''
@@ -18,7 +30,7 @@ module Scrabble
             array_of_words.each do |word|
                 @all_scores << score(word)
             end
-            @scored_words = Hash[array_of_words.zip(@all_scores.zip)]
+            @scored_words = Hash[@all_scores.zip(array_of_words.zip)]
             @scored_words.each do |score, word|
                 if score > @highest_score
                     @highest_word = word
@@ -32,6 +44,9 @@ module Scrabble
                     end
                 end
             end
+            @highest_word
+          end
         end
-    end
-end
+      end
+
+puts Scrabble::Scoring.highest_score_from(%w(words tofu))

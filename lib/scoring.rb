@@ -21,6 +21,8 @@ module Scrabble
 
       raise ArgumentError.new "Sorry, your word contains a non-letter character" if !word.match?(/^[a-zA-Z]+$/)
 
+      raise ArgumentError.new "Sorry, your word contains a non-letter character" if word.length > 7 || word.length == 0
+
       # puts LETTER_SCORES
       word_score = 0
       letters = word.upcase.split("")
@@ -36,6 +38,11 @@ module Scrabble
         end
         # return word_score
       end
+
+      if word.length == 7
+        word_score += 50
+      end
+      
       word_score
       # letters.each do |letter|
       #

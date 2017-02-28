@@ -41,22 +41,27 @@ describe "Scoring is a class" do
       #skip
       proc {
         Scrabble::Scoring.score(34)
-      }.must_raise ArgumentError 
+      }.must_raise ArgumentError
+    end
+
+    it "Raise ArgumentError if word length > 7 or empty" do
+      # skip
+      proc {
+        Scrabble::Scoring.score("thoughtfull")
+      }.must_raise ArgumentError
+
+      proc {
+        Scrabble::Scoring.score("")
+      }.must_raise ArgumentError
+
     end
 
     it "Seven letter word adds 50 point score bonus" do
-      skip
+      # skip
+      test_word = "shoebox"
+      Scrabble::Scoring.score(test_word).must_equal 69
+
     end
-
-    it "Raise ArgumentError if input > 7 letter" do
-      skip
-    end
-
-    it "Raise ArgumentError if empy string" do
-      skip
-    end
-
-
   end
 
   describe "self.highest_score_from" do

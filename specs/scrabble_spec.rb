@@ -22,7 +22,7 @@ describe "Scrabble::Scoring" do
 
     it "raises argument error if word has numbers" do
       proc {
-        Scrabble::Scoring.score("123")
+        Scrabble::Scoring.score(123)
       }.must_raise ArgumentError
     end
 

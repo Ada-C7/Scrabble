@@ -9,7 +9,13 @@ module Scrabble
     }
 
     def self.score word
+
       letter_values = []
+
+      raise ArgumentError.new "Error. Please enter a string." if
+      word.class != String
+
+      raise ArgumentError.new "Error. Please enter a string of letters." if word.match(/^[[:alpha:]]+$/) == nil
 
       word_array = word.downcase.scan /\w/
 

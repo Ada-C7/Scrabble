@@ -13,7 +13,7 @@ end
 
 describe "self.score" do
   it "self.score returns an integer" do
-    skip
+    # skip
     Scrabble::Scoring.score("apple").must_be_kind_of Integer
     Scrabble::Scoring.score("apple").must_equal 9
   end

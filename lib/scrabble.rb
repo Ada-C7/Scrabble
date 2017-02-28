@@ -56,6 +56,11 @@ module Scrabble
           tie_words << key
         end
       end
+      tie_words.each do |word|
+        if word.length == 7
+          return word
+        end
+      end
       return tie_words.min_by { |x| x.length}
     end
 

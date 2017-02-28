@@ -46,4 +46,9 @@ describe "Wave 1" do
     word.must_equal "DG"
   end
 
+  it "Breaks a tie correctly when one word is 7" do
+    word = Scrabble::Scoring.highest_score_from_array(["FUUUUUU", "ZZZZZZ"])
+    word.must_equal "FUUUUUU"
+  end
+
 end

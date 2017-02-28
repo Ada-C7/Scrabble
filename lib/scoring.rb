@@ -63,17 +63,10 @@ module Scrabble
       if highest_score_words.length == 1
         return highest_score_words[0]
       else
-        shortest_word = ""
-        shortest_word_length = 7
-        highest_score_words.each do |word|
-          if word.length == 7
-            return word
-          elsif word.length < shortest_word_length
-            shortest_word = word
-            shortest_word_length = word.length
-          end
+        return highest_score_words.min_by do |word|
+          return word if word.length == 7
+          word.length
         end
-        return shortest_word
       end
     end
 

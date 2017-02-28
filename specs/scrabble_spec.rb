@@ -33,11 +33,11 @@ describe Scrabble::Letter do
 
      end
 
-     it "Ensures argument is a letter." do
-          
-          proc {Scrabble::Letter.new(0)
-          }.must_raise ArgumentError
-
-     end
+     # it "Ensures argument is a letter." do
+     #
+     #      proc {Scrabble::Letter.new(0)
+     #      }.must_raise ArgumentError
+     #
+     # end
 
 end

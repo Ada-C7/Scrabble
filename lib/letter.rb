@@ -9,14 +9,10 @@ module Scrabble
           def initialize(name)
 
 
-            if ("a".."z").include?(name)
+              raise ArgumentError.new "That's not a letter" until ("a".."z").include?(name)
               @name = name.upcase
-            else
-              raise ArgumentError.new "That's not a letter"
-            end
+              @point = assign_points
 
-
-               @point = assign_points
           end
 
 
@@ -36,6 +32,9 @@ module Scrabble
 end
 
 # l = Scrabble::Letter.new ("0")
+
+# l = Scrabble::Letter.new ("l")
+
 #
 # puts l.point.class
 #

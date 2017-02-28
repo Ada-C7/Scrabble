@@ -36,7 +36,12 @@ describe "Scoring Class" do
       word_array = ["salad", "cheese", "car"]
       word = Scrabble::Scoring.highest_score_from(word_array)
       word.must_equal "cheese"
+    end
 
+    it "returns the word with the fewest letters if a tie occurs" do
+
+      tie_array = ["que", "jaaaa", "dope"]
+      Scrabble::Scoring.highest_score_from(tie_array).must_equal "que"
     end
 
 

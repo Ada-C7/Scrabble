@@ -6,7 +6,7 @@ require_relative '../lib/scoring'
 
 describe "Module Scrabble, Scoring Class" do
   it "exists" do
-    skip
+    # skip
     Scrabble::Scoring.class.must_be_kind_of Class
   end
 end
@@ -25,9 +25,10 @@ describe "self.highest_word" do
     self.highest_word.must_be_kind_of String
   end
 
-it "must throw ArgumentError if given non-text arguments"
-skip
-  proc {
-    Scrabble::Scoring.highest_word(9)
-  }.must_raise ArgumentError
+  it "must throw ArgumentError if given non-text arguments" do
+    skip
+    proc {
+      Scrabble::Scoring.highest_word(9)
+    }.must_raise ArgumentError
+  end
 end

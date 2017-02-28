@@ -51,4 +51,9 @@ describe "Wave 1" do
     word.must_equal "FUUUUUU"
   end
 
+  it "Returns first word in list if several words are same length and same score" do
+    word = Scrabble::Scoring.highest_score_from_array(["cat", "ZZZZ", "QQQQ"])
+    word.must_equal "ZZZZ"
+  end
+
 end

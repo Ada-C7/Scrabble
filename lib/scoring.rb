@@ -53,22 +53,34 @@ module Scrabble
 
               top_indexes << index
           end
-        #return the highest scoring word
       end
 
+      #no tie, nominal case returns the undisputed winner
       if top_indexes.length == 1
         return word_array[top_indexes[0]]
       else
+
+
       # handle ties
         # if word has seven letters it should win
         # if more than one word has seven letters, first should win
         top_indexes.each do |index|
           if word_array[index].length == 7
             return word_array[index]
-          end
-
-
         end
+        end
+
+        tied_words = []
+        top_indexes.each do |index|
+            tied_words << word_array[index]
+        end
+
+        tied_words.map do |str|
+            str.length
+        end
+
+        #this is just returning the length of the string that wins, not the word
+        winner = tied_words.min
 
       end
 

@@ -25,8 +25,23 @@ module Scrabble
    }
 
    def self.score(word)
-     
+     word_array = word.split(",")
+     score_array = []
+     word_array.each do |letter|
+       total_score = 0
+       SCORE_CHART.each do |score, letter_array|
+         letter_array.each do |score_letter|
+           if score_letter == letter
+             score_array << score_letter
+    #          total_score += score.to_i
+           end
+         end
+       end
+      # score_array = [1, 1, 3, 4]
+      score_array.inject(0) {|sum, num| sum + num}
+
    end
+
 
  end
 end

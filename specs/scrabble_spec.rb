@@ -16,7 +16,7 @@ describe "Scrabble Scoring" do
 
     it "Raises an error when the word parameter is invalid data type" do
       proc{
-        Scrabble::Scoring.score(-1033)
+        Scrabble::Scoring.score("sammy3")
       }.must_raise ArgumentError
 
       proc{

@@ -15,8 +15,9 @@ module Scrabble
     def self.score(word)
       # Word must be a string data type
       raise ArgumentError.new("Invalid data type entered for word") if (word.class) != String
-      # Word length must be 7 or less
-      raise ArgumentError.new("Invalid word length: word length <= 7") if word.length > 7
+
+      # Word must have length between 0 and 7, and composed of letters only
+      raise ArgumentError.new("Invalid data type entered for word") if word !~ /^[a-zA-Z]{0,7}$/
 
       word_score = 0
       char_array = word.upcase.chars.to_a

@@ -5,30 +5,37 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require_relative '../lib/score.rb'
 
 describe "class Scoring" do
-  it "reads in DICTIONARY" do
-  end
+  # it "reads in DICTIONARY" do
+  # end
+  #
+  # # it "reads in SCORES" do
+  # #
+  # # end
 
-  it "reads in SCORES" do
 
-  end
+  describe "#calculate_letter" do
+    it "gives an error if a non-letter is entered" do
 
-  describe "#is_a_word?" do
-    # it exists
-    # it returns true or false
-    # it returns true if the word is in DICTIONARY
-    #it returs false  if the word is not in DICTIONARY
+      test_score = Scrabble::Scoring.new
+      proc{
 
-  end
+        test_score.calculate_letter(" ")
+      }.must_raise ArgumentError
+    end
 
-  describe calculating_score do
+    it "returns the correct point score" do
+      test_score = Scrabble::Scoring.new
+      test_score.calculate_letter("A").must_equal 1
+    end
 
-    # it returns the right point value for word that is less than 8 letters
-    # it adds 50 points if the word is 8 letters
   end
 
   describe "self.score" do
     # it returns the score of the word if is_a_word is true
     # it returns 0 if the word does not exist
+    # it adds 50 points if the word is 8 letters
+    # it returns the right point value for word that is less than 8 letters
+
   end
 
   describe "break_ties" do

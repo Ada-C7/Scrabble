@@ -42,7 +42,7 @@ module Scrabble
         points_count += points
       end
 
-      if word_array.size != 7
+      if word_array.size < 7
         return points_count
       else
         return points_count + 50

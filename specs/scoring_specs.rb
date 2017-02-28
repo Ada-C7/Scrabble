@@ -31,11 +31,17 @@ describe "Scoring is a class" do
     end
 
     it "Raise ArgumentError if input contains anything other than alpha characters" do
-      skip
+      # skip
+      proc {
+        Scrabble::Scoring.score("wo2rd!")
+      }.must_raise ArgumentError
     end
 
     it "Raise ArgumentError if input is not a string" do
-      skip
+      #skip
+      proc {
+        Scrabble::Scoring.score(34)
+      }.must_raise ArgumentError 
     end
 
     it "Seven letter word adds 50 point score bonus" do

@@ -8,7 +8,7 @@ module Scrabble
       4 => %W(F H V W Y),
       5 => %W(K),
       8 => %W(J X),
-      10 => %W(Q Z),
+      10 => %W(Q Z)
     }
 
     # Calculates and returns the total score for the given word

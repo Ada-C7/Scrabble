@@ -59,28 +59,29 @@ module Scrabble
       if top_indexes.length == 1
         return word_array[top_indexes[0]]
       else
-
-
       # handle ties
-        # if word has seven letters it should win
-        # if more than one word has seven letters, first should win
-        top_indexes.each do |index|
-          if word_array[index].length == 7
-            return word_array[index]
-        end
-        end
 
         tied_words = []
         top_indexes.each do |index|
-            tied_words << word_array[index]
+          # creates array of tied words
+          tied_words << word_array[index]
+
+          # if word has seven letters it should win
+          # if more than one word has seven letters, first should win
+          if word_array[index].length == 7
+            return word_array[index]
+          else
+            return tied_words.min_by {|word| word.length}
+
+          end
         end
 
-        tied_words.map do |str|
-            str.length
-        end
+        # tied_words.map do |str|
+        #     str.length
+        # end
 
         #this is just returning the length of the string that wins, not the word
-        winner = tied_words.min
+        # winner = tied_words.min
 
       end
 

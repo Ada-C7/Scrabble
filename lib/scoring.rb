@@ -16,16 +16,19 @@ module Scrabble
 
     # method to calculate & return score, given a word as an argument, call add_word method
     def self.score(word)
+      raise ArgumentError.new("That is not String.") if word.class != String
+
       raise ArgumentError.new("That word is too long! Must be 7 characters or less.") if word.length > 7
       word_array = word.upcase.split("")
       word_score = 0
 
+      # if word length is 7, 50 bonus points
       if word_array.length == 7
         word_score += 50
       end
 
-      # if word length is 7, 50 bonus points
       word_array.each do |letter|
+        raise ArgumentError.new("That word includes invalid characters!") if !word.match(/^[a-zA-Z]+$/)
         word_score += LETTER_VALUES[letter.to_sym]
       end
 
@@ -34,7 +37,6 @@ module Scrabble
 
     # method to add a word and its score (as an array) to the @wordarray (from which high score will be calculated)
 
-    # calculating highest score from @wordarray
     # method to iterate through wordarray and return word with the highest score
     def self.highest_score_from(array_of_words)
       highest_score = 0
@@ -56,9 +58,9 @@ module Scrabble
     def self.tiebreaker(word, winner)
       tie_winner = ""
       if word.length < winner.length
-          highest_scoring_word.length == 7? tie_winner = highest_scoring_word : tie_winner = word
+          highest_scoring_word.length == 7 ? tie_winner = highest_scoring_word : tie_winner = word
       elsif word.length > winner.length
-          highest_scoring_word.length == 7? tie_winner = word : tie_winner = highest_scoring_word
+          highest_scoring_word.length == 7 ? tie_winner = word : tie_winner = highest_scoring_word
       else
         tie_winner = winner
       end

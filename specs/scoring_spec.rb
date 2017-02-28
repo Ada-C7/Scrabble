@@ -18,10 +18,21 @@ describe "Scrabble::Scoring" do
 
   describe "self.score" do
     # check that word is no more than 7 letters long
+
+    it "Raises error if input is not a String" do
+        proc {
+        Scrabble::Scoring.score(55)}.must_raise ArgumentError
+    end
+
+    it "Raises error if input has a non-letter" do
+        proc {
+        Scrabble::Scoring.score("cat7!")}.must_raise ArgumentError
+    end
+
     it "Word is 7 letters or less" do
       proc {
-      Scrabble::Scoring.score("supercalifragilistic")}.must_raise ArgumentError
-    end
+        Scrabble::Scoring.score("supercalifragilistic")}.must_raise ArgumentError
+      end
 
     # test that word is scored correctly and returns that score
     it "Scores word correctly" do
@@ -35,6 +46,16 @@ describe "Scrabble::Scoring" do
   end
 
   describe "highest_score_from" do
+    it "Raises error if input is not a String" do
+        proc {
+        Scrabble::Scoring.highest_score_from(55)}.must_raise ArgumentError
+    end
+
+    it "Raises error if input has a non-word" do
+        proc {
+        Scrabble::Scoring.highest_score_from("cat7!")}.must_raise ArgumentError
+    end
+    
     it "Scores all words correctly and returns highest scoring word" do
     Scrabble::Scoring.highest_score_from(["moo", "hipster", "hippo", "muzjiks"]).must_equal "muzjiks"
     end

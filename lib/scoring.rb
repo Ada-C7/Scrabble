@@ -23,13 +23,20 @@ module Scrabble
           total += key if value.include? letter
         end
       end
-      if word.length >= 7
+      if word.length == 7
         total += 50
       end
       return total
     end
 
     def self.highest_score_from(array_of_words)
+      raise ArgumentError.new("Argument must be an array") if array_of_words.class != Array
+      array_of_words.each do |word|
+        if word.class != String
+          raise ArgumentError.new("Elements in array must be strings")
+        end
+      end
+
       max = 0
       max_words = []
       array_of_words.each do |word|
@@ -41,8 +48,22 @@ module Scrabble
           max_words = [word]
         end
       end
+      puts "MAX WORDS ARRAY:"
       puts max_words
+      puts
+      max_word = max_words.select{|word| word.length == 7}
+        if !max_word.empty?
+          return max_word[0]
+        else
+          max_word = max_words.min_by {|i| i.length}
+          return max_word
+        end
     end
 
   end # end of class
 end # end of module
+
+array_of_words = ["dddddx", "kkdddd"]
+puts Scrabble::Scoring.score("quizzes")
+puts Scrabble::Scoring.score("Qqqqqqqqf")
+puts Scrabble::Scoring.highest_score_from(array_of_words).class

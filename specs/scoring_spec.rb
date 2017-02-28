@@ -35,7 +35,21 @@ describe "Scoring class" do
   end # end of score method
 
   describe "Scoring#highest_score_from" do
-    it "" do
+    it "returning a string" do
+      my_strings = ["Hello", "quizz"]
+      Scrabble::Scoring.highest_score_from(my_strings).class.must_equal String
+    end
+
+    it "raise an error if parameter is not Array " do
+      proc {
+        Scrabble::Scoring.highest_score_from(8)
+      }.must_raise ArgumentError
+    end
+
+    it "Elements in the array must be strings" do
+      proc {
+        Scrabble::Scoring.highest_score_from([3,4,5])
+      }.must_raise ArgumentError
     end
 
   end

@@ -91,11 +91,13 @@ describe "Scoring is a class" do
     end
 
     it "If tie for highest score, fewer letters wins" do
-      skip
+      # skip
+      Scrabble::Scoring.highest_score_from(%w(zzz dog kkkkkk oink)).must_equal "zzz"
+
     end
 
     it "If tie includes a seven letter word then the seven letter word wins" do
-      skip
+      # skip
     end
 
     it "If tie words are same length pick the first in max array" do

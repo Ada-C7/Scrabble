@@ -61,8 +61,26 @@ module Scrabble
         scores_hash[word] = Scrabble::Scoring.score(word)
       end
       max_score = scores_hash.values.max
-      return scores_hash.select {|word, score| score == max_score}
 
+      highest_scores = scores_hash.select {|word, score| score == max_score}
+
+      word_lengths = highest_scores.keys.each { |word| word.length }
+
+      winner = ""
+      if word_lengths.max == 7
+        # amount of words at length 7
+        # find highest_score words (keys) that have length 7
+        # choose the first word
+      elsif
+        winner = highest_scores.keys.min { |word| word.length }
+
+      else # highest_scores.length == 1
+        winner = highest_scores.keys.first
+
+
+
+      end
+      return winner
 
       # INPUT: array of words (array)
       # output: word with highest score, handling ties (string)
@@ -88,4 +106,4 @@ end
 
 # puts Scrabble::Scoring.score("word")
 
-puts Scrabble::Scoring.highest_score_from(%w(one one thirtae thirtee four five))
+puts Scrabble::Scoring.highest_score_from(%w(one one thirtae thirte four five))

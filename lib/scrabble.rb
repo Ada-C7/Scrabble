@@ -47,10 +47,31 @@ module Scrabble
       word_array.each do |letter|
         score_total += SCORE_CHART[letter]
       end
+      #50 bonus points for 7 letter word
+      if word.length >= 7
+        score_total += 50
+      end
       return score_total
     end
 
+    # returns the word in the array with the highest score
+
     def self.highest_score_from(array_of_words)
+      word_amount = 0
+      highest_word = ""
+      array_of_words.each do |word|
+        if Scrabble::Scoring.score(word) > word_amount
+          highest_word = word
+          word_amount = Scrabble::Scoring.score(word)
+        end
+      end
+
+      return highest_word
+      # in the case of a tie, prefer the word with the fewest letters.
+
+
+
+
     end
 
   end

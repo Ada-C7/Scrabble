@@ -28,9 +28,18 @@ describe "Scoring Class" do
      end
 
     it "7 letter word receives a 50 point bonus" do
-      skip
+      word = Scrabble::Scoring.score("Scrabble")
+      word.must_equal 64
     end
-  end
 
+    it "returns the word in the array with the highest score" do
+      word_array = ["salad", "cheese", "car"]
+      word = Scrabble::Scoring.highest_score_from(word_array)
+      word.must_equal "cheese"
+
+    end
+
+
+  end
 
 end

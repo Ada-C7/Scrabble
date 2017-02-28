@@ -15,10 +15,18 @@ describe "Scrabble::Scoring" do
     Scrabble::Scoring::SCORE_CHART.must_be_instance_of Hash
   end
 
-  it "score_chart is a hash which associates each letter with it's Scrabble value" do
-    skip
-    Scrabble::Scoring::SCORE_CHART.must_be_instance_of Hash#["e"].must_equal 1
+  it "score_chart associates each letter with it's Scrabble point value" do
+    Scrabble::Scoring::SCORE_CHART["e"].must_equal 1
   end
 
-  # who's keys are the letters of alphabet
+  it "score method retruns an integer" do
+    Scrabble::Scoring.score("word").must_be_instance_of Integer
+  end
+
+  it "score method raises argument error if input is not a string of lettersr" do
+    proc {
+      Scrabble::Scoring.score("5")
+    }.must_raise ArgumentError
+  end
+
 end

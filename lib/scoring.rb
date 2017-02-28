@@ -30,6 +30,21 @@ module Scrabble
       "z" => 10,
     }
 
-  end
 
+    def self.score(word)
+      word_score = 0
+
+      word.each_char do |letter|
+        raise ArgumentError.new("Not a letter") if !(SCORE_CHART.keys.include?(letter.downcase))
+
+        word_score += SCORE_CHART[letter.downcase]
+      end
+      return word_score
+    end
+
+
+  end
 end
+
+
+puts Scrabble::Scoring.score("WorD")

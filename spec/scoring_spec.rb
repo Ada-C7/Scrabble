@@ -7,29 +7,29 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Scoring" do
 
-  describe "Scoring#initialize" do
-    it "initializes" do
-      score = Scrabble::Scoring.new
-      score.must_be_instance_of Scrabble::Scoring
-    end
-
-    it "returns a letter_scores hash" do
-      score = Scrabble::Scoring.new
-      score.letter_scores.must_be_kind_of Hash
-    end
-
-    it "will throw error if given an arguments" do
-      proc {
-        Scrabble::Scoring.new("hello")
-      }.must_raise ArgumentError
-    end
-
-    it "returns a hash of length 26" do
-      score = Scrabble::Scoring.new
-      score.letter_scores.length.must_equal 26
-    end
-
-  end
+  # describe "Scoring#initialize" do
+  #   it "initializes" do
+  #     score = Scrabble::Scoring.new
+  #     score.must_be_instance_of Scrabble::Scoring
+  #   end
+  #
+  #   it "returns a letter_scores hash" do
+  #     score = Scrabble::Scoring.new
+  #     score.letter_scores.must_be_kind_of Hash
+  #   end
+  #
+  #   it "will throw error if given an arguments" do
+  #     proc {
+  #       Scrabble::Scoring.new("hello")
+  #     }.must_raise ArgumentError
+  #   end
+  #
+  #   it "returns a hash of length 26" do
+  #     score = Scrabble::Scoring.new
+  #     score.letter_scores.length.must_equal 26
+  #   end
+  #
+  # end
 
   describe "Scoring#score" do
 
@@ -55,5 +55,19 @@ describe "Scoring" do
         Scrabble::Scoring.score(word)
       }.must_raise ArgumentError
     end
+
+    it "returns a number" do
+      Scrabble::Scoring.score("cat").must_be_kind_of Integer
+    end
+
+    it "returns the appropriate score" do
+      Scrabble::Scoring.score("cat").must_equal 5
+      Scrabble::Scoring.score("hello").must_equal 8
+    end
+
+    it "adds 50 point bonus for 7 letter words" do
+      Scrabble::Scoring.score("algebra").must_equal 60 
+    end
+
   end
 end

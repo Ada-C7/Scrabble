@@ -25,6 +25,8 @@ module Scrabble
 
     def self.highest_score_from(array_of_words)
 
+      raise ArgumentError.new "There are no words" if array_of_words.length == 0
+
       high_score_word = array_of_words.max_by { |word| score(word) }
       high_score = score(high_score_word)
 

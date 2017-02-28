@@ -45,6 +45,11 @@ describe "Wave 1" do
   end
 
   describe "Scoring#highest_score_from(word_array)" do
+    it "raises argument if no words in array" do
+      my_array = []
+      proc { Scrabble::Scoring.highest_score_from(my_array) }.must_raise ArgumentError
+    end
+
     it "returns highest scoring word from word array " do
       my_array = [ "blue", "gum", "bumble", "feet"]
       Scrabble::Scoring.highest_score_from(my_array).must_equal "BUMBLE"

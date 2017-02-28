@@ -55,21 +55,21 @@ end
 
 describe "highest_score_from" do
   before do
-    @array_of_words = %w (penguin goshawk quail bluejay owl chicken duck emu kiwi)
+    @array_of_words = %w(owl chicken duck emu kiwi)
   end
 
   it "Returns the String with highest score" do
-
+    Scrabble::Scoring.highest_score_from(@array_of_words).must_equal "chicken"
   end
 
   it "Shorter word wins if scores are the same" do
-    short_words = %w(doe tins it to)
+    short_words = %w(tins doe it to)
 
-    highest_score_from(short_words).must_equal "doe"
+    Scrabble::Scoring.highest_score_from(short_words).must_equal "doe"
   end
 
   it "7-letter word is the tie-breaker" do
-    seven = %w (aaaaaad zzzzzj)
+    seven = %w(aaaaaad zzzzzj)
     highest_score_from(seven).must_equal "aaaaaad"
   end
 

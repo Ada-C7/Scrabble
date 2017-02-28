@@ -25,6 +25,10 @@ describe "Scoring" do
         Scrabble::Scoring.score("bats?")
       }.must_raise ArgumentError
 
+      proc {
+        Scrabble::Scoring.score("Hello mom")
+      }.must_raise ArgumentError
+
 
     end
 

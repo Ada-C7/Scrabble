@@ -16,6 +16,12 @@ describe "Wave 1" do
     Scrabble::Scoring.score("CAT").must_be_instance_of Integer
   end
 
+  it "Makes sure word is a valid word" do
+    proc {
+      Scrabble::Scoring.score(12)
+    }.must_raise ArgumentError
+  end
+
   it "Scores a word correctly" do
     Scrabble::Scoring.score("CAT").must_equal 5
   end

@@ -7,18 +7,20 @@ class Player
   attr_accessor :plays, :score
 
   def initialize(name)
+    raise ArgumentError.new "Player must have a valid name" if name.class != String
     @name = name
     @plays = []
     @score = 0
   end
 
   def play(word)
-    return false if won?
+    raise ArgumentError.new "Word must be a valid word" if word.class != String
     @plays << word
-    return Scoring.score(word)
+    return ((won?) ? false : Scoring.score(word))
   end
 
   def total_score
+    raise ArgumentError.new "No words have been played" if @plays.length == 0
     score_array = []
     @plays.each do |word|
       score_array << Scoring.score(word)
@@ -27,6 +29,7 @@ class Player
   end
 
   def won?
+    raise ArgumentError.new "No words have been played" if @plays.length == 0
     return ((@score >= 100) ? true : false)
   end
 

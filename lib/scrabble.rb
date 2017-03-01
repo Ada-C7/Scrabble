@@ -13,6 +13,7 @@ module Scrabble
 
 
     def self.score(word)
+      raise ArgumentError.new "Word must be a valid word" if word.class != String
       word_array = word.split("")
       letter_value = 0
 

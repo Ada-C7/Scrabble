@@ -18,6 +18,12 @@ describe "Player class" do
     @player.name.must_equal 'Ada'
   end
 
+  it "Must be a String" do
+    proc {
+      Scrabble::Player.new(25)
+    }.must_raise ArgumentError
+  end
+
 end
 
 describe "Play method" do
@@ -26,10 +32,16 @@ describe "Play method" do
     @player = Scrabble::Player.new('Ada')
   end
 
-  it "returns false if score > 100" do
+  it "Must be a String" do
+    proc {
+      @player.play(23)
+    }.must_raise ArgumentError
+  end
+
+  it "Returns false if score > 100" do
     @player.score = 130
     @player.play("cat").must_equal false
-end
+  end
 
 it "returns word score" do
   @player.score = 10
@@ -65,6 +77,12 @@ describe "Total Score" do
   @player.total_score.must_be_instance_of Integer
  end
 
+ it "Raises an error if it is called before a word has been played" do
+   proc {
+     @player.total_score
+   }.must_raise ArgumentError
+ end
+
  it "total score returns the correct score" do
   3.times { @player.play("cat") }
   @player.total_score.must_equal 15
@@ -78,11 +96,19 @@ describe "Won" do
     @player.score = 130
   end
 
+  it "Raises an error if no words have been played" do
+    proc {
+      @player.won?
+    }.must_raise ArgumentError
+  end
+
   it "Returns true if score is over 100" do
+  @player.play("fox")
   @player.won?.must_equal true
   end
 
   it "Returns false if score is not over 100" do
+    @player.play("fox")
     @player.score = 50
     @player.won?.must_equal false
   end

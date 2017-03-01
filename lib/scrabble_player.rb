@@ -1,3 +1,5 @@
+require_relative '../lib/scrabble'
+
 module Scrabble
 
   puts "Please enter your username (characters only): "
@@ -10,8 +12,13 @@ module Scrabble
     def initialize(name)
       @name = name
       @words_played = []
-      @score_tracker = []
+      @score_tracker = [0]
     end
+
+    def plays
+      return @words_played
+    end
+
 
     def won?
       if @score_tracker.inject { |sum, n| sum + n } > 100
@@ -25,7 +32,7 @@ module Scrabble
 
     def play(word)
       if @score_tracker.inject { |sum, n| sum + n } > 100
-        puts "you can't play anymore because you won."
+        raise ArgumentError.new "Error. You cannot play anymore. Please restart game."
       else
         @score_tracker << Scrabble::Scoring.score(word)
         @words_played << word

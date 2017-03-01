@@ -3,6 +3,7 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
 require_relative '../lib/scrabble_player'
+require_relative '../lib/scrabble'
 
 describe "Scrabble::Player" do
 
@@ -33,13 +34,13 @@ describe "Scrabble::Player" do
     end
 
     it "returns an array" do
-      @my_player.Scrabble::Player.words_played.must_be_instance_of Array
+      @my_player.plays.must_be_instance_of Array
     end
 
     it "returns an array of words played by the player" do
-      @my_player.Scrabble::Player.play("abc")
-      @my_player.Scrabble::Player.play("def")
-      @my_player.Scrabble::Player.words_played.must_equal ["abc", "def"]
+      @my_player.play("abc")
+      @my_player.play("def")
+      @my_player.plays.must_equal ["abc", "def"]
     end
   end
 
@@ -53,7 +54,7 @@ describe "Scrabble::Player" do
       end
 
       it "returns the score of the game" do
-        @my_player.Scrabble::Player.play("aaa").must_equal 3
+        @my_player.play("aaa").must_equal 3
 
       end
     end

@@ -61,17 +61,18 @@ describe "Scrabble Scoring" do
 
     end
 
-    it "Returns the highest scoring word" do
-      #cat is 5, friend is 10
+    it "Only one highest score case, returns word with max score" do
       Scrabble::Scoring.highest_score_from(["cat", "friend"]).must_equal "friend"
-      #cat is 5, hi is 5
-      Scrabble::Scoring.highest_score_from(["cat", "hi"]).must_equal "hi"
-      #qqqqqq is 60, hiiiiii is 60
-      Scrabble::Scoring.highest_score_from(["qqqqqq", "hiiiiii"]).must_equal "hiiiiii"
-
-
     end
 
-  end
+    it "Tied highest score case, returns first 7 letter word" do
+      Scrabble::Scoring.highest_score_from(["qqqqqq", "hiiiiii"]).must_equal "hiiiiii"
+      Scrabble::Scoring.highest_score_from(["qqqqqq", "hiiiiii", "fiiiiii"]).must_equal "hiiiiii"
+    end
 
+    it "Tied highest score case, returns first shortest word" do
+      Scrabble::Scoring.highest_score_from(["cat", "hi"]).must_equal "hi"
+      Scrabble::Scoring.highest_score_from(["cat", "dad" ,"pit"]).must_equal "hi"
+    end
+  end
 end

@@ -1,7 +1,7 @@
 module Scrabble
   attr_accessor :word_score
   class Scoring
-    SCORE = {
+    SCORE_CHART = {
       1 => ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
       2 => ["D", "G"],
       3 =>["B", "C", "M", "P"],
@@ -17,8 +17,8 @@ module Scrabble
         end
         word.each_char do |letter|
           @letter = letter.upcase
-          SCORE.each do |score, letter|
-            if letter.include? @letter
+          SCORE_CHART.each do |score, tile|
+            if tile.include? @letter
               @word_score += score
             end
           end

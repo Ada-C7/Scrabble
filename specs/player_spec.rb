@@ -11,6 +11,14 @@ describe "Wave 2" do
       @player.must_respond_to :name
     end
 
+    it "Raises argument error if name is something other than a string" do
+      proc {Scrabble::Player.new(1234)}.must_raise ArgumentError
+    end
+
+    it "Raises argument error if name string is empty" do
+      proc {Scrabble::Player.new("")}.must_raise ArgumentError
+    end
+
     it "returns an empty Array of the words played by the player" do
       @player.must_respond_to :plays
       @player.plays.must_be_instance_of Array

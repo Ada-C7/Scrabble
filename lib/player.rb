@@ -6,6 +6,9 @@ module Scrabble
     # :highest_word_score
 
     def initialize(name)
+      raise ArgumentError.new("name must be a string!") if name.class != String
+      raise ArgumentError.new("name string cannot be empty!") if name == ""
+
       @name = name
       @plays =[]
       @total_score = 0

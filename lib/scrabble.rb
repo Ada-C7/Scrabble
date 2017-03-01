@@ -32,7 +32,7 @@ module Scrabble
 
     def self.highest_score_from(array_of_words)
       # Word must be a string data type
-      raise ArgumentError.new("Invalid data type entered for array of words") if (array_of_words.class) != Array
+      raise ArgumentError.new("Invalid data type entered for array of words") if (array_of_words.class != Array || array_of_words.length == 0)
 
       # Word must have length between 0 and 7, and composed of letters only
       array_of_words.each do |word|

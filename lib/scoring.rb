@@ -31,14 +31,14 @@ module Scrabble
       if highest_word[1] != nil
         highest_word = self.tiebreaker(highest_word)
       end
-      return highest_word
+      return highest_word.to_s
     end
 
     def self.tiebreaker(array)
       winner = ""
       array.each_with_index do |word, index|
         if word.length == 7
-          winner = word
+         return winner = word
         elsif word.length < word[index - 1].length
             winner = word
         else

@@ -17,11 +17,17 @@ module Scrabble
     def self.highest_score_from(array_of_words)
       score_array = array_of_words.map {|str| self.score(str)}
       word_hash = Hash[array_of_words.zip score_array]
-      max = word_hash.max_by {|key, value| value}
-      # word_hash.each { |k, v|  k if v == word_hash.values.max }
 
-      return max[0]
+      max_word_array = word_hash.select { |k, v| v == word_hash.values.max }.keys
+      max_word_array_7 = max_word_array.find_all {|str| str.length == 7}
+      shortest_length = max_word_array.map { |str| str.length}.min
+      max_word_array_shortest = max_word_array.find_all { |str| str.length == shortest_length}
 
+      if max_word_array_7.length == 0
+        return max_word_array_shortest[0]
+      else
+        return max_word_array_7[0]
+      end
     end
 
   end # End of class Scoring

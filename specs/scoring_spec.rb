@@ -36,18 +36,23 @@ describe "Wave 1" do
     it "calculate score for each string and return the string with highest score" do
       array_of_strings = %w(Hello Max)
       Scrabble::Scoring.highest_score_from(array_of_strings).must_equal "Max"
-
     end
-   #   it "Test if input is an array" do
-  #   proc {
-  #     Scrabble::Scoring.highest_score_from("x")
-  #   }.must_raise ArgumentError
-  # end
-  end
-  # Create a Scrabble module at the project root"
 
-  # Create a Scrabble::Scoring class which contains some sort of
-  # data structure to store the individual letter scores listed
-  # below.
+    it "returns array with string length 7 or returns array of max_word_array" do
+      array_of_strings = %w(zzzzzx risotdo hello)
+      Scrabble::Scoring.highest_score_from(array_of_strings).must_equal "risotdo"
+    end
+
+    it "return the shortes word out of two word with same score" do
+      array_of_strings = %w(hello wind to)
+      Scrabble::Scoring.highest_score_from(array_of_strings).must_equal "wind"
+    end
+
+    it "return the first word out of two word with same score and length" do
+      array_of_strings = %w(hello silly)
+      Scrabble::Scoring.highest_score_from(array_of_strings).must_equal "hello"
+    end
+
+  end
 
 end

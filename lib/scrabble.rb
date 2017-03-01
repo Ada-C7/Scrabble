@@ -48,19 +48,44 @@ module Scrabble
 
       score = []
 
-      array.each_with_index do |word, index|
+      array.each do |word|
         score << Scoring.score(word)
       end
 
-      return array[score.each_with_index.max[1]]
+      winning_words = []
+      losing_words = []
 
+      array.each do |word|
+        if score.max == Scoring.score(word)
+          winning_words << word
+        else
+          losing_words << word
+        end
+      end
+
+      if winning_words.length > 1
+        return winning_words.min_by { |word| word.length}
+        unless
+          winning_words.any? { |word| word.length == 7 }
+          return winning_words.find { |word| word.length == 7 }
+        end
+      else
+        return winning_words[0]
+      end
+      # if score.max happens > 1
+      #   return score.max "word" #return the word
+      # else
+      #   return word.length.min # smallest word
     end
 
 
 
+    # return array[score.each_with_index.max[1]]
+
   end
 
 end
+
 
 
 

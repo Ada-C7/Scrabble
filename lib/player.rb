@@ -21,10 +21,7 @@ class Player
 
   def total_score
     raise ArgumentError.new "No words have been played" if @plays.length == 0
-    score_array = []
-    @plays.each do |word|
-      score_array << Scoring.score(word)
-    end
+    score_array = @plays.map { |word| play(word) }
     return score_array.reduce(:+)
   end
 

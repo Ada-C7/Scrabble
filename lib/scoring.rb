@@ -42,7 +42,7 @@ module Scrabble
 
             @highest_word = @high_words.min_by do |word|
                 if word[0].length == 7
-                    @high_words.index
+                    @high_words.index(word)
                 else
                     word[0].length
                 end
@@ -54,4 +54,4 @@ module Scrabble
       end
 
 # puts Scrabble::Scoring.score("squeeze")
-# Scrabble::Scoring.highest_score_from(%w(words tofu fhiz whiz))
+# puts Scrabble::Scoring.new.highest_score_from(%w(words tofu fhiz whiz qqqqqqq zzzzzzz))

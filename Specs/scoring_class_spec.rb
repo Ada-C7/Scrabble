@@ -13,13 +13,12 @@ describe "Score Method for Scoring Class" do
   end
 
   it "Raises argumentError if word contains anything other than letters" do
-    skip
     proc { Scrabble::Scoring::score(@edge_word) }.must_raise ArgumentError
   end
 
   it "Handles if the word passed has a space (two words)" do
-    skip
-    Scrabble::Scoring::score(@edge_word)#unknown outcome
+    
+    proc { Scrabble::Scoring::score("two words") }.must_raise ArgumentError
   end
 
   it "Handles if the word passed has cAmeLCase " do
@@ -28,12 +27,14 @@ describe "Score Method for Scoring Class" do
   end
 
   it "Score Method outputs integer" do
+    skip
     puts Scrabble::Scoring::score(@word).must_be_instance_of Integer
   end
 
   it "Score method will total the value of each letter in the word" do
-
+    skip
     Scrabble::Scoring::score(@word).must_equal 10
+
   end
 
   it "Adds a 50 point bonus to a 7 letter word" do

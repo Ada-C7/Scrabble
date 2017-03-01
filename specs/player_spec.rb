@@ -59,6 +59,13 @@ describe "Player Class" do
         end
       end
 
+      it "returns an error if word is an integer" do
+        tofu = Scrabble::Player.new("tofu")
+        proc {
+        tofu.play(3)
+      }.must_raise ArgumentError
+      end
+
   end
 
   describe "total_score method" do

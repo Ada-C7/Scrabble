@@ -35,6 +35,3 @@ module Scrabble
 
   end
 end
-
-ginny = Scrabble::Player.new("ginny")
-puts ginny.play("word")

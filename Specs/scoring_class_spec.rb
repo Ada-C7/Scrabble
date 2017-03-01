@@ -22,6 +22,10 @@ describe "Score Method for Scoring Class" do
     Scrabble::Scoring::score(@edge_word)#unknown outcome
   end
 
+  it "Handles if the word passed has cAmeLCase " do
+    skip
+    Scrabble::Scoring::score("cAmeLCase").must_be :>, 10
+  end
 
   it "Score Method outputs integer" do
     puts Scrabble::Scoring::score(@word).must_be_instance_of Integer
@@ -41,4 +45,10 @@ describe "Score Method for Scoring Class" do
     skip
     Scrabble::Scoring::score(@word_8_letters).must_equal 71
   end
+end
+
+
+describe do
+
+
 end

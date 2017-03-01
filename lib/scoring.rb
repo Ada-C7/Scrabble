@@ -44,13 +44,15 @@ module Scrabble
     def self.highest_score_from(array)
       first_highest_word = array.max_by {|word| score(word)}
       highest_words = array.select { |word|
-         score(word) == score(first_highest_word)
-       }
-       winner = highest_words.find { | word | word.length == 7}
-         if winner != nil
-           return winner
-         end
-       highest_words.min_by {|word| word.length}
+        score(word) == score(first_highest_word)
+      }
+      seven_letter_winner = highest_words.find { | word | word.length == 7}
+      if seven_letter_winner != nil
+        winner = seven_letter_winner
+      else
+        winner = highest_words.min_by {|word| word.length}
+      end
+      return winner
     end
   end
 end

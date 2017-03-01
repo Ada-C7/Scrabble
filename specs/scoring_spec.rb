@@ -26,7 +26,7 @@ describe "Scrabble::Scoring" do
       Scrabble::Scoring.score("word").must_be_instance_of Integer
     end
 
-    it "score method raises argument error if input is not a string of lettersr" do
+    it "score method raises argument error if input is not a string of letters" do
       proc {
         Scrabble::Scoring.score("5")
       }.must_raise ArgumentError

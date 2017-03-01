@@ -19,6 +19,10 @@ module Scrabble
       return score
     end
 
+    def highest_scoring_word
+      return Scoring.highest_score_from(@plays)
+    end
+
     def won?
       if @total_score > 100
         true

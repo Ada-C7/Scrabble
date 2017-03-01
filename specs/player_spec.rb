@@ -73,6 +73,16 @@ describe "Wave 2" do
 
         @player.won?.must_equal false
       end
+    end
+
+    describe "Player#highest_scoring_word" do
+      it "Returns the highest scoring played word" do
+        @player.play("hello")
+        @player.play("green")
+        @player.play("bat")
+
+        @player.highest_scoring_word.must_equal "HELLO"
+      end
 
     end
 

@@ -23,8 +23,10 @@ describe "Scrabble::Tilebag" do
       @game.draw_tiles(5).must_be_kind_of Array
       @game.draw_tiles(5).length.must_equal 5
     end
+     
+    # for tilebag, don't try to test what's randomized, just test what you can know: how many tiles are drawn, how many are left in tilebag, if the tiles drawn are symbols (regex?)
 
-    it ""
+
 
   end
 

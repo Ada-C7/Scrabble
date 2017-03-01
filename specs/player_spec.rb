@@ -9,6 +9,11 @@ describe "Scrabble::Player" do
       player.must_be_instance_of Scrabble::Player
     end
 
+    it "raises argument error if invalid name" do
+      proc {
+        Scrabble::Player.new(7)}.must_raise ArgumentError
+    end
+
     it "will return name by calling .name" do
       player = Scrabble::Player.new("Ada")
       player.name.must_equal "Ada"

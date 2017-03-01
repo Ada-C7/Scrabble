@@ -43,5 +43,37 @@ describe Scrabble::Player do
     it "Returns a score of 0 if no words have been played" do
       @alix.total_score.must_equal 0
     end
+
+    describe "#won?" do
+      it "Returns true if the player has over 100 point" do
+        @alix.play("pizzazz")
+        @alix.play("quiz")  # total_score = 127
+        @alix.won?.must_equal true
+      end
+      it "Returns false if the player didn't play" do
+        # @alix.play("pizzazz")
+        # @alix.play("quiz")  # total_score = 127
+        @alix.won?.must_equal false
+      end
+
+
+    end
+
+    describe "#highest_scoring_word" do
+      it "Returns the highest scoring played word" do
+        @alix.play("pizzazz")
+        @alix.play("quiz")  # total_score = 127
+        @alix.highest_scoring_word.must_equal "pizzazz"
+      end
+    end
+
+    describe "#highest_word_score" do
+      it "Returns the score of the highest_scoring_word" do
+        @alix.play("pizzazz")
+        @alix.play("quiz")  # total_score = 127
+        @alix.highest_word_score.must_equal 95
+      end
+    end
+
   end
 end

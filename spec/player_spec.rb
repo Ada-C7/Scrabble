@@ -51,20 +51,20 @@ describe "Player" do
     end
 
     it "returns a number(the score)" do
-      @player.score("hello").must_be_kind_of Integer
+      @player.play("hello").must_be_kind_of Integer
     end
 
     it "returns the appropriate score" do
-      @player.score("hello").must_equal 8
-      @player.score("algebra").must_equal 60
+      @player.play("hello").must_equal 8
+      @player.play("algebra").must_equal 60
     end
 
-    # might ahve to break this spec up 
+    # might ahve to break this spec up
     it "adds the word to the plays array" do
-      @palyer.plays.length.must_equal 0
-      @player.score("hello")
+      # @palyer.plays.length.must_equal 0
+      @player.play("hello")
       @player.plays.length.must_equal 1
-      @player.score("algebra")
+      @player.play("algebra")
       @player.plays.length.must_equal 2
       @player.plays.must_equal ["hello", "algebra"]
     end

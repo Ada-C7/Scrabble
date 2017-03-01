@@ -1,5 +1,7 @@
+
+require_relative 'scoring'
 module Scrabble
-  require_relative 'Scoring'
+
   class Player
     attr_reader :name, :plays
 
@@ -17,6 +19,6 @@ module Scrabble
 
   end
 end
-# 
+#
 # game = Scrabble::Player.new("Ada")
 # puts game.play("hello")

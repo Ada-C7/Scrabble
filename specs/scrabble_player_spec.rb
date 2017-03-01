@@ -3,12 +3,12 @@ SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
-require_relative '../lib/scrabble_scoring'
+require_relative '../lib/scrabble_player.rb'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-describe "Player#initialize"
-  it "Creates a scrabble scoring class" do
-    game = Scrabble::Player.new
+describe "Player#initialize" do
+  it "Creates a scrabble player class" do
+    game = Scrabble::Player.new("Mickey")
     game.must_be_kind_of Scrabble::Player
   end
 
@@ -25,6 +25,6 @@ describe "Player#initialize"
 
   it "Should return an empty array" do
     player = Scrabble::Player.new("Mickey")
-    player.plays.must_be_kind_of Array
+    player.plays.must_be_empty
   end
 end

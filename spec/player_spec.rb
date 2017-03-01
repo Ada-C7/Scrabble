@@ -9,11 +9,12 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Player" do
 
+  before do
+    @name = "Ada"
+    @player = Scrabble::Player.new(@name)
+  end
+
   describe "Player#initialize" do
-    before do
-      @name = "Ada"
-      @player = Scrabble::Player.new(@name)
-    end
 
     it "initializes" do
       @player.must_be_instance_of Scrabble::Player
@@ -45,11 +46,6 @@ describe "Player" do
 
   describe "Player#play" do
 
-    before do
-      @name = "Ada"
-      @player = Scrabble::Player.new(@name)
-    end
-
     it "returns a number(the score)" do
       @player.play("hello").must_be_kind_of Integer
     end
@@ -72,5 +68,26 @@ describe "Player" do
     it "returns false if player has already won" do
       skip
     end
+  end
+
+  describe "Player#total_score" do
+
+    it "Requires a parameter" do
+      proc {
+        @player.total_score
+      }.must_raise ArgumentError
+    end
+
+    it "Returns a number" do
+      @player.total_score(34).must_be_kind_of Integer
+    end
+
+    it "Returns the appropriate score" do
+      @player.total_score(34)
+      @player.total_score(4)
+      @player.total_score(6).must_equal 44
+    end
+
+    
   end
 end

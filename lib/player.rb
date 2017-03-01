@@ -9,12 +9,19 @@ module Scrabble
       raise ArgumentError unless name.class == String
       @name = name
       @plays = []
+      @total = 0
     end
 
     def play(word)
       # return false if won?
       @plays << word
-      return Scrabble::Scoring.score(word)
+      score = Scrabble::Scoring.score(word)
+      total_score(score)
+      return score 
+    end
+
+    def total_score(score)
+      @total += score
     end
 
   end

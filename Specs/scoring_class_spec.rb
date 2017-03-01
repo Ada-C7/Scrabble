@@ -14,8 +14,7 @@ describe "Score Method for Scoring Class" do
 
 it "Raises argumentError if word contains anything other than letters" do
   skip
-  Scrabble::Scoring::score(@edge_word)
-
+  proc { Scrabble::Scoring::score(@edge_word) }.must_raise ArgumentError
 end
 
 

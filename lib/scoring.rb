@@ -52,19 +52,41 @@ module Scrabble
       # hopefully return array of scores
       # match indexes to get highest scoring word
 
+      #Beatiful .map method WORKS
       array_of_scores = array_of_words.map { |word| self.score(word) }
-        array_of_scores
+      #.zip method works. But an array within an array
+      # all_2gether_now = array_of_words.zip(array_of_scores)
+      #
+      # all_2gether_now.max_by do | word_and_score |
+      #   word_and_score[0]
+      # end
+
+      #Hash version of all_2gether_now -- SUCCESS
+      hash_2gether = Hash[array_of_words.zip(array_of_scores)]
+      # hash_2gether
+
+      #NEED LOOP to find highest score (with all if conditions) and return word
+      hash_2gether.max_by{|k,v| v}[0] #PASSES!
+
+      #Maybe this can include the if conditions?
+      hash_2gether.max_by do |k,v|
+
+        if condition
+
+        end
+      end
+
     end
 
 
-      # array_of_scores = []
-      # array_of_words.each do |word|
-      #   work_damnit = self.score(word)
-      #   # work_damnit = word.length
-      #   puts word
-      #   array_of_scores << work_damnit
-      # end
-      # # return array_of_scores
+    # array_of_scores = []
+    # array_of_words.each do |word|
+    #   work_damnit = self.score(word)
+    #   # work_damnit = word.length
+    #   puts word
+    #   array_of_scores << work_damnit
+    # end
+    # # return array_of_scores
     # end
 
   end

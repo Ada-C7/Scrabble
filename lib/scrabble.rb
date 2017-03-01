@@ -38,38 +38,36 @@ module Scrabble
 
       words_and_scores = array_of_words.zip(scores).to_h
 
+      #word with max score
       max_score = words_and_scores.values.max
 
+      #hash of winning words + scores (all scores = max_score)
       word_with_max_score = words_and_scores.select { |k, v| v == max_score }
 
-      if word_with_max_score.length == 1 #only one winner
-        return word_with_max_score.keys.join
-      elsif word_with_max_score.keys.any? { |word| word.length == 7 }
-        poss_words = array_of_words.select { |word| word_with_max_score.keys.length == 7}
-        return poss_words[0]
-        # return (word_with_max_score.keys.select { |word| word.length == 7 }).join
-      elsif
-        return word_with_max_score.keys.min_by { |word| word.length }
-      else # word_with_score.keys.length <- lengths are the same
-        poss_words = array_of_words.select { |word| word_with_max_score.keys.include? }
-        return poss_words[0]
-      end
+      #array of winning words
+      winning_words = word_with_max_score.keys
 
-      # Order for tiebreaker conditionals.
-      # if only one winner
-      #     pick that winner
-      # elsif (more than one winner)...there is a winner with 7 letters?
-      #     if just one...that's the winner.
-      #     else...pick the one that's first in the array
-      # elsif (more than one winner, no 7-letter words)...there is more than one winner that ties for shortest length word
-      #     pick the one that is first in the array
-      # else (more than word, no 7-letter words, not more than one of shortest length)
-      #     pick the shortest word
+      #length of shortest word in array of winning word
+      min_word_length = (winning_words.min_by { |word| word.length }).length
 
-    end
+      #tie-breaker conditionals
+      if winning_words.length == 1 #only one winner
+        return winning_words.join
+      elsif winning_words.any? { |word| word.length == 7 }
+        if winning_words.length == 1
+          return winning_words.find { |word| word.length == 7 }
+        else
+          return array_of_words.find { |word| word.length == 7 && winning_words.include?(word) }
+        end
+      elsif (winning_words.select { |word| word.length == min_word_length}).length > 1 #more than one word of wining length
+        return array_of_words.find { |word| word.length == min_word_length && winning_words.include?(word) }
+
+      else #more than one winner, no 7-letters, only one of min length
+        return winning_words.min_by { |word| word.length }
+      end #end of tiebreaker if
+    end #end of def highest_score_from
 
   end #end of class
-
 
 
 end #end of module

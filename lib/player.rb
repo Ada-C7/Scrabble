@@ -1,10 +1,11 @@
 module Scrabble
   class Player
-    attr_reader :name, :plays
+    attr_reader :name, :plays, :tiles
 
     def initialize(name)
       @name = name
       @plays = []
+      @tiles = []
     end
 
     def play(word)
@@ -27,6 +28,10 @@ module Scrabble
 
     def highest_word_score
       Scoring.score(highest_scoring_word)
+    end
+
+    def draw_tiles(tile_bag)
+      @tiles += tile_bag.draw_tiles(7 - @tiles.length)
     end
 
   end

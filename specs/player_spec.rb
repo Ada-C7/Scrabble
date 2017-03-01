@@ -71,5 +71,22 @@ describe Scrabble::Player do
       end
     end
 
+    describe "#draw_tiles(tile_bag)" do
+      before do
+        @tile_bag = Scrabble::TileBag.new
+      end
+
+      it "Fills the player's initial tiles to 7 letters" do
+        @ada.draw_tiles(@tile_bag)
+        @ada.tiles.length.must_equal 7
+      end
+
+      it "Replenishes the player's tiles to 7 letters after playing a word" do
+        @ada.play("pizzazz")
+        @ada.draw_tiles(@tile_bag)
+        @ada.tiles.length.must_equal 7
+      end
+    end
+
   end
 end

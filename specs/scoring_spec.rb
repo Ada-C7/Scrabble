@@ -43,4 +43,11 @@ describe "testing helper method self.tiebreaker" do
     Scrabble::Scoring.highest_word(%w(AAAAAAA IIIIIII NNNNNNN)).must_equal "AAAAAAA"
   end
 
+  it "Returns the shorter of two equally valued words" do
+    Scrabble::Scoring.highest_word(%w(TEHUT POH)).must_equal "POH"
+  end
+
+  it "Returns the word that is equal to 7 called after higher word" do
+    Scrabble::Scoring.highest_word(%w(GGGGGG IIIIIII)).must_equal "IIIIIII"
+  end
 end

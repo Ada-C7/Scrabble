@@ -2,7 +2,7 @@ require_relative 'scoring'
 module Scrabble
   class Player
 
-    attr_reader :name
+    attr_reader :name, :plays
     def initialize(name)
       @name = name
       @plays = []
@@ -46,3 +46,5 @@ puts player.play("table")
 puts player.play("hello")
 puts player.highest_scoring_word
 puts player.highest_word_score
+puts
+puts player.plays

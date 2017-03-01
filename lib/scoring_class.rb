@@ -40,7 +40,6 @@ module Scrabble
       end #end of meth
 
 
-
       def self.highest_score_from(array_of_words)
         array_of_scores = []
 
@@ -52,26 +51,8 @@ module Scrabble
         puts "This is word_score_pair #{word_score_pair}"
         winner =  word_score_pair.max_by {|k,v| v}
         puts "this is the #{winner[0]}"
-
       end
 
-
-
-      # def self.highest_score_from()
-      #  #find longest word in array_of_words
-      #  score_kept.each do |k,v|
-      #    return array_of_words.word_score_tally.max_by
-      #  end
-      #  #in the event of a tie
-      #  if score_kept.include?(duplicate_score)
-      #    #word.chars.min_by to find least tiles used
-      #     #unless tiles_used >= 7, wins, also adds a bonus
-      #      #elsif score_kept.score_kept
-      #       #score_kept.find(winners) break tie (word.score    word.length match) use 1st returned TRUE
-      #
-      #
-      #
-      # end
 
   end #end of class
 end #end of mod

@@ -7,22 +7,25 @@ describe "Wave 2" do
   end
 
   describe "Player#initialize" do
-
     it "Takes a name" do
       @player.must_respond_to :name
     end
 
-    it "returns an Array of the words played by the player" do
+    it "returns an empty Array of the words played by the player" do
       @player.must_respond_to :plays
       @player.plays.must_be_instance_of Array
+      @player.plays.length.must_equal 0
     end
 
   end
 
   describe "Player#play" do
     it "Adds the input word to the plays Array" do
-      @player.play("hello")
-      @player.plays.must_include "HELLO"
+      @player.play("camel")
+      @player.play("soup")
+
+      @player.plays.must_include "CAMEL"
+      @player.plays.must_include "SOUP"
     end
 
     it "returns score of the word played" do
@@ -32,6 +35,7 @@ describe "Wave 2" do
     it "returns false if player has won" do
       @player.play("qzqzqz")
       @player.play("qzqzq")
+
       @player.play("hi").must_equal false
     end
 
@@ -90,11 +94,7 @@ describe "Wave 2" do
         @player.play("bat")
 
         @player.highest_word_score.must_equal Scrabble::Scoring.score("HELLO")
-
       end
     end
-
-
-
   end
 end

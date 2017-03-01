@@ -104,7 +104,7 @@ describe "Player" do
     end
   end
 
-  describe "Player#highest_word_score" do
+  describe "Player#highest_scoring_word" do
 
     # it "requires an argument" do
     #   proc{
@@ -126,7 +126,7 @@ describe "Player" do
       @player.play("hello")
       @player.play("cat")
       @player.play("algebra")
-      @player.highest_word_score.must_equal "algebra"
+      @player.highest_scoring_word.must_equal "algebra"
     end
   end
 end

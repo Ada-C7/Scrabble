@@ -11,6 +11,9 @@ module Scrabble
         if word.length == 7
           return word
         else
+          # The & calls to_proc on the object
+          # Returns a proc object that expects a parameter and calls a method
+          # parameter is the tie_words and the method is :length
           return tie_words.min_by(&:length)
         end
       end
@@ -20,6 +23,7 @@ module Scrabble
       unless word.class == String
         raise ArgumentError.new "Input word must be a string"
       end
+      # The *  splat operator expands an Array into a list of arguments
       word_score = LETTER_SCORES.values_at(*word.downcase.chars).reduce(:+)
       word.length == 7 ? word_score += 50 : word_score
     end

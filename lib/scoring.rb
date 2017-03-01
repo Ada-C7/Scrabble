@@ -22,26 +22,27 @@ module Scrabble
     def self.highest_word(data)
       highest_word = [""]
       data.each do |word|
+        if self.score(word) > self.score(highest_word[0])
           highest_word = [word]
-        if self.score(word) == self.score(highest_word[-1])
+        elsif self.score(word) == self.score(highest_word[-1])
           highest_word << word
         end
       end
       if highest_word[1] != nil
-        self.tiebreaker(highest_word)
+        highest_word = self.tiebreaker(highest_word)
       end
-      return highest_word[0]
+      return highest_word
     end
 
     def self.tiebreaker(array)
       winner = ""
       array.each_with_index do |word, index|
         if word.length == 7
-          return winner = word
-        elsif word.length < word[index - 1].length
           winner = word
+        elsif word.length < word[index - 1].length
+            winner = word
         else
-          winner = word[0]
+            winner = array[0]
         end
       end
       return winner

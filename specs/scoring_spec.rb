@@ -82,19 +82,23 @@ describe "Scoring" do
     end
 
     it "returns the word with the hightest score" do
-     word = Scrabble::Scoring.highest_score_from(["Yellow", "PINK", "PURPLE"])
+      word = Scrabble::Scoring.highest_score_from(["Yellow", "PINK", "PURPLE"]) #pink 10 #yellow 12 #
+      word.must_equal("Yellow")
     end
 
     it "returns the word with fewest letters if there is a tie (no 7 letter words)" do
-
+      word = Scrabble::Scoring.highest_score_from(["PURPLE", "PINK"]) #pink 10 #purple 10
+      word.must_equal("PINK")
     end
 
     it "returns the 7 letter word in the case of a tie" do
-
+      word = Scrabble::Scoring.highest_score_from(["AEOIULF", "ZQZQZQ"])
+      word.must_equal("AEOIULF")
     end
 
     it "returns the first word if there is a tie between score and length" do
-      word = Scrabble::Scoring.highest_score_from(["Yellow", "Purple", "PINK"])
+      word = Scrabble::Scoring.highest_score_from(["FOZY", "HAZY"])
+      word.must_equal("FOZY")
     end
   end
 end

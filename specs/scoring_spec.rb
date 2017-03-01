@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
@@ -48,6 +51,18 @@ describe "Scrabble::Scoring" do
 
   describe "self.highest_score_from method" do
 
+    it "highest_score_from method raises argument error if input is not an array" do
+      proc {
+        Scrabble::Scoring.highest_score_from("word")
+      }.must_raise ArgumentError
+    end
+
+    it "highest_score_from method raises argument error if input is not an array of strings" do
+      proc {
+        Scrabble::Scoring.highest_score_from([2,3,'aaa'])
+      }.must_raise ArgumentError
+    end
+
     it "Returns a word in the given array" do
       words = %w(happy sleepy doc snowwhite snowblack)
       words.must_include Scrabble::Scoring.highest_score_from(words)
@@ -74,5 +89,5 @@ describe "Scrabble::Scoring" do
     end
 
   end
-  
+
 end

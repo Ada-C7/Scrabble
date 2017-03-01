@@ -42,6 +42,12 @@ module Scrabble
     end
 
     def self.highest_score_from(array)
+      raise ArgumentError.new("Not an array") if array.class != Array
+
+      array.each do |entry|
+        raise ArgumentError.new("Not a string") if entry.class != String
+      end
+
       first_highest_word = array.max_by {|word| score(word)}
       highest_words = array.select { |word|
         score(word) == score(first_highest_word)
@@ -56,5 +62,5 @@ module Scrabble
     end
 
   end
-  
+
 end

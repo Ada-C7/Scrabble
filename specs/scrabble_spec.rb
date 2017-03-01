@@ -1,8 +1,7 @@
 require_relative 'spec_helper'
 require_relative '../lib/scrabble'
 
-Minitest::Reporters.use!
-Minitest::Reporters::SpecReporter.new
+
 
 describe "Scrabble Scoring" do
 

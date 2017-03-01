@@ -39,25 +39,36 @@ describe "Scrabble::Player" do
     new_player.plays.must_equal ["word", "play", "win"]
   end
 
-  it "play(word) returns false if player has already won" do
+  # it "play(word) returns false if player has already won" do
+  #   new_player = Scrabble::Player.new("Dan")
+  #   new_player.play("zoology")
+  #   new_player.play("subject")
+  #   new_player.play("game").must_equal false
+  # end
+
+  it "play(word) returns the score of the word" do
+    new_player = Scrabble::Player.new("Dan")
+    new_player.play("zoology").must_equal 70
+  end
+
+  it "total_score returns the sum of scores" do
     new_player = Scrabble::Player.new("Dan")
     new_player.play("zoology")
     new_player.play("subject")
-    new_player.play("game").must_equal false
+    new_player.total_score.must_equal 138
   end
 
-  it "player.won? returns true if player has over 100 points." do
-    new_player = Scrabble::Player.new("Dan")
-    new_player.play("zoology")
-    new_player.play("subject")
-    new_player.won?.must_equal true
-  end
-
-  it "player.won? returns false if player has <= 100 points." do
-    new_player = Scrabble::Player.new("Dan")
-    new_player.play("zoology")
-    new_player.won?.must_equal false
-  end
-
+  # it "player.won? returns true if player has over 100 points." do
+  #   new_player = Scrabble::Player.new("Dan")
+  #   new_player.play("zoology")
+  #   new_player.play("subject")
+  #   new_player.won?.must_equal true
+  # end
+  #
+  # it "player.won? returns false if player has <= 100 points." do
+  #   new_player = Scrabble::Player.new("Dan")
+  #   new_player.play("zoology")
+  #   new_player.won?.must_equal false
+  # end
 
 end

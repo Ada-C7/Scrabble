@@ -24,8 +24,8 @@ describe "Scoring Class" do
     end
 
     it "Word cannot include symbols or numbers" do
-       proc {Scrabble::Scoring.score("@&89")}.must_raise ArgumentError
-     end
+      proc {Scrabble::Scoring.score("@&89")}.must_raise ArgumentError
+    end
 
     it "7 letter word receives a 50 point bonus" do
       word = Scrabble::Scoring.score("Scrabble")
@@ -44,7 +44,9 @@ describe "Scoring Class" do
       Scrabble::Scoring.highest_score_from(tie_array).must_equal "que"
     end
 
-
+    it "returns the word with 7 letters when tied with top score" do
+      winning_words = ["liberty", "xaaaa"]
+      Scrabble::Scoring.highest_score_from(winning_words).must_equal "liberty"
+    end
   end
-
 end

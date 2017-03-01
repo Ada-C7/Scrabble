@@ -64,7 +64,7 @@ module Scrabble
 end
 
 # puts Scrabble::Scoring.score("purple")
-puts Scrabble::Scoring.highest_score_from(["black", "orange", "bijoux", "purple", "BANJAX", "quiz"])
+# puts Scrabble::Scoring.highest_score_from(["black", "orange", "bijoux", "purple", "BANJAX", "quiz"])
 
 
 # a = [5, 2, 3, 3, 5]

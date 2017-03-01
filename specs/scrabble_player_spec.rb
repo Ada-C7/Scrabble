@@ -37,11 +37,13 @@ describe "Player#play" do
     }.must_raise ArgumentError
   end
 
-  # it "Returns false if player has already won" do
-  #   player = Scrabble::Player.new("Mickey")
-  #   player.won? == true
-  #   player.play("whatever").must_equal false
-  # end
+  it "Returns false if player has already won" do
+    player = Scrabble::Player.new("Mickey")
+    player.play("qqqqq")
+    player.play("zzzzza")
+    player.won?
+    player.play("whatever").must_equal false
+  end
 
   it "Returns the score of the word" do
     player = Scrabble::Player.new("Mickey")
@@ -67,23 +69,23 @@ describe "Player#won?" do
     player.won?.must_equal true
   end
 end
-#
-# describe "Player#highest_scoring_word" do
-#   it "Returns the highest scoring played word" do
-#     player = Scrabble::Player.new("Mickey")
-#     player.play("red")
-#     player.play("white")
-#     player.play("black")
-#     player.highest_scoring_word.must_equal "black"
-#   end
-# end
-#
-# describe "Player#higest_word_score" do
-#   it "Returns the highest_scoring_word score" do
-#     player = Scrabble::Player.new("Mickey")
-#     player.play("red")
-#     player.play("white")
-#     player.play("black")
-#     player.highest_word_score.must_equal 13
-#   end
-# end
+
+describe "Player#highest_scoring_word" do
+  it "Returns the highest scoring played word" do
+    player = Scrabble::Player.new("Mickey")
+    player.play("red")
+    player.play("white")
+    player.play("black")
+    player.highest_scoring_word.must_equal "black"
+  end
+end
+
+describe "Player#higest_word_score" do
+  it "Returns the highest_scoring_word score" do
+    player = Scrabble::Player.new("Mickey")
+    player.play("red")
+    player.play("white")
+    player.play("black")
+    player.highest_word_score.must_equal 13
+  end
+end

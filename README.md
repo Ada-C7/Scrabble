@@ -81,7 +81,7 @@ For example,
 player = Scrabble::Player.new("Ada")
 player.name #=> "Ada"
 ```
-<!--
+
 ## Wave 3
 ### Primary Requirements
 #### `TileBag`

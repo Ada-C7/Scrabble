@@ -22,6 +22,7 @@ module Scrabble
             end
 
             word.each_char do |letter|
+                raise ArgumentError.new 'word must be alpha only' if letter.match(/^[A-z]+$/) == nil
                 @letter = letter.upcase
                 SCORE_CHART.each do |number, array|
                     @word_score += number if array.include?(@letter)

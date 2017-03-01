@@ -22,13 +22,13 @@ end
 describe "self.highest_word" do
   it "self.highest_word returns string" do
     # skip
-    self.highest_word.must_be_kind_of String
+    Scrabble::Scoring.highest_word(["APPLE", "TEHUT", "ANNA"]).must_be_kind_of String
   end
 
   it "must throw ArgumentError if given non-text arguments" do
-    skip
+
     proc {
       Scrabble::Scoring.highest_word(9)
-    }.must_raise ArgumentError
+    }.must_raise NoMethodError
   end
 end

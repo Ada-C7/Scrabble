@@ -72,7 +72,7 @@ describe "Scrabble Scoring" do
 
     it "Tied highest score case, returns first shortest word" do
       Scrabble::Scoring.highest_score_from(["cat", "hi"]).must_equal "hi"
-      Scrabble::Scoring.highest_score_from(["cat", "dad" ,"pit"]).must_equal "hi"
+      Scrabble::Scoring.highest_score_from(["cat", "dad" ,"pit"]).must_equal "cat"
     end
   end
 end

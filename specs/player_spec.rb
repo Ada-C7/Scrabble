@@ -1,6 +1,6 @@
 require_relative '../lib/player'
 
-describe "Wave 2" do
+describe "Player class" do
 
   before do
     @player = Scrabble::Player.new('Ada')
@@ -18,4 +18,16 @@ describe "Wave 2" do
     @player.name.must_equal 'Ada'
   end
 
+end
+
+describe "Play method" do
+end
+
+describe "Total Score" do
+end
+
+describe "Won" do
+end
+
+describe "Highest Scoring Word and Word Score" do
 end

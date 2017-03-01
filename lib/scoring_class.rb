@@ -18,14 +18,13 @@ module Scrabble
         array_of_words = []
         word_score = 0
         letter_points = []
+
         array_of_words << word
         split_word = word.chars
-
-        #puts split_word #test
         split_word.each do |letter|
           SCORE_CHART.each_pair do |num_key, array_of_letters|
             if array_of_letters.include? letter
-              letter_points << key
+              letter_points << num_key
             end
           end
           letter_points.each do |point|
@@ -35,15 +34,13 @@ module Scrabble
 
         def score_keeper
           array_of_words << word
-          word_score_tally << word_score
-          #hash of words:scores
-          array_of_words.zip.to_h(:word, :score)
-
+          word_score_tally << word_score += word_score
+          score_kept.zip.to_h(:array_of_words, :word_score_tally)
         end
       end
 
 
-      def self.highest_score_from(array_of_words)
+      def self.highest_score_from(word_score_tally)
         #.length or max_by to find
         word_score_tally.max_by
         #longest word in array_of_words

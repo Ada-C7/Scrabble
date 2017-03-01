@@ -1,5 +1,5 @@
 module Scrabble
-  attr_reader :word_score
+  attr_accessor :word_score
   class Scoring
     SCORE = {
       1 => ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
@@ -37,7 +37,14 @@ module Scrabble
         end
         # Now need to look up max score, and then choose the word with the minimum length
         max_score = score_array.max_by {|score, word| score}[1]
-        return shortest_word(max_score)
+        # return shortest_word(max_score)
+        sorted_array = max_score.sort_by {|word| word.length}
+      sorted_array.each do |x|
+        if x.length == 7
+          return x
+        end
+      end
+
       end
 
       def self.shortest_word(word)

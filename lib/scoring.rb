@@ -34,11 +34,11 @@ module Scrabble
     end #end of score method
 
     def self.highest_score_from(array_of_words)
-      raise ArgumentError "Input must be Array" if array_of_words.class != Array
+      raise ArgumentError.new "Input must be Array" if array_of_words.class != Array
 
-      raise ArgumentError "Must include at least one word" if array_of_words.length == 0
+      raise ArgumentError.new "Must include at least one word" if array_of_words.length == 0
 
-        
+
       scores = array_of_words.map { |word| Scoring.score(word) }
 
       words_and_scores = array_of_words.zip(scores).to_h

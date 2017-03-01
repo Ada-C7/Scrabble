@@ -1,20 +1,18 @@
 module Scrabble
   class Player
 
-    attr_reader :name
+    attr_reader :name, :plays
 
     def initialize(name)
       raise ArgumentError.new "Name must be string" if name.class != String
-
+      @plays = []
       @name = name
     end
 
-    def plays
-      # returns an array of the words played by the player
-    end
 
     def play(word)
-      # addst the input word to the plays array
+      # adds the input word to the plays array
+      # @plays << input_word
       # false - if player won
       # returns score of the word
     end

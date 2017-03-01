@@ -5,6 +5,7 @@ describe "Player is a class" do
   it "must be type of player" do
     player = Scrabble::Player.new("name")
     player.must_be_instance_of Scrabble::Player
+
   end
 
   describe "initialize" do
@@ -14,18 +15,35 @@ describe "Player is a class" do
 
       all_other_things.each do |class_type|
         proc {
-          Scrabble::Player.name(class_type)
+          Scrabble::Player.new(class_type)
         }.must_raise ArgumentError
       end
     end
+
+
     it "It returns the name" do
+      test_name = "George"
+      player = Scrabble::Player.new(test_name)
+      player.name.must_equal "George"
     end
   end
 
   describe "plays method" do
-    it "" do
-
+    before do
+      test_name = "George"
+      @player = Scrabble::Player.new(test_name)
     end
+
+    it "is an array" do
+      @player.plays.must_be_kind_of Array
+    end
+
+    it "contains only strings" do
+      @player.plays.each do |word|
+        word.must_be_kind_of String
+      end
+    end
+
   end
   describe "play(word)" do
     it "" do

@@ -41,7 +41,6 @@ describe Scrabble::TileBag do
       chosen_tiles = @tile.draw_tiles(3)
       #@tile.draw_tiles(chosen_tiles)
       @tile.available_letters.length.must_equal(98-3)
-
     end
 
   end
@@ -49,9 +48,10 @@ describe Scrabble::TileBag do
   describe "#tiles_remaining" do
 
     it "returns the number of tiles remaining in the bag" do
-      chosen_tiles = @tiles.draw_tiles(1)
+      chosen_tiles = @tile.draw_tiles(4)
+      expected_length = 98 - chosen_tiles.length
 
-
+      @tile.tiles_remaining.must_equal expected_length
     end
 
   end

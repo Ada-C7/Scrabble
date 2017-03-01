@@ -23,6 +23,7 @@ module Scrabble
     end
 
     def tiles_remaining
-      @avialble_letters.count
+      @available_letters.count
+    end
   end
 end

@@ -48,13 +48,13 @@ describe 'Player' do
 
   describe "total_score" do
     it "returns the sum of scores of played words" do
-      words = %w(owl chicken duck emu kiwi aaaaaad zzzzzj)
+      words = %w(owl chicken duck emu)
       al = Scrabble::Player.new("al")
       words.each do |word|
         al.play(word)
       end
-
-      al.total_score.must_equal 101
+      al.plays.length.must_equal 4
+      al.total_score.must_equal 90
     end
   end
 

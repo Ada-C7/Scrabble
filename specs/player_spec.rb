@@ -86,13 +86,13 @@ describe "Wave 2" do
     end
 
     it "returns the highest_scoring_word score" do
-
       player = Scrabble::Player.new("Ada")
-      skip
       player.play("hello")
       player.play("helm")
       player.play("OXYPHENBUTAZONE")
-      player.best_word.must_equal
+      player.best_word
+      player.max_score.must_equal 41
+
     end
   end
 

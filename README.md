@@ -34,10 +34,10 @@ Utilize good pair programming practices. Refer to articles from the [Agile Allia
 First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience. Second, review the requirements for Wave 1 and come up with a "plan of action" for your implementation.
 
 #### Implementation
-- Create a `Scrabble` module at the project root.
+**x** Create a `Scrabble` module at the project root.
 - Create a `Scrabble::Scoring` **class** which contains some sort of data structure to store the **individual letter scores** listed below.
-- Create a Spec file which corresponds to your `Scrabble::Scoring` class. This spec should contain one __red__ test as a starting point (this test can be modified as your get further through the requirements).
-- Be able to execute your one test using `rake` from the project root.
+**x** Create a Spec file which corresponds to your `Scrabble::Scoring` class. This spec should contain one __red__ test as a starting point (this test can be modified as your get further through the requirements).
+**x** Be able to execute your one test using `rake` from the project root.
 
 #### Score chart
 |Letter                        | Value|

@@ -40,10 +40,10 @@ module Scrabble
 end
 
 player = Scrabble::Player.new("Natalia")
-puts player.play("quizzes")
-puts player.play("computer")
-puts player.play("table")
 puts player.play("hello")
+puts player.play("flower")
+# puts player.play("table")
+# puts player.play("hello")
 puts player.highest_scoring_word
 puts player.highest_word_score
 puts

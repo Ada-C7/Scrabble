@@ -59,14 +59,14 @@ describe "Player#total_score" do
   end
 end
 
-# describe "Player#won?" do
-#   it "Returns true, if the player has over 100 points" do
-#     player = Scrabble::Player.new("Mickey")
-#     player.play("qqqqq")
-#     player.play("zzzzz")
-#     player.won.must_equal true
-#   end
-# end
+describe "Player#won?" do
+  it "Returns true, if the player has over 100 points" do
+    player = Scrabble::Player.new("Mickey")
+    player.play("qqqqq")
+    player.play("zzzzza")
+    player.won?.must_equal true
+  end
+end
 #
 # describe "Player#highest_scoring_word" do
 #   it "Returns the highest scoring played word" do

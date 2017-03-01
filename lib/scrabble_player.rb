@@ -12,9 +12,9 @@ module Scrabble
 
     def play(word)
       raise ArgumentError.new("Please enter a word") if word.class != String
-      return false if won?
       @plays << word
       @scores << Scrabble::Scoring.score(word)
+      return false if won?
       return Scrabble::Scoring.score(word)
     end
 
@@ -22,10 +22,8 @@ module Scrabble
       @scores.inject(:+)
     end
 
-
     def won?
-      false
-      # total_score > 100
+      total_score > 100
     end
 
 

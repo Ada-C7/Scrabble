@@ -19,8 +19,11 @@ class Player
   end
 
   def total_score
-
-
+    score_array = []
+    @plays.each do |word|
+      score_array << Scoring.score(word)
+    end
+    return score_array.reduce(:+)
   end
 
   def won?

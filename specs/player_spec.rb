@@ -47,13 +47,28 @@ it "adds a word to @plays" do
 end
 
 it "holds multiple elements" do
-  3.times { @player.play("dog") } 
+  3.times { @player.play("dog") }
   @player.plays.length.must_be :> , 1
 end
 
 
 
 describe "Total Score" do
+
+  before do
+    @player = Scrabble::Player.new('Ada')
+  end
+
+ it "total score returns an integer" do
+  3.times { @player.play("cat") }
+  @player.total_score.must_be_instance_of Integer
+ end
+
+ it "total score returns the correct score" do
+  3.times { @player.play("cat") }
+  @player.total_score.must_equal 15
+ end
+
 end
 
 describe "Won" do

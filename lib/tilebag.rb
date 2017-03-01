@@ -31,9 +31,16 @@ module Scrabble
       "Y" => 2,
       "Z" => 1
     }
-    def self.new_tileset
+
+
+    def initialize
+      @tile_set = new_tileset(ORIGINAL_TILE_SET)
+
+    end
+
+    def new_tileset(hash)
       tile_set = []
-      ORIGINAL_TILE_SET.each do |letter, num|
+      hash.each do |letter, num|
         num.times do
           tile_set << letter
         end
@@ -41,13 +48,8 @@ module Scrabble
       return tile_set
     end
 
-    def initialize
-      @tile_set = Scrabble::TileBag.new_tileset
-
-    end
-
     def draw_tiles(num)
-      #
+      # returns a collection of random tiles, removes the tiles from the default set
     end
 
     def tiles_remaining
@@ -57,5 +59,5 @@ module Scrabble
   end
 end
 
-tile_bag =  Scrabble::TileBag.new
-puts tile_bag.tile_set
+# tile_bag =  Scrabble::TileBag.new
+# puts tile_bag.tile_set.length

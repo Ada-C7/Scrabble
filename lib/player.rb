@@ -2,14 +2,14 @@ require_relative 'scoring.rb'
 
 module Scrabble
   class Player
-
+    attr_reader :name, :plays
     def initialize name
       @name = name
       @plays = []
     end
 
     def play word
-      return false if player.won?
+      return false if won?
 
       @plays << word
       return Scoring.score(word)
@@ -18,7 +18,7 @@ module Scrabble
       # Returns the score of the word
     end
 
-    def total_score @plays
+    def total_score
       scores = @plays.map { |word| Scoring.score(word) }
       return scores.sum
       # Returns the sum of scores of player words

@@ -4,21 +4,23 @@ module Scrabble
 
 class Player
   attr_reader :name
-  attr_accessor :play, :score
+  attr_accessor :plays, :score
 
   def initialize(name)
     @name = name
-    @play = []
+    @plays = []
     @score = 0
   end
 
   def play(word)
-    return false if won? 
-    @play << word
+    return false if won?
+    @plays << word
     return Scoring.score(word)
   end
 
   def total_score
+
+
   end
 
   def won?

@@ -36,6 +36,23 @@ it "returns word score" do
   @player.play("cat").must_equal 5
 end
 
+it "adds a word to @plays" do
+  @player.play("dog")
+  @player.plays.must_be_instance_of Array
+end
+
+it "adds a word to @plays" do
+  @player.play("dog")
+  @player.plays[-1].must_equal "dog"
+end
+
+it "holds multiple elements" do
+  3.times { @player.play("dog") } 
+  @player.plays.length.must_be :> , 1
+end
+
+
+
 describe "Total Score" do
 end
 

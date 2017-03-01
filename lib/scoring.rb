@@ -9,6 +9,7 @@ module Scrabble
       8 => %w(J X),
       10 => %w(Q Z)
     }
+
     def self.input_correct?(word)
       #Checking word using regular expression
       if word[/[a-zA-Z]+/] == word
@@ -17,6 +18,7 @@ module Scrabble
         false
       end
     end
+
     def self.score(word)
       if word.class != String
         raise ArgumentError.new("Argument must be a string")
@@ -24,6 +26,7 @@ module Scrabble
       if !input_correct?(word)
         raise ArgumentError.new("Words with just letters")
       end
+
       word_array = word.upcase.split("")
       total = 0
       word_array.each do |letter|
@@ -31,12 +34,15 @@ module Scrabble
           total += key if value.include? letter
         end
       end
+
       return total += 50 if word.length == 7
       return total
     end
+
     def self.find_max(array_of_words)
       max = 0
       max_words = []
+
       array_of_words.each do |word|
         score_word = score(word)
         if score_word == max
@@ -48,8 +54,10 @@ module Scrabble
       end
       max_words
     end
+
     def self.tie(max_words)
       max_word = max_words.select{|word| word.length == 7}
+
       if !max_word.empty?
         return max_word[0]
       else
@@ -57,6 +65,7 @@ module Scrabble
         return max_word
       end
     end
+
     def self.highest_score_from(array_of_words)
       if array_of_words.class != Array
         raise ArgumentError.new("Argument must be an array")
@@ -66,6 +75,7 @@ module Scrabble
           raise ArgumentError.new("Elements in array must be strings")
         end
       end
+
       max_words = find_max(array_of_words)
       if max_words.length > 1
         return tie(max_words)

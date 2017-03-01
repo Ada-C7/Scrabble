@@ -17,8 +17,17 @@ module Scrabble
           tile_bag<< letters[i]
         end
       end
-
       tile_bag
+    end#end of create_tile_bag method
+
+    def draw_tiles(num)
+      drawn_tiles = []
+      num.times do
+        rand_num = rand(0..@tile_bag.length)
+        drawn_tiles<< @tile_bag[rand_num]
+        @tile_bag.delete_at(rand_num)
+      end
+      drawn_tiles
     end
 
   end#end of TileBag class

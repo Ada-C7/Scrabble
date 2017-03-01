@@ -64,8 +64,13 @@ describe "Scrabble::Scoring" do
     end
 
     it "In case of tie, returns the 7-letter word because of bonus" do
-      words = %w(jumped sleepy doc klutz zap subject)
-      Scrabble::Scoring.highest_score_from(words).must_equal "subject"
+      words = %w(jumped sleepy doc klutz zap zzzzzz aaaaaay)
+      Scrabble::Scoring.highest_score_from(words).must_equal "aaaaaay"
+    end
+
+    it "In case of tie, when both words have the same number of tiles, return the first word in list" do
+      words = %w(sleepy doc klutz zap jacks)
+      Scrabble::Scoring.highest_score_from(words).must_equal "klutz"
     end
 
 

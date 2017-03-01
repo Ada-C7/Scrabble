@@ -46,8 +46,11 @@ module Scrabble
       highest_words = array.select { |word|
          score(word) == score(first_highest_word)
        }
+       winner = highest_words.find { | word | word.length == 7}
+         if winner != nil
+           return winner
+         end
        highest_words.min_by {|word| word.length}
     end
-
   end
 end

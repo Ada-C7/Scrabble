@@ -56,7 +56,3 @@ module Scrabble
 
   end
 end
-
-puts Scrabble::Scoring.score("GGGGGG")
-puts Scrabble::Scoring.score("IIIIIII")
-puts Scrabble::Scoring.highest_word(%w(GGGGGG IIIIIII))

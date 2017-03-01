@@ -10,20 +10,19 @@ class Player
     @name = name
     @plays = []
     @score = 0
+    @score_array = []
+
   end
 
   def play(word)
     return false if won?
     @plays << word
+    @score_array << Scoring.score(word)
     return Scoring.score(word)
   end
 
   def total_score
-    score_array = []
-    @plays.each do |word|
-      score_array << Scoring.score(word)
-    end
-    return score_array.reduce(:+)
+    return @score_array.reduce(:+)
   end
 
   def won?

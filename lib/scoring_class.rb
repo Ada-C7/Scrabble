@@ -25,31 +25,33 @@ module Scrabble
         split_word.each do |letter|
           SCORE_CHART.each_pair do |num_key, array_of_letters|
             if array_of_letters.include? letter
-              letter_points << key
+              letter_points << num_key
             end
           end
-          letter_points.each do |point|
-            return word_score += point
-          end
-        end #end of meth
-
-        def score_keeper
-          array_of_words << word
-          word_score_tally << word_score
-          #hash of words:scores
-          array_of_words.zip.to_h(:word, :score)
-
         end
-      end
+        letter_points.each do |point|
+          word_score += point
+        end
+        return word_score
+      end #end of meth
 
+      #   def score_keeper
+      #     array_of_words << word
+      #     word_score_tally << word_score
+      #     #hash of words:scores
+      #     array_of_words.zip.to_h(:word, :score)
+      #
+      #   end
+      # end
+      #
+      #
+      # def self.highest_score_from(array_of_words)
+      #   #.length or max_by to find
+      #   word_score_tally.max_by
+      #   #longest word in array_of_words
+      #   #return longest word
+      #
+      # end
 
-      def self.highest_score_from(array_of_words)
-        #.length or max_by to find
-        word_score_tally.max_by
-        #longest word in array_of_words
-        #return longest word
-
-      end
-
-    end #end of class
-  end #end of mod
+  end #end of class
+end #end of mod

@@ -25,7 +25,7 @@ module Scrabble
     end
 
     def self.score(word)
-      # and add a condition for empty strings - or figure out a better regex
+      # and add a condition for empty strings - or figure out a better regexs
       unless word.class == String && test_for_word_characters?(word)
         raise ArgumentError.new "Input word must be a string"
       end
@@ -45,7 +45,7 @@ module Scrabble
   end
 end
 
-# print Scrabble::Scoring.highest_score_from([1, 2, 3])
+# print Scrabble::Scoring.highest_score_from(["cat", "dig", "123"])
 # print Scrabble::Scoring.test_for_word_characters?("i")
 # puts Scrabble::Scoring.score("hello")
 # puts Scrabble::Scoring.score("123")

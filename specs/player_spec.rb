@@ -24,11 +24,36 @@ describe "class Player" do
 
   describe "#play(word)" do
     it "Adds the input word to the #plays array" do
+      player_1 = Scrabble::Player.new("Bob")
+      player_1.play("cat")
+      player_1.plays.must_include "cat"
+    end
+
+    it "Adds the input word to the #plays array when two words are entered" do
+      player_1 = Scrabble::Player.new("Bob")
+      player_1.play("cat")
+      player_1.play("dog")
+      player_1.plays.must_equal ["cat", "dog"]
+    end
+
+    it "raises an ArgumentError if the word contains non-letter characters" do
+      proc{
+        player_1 = Scrabble::Player.new("Bob")
+        player_1.play("black&white")
+      }.must_raise ArgumentError
+    end
+
+    it "raises does not raise an ArgumentError if the word contains capital letters" do
+
+      player_1 = Scrabble::Player.new("Bob")
+      player_1.play("BlaCK")
 
     end
 
     it "returns false if player has already won" do
-
+      player_1 = Scrabble::Player.new("Bob")
+      player_1.play('qqqqqqqqqqa')
+      player_1.play('more').must_equal false
     end
 
     it "returns the score of the word" do
@@ -81,11 +106,11 @@ describe "class Player" do
         "Dog"])
         player_1.highest_word_score.must_be_kind_of Integer
       end
-      #
-      # it "returns the score for the word that has the highest score" do
-      #   player_1 = Scrabble::Player.new("Bob", ["ox", "rat"])
-      #   player_1.highest_word_score.must_equal 9
 
-      #end
+      it "returns the score for the word that has the highest score" do
+        player_1 = Scrabble::Player.new("Bob", ["ox", "rat"])
+        player_1.highest_word_score.must_equal 9
+
+      end
     end
   end

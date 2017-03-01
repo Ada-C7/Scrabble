@@ -19,10 +19,6 @@ describe Scrabble::Player do
             Scrabble::Player.new('Tofu').name.must_equal 'Tofu'
         end
 
-        it 'initializes @won with value of false' do
-            Scrabble::Player.new('Tofu').won.must_equal false # need attr for won
-        end
-
         it 'initializes @player_score holds 0' do
             Scrabble::Player.new('Tofu').player_score.must_equal 0
         end

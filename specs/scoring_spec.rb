@@ -67,31 +67,48 @@ describe 'Scrabble::Player' do
         end
 
         it 'returns the name of the player correctly' do
-            Scrabble::Scoring.new('Tofu').name.must_equal 'Tofu'
+            Scrabble::Player.new('Tofu').name.must_equal 'Tofu'
         end
 
         it 'initializes @won with value of false' do
-            Scrabble::Scoring.new('Tofu').won.must_equal false # need attr for won
+            Scrabble::Player.new('Tofu').won.must_equal false # need attr for won
         end
 
         it 'initializes @player_score holds 0' do
-            Scrabble::Scoring.new('Tofu').player_score.must_equal 0
+            Scrabble::Player.new('Tofu').player_score.must_equal 0
         end
     end
 
+    # ZIP 14
+    # JAZZ 29 WHIZ 19 JERKY 19
+    # SQUEEZE 75  7-letter
+    # QUICKLY 75 7-letter
+
     describe '#plays' do
         it 'returns .plays as an Array' do
+          Scrabble::Player.new('Tofu').plays.must_be_kind_of Array
         end
         it 'returns all 5 words played in order' do
+          player = Scrabble::Player.new('Tofu')
+          words = %w(zip sqeeze whiz jerky pig)
+          words.each { |word| player.play(word) }
+          player.plays.must_equal words
         end
     end
 
     describe '#play(word)' do
-        it 'returns .play(word) as an Array' do
+        it 'returns .play(word) as an Integer' do
+          Scrabble::Player.new('Tofu').play('whiz').must_be_kind_of Integer
         end
-        it 'returns the score of a 7-letter word' do
+
+        it 'returns the correct score of a 7-letter word' do
+          Scrabble::Player.new('Tofu').play('squeeze').must_equal 75
         end
+
         it 'returns false if @won is true' do
+          player = Scrabble::Player.new('Tofu')
+          @won = true
+          Scrabble::Player.new('Tofu').play('jazz').must_equal false
         end
     end
 

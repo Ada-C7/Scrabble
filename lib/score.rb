@@ -39,16 +39,12 @@ module Scrabble
 
     end
 
-    # def self.highest_score_from(array_of_words)
-    #   #best_words = collections of highest scoring words pick the first one
-    #   if array_of_words.length == 1
-    #     return array_of_words.join
-    #   else
-    #     word1 = array_of_words[0]
-    #     word2 = array_of_words[1]
-    #     return break_ties(word1, word2)
-    #   end
-    # end
+    def self.highest_score_from(array_of_words)
+      #best_words = collections of highest scoring words pick the first one
+      best_word = array_of_words.group_by { |word| score(word)}.max.last
+        best_word.length == 1? best_word.join : break_ties(best_word)
+
+    end
   end
 end
 

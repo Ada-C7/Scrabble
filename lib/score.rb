@@ -30,17 +30,4 @@ module Scrabble
 
      end
 
-
-# puts sample.class
-# puts sample
-# puts sample.inspect
-puts sample.score("cat")
-
-array = %w(A letter means that pliyer pleyer a used all the tiles)
-
-
-puts sample = Scrabble::Scoring.highest_score_from(array)
-
 end
-
-#sample = Scrabble::Scoring.score("aaa")

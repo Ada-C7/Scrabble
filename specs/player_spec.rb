@@ -15,22 +15,32 @@ describe "Wave 2" do
       player = Scrabble::Player.new("Ada")
       player.name.must_equal "Ada"
     end
-
   end
 
   describe "Method Player#plays" do
     it "returns an array of strings" do
-
+      player = Scrabble::Player.new("Ada")
+      player.play("hello")
+      player.play("helm")
+      player.plays.must_be_kind_of Array
     end
 
     it "returns an array of played words" do
-
+      player = Scrabble::Player.new("Ada")
+      player.play("hello")
+      player.play("helm")
+      player.play("jello")
+      player.plays.must_equal ["hello", "helm", "jello"]
     end
   end
 
   describe "Method Player#play(word)" do
     it "adds the played word to the play array" do
-
+      player = Scrabble::Player.new("Ada")
+      player.play("hello")
+      player.play("helm")
+      player.play("jello")
+      player.plays.last.must_equal "jello"
     end
 
     it "returns false if the player has won" do

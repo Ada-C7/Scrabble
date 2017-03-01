@@ -1,28 +1,33 @@
 module Scrabble
   class Player
 
-    attr_reader :name, :plays
+    attr_reader :name, :plays, :total_score
 
     def initialize(name)
       raise ArgumentError.new "Name must be string" if name.class != String
       @plays = []
       @name = name
+      @total_score = 0
     end
 
 
     def play(word)
       # adds the input word to the plays array
-      # @plays << input_word
-      # false - if player won
-      # returns score of the word
-    end
+      if won?
+        return false
+      else
+        @plays << word
+        word_score = Scrabble::Scoring.score(word)
+        @total_score += word_score
+        return word_score
+      end
 
-    def total_score
-      #sum of scores of played words
     end
 
     def won?
-      # true if total score is more than 100
+
+      return @total_score > 100 ? true : false
+
     end
 
     def highest_scoring_word

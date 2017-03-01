@@ -46,20 +46,45 @@ describe "Player is a class" do
 
   end
   describe "play(word)" do
-    it "" do
+    before do
+      @player = Scrabble::Player.new("George")
+    end
+    it "Returns the score of the word" do
+      @player.play("oink").must_equal 8
+    end
+
+    it "Updates @total_score" do
+      @player.total_score.must_equal 0
+      @player.play("oink")
+      @player.total_score.must_equal 8
+
+    end
+    it "Updates plays array" do
+      @player.plays.must_equal []
+      @player.play("oink")
+      @player.plays.must_equal ["oink"]
+
+    end
+
+    it "Return false if won" do
+      @player.play("zzzzzzz")
+      @player.play("oink").must_equal false
+
 
     end
   end
-  describe "total_score" do
-    it "" do
-
-    end
-  end
+  
   describe "won?" do
-    it "" do
-
+    before do
+      @player = Scrabble::Player.new("George")
+    end
+    it "Checks if won" do
+      @player.won?.must_equal false
+      @player.play "zzzzzzz"
+      @player.won?.must_equal true
     end
   end
+
   describe "highest_scoring_word" do
     it "" do
 

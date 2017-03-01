@@ -50,6 +50,7 @@ it "holds multiple elements" do
   3.times { @player.play("dog") }
   @player.plays.length.must_be :> , 1
 end
+end
 
 
 
@@ -89,5 +90,20 @@ describe "Won" do
 end
 
 describe "Highest Scoring Word and Word Score" do
-end
+  before do
+    @player = Scrabble::Player.new('Ada')
+    3.times { @player.play("cat") }
+    @player.play("elephant")
+  end
+
+  it "Returns a string" do
+    @player.highest_scoring_word.must_be_instance_of String
+  end
+
+  it "Returns the correct word" do
+    @player.highest_scoring_word.must_equal "ELEPHANT"
+  end
+
+
+
 end

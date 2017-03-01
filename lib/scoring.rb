@@ -15,7 +15,7 @@ module Scrabble
       }
 
       word_score = 0
-      
+
       word.downcase.each_char do |c|
 
         raise ArgumentError.new("Argument must contain only letters") if c !~ /[a-z]/
@@ -23,10 +23,10 @@ module Scrabble
       end
 
 
-    if word.length == 7
-      word_score += 50
-    end
-    word_score
+      if word.length == 7
+        word_score += 50
+      end
+      word_score
 
     end
 
@@ -41,18 +41,17 @@ module Scrabble
         score_array << self.score(word)
       end
 
-     #fingers crossed this saves them as corresponding words and scores in individual arrays
       scorepairs = word_array.zip(score_array)
 
 
       # iterate over score array to find highest scores
 
-    top_scores = []
-    scorepairs.each do |scorepair|
+      top_scores = []
+      scorepairs.each do |scorepair|
         if scorepair[1] == score_array.max
             top_scores << scorepair
         end
-    end
+      end
 
       #no tie, nominal case returns the undisputed winner
         if top_scores.length == 1
@@ -69,18 +68,8 @@ module Scrabble
     #handles tied scores by finding the shortest word
       shortest= top_scores.min_by do |scorepair|
           scorepair[0].length
-    end
+      end
         return shortest[0]
-
-
-        # tied_words.map do |str|
-        #     str.length
-        # end
-
-        #this is just returning the length of the string that wins, not the word
-        # winner = tied_words.min
-
-
 
     end
 

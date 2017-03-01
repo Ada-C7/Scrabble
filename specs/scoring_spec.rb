@@ -53,9 +53,9 @@ describe "highest score method returns word"do
     end
 
     it "returns word that has the highest score" do
-    word_array = ["frog", "jazzily", "pencil"]
+      word_array = ["frog", "jazzily", "pencil"]
 
-    Scrabble::Scoring.highest_score(word_array).must_equal "jazzily"
+      Scrabble::Scoring.highest_score(word_array).must_equal "jazzily"
     end
 
     it "correctly handles tie by choosing seven-letter word" do

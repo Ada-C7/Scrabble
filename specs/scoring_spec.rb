@@ -18,32 +18,43 @@ describe "Scoring" do
     end
 
     it "returns the correct scrabble score for a given letter" do
-      Scrabble::Scoring.score("a").must_equal 1
-      Scrabble::Scoring.score("f").must_equal 4
+      Scrabble::Scoring.score("A").must_equal 1
+      Scrabble::Scoring.score("F").must_equal 4
     end
 
     it "returns the total score for a given word" do
-
+      Scrabble::Scoring.score("FACE").must_equal 9
+      Scrabble::Scoring.score("TREE").must_equal 4
     end
 
     it "returns the total score for a given word regardless of word case" do
+      Scrabble::Scoring.score("TRaVEL").must_equal 9
 
     end
 
     it "adds 50 points to the total socre if the word length is 7 letters" do
-
+      Scrabble::Scoring.score("TRAVELS").must_equal 59
     end
 
-    it "raises an argument error if the input is not a string" do
+    it "raises an argument error if input is other than string of letters" do
+      #the input is not a string"
+      proc {
+        Scrabble::Scoring.score(78)
+      }.must_raise ArgumentError
 
-    end
+      #the given word is > 7 letters"
+      proc {
+        Scrabble::Scoring.score("ELEPHANT")
+      }.must_raise ArgumentError
 
-    it "rasies an argument error if the given word is > 7 letters" do
-
-    end
-
-    it "raises an argument error if the given word contains characters other than a to z" do
+      # the given word contains characters other than a to z
+      proc {
+        Scrabble::Scoring.score("V7RT8")
+      }.must_raise ArgumentError
       # handle empty string too
+      proc {
+        Scrabble::Scoring.score("")
+      }.must_raise ArgumentError
     end
   end
 
@@ -70,7 +81,7 @@ describe "Scoring" do
     end
 
     it "returns the 7 letter word in the case of a tie" do
-      
+
     end
 
     it "returns the first word if there is a tie between score and length" do

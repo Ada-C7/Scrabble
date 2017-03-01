@@ -38,6 +38,7 @@ describe "Scoring" do
     it "returns the appropriate score" do
       Scrabble::Scoring.score("cat").must_equal 5
       Scrabble::Scoring.score("hello").must_equal 8
+      Scrabble::Scoring.score("i").must_equal 1
     end
 
     it "adds 50 point bonus for 7 letter words" do
@@ -58,6 +59,12 @@ describe "Scoring" do
       it "raises an argument error is not given an array" do
         proc {
           Scrabble::Scoring.highest_score_from("cat")
+        }.must_raise ArgumentError
+      end
+
+      it 'raises an argument error if given an empty array' do
+        proc {
+          Scrabble::Scoring.highest_score_from([])
         }.must_raise ArgumentError
       end
 

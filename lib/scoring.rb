@@ -19,8 +19,13 @@ module Scrabble
       end
     end
 
+    def self.test_for_word_characters?(word)
+      /[[:alpha]]/.match(word)
+
+    end
+
     def self.score(word)
-      unless word.class == String
+      unless word.class == String && test_for_word_characters?(word)
         raise ArgumentError.new "Input word must be a string"
       end
       # The *  splat operator expands an Array into a list of arguments
@@ -29,10 +34,15 @@ module Scrabble
     end
 
     def self.highest_score_from(words)
-      raise ArgumentError if words.class != Array
+      unless words.class == Array && words.length > 0 #&& words.each { |element| element.class == "string" }
+        raise ArgumentError
+      end
       scores_and_words = words.group_by { |word| score(word) }
       highest_words = scores_and_words.max_by { |score, word_list| score }
       highest_words[1].length > 1 ? tie_breaker(highest_words[1]) : highest_words[1].join
     end
   end
 end
+
+# print Scrabble::Scoring.highest_score_from([1, 2, 3])
+# print Scrabble::Scoring.score("12348901")

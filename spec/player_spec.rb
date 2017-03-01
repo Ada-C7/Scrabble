@@ -88,6 +88,18 @@ describe "Player" do
       @player.total_score(6).must_equal 44
     end
 
-    
   end
+
+  describe "Player#won?" do
+
+    it "Returns true if player has 100 points or more" do
+      @player.total_score(100)
+      @player.won?.must_equal true
+    end
+
+    it "Returns false if player has less than 100 points" do
+      @player.total_score(50)
+      @player.won?.must_equal false
+    end
+    
 end

@@ -34,28 +34,30 @@ module Scrabble
     end
 
 
-  # def total_score
-  #   score = 0
-  #   @plays.each do |word|
-  #     score += Scrabble::Scoring.score(word)
-  #   end
-  #   score
-  # end
+    # def total_score
+    #   score = 0
+    #   @plays.each do |word|
+    #     score += Scrabble::Scoring.score(word)
+    #   end
+    #   score
+    # end
 
 
-  #returns the highest scoring played word
-  def highest_scoring_word
-    #access @plays
-    #Run array @plays through METHOD
-    #return Scrabble::Scoring.highest_score_from
+    #returns the highest scoring played word
+    def highest_scoring_word
+      #access @plays
+      Scrabble::Scoring.highest_score_from(@plays)
+    end
+
+    #return the highest scoring word's
+    #word score
+    def highest_word_score
+      #run highest_scoring_word METHOD
+    highest_word = Scrabble::Scoring.highest_score_from(@plays)
+    return Scrabble::Scoring.score(highest_word)
+    
+      #run that return through Scrabble:Scoring.score(word)
+      #return as local variable.
+    end
   end
-
-  #return the highest scoring word's
-  #word score
-  def highest_word_score
-    #run highest_scoring_word METHOD
-    #run that return through Scrabble:Scoring.score(word)
-    #return as local variable.
-  end
-end
 end

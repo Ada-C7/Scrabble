@@ -47,7 +47,19 @@ module Scrabble
     end
 
     def self.highest_score_from(array_of_words)
-      
+      # score_all_words = Scrabble::Scoring.score
+      # iterate through array_of_words, applying score method to each word
+      # hopefully return array of scores
+      # match indexes to get highest scoring word
+
+      array_of_scores = []
+      array_of_words.each do |word|
+        work_damnit = self.score(word)
+        # work_damnit = word.length
+        puts word
+        array_of_scores << work_damnit
+      end
+      return array_of_scores
     end
 
   end

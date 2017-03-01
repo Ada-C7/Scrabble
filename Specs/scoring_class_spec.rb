@@ -7,8 +7,8 @@ describe "Score Method for Scoring Class" do
 
   before do
     @word = "camp"
-    @word_7_letters = "quacked"
-    @word_8_letters = "bushbuck" #small African antelope
+    @word_7_letters = "quacked" #73
+    @word_8_letters = "bushbuck" #71 #small African antelope
     @edge_word = "W@ter"
   end
 
@@ -18,7 +18,7 @@ describe "Score Method for Scoring Class" do
   end
 
   it "Handles if the word passed has a space (two words)" do
-    skip 
+    skip
     Scrabble::Scoring::score(@edge_word)#unknown outcome
   end
 
@@ -34,9 +34,11 @@ describe "Score Method for Scoring Class" do
 
   it "Adds a 50 point bonus to a 7 letter word" do
     skip
+    Scrabble::Scoring::score(@word_7_letters).must_equal 73
   end
 
   it "adds 50 point bonus on words greater than 7 letters " do
     skip
+    Scrabble::Scoring::score(@word_8_letters).must_equal 71
   end
 end

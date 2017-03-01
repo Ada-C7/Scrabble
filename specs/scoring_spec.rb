@@ -21,7 +21,7 @@ end
 
 describe "self.highest_word" do
   it "self.highest_word returns string" do
-    skip
+    # skip
     self.highest_word.must_be_kind_of String
   end
 

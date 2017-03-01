@@ -16,5 +16,18 @@ module Scrabble
       return turn_value
     end
 
+    def self.highest_word(data)
+      highest_word = [""]
+      data.each do |word|
+        raise ArgumentError.new("word must be a string!") if word.class != String
+        if self.score(word) > self.score(highest_word[-1])
+          highest_word = [word]
+        elsif self.score(word) == self.score(highest_word[-1])
+          highest_word << word
+        end
+      end
+      return highest_word[0]
+    end
+
   end
 end

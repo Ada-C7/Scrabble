@@ -13,7 +13,7 @@ class Player
   end
 
   def play(word)
-    return false if score >= 100
+    return false if won? 
     @play << word
     return Scoring.score(word)
   end
@@ -22,6 +22,7 @@ class Player
   end
 
   def won?
+    return true if @score >= 100
   end
 
   def highest_scoring_word

@@ -42,17 +42,40 @@ describe "Scoring" do
 
     end
 
-    it "raises an argument error if the given word has characters other than letters" do
+    it "raises an argument error if the given word contains characters other than a to z" do
       # handle empty string too
     end
+  end
 
+  describe "highest_score_from" do
+    it "raises an argument error if the input is not an array of strings" do
+      #check that input is an array
+      #check that each element in the array is a string
+    end
 
+    it "raises an arugment error if a given word contains characters other than a to z" do
 
+    end
 
-    #
-    # it "returns a scrabble score of a word" do
-    #
-    # end
+    it "returns a string" do
+
+    end
+
+    it "returns the word with the hightest score" do
+
+    end
+
+    it "returns the word with fewest letters if there is a tie (no 7 letter words)" do
+
+    end
+
+    it "returns the 7 letter word in the case of a tie" do
+      
+    end
+
+    it "returns the first word if there is a tie between score and length" do
+
+    end
   end
 end
 

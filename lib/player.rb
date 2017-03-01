@@ -2,7 +2,7 @@ require_relative 'scoring'
 
 module Scrabble
   class Player
-    attr_reader :name, :played_words, :best_word
+    attr_reader :name, :played_words , :max_score , :highest_scoring_word
 
     def initialize(name)
       @name = name
@@ -15,8 +15,8 @@ module Scrabble
 
     def play(word)
       # @total_score > 100 ? false : Scrabble::Scoring.score(word)
-      if total_score > 100
-        return false
+      if won?
+        false
       else
         @played_words << word
         Scrabble::Scoring.score(word)
@@ -34,8 +34,7 @@ module Scrabble
 
     def best_word
       # TW : Need to align this code with updated scoring code
-      @best_word = Scrabble::Scoring.highest_score_from(@played_words)
-
+      @highest_scoring_word = Scrabble::Scoring.highest_score_from(@played_words)
       @max_score
     end
 

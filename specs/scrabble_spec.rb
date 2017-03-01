@@ -32,24 +32,24 @@ describe "Wave 1" do
     Scrabble::Scoring.score("aaaaaaa").must_equal 57
   end
   #
-  # it "Finds the highest score in an array of words" do
-  #   word = Scrabble::Scoring.highest_score_from_array(["Cat", "dog", "aaaaaaa"])
-  #   word.must_equal "AAAAAAA"
-  # end
+  it "Finds the highest score in an array of words" do
+    word = Scrabble::Scoring.highest_score_from_array(["Cat", "dog", "aaaaaaa"])
+    word.must_equal "AAAAAAA"
+  end
   #
-  # it "Breaks a tie" do
-  #   word = Scrabble::Scoring.highest_score_from_array(["aaaa", "dg"])
-  #   word.must_equal "DG"
-  # end
+  it "Breaks a tie" do
+    word = Scrabble::Scoring.highest_score_from_array(["aaaa", "dg"])
+    word.must_equal "DG"
+  end
+
+  it "Breaks a tie correctly when one word is 7" do
+    word = Scrabble::Scoring.highest_score_from_array(["FUUUUUU", "ZZZZZZ"])
+    word.must_equal "FUUUUUU"
+  end
   #
-  # it "Breaks a tie correctly when one word is 7" do
-  #   word = Scrabble::Scoring.highest_score_from_array(["FUUUUUU", "ZZZZZZ"])
-  #   word.must_equal "FUUUUUU"
-  # end
-  #
-  # it "Returns first word in list if several words are same length and same score" do
-  #   word = Scrabble::Scoring.highest_score_from_array(["cat", "ZZZZ", "QQQQ"])
-  #   word.must_equal "ZZZZ"
-  # end
+  it "Returns first word in list if several words are same length and same score" do
+    word = Scrabble::Scoring.highest_score_from_array(["cat", "ZZZZ", "QQQQ"])
+    word.must_equal "ZZZZ"
+  end
 
 end

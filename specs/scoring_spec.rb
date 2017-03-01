@@ -28,15 +28,18 @@ describe "Scoring class" do
   describe "self.highest_score_from(array_of_words)" do
     it "loop through and find highest scoring word" do
       words_array = Scrabble::Scoring.highest_score_from(["andrea", "kaitlin"])
-      words_array.must_equal 61
+      words_array.must_equal 61 #seven letter word wins
+      #test will also return winning word
     end
 
     it "in tie, fewest letters wins" do
-
+      words_array = Scrabble::Scoring.highest_score_from(["aei", "ad"])
+      #"ad" should be returned. How do we make a word from array return?
     end
 
     it "7 letter word wins in a tie" do
-
+      words_array = Scrabble::Scoring.highest_score_from(["kdaaee", "kaitlin"])
+      #should return seven-letter word b/c kdaaee = 11 and kaitlin = 11
     end
 
     it "7 letter word gets 50 point bonus" do

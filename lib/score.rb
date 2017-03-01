@@ -40,12 +40,10 @@ module Scrabble
     end
 
     def self.highest_score_from(array_of_words)
-      #best_words = collections of highest scoring words pick the first one
+
       best_word = array_of_words.group_by { |word| score(word)}.max.last
         best_word.length == 1? best_word.join : break_ties(best_word)
 
     end
   end
 end
-
-#puts   Scrabble::Scoring.highest_score_from(["oxen","rat"])

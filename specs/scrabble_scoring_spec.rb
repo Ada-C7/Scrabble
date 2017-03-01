@@ -6,7 +6,7 @@ require 'minitest/skip_dsl'
 require_relative '../lib/scrabble_scoring'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-describe "Scrabble Scoring" do
+describe "Scrabble::Scoring" do
   it "creates a scrabble scoring class" do
     game = Scrabble::Scoring.new
     game.must_be_kind_of Scrabble::Scoring
@@ -16,7 +16,9 @@ describe "Scrabble Scoring" do
     game = Scrabble::Scoring.new
     game.letters.must_be_kind_of Hash
   end
+end
 
+describe "score" do
   it "Raises an ArgumentError when it's not created with alphabets" do
     proc {
       Scrabble::Scoring.new(133)

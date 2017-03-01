@@ -29,6 +29,20 @@ describe "Wave 2" do
       @player.play("hello").must_equal Scrabble::Scoring.score("hello")
     end
 
+    it "returns false if player has won" do
+      @player.play("qzqzqz")
+      @player.play("qzqzq")
+      @player.play("hi").must_equal false
+    end
+
+    it "doesn't add word to plays if player has won" do
+      @player.play("qzqzqz")
+      @player.play("qzqzq")
+      @player.play("hi")
+
+      @player.plays.length.must_equal 2
+    end
+
     describe "Player#total_score" do
       it "Returns the sum of scores of played words" do
         @player.play("green")
@@ -56,7 +70,7 @@ describe "Wave 2" do
       it "If player has exactly 100, returns false" do
         @player.play("qzqzq")
         @player.play("qzqzq")
-        
+
         @player.won?.must_equal false
       end
 

@@ -11,6 +11,7 @@ module Scrabble
     end
 
     def play(word)
+      return false if won?
       score = Scoring.score(word)
       @plays << word
       @total_score += score

@@ -74,7 +74,7 @@ module Scrabble
       if word.length < winner.length
           winner.length == 7 ? tie_winner = winner : tie_winner = word
       elsif word.length > winner.length
-          highest_scoring_word.length == 7 ? tie_winner = word : tie_winner = winner
+          word.length == 7 ? tie_winner = word : tie_winner = winner
       else
         tie_winner = winner
       end

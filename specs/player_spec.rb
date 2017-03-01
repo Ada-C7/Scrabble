@@ -37,9 +37,16 @@ describe "Scrabble::Player" do
       @player = Scrabble::Player.new("Ada")
     end
 
-    it "Raises an argument error if the player has already won" do
-      proc {@player.play("zzzzzx")
-      @player.play("zzzzzj")}.must_equal false
+    it "returns false if the player has already won" do
+      @player.play("zzzzzx")
+      @player.play("zzzzzj")
+      @player.play("lol").must_equal false
+    end
+
+    it "returns true if player has over 100 points" do
+      @player.play("zzzzzx")
+      @player.play("zzzzzj")
+      @player.won?.must_equal true
     end
 
   end
@@ -69,6 +76,26 @@ describe "Scrabble::Player" do
       @player.play("dog")
       @player.play("gator")
       @player.total_score.must_equal 16
+    end
+
+  end
+
+  describe "Scrabble::Player#highest_scoring_word and #highest_word_score" do
+    
+    before do
+        @player = Scrabble::Player.new("Ada")
+        @player.play("cat")
+        @player.play("zzzzz")
+        @player.play("horse")
+        @player.play("noon")
+    end
+
+    it "returns correct highest scoring word" do
+    @player.highest_scoring_word.must_equal "zzzzz"
+    end
+
+    it "returns correct score of highest scoring word" do
+    @player.highest_word_score.must_equal 50
     end
 
   end

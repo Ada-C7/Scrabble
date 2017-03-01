@@ -69,16 +69,3 @@ describe "Scrabble::Scoring" do
     end
   end
 end
-
-
-# word and score are pushed to @wordarray
-# it "adds new word & score element to words array" do
-#   Scrabble::Scoring.score("moo")
-# end
-# it "adds multiple word & score elements to words array" do
-# Scrabble::Scoring.score("moo")
-# Scrabble::Scoring.score("hipster")
-# end
-
-# test that highest score method calculates correctly
-# test that highest score is returned

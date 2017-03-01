@@ -20,9 +20,14 @@ module Scrabble
             end
         end
 
-        # check if player has won
-        @plays << word
-        return Scoring.score(word)
+        if won? == true
+            puts "You've already won!"
+        else
+            @plays << word
+            return Scoring.score(word)
+        end
+
+
     end
 
     def total_score
@@ -35,6 +40,14 @@ module Scrabble
       return total
     end
 
+    def won?
+        total = total_score
+        if total < 101
+            return false
+        else
+            return true
+        end
+    end
 
 
 

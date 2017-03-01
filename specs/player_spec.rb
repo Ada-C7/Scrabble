@@ -62,8 +62,12 @@ describe "Wave 2" do
           @my_player.play("cat").must_equal 5
         end
 
-        xit "doesn't execute if player has won" do
-
+        it "doesn't execute if player has won" do
+            @my_player.play("zzzzz")
+            @my_player.play("qqqq")
+            @my_player.play("kka")
+            @my_player.play("banana")
+            @my_player.plays.length.must_equal 3
         end
 
       describe "total_score method" do
@@ -77,6 +81,34 @@ describe "Wave 2" do
           @my_player.total_score.must_equal 11
         end
       end
+
+      describe "checks the won method " do
+          it "remains false under 100" do
+            @my_player.play("zzzzz")
+            @my_player.play("qqqq")
+            @my_player.play("kh")
+            @my_player.won?.must_equal false
+          end
+
+
+          it "still false when 100" do
+              @my_player.play("zzzzz")
+              @my_player.play("qqqq")
+              @my_player.play("kk")
+              @my_player.won?.must_equal false
+          end
+
+          it "is true over 100" do
+              @my_player.play("zzzzz")
+              @my_player.play("qqqq")
+              @my_player.play("kka")
+              @my_player.won?.must_equal true
+          end
+
+      end
+
+
+
 
 
     end

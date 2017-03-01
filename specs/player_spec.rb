@@ -1,14 +1,4 @@
-require 'simplecov'
-SimpleCov.start
-
-require 'minitest/autorun'
-require 'minitest/reporters'
-require 'minitest/skip_dsl'
-require_relative '../lib/player'
-require_relative '../lib/scoring'
-
-Minitest::Reporters.use!
-Minitest::Reporters::SpecReporter.new
+require_relative 'spec_helper'
 
 describe "Scrabble::Player" do
 
@@ -81,7 +71,7 @@ describe "Scrabble::Player" do
   end
 
   describe "Scrabble::Player#highest_scoring_word and #highest_word_score" do
-    
+
     before do
         @player = Scrabble::Player.new("Ada")
         @player.play("cat")

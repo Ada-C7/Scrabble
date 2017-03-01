@@ -7,6 +7,7 @@ module Scrabble
       @name = name
       @plays = [] #returns an Array of the words played by the player
       @total_score = 0 #total_score: Returns the sum of scores of played words
+      @tiles = []
     end
 
     #won?: If the player has over 100 points, returns true, otherwise returns false

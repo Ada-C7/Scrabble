@@ -14,24 +14,9 @@ describe "Wave 1" do
 
 
   describe "self.score method" do
-    # not yet a functional test
+
     it "accepts a word as input" do
       Scrabble::Scoring.score("frog")
-    end
-
-    it "stores the word as an array of characters" do
-        skip
-        char_array = Scrabble::Scoring.score("Frog")
-
-        char_array.must_equal ["f","r","o","g"]
-
-    end
-
-    it "converts the char array to a symbol array" do
-      skip
-      sym_array = Scrabble::Scoring.score("frog")
-
-      sym_array.must_equal [:f, :r, :o, :g]
     end
 
 

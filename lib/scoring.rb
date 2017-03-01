@@ -12,23 +12,14 @@ module Scrabble
         q: 10, z: 10
       }
 
-      #store word as characters in array
-      char_array = word.downcase.split("")
+      word_score = 0
 
-    # convert character array to symbol array
+      word.downcase.each_char do |c|
+        word_score += letter_scores[c.to_sym]
+      end
 
-    sym_array = []
 
-    char_array.each do |char|
-        sym_array << char.to_sym
-    end
-
-    word_score = 0
-    sym_array.each do |symbol|
-        word_score += letter_scores[symbol]
-    end
-
-    if sym_array.length == 7
+    if word.length == 7
       word_score += 50
     end
     word_score
@@ -53,7 +44,7 @@ module Scrabble
     top_scores = []
     scorepairs.each do |scorepair|
         if scorepair[1] == score_array.max
-            top_scores <<scorepair
+            top_scores << scorepair
         end
     end
 

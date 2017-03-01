@@ -30,7 +30,7 @@ module Scrabble
       return highest_words.first if highest_words.length == 1
 
       if highest_words.any? { |word| word.length == 7 }
-        highest_words.select {|word| word.length == 7}.first
+        highest_words.find {|word| word.length == 7}
       else
         highest_words.min_by {|word| word.length}
       end

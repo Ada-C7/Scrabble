@@ -22,7 +22,7 @@ module Scrabble
     end
 
     def highest_scoring_word
-    Scoring.highest_score_from(@plays)
+      Scoring.highest_score_from(@plays)
     end
 
     def highest_word_score

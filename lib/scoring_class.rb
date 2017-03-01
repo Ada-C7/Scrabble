@@ -15,6 +15,9 @@ module Scrabble
       end
 
       def self.score(word)
+
+        raise ArgumentError.new("Only Letters A-Z") if word.class != String
+
         word_score = 0
         letter_points = []
         split_word = word.upcase.chars
@@ -31,7 +34,7 @@ module Scrabble
             word_score += point
           end
         end
-        
+
         if word.length >= 7
           word_score += 50
         end

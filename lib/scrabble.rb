@@ -14,7 +14,6 @@ module Scrabble
     def self.score(word)
       word_array = word.split("")
       letter_value = 0
-
       word_score = word_array.map do | letter |
         SCORE_CHART.each do |array, value|
           if array.include?(letter.upcase)
@@ -23,7 +22,7 @@ module Scrabble
         end
       letter_value
       end
-      (word_array.length == 7) ? word_score << 50 : word_score << 0
+      word_score << (word_array.length == 7) ? 50 : 0
       return word_score.reduce(:+)
     end
 
@@ -41,7 +40,7 @@ module Scrabble
         return tie_winner.upcase
     end
 
-    
+
 
     def self.tie(word_hash, max_score)
       tie_words = Array.new

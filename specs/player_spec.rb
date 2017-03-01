@@ -22,4 +22,35 @@ describe "Wave 2" do
 
     end
 
+
+
+    describe "Play Method" do
+        it "Accepts a string" do
+        @my_player.play("torture")
+        @my_player.plays[0].must_be_instance_of String
+        end
+
+        it "Raises an Argument if argument is not a string" do
+            proc{@my_player.play(123)}.must_raise ArgumentError
+        end
+
+        it "raises an argument error if any character in string is not a letter" do
+          proc {@my_player.play("frog!") }.must_raise ArgumentError
+          proc {@my_player.play("fr3og") }.must_raise ArgumentError
+        end
+
+
+    end
+
+
+
+
+
+
+
+
+
+
+
+
 end

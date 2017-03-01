@@ -33,10 +33,15 @@ module Scrabble
           end
         end #end of meth
 
-        def score_keeper
+        def self.score_keeper
           array_of_words << word
           word_score_tally << word_score += word_score
           score_kept.zip.to_h(:array_of_words, :word_score_tally)
+
+          score_kept = array_of_words.zip(word_score_tally)
+
+          puts "#{score_kept}"
+
         end
       end
 

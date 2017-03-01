@@ -55,6 +55,23 @@ module Scrabble
       #   end
       # end
       #
+
+      def self.highest_score_from(array_of_words)
+        array_of_scores = []
+
+        array_of_words.each do |word|
+          array_of_scores << score(word)
+        end
+
+        word_score_pair = array_of_words.zip(array_of_scores).to_h
+
+        puts word_score_pair
+
+      end
+    end
+
+
+
       # def self.highest_score_from()
       #  #find longest word in array_of_words
       #  score_kept.each do |k,v|

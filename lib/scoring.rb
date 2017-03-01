@@ -1,6 +1,6 @@
 module Scrabble
     class Scoring
-        attr_reader :word_score
+        attr_accessor :word_score
         SCORE_CHART = {
             1 => %w(A E I O U L N R S T),
             2 => %w(D G),
@@ -11,7 +11,7 @@ module Scrabble
             10 => %w(Q Z)
         }.freeze
 
-        def self.score(word)
+        def score(word)
             # starting word_score is based on word.length
             if word.length < 7 && !word.empty?
                 @word_score = 0
@@ -30,7 +30,7 @@ module Scrabble
             @word_score
         end
 
-        def self.highest_score_from(array_of_words)
+        def highest_score_from(array_of_words)
             @all_scores = []
 
             array_of_words.map { |word| @all_scores << score(word) }
@@ -51,12 +51,6 @@ module Scrabble
             end
         end
       end
-
-
-
-
-
-
 
 # puts Scrabble::Scoring.score("squeeze")
 # Scrabble::Scoring.highest_score_from(%w(words tofu fhiz whiz))

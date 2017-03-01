@@ -41,7 +41,7 @@ describe "Scrabble Scoring" do
 
   end
 
-  xdescribe "self.highest_score_from method tests" do
+  describe "self.highest_score_from method tests" do
     it "Method can be called without an error" do
       Scrabble::Scoring.must_respond_to :highest_score_from
     end

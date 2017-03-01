@@ -13,15 +13,19 @@ module Scrabble
     end
 
     def play(word)
-      # return false if won?
+      return false if won?
       @plays << word
       score = Scrabble::Scoring.score(word)
       total_score(score)
-      return score 
+      return score
     end
 
     def total_score(score)
       @total += score
+    end
+
+    def won?()
+      @total >= 100 ? true : false
     end
 
   end

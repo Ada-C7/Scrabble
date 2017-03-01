@@ -10,7 +10,8 @@ module Scrabble
       "U"=>4, "V"=>2, "W"=>2, "X"=>1,
       "Y"=>2, "Z"=>1
     }
-
+    attr_reader :available_letters
+    
     def initialize
       @available_letters = STARTING_TILE_COUNT.map {
         |key, value| (key * value).chars

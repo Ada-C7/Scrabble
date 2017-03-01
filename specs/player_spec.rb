@@ -82,6 +82,11 @@ describe "Wave 2" do
 
         @player.total_score.must_equal Scrabble::Scoring.score("green") + Scrabble::Scoring.score("hello")
       end
+
+      it "returns 0 if total_score is called when no words have been played" do
+        @player.total_score.must_equal 0
+      end
+
     end
 
     describe "Player#won" do
@@ -120,6 +125,10 @@ describe "Wave 2" do
         @player.highest_scoring_word.must_equal "HELLO"
       end
 
+      it "Raises argument error if highest_scoring_word is called when no words have been played" do
+        proc {@player.highest_scoring_word}.must_raise ArgumentError
+      end
+
       it "Returns the highest word's score" do
         @player.play("hello")
         @player.play("green")
@@ -127,6 +136,11 @@ describe "Wave 2" do
 
         @player.highest_word_score.must_equal Scrabble::Scoring.score("HELLO")
       end
+
+      it "Raises argument error if highest_word_score is called when no words have been played" do
+        proc {@player.highest_word_score}.must_raise ArgumentError
+      end
+
     end
   end
 end

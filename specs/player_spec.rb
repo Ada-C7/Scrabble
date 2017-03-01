@@ -27,8 +27,16 @@ describe "Wave 2" do
 
     it "returns score of the word played" do
       @player.play("hello").must_equal Scrabble::Scoring.score("hello")
-
     end
+
+  describe "Player#total_score" do
+    it "Returns the sum of scores of played words" do
+      @player.play("green")
+      @player.play("hello")
+      
+      @player.total_score.must_equal Scrabble::Scoring.score("green") + Scrabble::Scoring.score("hello")
+    end
+  end
 
   end
 end

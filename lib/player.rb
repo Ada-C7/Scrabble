@@ -2,16 +2,20 @@ require_relative 'scoring'
 
 module Scrabble
   class Player
-    attr_reader :name, :plays
+    attr_reader :name, :plays, :total_score
 
     def initialize(name)
       @name = name
       @plays =[]
+      @total_score = 0
     end
 
     def play(word)
-      @plays << word.upcase
-      return Scoring.score(word)
+      score = Scoring.score(word)
+      @plays << word
+      @total_score += score
+
+      return score
     end
   end
 end

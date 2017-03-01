@@ -53,12 +53,17 @@ describe "Scrabble::Scoring" do
 
     it "picks 7 letter word if there is a point tie" do
       array = ["aaaaaad", "zzzzzx"]
-      Scrabble::Scoring.highest_score_from(array).must_equal "aaaaaaa"
+      Scrabble::Scoring.highest_score_from(array).must_equal "aaaaaad"
     end
 
     it "picks first word as winner if letters and point are equal" do
       array = ["dog", "gog"]
+      array2 = ["gog", "dog"]
+
+
       Scrabble::Scoring.highest_score_from(array).must_equal "dog"
+      Scrabble::Scoring.highest_score_from(array2).must_equal "gog"
+
     end
 
 

@@ -64,18 +64,21 @@ module Scrabble
       end
 
       if winning_words.length > 1
-        return winning_words.min_by { |word| word.length}
-        unless
-          winning_words.any? { |word| word.length == 7 }
+        if winning_words.any? { |word| word.length == 7 }
           return winning_words.find { |word| word.length == 7 }
+        else
+          return winning_words.min_by { |word| word.length}
         end
-      else
-        return winning_words[0]
+
+        #   return winning_words.min_by { |word| word.length}
+        #   unless
+        #     winning_words.any? { |word| word.length == 7 }
+        #     return winning_words.find { |word| word.length == 7 }
+        #   end
+        # else
+        #   return winning_words[0]
       end
-      # if score.max happens > 1
-      #   return score.max "word" #return the word
-      # else
-      #   return word.length.min # smallest word
+      return winning_words[0]
     end
 
 
@@ -91,4 +94,5 @@ end
 
 
 
-puts Scrabble::Scoring.score("ooooooooo")
+puts Scrabble::Scoring.score("aaaaaad")
+puts Scrabble::Scoring.score("zzzzzx")

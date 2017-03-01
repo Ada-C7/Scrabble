@@ -7,12 +7,19 @@ Minitest::Reporters.use!
 
 describe "Scoring class" do
   it "Creates new instance of Scoring class" do
-      Scrabble::Scoring.new.class.must_equal Scrabble::Scoring
+    Scrabble::Scoring.new.class.must_equal Scrabble::Scoring
   end
 
   it "Values and letters are stored in a hash" do
     Scrabble::Scoring::LETTERS_VALUES.class.must_equal Hash
   end
+
+  describe "Scoring#input_correct" do
+    it "must return false if input has digits" do
+      Scrabble::Scoring.input_correct?("word1").must_equal false
+    end
+  end
+
 
   describe "Scoring#score(word)" do
     it "score returns an Integer" do
@@ -45,6 +52,24 @@ describe "Scoring class" do
     end
 
   end # end of score method
+
+  describe "Scoring#find_max" do
+    it "returns an array" do
+      my_strings = ["Hello", "quizz"]
+      Scrabble::Scoring.find_max(my_strings).class.must_equal Array
+    end
+
+    it "returns the word with the max score" do
+      my_strings = ["Hello", "quizz"]
+      Scrabble::Scoring.find_max(my_strings).must_equal ["quizz"]
+    end
+
+    it "returns the words with the max score" do
+      my_strings = ["Hello", "quizz", "qqqd"]
+      Scrabble::Scoring.find_max(my_strings).must_equal ["quizz", "qqqd"]
+    end
+
+  end
 
   describe "Scoring#highest_score_from" do
     it "returning a string" do

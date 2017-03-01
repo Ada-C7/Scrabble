@@ -26,7 +26,7 @@ module Scrabble
     def self.score(word)
       raise ArgumentError.new("Argument must be an array") if word.class != String
 
-      raise ArgumentError.new("Words with just letters characters") if !input_correct?(word) 
+      raise ArgumentError.new("Words with just letters characters") if !input_correct?(word)
       word_array = word.upcase.split("")
       total = 0
       word_array.each do |letter|
@@ -40,14 +40,7 @@ module Scrabble
       return total
     end
 
-    def self.highest_score_from(array_of_words)
-      raise ArgumentError.new("Argument must be an array") if array_of_words.class != Array
-      array_of_words.each do |word|
-        if word.class != String
-          raise ArgumentError.new("Elements in array must be strings")
-        end
-      end
-
+    def self.find_max(array_of_words)
       max = 0
       max_words = []
       array_of_words.each do |word|
@@ -59,12 +52,7 @@ module Scrabble
           max_words = [word]
         end
       end
-
-      if max_words.length > 1
-        return tie(max_words)
-      else
-        return max_words[0]
-      end
+      max_words
     end
 
     def self.tie(max_words)
@@ -77,6 +65,21 @@ module Scrabble
         end
     end
 
+    def self.highest_score_from(array_of_words)
+      raise ArgumentError.new("Argument must be an array") if array_of_words.class != Array
+      array_of_words.each do |word|
+        if word.class != String
+          raise ArgumentError.new("Elements in array must be strings")
+        end
+      end
+      max_words = find_max(array_of_words)
+      if max_words.length > 1
+        return tie(max_words)
+      else
+        return max_words[0]
+      end
+    end
+
 
 
 
@@ -85,6 +88,6 @@ module Scrabble
 end # end of module
 
 #array_of_words = ["dddddx", "kkdddd"]
-# puts Scrabble::Scoring.score("344")
+puts Scrabble::Scoring.score("quizz")
 #puts Scrabble::Scoring.score("Qqqqqqqqf")
 #puts Scrabble::Scoring.highest_score_from(array_of_words).class

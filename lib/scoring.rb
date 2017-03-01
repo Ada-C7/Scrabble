@@ -16,17 +16,17 @@ module Scrabble
 
     def self.highest_score_from(array_of_words)
       score_array = array_of_words.map {|str| self.score(str)}
-      word_hash = Hash[array_of_words.zip score_array]
+      word_score_hash = Hash[array_of_words.zip score_array]
 
-      max_word_array = word_hash.select { |k, v| v == word_hash.values.max }.keys
-      max_word_array_7 = max_word_array.find_all {|str| str.length == 7}
-      shortest_length = max_word_array.map { |str| str.length}.min
-      max_word_array_shortest = max_word_array.find_all { |str| str.length == shortest_length}
+      highest_score_words = word_score_hash.select { |k, v| v == word_score_hash.values.max }.keys
+      words_with_length_7 = highest_score_words.find_all {|str| str.length == 7}
+      shortest_length = highest_score_words.map { |str| str.length}.min
+      words_with_shortest_length = highest_score_words.find_all { |str| str.length == shortest_length}
 
-      if max_word_array_7.length == 0
-        return max_word_array_shortest[0]
+      if words_with_length_7.length == 0
+        return words_with_shortest_length[0]
       else
-        return max_word_array_7[0]
+        return words_with_length_7[0]
       end
     end
 

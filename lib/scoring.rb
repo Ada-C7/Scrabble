@@ -19,11 +19,13 @@ module Scrabble
       end
     end
 
+    # think of better name
     def self.test_for_word_characters?(word)
-      /[a-zA-Z]*/.match(word) == nil ? false : true
+       /\b[^\d\W]+\b/.match(word) == nil ? false : true
     end
 
     def self.score(word)
+      # and add a condition for empty strings - or figure out a better regex
       unless word.class == String && test_for_word_characters?(word)
         raise ArgumentError.new "Input word must be a string"
       end
@@ -47,4 +49,4 @@ end
 # print Scrabble::Scoring.test_for_word_characters?("i")
 # puts Scrabble::Scoring.score("hello")
 # puts Scrabble::Scoring.score("123")
-puts Scrabble::Scoring.test_for_word_characters?("123")
+# puts Scrabble::Scoring.test_for_word_characters?("123")

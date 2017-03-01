@@ -10,7 +10,6 @@ describe "Player is a class" do
   it "must be type of player" do
     player = Scrabble::Player.new("name")
     player.must_be_instance_of Scrabble::Player
-
   end
 
   describe "initialize" do

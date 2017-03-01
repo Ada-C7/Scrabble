@@ -9,6 +9,12 @@ require_relative '../lib/player'
 
 describe "Player Class" do
 
+  describe "Module Scrabble, Player Class" do
+    it "exists" do
+      # skip
+      Scrabble::Player.class.must_be_kind_of Class
+    end
+  end
 
 
 

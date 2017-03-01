@@ -3,7 +3,7 @@ SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
-require_relative '../lib/scoring.rb'
+require_relative '../lib/player.rb'
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
@@ -32,24 +32,17 @@ describe "Player" do
 
     it "Raises an ArgumentError if not string" do
       proc {
-        Scrabble::Player.new(bfhdsfbd)
+        Scrabble::Player.new(4587)
       }.must_raise ArgumentError
     end
 
     it "Contains an array of the words played by the player" do
-      plays = []
       @player.must_respond_to :plays
       @player.plays.must_be_kind_of Array
-      @player.plays.must_equal plays
+      @player.plays.must_equal []
     end
 
-    it "Contains an array of strings" do
-      plays = [ldkf, s;dlfk, jfg]
-      proc {
-        @player.plays
-      }.must_raise ArgumentError
-    end 
-
+    
   end
 
 end

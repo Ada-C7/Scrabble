@@ -8,24 +8,29 @@ describe "Wave 1" do
 #do we need initialize?
 
   describe "Score method" do
-    it "total score for given word" do
-      @test_1 = Scrabble::Scoring.score("apple")
-      @test_1.must_equal 9
-    end
 
     it "word input must be string" do
       # skip
-      word = "apple"
-      @test_1 = Scrabble::Scoring.score(word)
-      @test_1.class.must_equal String #Proc test, raise arugment error
+      proc {
+        Scrabble::Scoring.score(666)
+      }.wont_be_kind_of Numeric
     end
 
     it "make sure word is case sensitive" do
-      skip
+      # skip
+      proc {
+        Scrabble::Scoring.score("apple".downcase)
+      }.wont_equal "APPLE"
     end
 
     it "word should return correct score" do
-      skip
+      # skip
+      @test_1 = Scrabble::Scoring.score("apple")
+      @test_1.must_equal 9
+    end
+    it "seven letter word gets 50 bonus points" do
+      @test_1 = Scrabble::Scoring.score("jazzing")
+      @test_1.must_equal 83
     end
   end
 

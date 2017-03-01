@@ -33,12 +33,18 @@ module Scrabble
 
     def self.score(word)
       score = 0
+      raise ArgumentError.new ("Word must be string") if word.is_a? Numeric
       word_array = []
       word = word.upcase
-      word.split('').map { |s| word_array << s } #raise argument error
+      raise ArgumentError.new ("Word must be uppercase") if word != word.upcase
+
+      word.split('').map { |s| word_array << s }
 
       word_array.each do |letter|
         score += @letter_hash[letter]
+      end
+      if word_array.length == 7
+        score += 50
       end
       return score
     end

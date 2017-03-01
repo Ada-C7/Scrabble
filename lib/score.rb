@@ -29,30 +29,27 @@ module Scrabble
 
       score = word.reduce(score) {|val, letter| val + self.calculate_letter(letter)}
 
-
     end
     # else
     #   return 0
 
-    def self.break_ties(word1, word2)
+    def self.break_ties(array_of_words)
 
-      if word1.length > word2.length
-        return word2
-      end
-      return word1
+      array_of_words.min_by { |word| word.length}
+
     end
 
-    def self.highest_score_from(array_of_words)
-      #best_words = collections of highest scoring words pick the first one
-      if array_of_words.length == 1
-        return array_of_words.join
-      else
-        word1 = array_of_words[0]
-        word2 = array_of_words[1]
-        return break_ties(word1, word2)
-      end
-    end
+    # def self.highest_score_from(array_of_words)
+    #   #best_words = collections of highest scoring words pick the first one
+    #   if array_of_words.length == 1
+    #     return array_of_words.join
+    #   else
+    #     word1 = array_of_words[0]
+    #     word2 = array_of_words[1]
+    #     return break_ties(word1, word2)
+    #   end
+    # end
   end
 end
 
-puts   Scrabble::Scoring.highest_score_from(["oxen","rat"])
+#puts   Scrabble::Scoring.highest_score_from(["oxen","rat"])

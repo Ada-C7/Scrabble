@@ -1,8 +1,12 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require_relative '../lib/score.rb'
+
 
 describe "class Scoring" do
   # it "reads in DICTIONARY" do
@@ -49,39 +53,39 @@ describe "class Scoring" do
 
     describe "break_ties" do
 
-      it "returns the shortest word when the shortest word is second" do
-        Scrabble::Scoring.break_ties("tepee", "cat").must_equal "cat"
-        # it takes 2 words as params
+      it "returns the shortest word when the shortest word is last" do
+        Scrabble::Scoring.break_ties(["tepee", "bird", "cat"]).must_equal "cat"
+          #it takes 2 words as params
         # it compares the length of two words if word1 is bigger than word2, it returns word1 else, word2.
       end
 
       it "returns the shortest word when the shortest word is first" do
-        Scrabble::Scoring.break_ties("cat","tepee", ).must_equal "cat"
+        Scrabble::Scoring.break_ties(["cat","tepee"]).must_equal "cat"
       end
 
       it "returns the first word when the words are of equal length" do
-        Scrabble::Scoring.break_ties("cat","dog", ).must_equal "cat"
+        Scrabble::Scoring.break_ties(["cat","dog"]).must_equal "cat"
       end
     end
 
 
-    describe "self.highest_score_from" do
-      it "returns a single word if the array contains one word" do
-        Scrabble::Scoring.highest_score_from(["bat"]).must_equal "bat"
-      end
-
-      it "returns the highest scoring word when given two words" do
-        Scrabble::Scoring.highest_score_from(["oxen","rat"]).must_equal "oxen"
-      end
-
-      it "returns the shortest word as the best word if there is more than one best word" do
-        Scrabble::Scoring.highest_score_from(["bat","bird"]).must_equal "bat"
-      end
-
-      it "returns the shortest word as the best word if there is more than one best word" do
-        Scrabble::Scoring.highest_score_from(["bat","bird"]).must_equal "bat"
-      end
-      # if returns the first word if there are more than one word with same length.
-    end
+    # describe "self.highest_score_from" do
+    #   it "returns a single word if the array contains one word" do
+    #     Scrabble::Scoring.highest_score_from(["bat"]).must_equal "bat"
+    #   end
+    #
+    #   it "returns the highest scoring word when given two words" do
+    #     Scrabble::Scoring.highest_score_from(["oxen","rat"]).must_equal "oxen"
+    #   end
+    #
+    #   it "returns the shortest word as the best word if there is more than one best word" do
+    #     Scrabble::Scoring.highest_score_from(["bat","bird"]).must_equal "bat"
+    #   end
+    #
+    #   it "returns the shortest word as the best word if there is more than one best word" do
+    #     Scrabble::Scoring.highest_score_from(["bat","bird"]).must_equal "bat"
+    #   end
+    #   # if returns the first word if there are more than one word with same length.
+    # end
   end
 end

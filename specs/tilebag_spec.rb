@@ -7,8 +7,8 @@ require 'minitest/skip_dsl'
 require_relative '../lib/tilebag'
 
 describe 'tilebag#initialize' do
-    it 'creates a bag of tiles' do
-    end
+  it 'creates a bag of tiles' do
+  end
 end
 
 describe 'tilebag#draw_tiles(num)' do

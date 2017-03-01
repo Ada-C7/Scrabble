@@ -1,5 +1,4 @@
 module Scrabble
-
   class Scoring
     LETTER_SCORES = {
       1 => %w(A E I O U L N R S T),

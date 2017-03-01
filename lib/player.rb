@@ -1,10 +1,11 @@
-
 module Scrabble
   class Player
 
     attr_reader :name
 
     def initialize(name)
+      raise ArgumentError.new "Name must be string" if name.class != String
+
       @name = name
     end
 

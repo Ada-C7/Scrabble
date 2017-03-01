@@ -1,12 +1,13 @@
 require_relative 'spec_helper'
 require_relative '../lib/tilebag'
+#require 'pry'
 
 describe Scrabble::TileBag do
+  before do
+    @tile = Scrabble::TileBag.new
+  end
 
   describe "#initialize" do
-    before do
-      @tile = Scrabble::TileBag.new
-    end
 
     it "Should set up the instance with a collection of all default tiles" do
       a = [
@@ -30,15 +31,16 @@ describe Scrabble::TileBag do
     end
   end
 
-  describe "drw_tiles" do
+  describe "#draw_tiles" do
 
     it "Returns a collection of random tiles. " do
-
 
     end
 
     it "Removes the tiles from the default set" do
-
+      chosen_tiles = @tile.draw_tiles(3)
+      #@tile.draw_tiles(chosen_tiles)
+      @tile.available_letters.length.must_equal(98-3)
 
     end
 
@@ -47,6 +49,8 @@ describe Scrabble::TileBag do
   describe "#tiles_remaining" do
 
     it "returns the number of tiles remaining in the bag" do
+      chosen_tiles = @tiles.draw_tiles(1)
+
 
     end
 

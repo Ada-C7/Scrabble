@@ -11,7 +11,7 @@ module Scrabble
       "Y"=>2, "Z"=>1
     }
     attr_reader :available_letters
-    
+
     def initialize
       @available_letters = STARTING_TILE_COUNT.map {
         |key, value| (key * value).chars
@@ -23,7 +23,6 @@ module Scrabble
     end
 
     def tiles_remaining
-      @tile_counts.values.reduce(:+)
-    end
+      @avialble_letters.count
   end
 end

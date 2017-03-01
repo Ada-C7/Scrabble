@@ -51,8 +51,6 @@ module Scrabble
             return scorepairs[0][0]
         end
 
-
-
       # handle ties
       scorepairs.each do |scorepair|
           if scorepair[0].length == 7

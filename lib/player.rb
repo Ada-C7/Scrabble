@@ -7,6 +7,7 @@ module Scrabble
     def initialize(name)
         @name = name
         @plays = []
+        @scores = []
     end
 
     def play(word)
@@ -24,21 +25,27 @@ module Scrabble
             puts "You've already won!"
         else
             @plays << word
-            return Scoring.score(word)
+            @scores << Scoring.score(word)
+            return @scores[-1]
         end
 
 
     end
 
     def total_score
-      # total = @plays.reduce {|sum, word| sum + Scoring.score(word)}
       total = 0
-      @plays.each do |word|
-        total += Scoring.score(word)
+
+      @scores.each do |score|
+          total +=score
       end
+    #   total = @scores.reduce(:+)
+    #   total = @scores.inject { |total,score| total + score }
 
       return total
     end
+
+
+
 
     def won?
         if total_score < 101

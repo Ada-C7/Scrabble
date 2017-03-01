@@ -1,9 +1,7 @@
-require 'minitest/autorun'
-require 'minitest/reporters'
-require 'minitest/skip_dsl'
-require_relative '../lib/scrabble.rb'
+require_relative 'spec_helper'
+require_relative '../lib/scrabble'
 
-Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
+
 
 describe "Scoring" do
 
@@ -28,8 +26,6 @@ describe "Scoring" do
       proc {
         Scrabble::Scoring.score("Hello mom")
       }.must_raise ArgumentError
-
-
     end
 
     it "7-letter words must get 50 more points" do
@@ -58,6 +54,18 @@ describe "highest_score_from" do
     @array_of_words = %w(owl chicken duck emu kiwi)
   end
 
+  it "must be an Array that has at least one word" do
+    proc {
+      Scrabble::Scoring.highest_score_from([]).must_raise ArgumentError.new
+    }
+  end
+
+  it "must be an Array" do
+    proc { Scrabble::Scoring.highest_score_from("word").must_raise ArgumentError.new }
+    proc { Scrabble::Scoring.highest_score_from(56).must_raise ArgumentError.new }
+    proc { Scrabble::Scoring.highest_score_from("").must_raise ArgumentError.new}
+  end
+
   it "Returns the String with highest score" do
     Scrabble::Scoring.highest_score_from(@array_of_words).must_equal "chicken"
   end
@@ -72,8 +80,13 @@ describe "highest_score_from" do
     Scrabble::Scoring.highest_score_from(seven).must_equal "aaaaaad"
   end
 
+  it "returns first 7-letter word" do
+    more_sevens = %w(aaaaaad zzzzzj aaaaatg)
+    Scrabble::Scoring.highest_score_from(more_sevens).must_equal "aaaaaad"
+  end
+
   it "First word wins if all highest-score words have same length" do
     same = %w(so tins toes it to)
-    Scrabble::Scoring.highest_score_from(same).must_equal "toes"
+    Scrabble::Scoring.highest_score_from(same).must_equal "tins"
   end
 end

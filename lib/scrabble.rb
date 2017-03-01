@@ -34,6 +34,11 @@ module Scrabble
     end #end of score method
 
     def self.highest_score_from(array_of_words)
+      raise ArgumentError "Input must be Array" if array_of_words.class != Array
+
+      raise ArgumentError "Must include at least one word" if array_of_words.length == 0
+
+        
       scores = array_of_words.map { |word| Scoring.score(word) }
 
       words_and_scores = array_of_words.zip(scores).to_h
@@ -54,11 +59,7 @@ module Scrabble
       if winning_words.length == 1 #only one winner
         return winning_words.join
       elsif winning_words.any? { |word| word.length == 7 }
-        if winning_words.length == 1
-          return winning_words.find { |word| word.length == 7 }
-        else
-          return array_of_words.find { |word| word.length == 7 && winning_words.include?(word) }
-        end
+        return array_of_words.find { |word| word.length == 7 && winning_words.include?(word) }
       elsif (winning_words.select { |word| word.length == min_word_length}).length > 1 #more than one word of wining length
         return array_of_words.find { |word| word.length == min_word_length && winning_words.include?(word) }
 

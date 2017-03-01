@@ -31,3 +31,5 @@ module Scrabble
      end
 
 end
+
+puts sample = Scrabble::Scoring.score("aaa").class

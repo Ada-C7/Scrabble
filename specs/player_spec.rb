@@ -32,4 +32,37 @@ describe "Player" do
       }.must_raise ArgumentError
     end
   end
+
+  describe "play" do
+    it "returns score for the given word" do
+      player = Scrabble::Player.new("Ada")
+      played_word =  player.play("QUICKLY")
+      played_word.must_be_instance_of Integer
+      played_word.must_equal 75
+    end
+
+    it "updates the plays array" do
+      player = Scrabble::Player.new("Ada")
+      player.play("Ring")
+      player.play("Hello")
+      player.plays.must_include "Hello"
+      player.play("Plane")
+      player.plays.must_equal ["Ring", "Hello", "Plane"]
+    end
+
+    it "returns 'false' if player has over 100 points" do
+      player = Scrabble::Player.new("Ada")
+      player.play("QUICKLY")
+      player.play("TORRENT")
+      player.play("CAT").must_equal false
+    end
+
+    it "returns 'false' if player has 100 points"  do
+      player = Scrabble::Player.new("Ada")
+      player.play("QUICKLY")
+      player.play("EXEQUY")
+      player.play("CAT").must_equal false
+    end
+  end
+
 end

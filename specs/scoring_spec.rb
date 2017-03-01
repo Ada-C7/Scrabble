@@ -11,19 +11,30 @@ Minitest::Reporters::SpecReporter.new
 describe "Wave 1" do
   describe "self.score(word)" do
     it "verifies that a numeric score is returned" do
+
       score = Scrabble::Scoring.score("potato")
       score.must_be_kind_of Integer
+
     end
 
     it "returns the total score of the given word" do
 
+        score = Scrabble::Scoring.score("hat")
+        score.must_equal 6
+
     end
 
     it "applies the bonus if there are 7 letters" do
+      bonus = 50
+      total_score = Scrabble::Scoring.score("classroom") + bonus
+
 
     end
 
     it "provides the total score including bonus if there are 7 letters" do
+      bonus = 50
+      total_score = Scrabble::Scoring.score("classroom") + bonus
+      total_score.must_equal 63 #expecting 13, bonus method undefined
 
     end
   end

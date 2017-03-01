@@ -52,15 +52,20 @@ module Scrabble
       # hopefully return array of scores
       # match indexes to get highest scoring word
 
-      array_of_scores = []
-      array_of_words.each do |word|
-        work_damnit = self.score(word)
-        # work_damnit = word.length
-        puts word
-        array_of_scores << work_damnit
-      end
-      return array_of_scores
+      array_of_scores = array_of_words.map { |word| self.score(word) }
+        array_of_scores
     end
+
+
+      # array_of_scores = []
+      # array_of_words.each do |word|
+      #   work_damnit = self.score(word)
+      #   # work_damnit = word.length
+      #   puts word
+      #   array_of_scores << work_damnit
+      # end
+      # # return array_of_scores
+    # end
 
   end
 end

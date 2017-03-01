@@ -48,16 +48,11 @@ module Scrabble
                     return winning_names.min_by(&:length)
                   end
                 end
+
               end
 
-
-
-
           end
-
-
      end
-
 end
 
 array = %w(A letter means that a used all the tiles)
@@ -67,6 +62,6 @@ sample = Scrabble::Scoring
 # puts sample.class
 # puts sample
 # puts sample.inspect
- # puts sample.score("cat")
+puts sample.score("cat")
 
 puts sample.highest_score_from(array).inspect

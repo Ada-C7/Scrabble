@@ -26,15 +26,20 @@ describe "Scrabble::Player" do
 
   end
 
-  describe "plays method" do
+  describe "plays method (changed to accessor call)" do
+
+    before do
+      @my_player = Scrabble::Player.new("you123***")
+    end
+
     it "returns an array" do
-      @my_player.Scrabble::Player.plays.must_be_instance_of Array
+      @my_player.Scrabble::Player.words_played.must_be_instance_of Array
     end
 
     it "returns an array of words played by the player" do
       @my_player.Scrabble::Player.play("abc")
       @my_player.Scrabble::Player.play("def")
-      @my_player.Scrabble::Player.plays.must_equal ["abc", "def"]
+      @my_player.Scrabble::Player.words_played.must_equal ["abc", "def"]
     end
   end
 
@@ -42,9 +47,9 @@ describe "Scrabble::Player" do
 
     it "does not allow player to play if points will go over 100 after play" do
       @winner = Scrabble::Player.new("winner")
-      4.times do @winner.Scrabble::Player.play("zzz")
+      4.times do @winner.play("zzz")
 
-        proc { @winner.Scrabble::Player.play("zzz")}.must_raise ArgumentError
+        proc { @winner.play("zzz")}.must_raise ArgumentError
       end
 
       it "returns the score of the game" do

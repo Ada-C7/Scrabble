@@ -1,12 +1,11 @@
 require_relative 'scoring'
 
 module Scrabble
-  class Player
-    attr_reader :name, :plays, :won?
+  class Player < Scoring
+    attr_reader :name, :plays
     def initialize(name)
       @name = name
       @plays = [""]
-      # should won? instead be a method? will this instance variable work?
     end
 
     def won?
@@ -14,30 +13,28 @@ module Scrabble
     end
 
     def play(word)
-      return false if @won?
-      # raise ArgumentError.new "This requires a string" if word.class != string
+      return false if won?
+      raise ArgumentError.new "This requires a string" if word.class != String
       @plays << word
-      return Scrabble::Scoring.score(word)
+      return self.class.score(word)
     end
 
     def total_score
       total = 0
-      @plays.each { |word| total += score(word) }
-      # @won? = true if total > 100
+      @plays.each { |word| total += self.class.score(word) }
       return total
     end
 
     def highest_scoring_word
-      return Scrabble::Scoring.highest_word(@plays)
+      return self.class.highest_word(@plays)
     end
 
     def highest_word_score
-      return Scrabble::Scoring.score(highest_scoring_word)
+      return self.class.score(highest_scoring_word)
     end
 
   end
 end
 
-ginny = Scrabble::Player.new
-puts ginny.play("apple")
-puts ginny.total_score
+ginny = Scrabble::Player.new("ginny")
+puts ginny.play("word")

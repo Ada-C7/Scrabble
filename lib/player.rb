@@ -1,7 +1,7 @@
 require_relative "scrabble"
 
 module Scrabble
-  class player
+  class Player
     attr_reader :name, :plays
 
     def initialize(name)

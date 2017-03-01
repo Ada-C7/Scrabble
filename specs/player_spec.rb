@@ -72,6 +72,20 @@ describe "Total Score" do
 end
 
 describe "Won" do
+  before do
+    @player = Scrabble::Player.new('Ada')
+    @player.score = 130
+  end
+
+  it "Returns true if score is over 100" do
+  @player.won?.must_equal true
+  end
+
+  it "Returns false if score is not over 100" do
+    @player.score = 50
+    @player.won?.must_equal false
+  end
+
 end
 
 describe "Highest Scoring Word and Word Score" do

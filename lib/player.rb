@@ -27,7 +27,7 @@ class Player
   end
 
   def won?
-    return true if @score >= 100
+    return ((@score >= 100) ? true : false)
   end
 
   def highest_scoring_word

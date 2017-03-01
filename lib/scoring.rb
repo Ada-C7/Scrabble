@@ -39,25 +39,26 @@ module Scrabble
         max_score = score_array.max_by {|score, word| score}[1]
         # return shortest_word(max_score)
         sorted_array = max_score.sort_by {|word| word.length}
-      sorted_array.each do |x|
-        if x.length == 7
-          return x
-        end
-      end
-
-      end
-
-      def self.shortest_word(word)
-        s = word.each {|x| x.length }
-        shortest_word = s.inject do |memo, s|
-          if memo.length < s.length
-            memo
-          else
-            s
+        sorted_array.each do |word|
+          # word.length == 7 ? word : nil
+          if word.length == 7
+            return word
           end
         end
-        return shortest_word
+        return sorted_array.first
       end
+
+      # def self.shortest_word(word)
+      #   s = word.each {|x| x.length }
+      #   shortest_word = s.inject do |memo, s|
+      #     if memo.length < s.length
+      #       memo
+      #     else
+      #       s
+      #     end
+      #   end
+      #   return shortest_word
+      # end
 
 
 

@@ -38,19 +38,19 @@ describe "Wave 1" do
       Scrabble::Scoring.highest_score_from(word_array).must_equal "coconut"
     end
 
-    it "if tied, prefers the word with the fewest letters" do
-      word_array = %w(hello helm)
-      Scrabble::Scoring.highest_score_from(word_array).must_equal "helm"
-    end
-
-    it "if multiple words, chooses the one with 7 letters with bonus" do
-      word_array = %w(xylophone qqqqqq scoring generosity)
-      Scrabble::Scoring.highest_score_from(word_array).must_equal "scoring"
-    end
-
-    it "if multiple words of same score and length, choose first one in supplied list" do
-      word_array = %w(xylophone coconut scoding generosity)
-      Scrabble::Scoring.highest_score_from(word_array).must_equal "scoding"
-    end
+    # it "if tied, prefers the word with the fewest letters" do
+    #   word_array = %w(hello helm)
+    #   Scrabble::Scoring.highest_score_from(word_array).must_equal "helm"
+    # end
+    #
+    # it "if multiple words, chooses the one with 7 letters with bonus" do
+    #   word_array = %w(xylophone qqqqqq scoring generosity)
+    #   Scrabble::Scoring.highest_score_from(word_array).must_equal "scoring"
+    # end
+    #
+    # it "if multiple words of same score and length, choose first one in supplied list" do
+    #   word_array = %w(xylophone coconut scoding generosity)
+    #   Scrabble::Scoring.highest_score_from(word_array).must_equal "scoding"
+    # end
   end
 end

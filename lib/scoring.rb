@@ -37,23 +37,25 @@ module Scrabble
         end
         # Now need to look up max score, and then choose the word with the minimum length
         max_score = score_array.max_by {|score, word| score}[1]
-        shortest_word(max_score)
-        def shortest_word(word)
-          s = word.each {|x| x.length }
-          shortest_word = s.inject do |memo , s|
-            if memo.length < s.length
-              memo
-            else
-              s
-            end
-          end
-          puts shortest_word
-        end
-
-
-
-
-
-
+        return shortest_word(max_score)
       end
+
+      def self.shortest_word(word)
+        s = word.each {|x| x.length }
+        shortest_word = s.inject do |memo, s|
+          if memo.length < s.length
+            memo
+          else
+            s
+          end
+        end
+        return shortest_word
+      end
+
+
+
+
+
+
     end
+  end

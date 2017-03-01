@@ -29,10 +29,10 @@ module Scrabble
               letter_points << num_key
             end
           end
-
+        end
           letter_points.each do |point|
             word_score += point
-          end
+
         end
 
         if word.length >= 7

@@ -1,6 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/reporters'
-require 'minitest/skip_dsl'
+require_relative 'spec_helper'
 require_relative '../lib/scoring.rb'
 
 describe "Scoring is a class" do
@@ -71,9 +69,8 @@ describe "Scoring is a class" do
       Scrabble::Scoring.highest_score_from(%w(cat dog piglet oink)).must_be_kind_of String
     end
 
-
-    it "If tie includes a seven letter word then the seven letter word wins" do
-      Scrabble::Scoring.highest_score_from(%w(iii aaa daaaaaa qzqqqj aaaa)).must_equal "daaaaaa"
+    it "picks the 7-letter word in a tie" do
+      Scrabble::Scoring.highest_score_from(%w(qqqqqj daaaaaa i)).must_equal "daaaaaa"
     end
 
     it "If tie for highest score, fewer letters wins" do

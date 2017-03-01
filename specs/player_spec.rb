@@ -1,11 +1,9 @@
-require 'minitest/autorun'
-require 'minitest/reporters'
-require 'minitest/skip_dsl'
-require_relative '../lib/scoring.rb'
+require_relative 'spec_helper'
+require_relative '../lib/player.rb'
 
 describe "Player is a class" do
   it "must be type of player" do
-    player = Scrabble::Player.new
+    player = Scrabble::Player.new("")
     player.must_be_instance_of Scrabble::Player
   end
 

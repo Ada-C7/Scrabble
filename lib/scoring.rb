@@ -11,8 +11,9 @@ module Scrabble
       10 => %w(Q Z)
     }
 
-    attr_reader :letter_values
+    attr_reader :letter_values, :highest_scores
     def initialize
+
 
     end
 
@@ -58,25 +59,31 @@ module Scrabble
 
       max_score = scores_hash.values.max
 
-      highest_scores = scores_hash.select {|word, score| score == max_score}
+      @highest_scores = scores_hash.select {|word, score| score == max_score}
 
-      word_lengths = highest_scores.keys.each { |word| word.length }
+      word_lengths = @highest_scores.keys.map { |word| word.length }
 
       winner = ""
 
       #If only one highest score => winner
-      if highest_scores.length == 1
-        winner = highest_scores.keys.first
+      if @highest_scores.length == 1
+        # puts "in no ties"
+        winner = @highest_scores.keys.first
       else
         if word_lengths.max == 7
-          winner = highest_scores.find {|word, score| score == max_score && word.length == 7}
+          # puts "in max word length is 7"
+
+          winner = @highest_scores.keys.max { |word| word.length }
         else
-          winner = highest_scores.keys.min { |word| word.length }
+          # puts "in max word length is < 7"
+          winner = @highest_scores.keys.min { |word| word.length }
         end
       end
     end
   end
 end
+
+# puts Scrabble::Scoring.highest_score_from(%w(qqqqqj daaaaaa i))
 
 # puts Scrabble::Scoring.score("word")
 

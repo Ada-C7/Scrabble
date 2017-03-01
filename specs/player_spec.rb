@@ -55,6 +55,26 @@ describe "Wave 2" do
       @player.plays.length.must_equal 2
     end
 
+    it "doesn't allow words > 7 letters" do
+      proc { @player.play("discombobulated") }.must_raise ArgumentError
+    end
+
+    it "doesn't allow blank words" do
+      proc { @player.play("") }.must_raise ArgumentError
+    end
+
+    it "forces words to be only made up of letters" do
+      proc { @player.play("he11o")}.must_raise ArgumentError
+      proc { @player.play("I'm a word") }.must_raise ArgumentError
+    end
+
+    it "allows both uppercase/lowercase words" do
+      @player.play("SETTING")
+      @player.play("setting")
+
+      @player.plays.length.must_equal 2
+    end
+
     describe "Player#total_score" do
       it "Returns the sum of scores of played words" do
         @player.play("green")
@@ -83,6 +103,10 @@ describe "Wave 2" do
         @player.play("qzqzq")
         @player.play("qzqzq")
 
+        @player.won?.must_equal false
+      end
+
+      it "Returns false if player hasn't played any words" do
         @player.won?.must_equal false
       end
     end

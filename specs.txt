@@ -17,9 +17,9 @@ Wave 2 specs
 3. play(word) returns an integers if won? == false
 4. play(word) returns false if won? == true
 5. total_score returns correct score
-6. highest_scoring_word does not return multiple values
+6. highest_scoring_word returns the correct value
 7. highest_scoring_word returns a string
 8. highest_word_score returns an integer
-9. highest_word_score returns a single value
+9. highest_word_score returns the correct value
 10.
 11.

@@ -36,7 +36,7 @@ module Scrabble
           end
         end
         # Now need to look up max score, and then choose the word with the minimum length
-        return score_array.max_by {|word, score| score}[0]
+        return score_array.max_by {|score, word| score}[1]
       end
     end
   end

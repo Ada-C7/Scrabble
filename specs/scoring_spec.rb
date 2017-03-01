@@ -67,7 +67,6 @@ describe Scrabble::Scoring do
             @new_scrabble.highest_score_from(array_of_words).must_equal expected
         end
 
-        # This is not working right now...
         it 'Tie between winning 7-letter word, return first one' do
             array_of_words = %w(zzzz qqqqqqq zzz zzzz zzzzzzz) # 40, 120, 30, 40, 120
             expected = 'qqqqqqq'

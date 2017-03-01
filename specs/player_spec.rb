@@ -58,8 +58,14 @@ describe Scrabble::Player do
 
     describe '#total_score' do
         it 'returns .total_score as an Integer' do
+          player = Scrabble::Player.new('Tofu')
+          %w(zip sqeeze whiz jerky pig).each { |word| player.play(word) }
+          player.total_score.must_be_kind_of Integer
         end
         it 'returns sum of scores of played word' do
+          player = Scrabble::Player.new('Tofu')
+          %w(zip sqeeze whiz).each { |word| player.play(word) }
+          player.total_score.must_equal 89
         end
     end
 

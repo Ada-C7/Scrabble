@@ -25,8 +25,8 @@ describe Scrabble::Scoring do
                proc { @my_word.score(1) }.must_raise ArgumentError
           end
 
-          it "raises an argument error if string contains something other than letters" do
-               proc { @my_word.score("1ab3c4") }.must_raise ArgumentError
+          # it "raises an argument error if string contains something other than letters" do
+          #      proc { @my_word.score("1ab3c4") }.must_raise ArgumentError
           end
 
           it  "doesn't allow a word longer than seven tiles" do
@@ -43,10 +43,10 @@ describe Scrabble::Scoring do
           #
           # end
           #
-          # it  "returns the total score (integer) for the given word" do
-          #      proc { @my_word.score("aaa") }.must_equal 3
-          #      proc { @my_word.score("aaa") }.must_be_kind Integer
-          # end
+          it  "returns the total score (integer) for the given word" do
+               proc { @my_word.score("aaa") }.must_equal 3
+               proc { @my_word.score("aaa") }.must_be_kind Integer
+          end
           #
           # it  "calculates points according to the scoring chart" do
           # end

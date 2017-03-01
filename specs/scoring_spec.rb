@@ -55,15 +55,16 @@ describe "highest_score_from" do
   end
 
   it "must be an Array that has at least one word" do
+    a = []
     proc {
-      Scrabble::Scoring.highest_score_from([]).must_raise ArgumentError.new
-    }
+      Scrabble::Scoring.highest_score_from(a)
+    }.must_raise ArgumentError
   end
 
   it "must be an Array" do
-    proc { Scrabble::Scoring.highest_score_from("word").must_raise ArgumentError.new }
-    proc { Scrabble::Scoring.highest_score_from(56).must_raise ArgumentError.new }
-    proc { Scrabble::Scoring.highest_score_from("").must_raise ArgumentError.new}
+    proc { Scrabble::Scoring.highest_score_from("word")}.must_raise ArgumentError
+    proc { Scrabble::Scoring.highest_score_from(56)}.must_raise ArgumentError
+    proc { Scrabble::Scoring.highest_score_from("")}.must_raise ArgumentError
   end
 
   it "Returns the String with highest score" do

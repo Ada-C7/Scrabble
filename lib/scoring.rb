@@ -31,27 +31,26 @@ module Scrabble
       if highest_word[1] != nil
         highest_word = self.tiebreaker(highest_word)
       end
-      return highest_word.to_s
+      return highest_word[0]
     end
 
     def self.tiebreaker(array)
       winner = ""
       array.each_with_index do |word, index|
         if word.length == 7
-          winner = word
-         return winner.to_s
+         return winner = [word]
        elsif word.length < array[index - 1].length
             winner = word
         else
             winner = array[0]
         end
       end
-      return winner.to_s
+      return [winner]
     end
 
   end
 end
 
-# puts Scrabble::Scoring.score("Tehut")
-# puts Scrabble::Scoring.score("POH")
+puts Scrabble::Scoring.score("GGGGGG")
+puts Scrabble::Scoring.score("IIIIIII")
 puts Scrabble::Scoring.highest_word(%w(GGGGGG IIIIIII))

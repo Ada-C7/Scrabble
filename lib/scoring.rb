@@ -35,13 +35,12 @@ module Scrabble
       return word_score
     end
 
-    # method to add a word and its score (as an array) to the @wordarray (from which high score will be calculated)
-
     # method to iterate through wordarray and return word with the highest score
     def self.highest_score_from(array_of_words)
       raise ArgumentError.new("That's not an array") if array_of_words.class != Array
-      highest_score = 0
       winner = ""
+
+      highest_score = 0
       array_of_words.each do |word|
         word_score = self.score(word)
         if word_score > highest_score
@@ -51,6 +50,21 @@ module Scrabble
           self.tiebreaker(word, winner)
         end
       end
+
+        # attempt at adding words + scores to a hash to keep
+        # could be used in a method to add a word and its score (as an array) to the @wordarray (from which high score will be calculated)
+        # winner_score = 0
+        # scores = {}
+        # array_of_words.each do |word|
+        #   word_score = self.score(word)
+        #   scores[word] = word_score
+        # end
+        # scores.each do|word, score|
+        #   winner = word if score == scores.values.max
+        #   winner_score = scores.values.max
+        # end
+        # scores.find_all { |word, score| score == winner_score }
+
       return winner
     end
 

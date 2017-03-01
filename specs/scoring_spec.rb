@@ -73,10 +73,6 @@ describe "Scrabble::Scoring" do
       Scrabble::Scoring.highest_score_from(words).must_equal "klutz"
     end
 
-
   end
-
-
+  
 end
-
-    #puts Scrabble::Scoring.highest_score_from(words)

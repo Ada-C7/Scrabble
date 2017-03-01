@@ -12,6 +12,9 @@ module Scrabble
 
       def self.score(word)
         @word_score = 0
+        if word.length == 7
+          @word_score += 50
+        end
         word.each_char do |letter|
           @letter = letter.upcase
           SCORE.each do |score, letter|
@@ -23,11 +26,13 @@ module Scrabble
         return @word_score
       end
 
-
-      # def self.highest_score_from(array_of_words)
-      # end
-
+      def self.highest_score_from(array_of_words)
+        score_array = {}
+        array_of_words.each do |word|
+          score_array[word] = score(word)
+        end
+        # return max_score = score_array[1].max
+        return score_array.max_by {|word, score| score}[0]
+      end
     end
   end
-
-  Scrabble::Scoring.score("potato")

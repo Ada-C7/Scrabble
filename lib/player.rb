@@ -10,7 +10,13 @@ module Scrabble
     end
 
     def play(word)
+      word.split("").each do |letter|
+        Scrabble::Scoring.check_input(letter.capitalize)
+      end
       @plays << word
+      won?(@total_score) ? false : "not false"
+      @total += Scrabble::Scoring.score(word)
+
     end
 
     def won?(score)

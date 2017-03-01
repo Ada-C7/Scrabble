@@ -9,9 +9,12 @@ module Scrabble
     #   # if the entered word is valid", " we enter the score. Otherwise", " we return 0
     # end
 
-    def self.calculate_letter(letter)
+    def self.check_input(letter)
       raise ArgumentError.new("We can only can only calculate points for a letter") if !(("A".."Z").include? letter.capitalize)
+    end
 
+    def self.calculate_letter(letter)
+      check_input(letter)
       SCORE_CHART[letter.capitalize.ord-65][1..-1].to_i
 
 
@@ -42,7 +45,7 @@ module Scrabble
     def self.highest_score_from(array_of_words)
 
       best_word = array_of_words.group_by { |word| score(word)}.max.last
-        best_word.length == 1? best_word.join : break_ties(best_word)
+      best_word.length == 1? best_word.join : break_ties(best_word)
 
     end
   end

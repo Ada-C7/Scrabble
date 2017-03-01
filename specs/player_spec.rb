@@ -5,7 +5,9 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
-require_relative '../lib/player.rb'
+require_relative '../lib/score'
+require_relative '../lib/player'
+
 
 describe "class Player" do
   describe "initialize" do
@@ -55,7 +57,7 @@ describe "class Player" do
 
   describe "#highest_scoring_word" do
     it "returns the highest scoring played word" do
-      player_1 = Scrabble::Player.new("Bob")
+      player_1 = Scrabble::Player.new("Bob",["ok","dog"])
       player_1.highest_scoring_word.must_be_kind_of String
     end
 
@@ -64,18 +66,26 @@ describe "class Player" do
       player_1.highest_scoring_word.must_equal "ox"
     end
 
+    it "returns the shortest word as the best word if there tie score" do
+      Scrabble::Scoring.highest_score_from(["bat","rents"]).must_equal "bat"
+    end
+
+    it "returns the first word as the best word if the two words with the same length tie" do
+      Scrabble::Scoring.highest_score_from(["bat","cat"]).must_equal "bat"
+    end
   end
 
   describe "#highest_word_score" do
     it "returns the #highest_scoring_word score" do
-      player_1 = Scrabble::Player.new("Bob")
-      player_1.highest_word_score.must_be_kind_of Integer
-    end
+      player_1 = Scrabble::Player.new("Bob",["Cat",
+        "Dog"])
+        player_1.highest_word_score.must_be_kind_of Integer
+      end
+      #
+      # it "returns the score for the word that has the highest score" do
+      #   player_1 = Scrabble::Player.new("Bob", ["ox", "rat"])
+      #   player_1.highest_word_score.must_equal 9
 
-    it "returns the score for the word that has the highest score" do
-      player_1 = Scrabble::Player.new("Bob", ["ox", "rat"])
-      player_1.highest_word_score.must_equal 9
-
+      #end
     end
   end
-end

@@ -18,14 +18,15 @@ describe "Score Method for Scoring Class" do
   end
 
   it "Handles if the word passed has a space (two words)" do
-    skip #unknown outcome
+    skip 
+    Scrabble::Scoring::score(@edge_word)#unknown outcome
   end
 
 
   it "Score Method outputs integer" do
     puts Scrabble::Scoring::score(@word).must_be_instance_of Integer
   end
-  
+
   it "Score method will total the value of each letter in the word" do
 
     Scrabble::Scoring::score(@word).must_equal 10

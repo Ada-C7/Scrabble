@@ -2,15 +2,18 @@ require_relative 'spec_helper'
 require_relative '../lib/player'
 
 describe 'Player' do
+
   describe "name" do
     it "returns the name" do
-
+      Scrabble::Player.new("Ada")
+      @name.must_equal "Ada"
     end
   end
 
   describe "plays" do
     it "returns an Array of the words played" do
-
+      words_played = %w ("hip", "thorax", "clavicle", "philtrum")
+      @plays.must_be_instance_of Array
     end
 
   end
@@ -52,4 +55,4 @@ describe 'Player' do
 
     end
   end
-end 
+end

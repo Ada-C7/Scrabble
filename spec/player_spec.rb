@@ -66,7 +66,8 @@ describe "Player" do
     end
 
     it "returns false if player has already won" do
-      skip
+      @player.total_score(100)
+      @player.play("hello").must_equal false
     end
   end
 
@@ -101,5 +102,5 @@ describe "Player" do
       @player.total_score(50)
       @player.won?.must_equal false
     end
-    
+  end
 end

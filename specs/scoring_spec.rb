@@ -59,21 +59,30 @@ describe "Scoring" do
   end
 
   describe "highest_score_from" do
-    it "raises an argument error if the input is not an array of strings" do
-      #check that input is an array
-      #check that each element in the array is a string
-    end
 
-    it "raises an arugment error if a given word contains characters other than a to z" do
+    it "raises an arugment error" do
+      #check that input is an array
+      proc {
+        Scrabble::Scoring.highest_score_from("BOOK")
+      }.must_raise ArgumentError
+      #check that each element in the array is a string
+      proc {
+        Scrabble::Scoring.highest_score_from([4, "BOOK"]) #try loop (test each element)
+      }.must_raise ArgumentError
+      #given word contains characters other than a to z
+      proc {
+        Scrabble::Scoring.highest_score_from(["BOOK", "657!"]) #try loop (test each element)
+      }.must_raise ArgumentError
 
     end
 
     it "returns a string" do
-
+      word = Scrabble::Scoring.highest_score_from(["Yellow", "PINK"])
+      word.must_be_instance_of String
     end
 
     it "returns the word with the hightest score" do
-
+     word = Scrabble::Scoring.highest_score_from(["Yellow", "PINK", "PURPLE"])
     end
 
     it "returns the word with fewest letters if there is a tie (no 7 letter words)" do
@@ -85,7 +94,7 @@ describe "Scoring" do
     end
 
     it "returns the first word if there is a tie between score and length" do
-
+      word = Scrabble::Scoring.highest_score_from(["Yellow", "Purple", "PINK"])
     end
   end
 end

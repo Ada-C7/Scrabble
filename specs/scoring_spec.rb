@@ -20,21 +20,15 @@ describe Scrabble::Scoring do
         end
 
         it 'Raises error for words with numbers' do
-            proc {
-              @new_scrabble.score('word4')
-            }.must_raise ArgumentError
+            proc { @new_scrabble.score('word4') }.must_raise ArgumentError
         end
 
         it 'Raises error for words with special characters' do
-            proc {
-              @new_scrabble.score('w#ord')
-            }.must_raise ArgumentError
+            proc { @new_scrabble.score('w#ord') }.must_raise ArgumentError
         end
 
         it 'Raises error for words with spaces' do
-            proc {
-              @new_scrabble.score('w or d')
-            }.must_raise ArgumentError
+            proc { @new_scrabble.score('w or d') }.must_raise ArgumentError
         end
 
         it 'Argument is case insensitive' do

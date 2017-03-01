@@ -68,4 +68,40 @@ describe "Scrabble::Scoring" do
 
 
   end
+
+
 end
+
+describe "Scrabble::Player" do
+
+  before do
+    @person = Srabble::Player.new("you123***")
+  end
+
+  it "person is a string without numbers or symbols"
+  if @person == String #comparing numbers to string?
+    run code
+  elsif
+    it "raises argument error if name contains symbols" do
+      @person.include?("***")
+      raises ArgumentError
+    elsif
+      it "raises argument error if name contains numbers" do
+        @person.include(123)
+        raises ArgumentError
+      end
+
+
+      describe "initialize" do
+
+        before do
+          @my_player = Scrabble::Player.new("Bob")
+        end
+
+        it "must be an instance of Player class" do
+          @my_player.must_be_instance_of Scrabble::Player
+        end
+      end
+
+
+    end

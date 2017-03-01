@@ -4,7 +4,6 @@ require 'minitest/skip_dsl'
 require_relative '../lib/scoring'
 Minitest::Reporters.use!
 
-
 describe "Scoring class" do
   it "Creates new instance of Scoring class" do
     Scrabble::Scoring.new.class.must_equal Scrabble::Scoring
@@ -19,7 +18,6 @@ describe "Scoring class" do
       Scrabble::Scoring.input_correct?("word1").must_equal false
     end
   end
-
 
   describe "Scoring#score(word)" do
     it "score returns an Integer" do

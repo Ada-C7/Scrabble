@@ -1,5 +1,4 @@
 module Scrabble
-
   class Scoring
     LETTERS_VALUES = {
       1 => %w(A E I O U L N R S T),
@@ -53,7 +52,6 @@ module Scrabble
           max_words = [word]
         end
       end
-
       max_words
     end
 

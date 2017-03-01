@@ -42,16 +42,30 @@ module Scrabble
 
       word_with_max_score = words_and_scores.select { |k, v| v == max_score }
 
-      if word_with_max_score.length == 1
+      if word_with_max_score.length == 1 #only one winner
         return word_with_max_score.keys.join
       elsif word_with_max_score.keys.any? { |word| word.length == 7 }
-        return (word_with_max_score.keys.select { |word| word.length == 7 }).join
-      # else
-      #   poss_words = array_of_words.select { |word| word_with_max_score.keys.include? }
-      #   return poss_words[0]
-      else
+        poss_words = array_of_words.select { |word| word_with_max_score.keys.length == 7}
+        return poss_words[0]
+        # return (word_with_max_score.keys.select { |word| word.length == 7 }).join
+      elsif
         return word_with_max_score.keys.min_by { |word| word.length }
+      else # word_with_score.keys.length <- lengths are the same
+        poss_words = array_of_words.select { |word| word_with_max_score.keys.include? }
+        return poss_words[0]
       end
+
+      # Order for tiebreaker conditionals.
+      # if only one winner
+      #     pick that winner
+      # elsif (more than one winner)...there is a winner with 7 letters?
+      #     if just one...that's the winner.
+      #     else...pick the one that's first in the array
+      # elsif (more than one winner, no 7-letter words)...there is more than one winner that ties for shortest length word
+      #     pick the one that is first in the array
+      # else (more than word, no 7-letter words, not more than one of shortest length)
+      #     pick the shortest word
+
     end
 
   end #end of class

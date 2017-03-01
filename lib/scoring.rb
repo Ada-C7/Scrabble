@@ -8,14 +8,18 @@ module Scrabble
       turn_value = 0
       string.each_char do |letter|
         SCORES.each do |point, value|
-          if value.include?(letter)
-            turn_value += point
-          end
+          # Anna refactored
+          # if value.include?(letter)
+          #   turn_value += point
+          # end
+          turn_value += point if value.include?(letter)
         end
       end
-      if string.length == 7
-        turn_value += 50
-      end
+      # Anna refactored
+      turn_value += 50 if string.length == 7
+      # if string.length == 7
+      #   turn_value += 50
+      # end
       return turn_value
     end
 
@@ -28,9 +32,11 @@ module Scrabble
           highest_word << word
         end
       end
-      if highest_word[1] != nil
-        highest_word = self.tiebreaker(highest_word)
-      end
+      # Anna refactored
+      highest_word = self.tiebreaker(highest_word) if highest_word[1] != nil
+      # if highest_word[1] != nil
+      #   highest_word = self.tiebreaker(highest_word)
+      # end
       return highest_word[0]
     end
 
@@ -38,11 +44,11 @@ module Scrabble
       winner = ""
       array.each_with_index do |word, index|
         if word.length == 7
-         return winner = [word]
-       elsif word.length < array[index - 1].length
-            winner = word
+          return winner = [word]
+        elsif word.length < array[index - 1].length
+          winner = word
         else
-            winner = array[0]
+          winner = array[0]
         end
       end
       return [winner]

@@ -55,11 +55,7 @@ describe "Player Class" do
       end
 
   end
-end
-
-
-
-
+  
   describe "total_score method" do
     it "returns the correct score" do
       ginny = Scrabble::Player.new
@@ -98,11 +94,4 @@ end
       ginny.highest_word_score.must_equal 64
     end
   end
-
-
-
-
-
-
-
 end

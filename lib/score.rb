@@ -9,10 +9,10 @@ module Scrabble
     #   # if the entered word is valid", " we enter the score. Otherwise", " we return 0
     # end
 
-    def calculate_letter(letter)
-      raise ArgumentError.new("We can only can only calculate points for a letter") if !(("A".."Z").include? letter)
+    def self.calculate_letter(letter)
+      raise ArgumentError.new("We can only can only calculate points for a letter") if !(("A".."Z").include? letter.capitalize)
 
-      SCORE_CHART[0][1..-1].to_i
+      SCORE_CHART[letter.capitalize.ord-65][1..-1].to_i
 
 
       # look up each letter from score chart", " get the total point value
@@ -20,31 +20,39 @@ module Scrabble
     end
 
     def self.score(word)
-      if word.split("")
-
-        return score(word)
+      word = word.split("")
+      if word.length > 7
+        score = 50
       else
-        return 0
+        score = 0
       end
-    end
 
-    def break_ties(word1,  word2)
+      score = word.reduce(score) {|val, letter| val + self.calculate_letter(letter)}
+
+
+    end
+    # else
+    #   return 0
+
+    def self.break_ties(word1, word2)
+
       if word1.length > word2.length
         return word2
-      else
-        return word1
       end
+      return word1
     end
 
     def self.highest_score_from(array_of_words)
       #best_words = collections of highest scoring words pick the first one
-      if best_words.length > 1
-        best_words = break_ties(word1, word2)
+      if array_of_words.length == 1
+        return array_of_words.join
       else
-        return best_words.join(break_ties)
+        word1 = array_of_words[0]
+        word2 = array_of_words[1]
+        return break_ties(word1, word2)
       end
-
     end
-
   end
 end
+
+puts   Scrabble::Scoring.highest_score_from(["oxen","rat"])

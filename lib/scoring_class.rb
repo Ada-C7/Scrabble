@@ -11,17 +11,14 @@ module Scrabble
       8 => ["J", "X"],
       10 => ["Q","Z"] }
 
-      def initialize
-      end
 
       def self.score(word)
 
-        raise ArgumentError.new("Only Letters A-Z") if (/\d|\W/) === word
+        raise ArgumentError.new("Only Letters A-Z") if word.class != String
 
         word_score = 0
         letter_points = []
         split_word = word.upcase.chars
-
 
         split_word.each do |letter|
           SCORE_CHART.each_pair do |num_key, array_of_letters|
@@ -29,11 +26,11 @@ module Scrabble
               letter_points << num_key
             end
           end
-        end
 
           letter_points.each do |point|
             word_score += point
           end
+        end
 
         if word.length >= 7
           word_score += 50
@@ -42,19 +39,7 @@ module Scrabble
         return word_score
       end #end of meth
 
-      #   def self.score_keeper
-      #     array_of_words = [] #repeat
-      #     array_of_words << word #repeat
-      #
-      #     self.score(words)
-      #     word_score_tally << word_score += word_score
-      #     score_kept = array_of_words.zip(word_score_tally)
-      #     #score_kept.zip.to_h(:array_of_words, :word_score_tally)
-      #     #puts "#{score_kept}" test
-      #
-      #   end
-      # end
-      #
+
 
       def self.highest_score_from(array_of_words)
         array_of_scores = []
@@ -64,11 +49,12 @@ module Scrabble
         end
 
         word_score_pair = array_of_words.zip(array_of_scores).to_h
-
-        puts word_score_pair
+        puts "This is word_score_pair #{word_score_pair}"
+        winner =  word_score_pair.max_by {|k,v| v}
+        puts "this is the #{winner[0]}"
 
       end
-    end
+
 
 
       # def self.highest_score_from()

@@ -36,13 +36,41 @@ describe "Player" do
       }.must_raise ArgumentError
     end
 
-    it "Contains an array of the words played by the player" do
+    it "creates an empty array that will hold the players words" do
       @player.must_respond_to :plays
       @player.plays.must_be_kind_of Array
       @player.plays.must_equal []
     end
-
-    
   end
 
+  describe "Player#play" do
+
+    before do
+      @name = "Ada"
+      @player = Scrabble::Player.new(@name)
+    end
+
+    it "returns a number(the score)" do
+      @player.score("hello").must_be_kind_of Integer
+    end
+
+    it "returns the appropriate score" do
+      @player.score("hello").must_equal 8
+      @player.score("algebra").must_equal 60
+    end
+
+    # might ahve to break this spec up 
+    it "adds the word to the plays array" do
+      @palyer.plays.length.must_equal 0
+      @player.score("hello")
+      @player.plays.length.must_equal 1
+      @player.score("algebra")
+      @player.plays.length.must_equal 2
+      @player.plays.must_equal ["hello", "algebra"]
+    end
+
+    it "returns false if player has already won" do
+      skip
+    end
+  end
 end

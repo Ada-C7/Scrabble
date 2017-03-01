@@ -10,17 +10,18 @@ describe "Scoring class" do
   end
 
   describe "self.score method" do
-    it "Compares word to score chart by each letter" do
+    it "Compares word to score chart by each letter and adds up the score" do
       word = Scrabble::Scoring.score("ruby")
       word.must_equal 9
     end
-
-    it "Adds up the score" do
-
-    end
+    #
+    # it "Adds up the score" do
+    #
+    # end
 
     it "Adds 50 bonus points for a seven-letter word" do
-
+      word = Scrabble::Scoring.score("kaitlin")
+      word.must_equal 61
     end
   end
 

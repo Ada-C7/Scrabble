@@ -29,6 +29,9 @@ module Scrabble
      puts "whaddup"
      @word_array = word.split("")
      @score_array = []
+     if @word_array.length == 7
+       @score_array << 50
+     end
 
      @word_array.each do |letter|
        SCORE_CHART.each do |score, letter_array|

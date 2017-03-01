@@ -71,4 +71,18 @@ describe "Scrabble::Player" do
     new_player.won?.must_equal false
   end
 
+  it "highest_scoring_word returns the highest scoring played word" do
+    new_player = Scrabble::Player.new("Dan")
+    new_player.play("zoology")
+    new_player.play("subject")
+    new_player.highest_scoring_word.must_equal "zoology"
+  end
+
+  it "highest_word_score returns the highest_scoring_word score" do
+    new_player = Scrabble::Player.new("Dan")
+    new_player.play("zoology")
+    new_player.play("subject")
+    new_player.highest_word_score.must_equal 70
+  end
+
 end

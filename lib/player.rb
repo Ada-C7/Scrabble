@@ -6,7 +6,6 @@ module Scrabble
     def initialize(name)
       @name = name
       @plays = []
-      @total_score = 0
     end
 
 
@@ -16,16 +15,21 @@ module Scrabble
         Scrabble::Scoring.score(word)
     end
 
-
     def total_score
       scores_array = @plays.map {|word| Scrabble::Scoring.score(word)}
-      @total_score = scores_array.sum
-      return @total_score
+      return scores_array.sum
     end
-
 
     def won?
       (total_score > 100) ? true : false
+    end
+
+    def highest_scoring_word
+      Scrabble::Scoring.highest_score_from(@plays)
+    end
+
+    def highest_word_score
+      Scrabble::Scoring.score(highest_scoring_word)
     end
 
   end

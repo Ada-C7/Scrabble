@@ -1,6 +1,5 @@
 module Scrabble
 
-  # related to Play class, to be created
   class Scoring
 
     # constant to hold letter-points

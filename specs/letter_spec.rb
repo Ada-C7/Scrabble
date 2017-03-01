@@ -13,7 +13,7 @@ describe Scrabble::Letter do
 
      before do
 
-          @my_letter = Scrabble::Letter.new("l")
+          @my_letter = Scrabble::Letter.new("L")
      end
 
 

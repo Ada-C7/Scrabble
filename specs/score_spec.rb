@@ -57,4 +57,9 @@ describe Scrabble::Scoring do
      end
 
 
+     #describe self.highest_score_from(words) do
+
+
+     #end
+
 end

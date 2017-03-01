@@ -9,5 +9,9 @@ module Scrabble
     end
 
 
+def play(word)
+  @plays << word
+end
+
   end
 end

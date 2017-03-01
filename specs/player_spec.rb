@@ -24,5 +24,10 @@ describe "Scrabble::Player" do
     new_player.plays.must_be_instance_of Array
   end
 
+  it "plays returns an array of words played" do
+    new_player = Scrabble::Player.new("Dan")
+    new_player.play("word")
+    new_player.plays.must_include "word"
+  end
 
 end

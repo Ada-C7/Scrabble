@@ -10,7 +10,7 @@ module Scrabble
             @word_scores = []
             @total_score = 0
             @highest_word_score = 0
-      end
+        end
 
         def play(word)
             @plays << word
@@ -45,7 +45,7 @@ module Scrabble
 
         def score(word)
             super(word)
-         end
+        end
     end
 end
 

@@ -22,7 +22,13 @@ describe "Wave 2" do
   describe "Player#play" do
     it "Adds the input word to the plays Array" do
       @player.play("hello")
-      @player.plays.must_include "hello"
+      @player.plays.must_include "HELLO"
     end
+
+    it "returns score of the word played" do
+      @player.play("hello").must_equal Scrabble::Scoring.score("hello")
+
+    end
+
   end
 end

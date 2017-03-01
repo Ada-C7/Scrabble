@@ -30,7 +30,15 @@ describe "Tilebag is a class" do
 
 
   describe "draw_tiles(num)" do
-    it "" do
+    it "Raise error if number parameter not given" do
+
+    end
+    
+    it "Returns an array of string with length num" do
+
+    end
+
+    it "Updates @tile_set correctly" do
 
     end
   end

@@ -32,7 +32,6 @@ module Scrabble
       "Z" => 1
     }
 
-
     def initialize
       @tile_set = new_tileset(ORIGINAL_TILE_SET)
 
@@ -49,7 +48,10 @@ module Scrabble
     end
 
     def draw_tiles(num)
-      # returns a collection of random tiles, removes the tiles from the default set
+      ## returns a collection of random tiles, removes the tiles from the default set
+      # Random selection - num is how many tiles user wants
+      # Remove random selection from  @tile_set
+
     end
 
     def tiles_remaining

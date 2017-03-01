@@ -8,18 +8,10 @@ module Scrabble
       turn_value = 0
       string.each_char do |letter|
         SCORES.each do |point, value|
-          # Anna refactored
-          # if value.include?(letter)
-          #   turn_value += point
-          # end
           turn_value += point if value.include?(letter)
         end
       end
-      # Anna refactored
       turn_value += 50 if string.length == 7
-      # if string.length == 7
-      #   turn_value += 50
-      # end
       return turn_value
     end
 
@@ -32,11 +24,7 @@ module Scrabble
           highest_word << word
         end
       end
-      # Anna refactored
       highest_word = self.tiebreaker(highest_word) if highest_word[1] != nil
-      # if highest_word[1] != nil
-      #   highest_word = self.tiebreaker(highest_word)
-      # end
       return highest_word[0]
     end
 

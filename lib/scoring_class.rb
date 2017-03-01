@@ -15,12 +15,11 @@ module Scrabble
       end
 
       def self.score(word)
-        array_of_words = []
         word_score = 0
         letter_points = []
+        split_word = word.upcase.chars
 
-        array_of_words << word
-        split_word = word.chars
+
         split_word.each do |letter|
           SCORE_CHART.each_pair do |num_key, array_of_letters|
             if array_of_letters.include? letter
@@ -29,30 +28,45 @@ module Scrabble
           end
 
           letter_points.each do |point|
-            return word_score += point
+            word_score += point
           end
-        end #end of meth
-
-        def self.score_keeper
-          array_of_words << word
-          word_score_tally << word_score += word_score
-          score_kept.zip.to_h(:array_of_words, :word_score_tally)
-
-          score_kept = array_of_words.zip(word_score_tally)
-
-          puts "#{score_kept}"
-
         end
-      end
+        
+        if word.length >= 7
+          word_score += 50
+        end
 
+        return word_score
+      end #end of meth
 
-      def self.highest_score_from(word_score_tally)
-        #.length or max_by to find
-        word_score_tally.max_by
-        #longest word in array_of_words
-        #return longest word
+      #   def self.score_keeper
+      #     array_of_words = [] #repeat
+      #     array_of_words << word #repeat
+      #
+      #     self.score(words)
+      #     word_score_tally << word_score += word_score
+      #     score_kept = array_of_words.zip(word_score_tally)
+      #     #score_kept.zip.to_h(:array_of_words, :word_score_tally)
+      #     #puts "#{score_kept}" test
+      #
+      #   end
+      # end
+      #
+      # def self.highest_score_from()
+      #  #find longest word in array_of_words
+      #  score_kept.each do |k,v|
+      #    return array_of_words.word_score_tally.max_by
+      #  end
+      #  #in the event of a tie
+      #  if score_kept.include?(duplicate_score)
+      #    #word.chars.min_by to find least tiles used
+      #     #unless tiles_used >= 7, wins, also adds a bonus
+      #      #elsif score_kept.score_kept
+      #       #score_kept.find(winners) break tie (word.score    word.length match) use 1st returned TRUE
+      #
+      #
+      #
+      # end
 
-      end
-
-    end #end of class
-  end #end of mod
+  end #end of class
+end #end of mod

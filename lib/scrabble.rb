@@ -41,7 +41,29 @@ module Scrabble
         raise ArgumentError.new("Invalid data type entered for array of words: all elements must be string.") if word !~ /^[a-zA-Z]{0,7}$/
       end
 
-      score_length_pair = []
+      #
+      array_of_scores = array_of_words.map { |word| Scrabble::Scoring.score(word)}
+       score_word_pairs = array_of_scores.zip(array_of_words)
+       max_score = 0
+       max_count = 0
+       score_word_pairs.each do |score_word_pair|
+         if score_word_pair[0] > max_score
+           max_score = score_word_pair[0]
+           max_count += 1
+         end
+       end
+
+      # if max_count == 1
+      #   word paired with
+      # else #multiple max score
+      #   # max_by length == 7
+      #   # length < 7
+      #   least length
+      # end
+      #
+
+
+
       return ""
     end
   end

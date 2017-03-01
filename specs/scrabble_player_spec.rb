@@ -46,18 +46,42 @@ describe "Scrabble::Player" do
 
   describe "play(word) method" do
 
+    winner = Scrabble::Player.new("winner")
+    4.times do winner.play("zzz")
+    end
+
     it "does not allow player to play if points will go over 100 after play" do
-      @winner = Scrabble::Player.new("winner")
-      4.times do @winner.play("zzz")
+      proc { winner.play("zzz")}.must_raise ArgumentError
+    end
 
-        proc { @winner.play("zzz")}.must_raise ArgumentError
+    it "returns the score of the word" do
+      loser = Scrabble::Player.new("loser")
+      loser.play("aaa").must_equal 3
+    end
+
+  end
+
+  describe "highest_scoring_word" do
+
+    before do
+      winner = Scrabble::Player.new("winner")
+      2.times do winner.play("zzz")
       end
-
-      it "returns the score of the game" do
-        @my_player.play("aaa").must_equal 3
-
+      2.times do winner.play("aaa")
       end
     end
 
   end
+  it "returns the highest scoring word" do
+
+    winner.highest_scoring_word.must_equal "zzz"
+  end
+
+  describe "highest_word_score" do
+    it "returns the score of the highest scoring word" do
+      winner.highest_word_score.must_equal 30
+    end
+
+  end
+
 end

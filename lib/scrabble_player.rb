@@ -1,17 +1,17 @@
 require_relative '../lib/scrabble'
 
 module Scrabble
-
-  puts "Please enter your username (characters only): "
-  name = gets.chomp.to_s
+  #
+  # puts "Please enter your username (characters only): "
+  # name = gets.chomp.to_s
 
   class Player
     attr_accessor :words_played
     attr_reader :name
 
     def initialize(name)
-      @name = name
-      @words_played = []
+      @name = name.to_s
+      @words_played = [""]
       @score_tracker = [0]
     end
 
@@ -31,6 +31,7 @@ module Scrabble
 
 
     def play(word)
+
       if @score_tracker.inject { |sum, n| sum + n } > 100
         raise ArgumentError.new "Error. You cannot play anymore. Please restart game."
       else
@@ -39,14 +40,18 @@ module Scrabble
         return Scrabble::Scoring.score(word)
       end
 
+
+    end
+
+    def highest_scoring_word
+      return @words_played[@score_tracker.each_with_index.max[1]]
     end
 
 
+    def highest_word_score
+      return @score_tracker.max
+      # _by { |x| x }
+    end
 
   end
-
 end
-
-
-
-# test = Scrabble::Player.new(123)

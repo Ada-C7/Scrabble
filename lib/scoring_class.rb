@@ -39,36 +39,7 @@ module Scrabble
         return word_score
       end #end of meth
 
-      #   def self.score_keeper
-      #     array_of_words = [] #repeat
-      #     array_of_words << word #repeat
       #
-      #     self.score(words)
-      #     word_score_tally << word_score += word_score
-      #     score_kept = array_of_words.zip(word_score_tally)
-      #     #score_kept.zip.to_h(:array_of_words, :word_score_tally)
-      #     #puts "#{score_kept}" test
-      #
-      #   end
-      # end
-      #
-
-      def self.highest_score_from(array_of_words)
-        array_of_scores = []
-
-        array_of_words.each do |word|
-          array_of_scores << score(word)
-        end
-
-        word_score_pair = array_of_words.zip(array_of_scores).to_h
-
-        puts word_score_pair
-
-      end
-    end
-
-
-
       # def self.highest_score_from()
       #  #find longest word in array_of_words
       #  score_kept.each do |k,v|

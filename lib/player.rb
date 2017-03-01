@@ -28,8 +28,17 @@ module Scrabble
       @total >= 100 ? true : false
     end
 
+    def highest_scoring_word
+      highest_score = Scrabble::Scoring.highest_score_from(@plays)
+      return highest_score
+    end
+
   end
 end
 #
 # game = Scrabble::Player.new("Ada")
 # puts game.play("hello")
+# puts game.play("hi")
+# puts game.play("elephant")
+# puts game.play("algebra")
+# puts game.highest_scoring_word

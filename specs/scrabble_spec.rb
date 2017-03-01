@@ -13,8 +13,12 @@ describe "Scoring Class" do
     before do
       @my_score = Scrabble::Scoring.new("Happy")
     end
+    it "Raises an ArgumentError if param is not a string" do
 
-    it "Takes a word to intialize & is class Scoring" do
+      proc { Scrabble::Scoring.new(123)}.must_raise ArgumentError
+    end
+
+    it "Takes a word to initialize & is class Scoring" do
       @my_score.must_be_instance_of Scrabble::Scoring
     end
 
@@ -30,6 +34,10 @@ describe "Scoring Class" do
     it "7 letter word receives a 50 point bonus" do
       word = Scrabble::Scoring.score("Scrabble")
       word.must_equal 64
+    end
+
+    it "Raise an ArgumentError if parameter entered isn't an Array" do
+      proc { Scrabble::Scoring.highest_score_from("123")}.must_raise ArgumentError
     end
 
     it "returns the word in the array with the highest score" do

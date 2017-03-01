@@ -4,8 +4,9 @@ module Scrabble
     attr_accessor :word_array, :word
 
     def initialize(word)
-      # @word_array = word_array
 
+      raise ArgumentError.new("Parameters must be strings") if word.class != String
+      # @word_array = word_array
     end
 
     SCORE_CHART = {
@@ -58,6 +59,8 @@ module Scrabble
     # returns the word in the array with the highest score
 
     def self.highest_score_from(array_of_words)
+      raise ArgumentError.new("Argument must be an array") if array_of_words.class != Array
+
       word_scores = {}
       array_of_words.each do |word|
         word_scores[word] = Scrabble::Scoring.score(word)

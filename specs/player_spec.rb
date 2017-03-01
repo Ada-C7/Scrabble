@@ -107,8 +107,23 @@ describe "Wave 2" do
 
       end
 
+      describe "highest scoring word and highest word score method" do
+        before do
+          @my_player.play("cat")
+          @my_player.play("potato")
+          @my_player.play("flea")
+        end
 
+        it "highest scoring word returns a string of the correct value" do
+          @my_player.highest_scoring_word.must_be_instance_of String
+          @my_player.highest_scoring_word.must_equal "potato"
+        end
 
+        it "highest word score returns an integer of the correct value" do
+          @my_player.highest_word_score.must_be_instance_of Fixnum
+          @my_player.highest_word_score.must_equal 8
+        end
+      end
 
 
     end

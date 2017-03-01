@@ -41,8 +41,7 @@ module Scrabble
     end
 
     def won?
-        total = total_score
-        if total < 101
+        if total_score < 101
             return false
         else
             return true
@@ -50,9 +49,13 @@ module Scrabble
     end
 
 
+    def highest_scoring_word
+      Scoring.highest_score(@plays)
+    end
 
-
-
+    def highest_word_score
+      Scoring.score(highest_scoring_word)
+    end
 
   end
 end

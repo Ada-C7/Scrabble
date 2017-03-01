@@ -41,6 +41,8 @@ module Scrabble
         score_array << self.score(word)
       end
 
+
+
       scorepairs = word_array.zip(score_array)
 
 
@@ -53,10 +55,17 @@ module Scrabble
         end
       end
 
+      # scorepairs.select { |scorepair| scorepair[1] == score_array.max }
+
+
       #no tie, nominal case returns the undisputed winner
         if top_scores.length == 1
             return top_scores[0][0]
         end
+
+        # if scorepairs.length == 1
+        #     return scorepairs[0][0]
+        # end
 
       # handle ties
       top_scores.each do |scorepair|

@@ -38,15 +38,20 @@ module Scrabble
       winner = ""
       array.each_with_index do |word, index|
         if word.length == 7
-         return winner = word
-        elsif word.length < word[index - 1].length
+          winner = word
+         return winner.to_s
+       elsif word.length < array[index - 1].length
             winner = word
         else
             winner = array[0]
         end
       end
-      return winner
+      return winner.to_s
     end
 
   end
 end
+
+# puts Scrabble::Scoring.score("Tehut")
+# puts Scrabble::Scoring.score("POH")
+puts Scrabble::Scoring.highest_word(%w(GGGGGG IIIIIII))

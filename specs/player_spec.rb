@@ -75,7 +75,7 @@ describe "Wave 2" do
       end
     end
 
-    describe "Player#highest_scoring_word" do
+    describe "Player highest score" do
       it "Returns the highest scoring played word" do
         @player.play("hello")
         @player.play("green")
@@ -84,7 +84,16 @@ describe "Wave 2" do
         @player.highest_scoring_word.must_equal "HELLO"
       end
 
+      it "Returns the highest word's score" do
+        @player.play("hello")
+        @player.play("green")
+        @player.play("bat")
+
+        @player.highest_word_score.must_equal Scrabble::Scoring.score("HELLO")
+
+      end
     end
+
 
 
   end

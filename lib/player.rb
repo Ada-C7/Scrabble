@@ -20,7 +20,12 @@ module Scrabble
     end
 
     def highest_scoring_word
+
       return Scoring.highest_score_from(@plays)
+    end
+
+    def highest_word_score
+      return Scoring.score(highest_scoring_word)
     end
 
     def won?

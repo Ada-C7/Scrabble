@@ -1,4 +1,4 @@
-# Scrabble
+a # Scrabble
 Use __Test Driven Development (TDD)__ to create a collection of Ruby classes that would provide the foundation for creating a scrabble game. Don't actually build an interactive game (yet)!
 
 ### Learning Goals
@@ -13,9 +13,7 @@ This is Level 2 pair project.
 From the project root, you should be able to execute all of your specs by running `rake`. Each Ruby class should be in its own file in `lib/`, and the entire project should be in a `module` called `Scrabble`. You will need to use `require`, `require_relative`, `include` and/or `extend` to tell Ruby how to work with classes in multiple files.
 
 ### Tests
-We will use [minitest](https://github.com/seattlerb/minitest) for this project. This is the same test framework that we've used for your previous project. Your spec descriptions should be meaningful and organized into `describe` blocks that reflect your intent on how to use the code.
-
-Do not move onto a new tier of requirements until the minimum requirements of the previous tier are complete and your specs are green across the board. Use __TDD__ to drive your development and document your edge cases.
+We will use [minitest](https://github.com/seattlerb/minitest) for this project. This is the same test framework that we've used for your previous project. Your spec descriptions should be meaningful and organized into `describe` blocks that reflect your intent on h ur specs are green across the board. Use __TDD__ to drive your development and document your edge cases.
 
 ### Pair Programming
 Utilize good pair programming practices. Refer to articles from the [Agile Alliance](http://guide.agilealliance.org/guide/pairing.html) and the [Agile Institute](http://powersoftwo.agileinstitute.com/2015/02/benefits-of-pair-programming-revisited.html) if you need a refresher for some best practices. Switch _driver_ and _navigator_ roles often. When there is uncertainity or confusion, step away from the keyboard and discuss, plan, and document on paper or whiteboard before continuing.
@@ -82,7 +80,7 @@ For example,
 player = Scrabble::Player.new("Ada")
 player.name #=> "Ada"
 ```
-
+<!--
 ## Wave 3
 ### Primary Requirements
 #### `TileBag`
@@ -118,3 +116,4 @@ Create specs for (__minimum 2__) and add to the `Player` class the following ins
 ### Optional Enhancements
 - Create a `Scrabble::Dictionary` class that includes a method (class or instance) for searching a list of words to determine if a given word is valid (__minimum of 5 specs__).
 - Create a `Scrabble::Board` class (__minimum of 15 specs__) that has a matrix (array of arrays) of tile places. Check if a word can be played on a given tile place in a certain direction (up/down or left/right).
+ -->

@@ -71,7 +71,6 @@ module Scrabble
     end
 
 
-
       # def self.highest_score_from()
       #  #find longest word in array_of_words
       #  score_kept.each do |k,v|

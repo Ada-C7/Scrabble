@@ -1,12 +1,12 @@
 module Scrabble
 
   class Scoring
-    attr_accessor :word_array, :word
+    attr_accessor :word_array, :word, :score_total
 
     def initialize(word)
 
       raise ArgumentError.new("Parameters must be strings") if word.class != String
-      # @word_array = word_array
+
     end
 
     SCORE_CHART = {
@@ -38,7 +38,6 @@ module Scrabble
       "Z" => 10
     }
 
-
     def self.score(word)
       if word =~ /\W/
         raise ArgumentError.new "Please enter a real word!"
@@ -49,7 +48,8 @@ module Scrabble
       word_array.each do |letter|
         score_total += SCORE_CHART[letter]
       end
-      #50 bonus points for 7 letter word
+      # seven_bonus(word)
+      # #50 bonus points for 7 letter word
       if word.length >= 7
         score_total += 50
       end

@@ -1,14 +1,5 @@
-require 'simplecov'
-SimpleCov.start
-
-require 'minitest/autorun'
-require 'minitest/reporters'
-require 'minitest/skip_dsl'
-
-require_relative '../lib/scrabble'
-
-Minitest::Reporters.use!
-Minitest::Reporters::SpecReporter.new
+require_relative '../specs/spec_helper.rb'
+require_relative '../lib/scrabble_scoring'
 
 describe "Scoring Class" do
 
@@ -24,6 +15,9 @@ describe "Scoring Class" do
     it "Takes a word to initialize & is class Scoring" do
       @my_score.must_be_instance_of Scrabble::Scoring
     end
+  end
+
+  describe "self.score" do
 
     it "self.score.word returns total score for given word" do
       new_word = Scrabble::Scoring.score("Happy")
@@ -38,6 +32,9 @@ describe "Scoring Class" do
       word = Scrabble::Scoring.score("Scrabble")
       word.must_equal 64
     end
+  end
+
+  describe "self.highest_score_from" do
 
     it "Raise an ArgumentError if parameter entered isn't an Array" do
       proc { Scrabble::Scoring.highest_score_from("123")}.must_raise ArgumentError

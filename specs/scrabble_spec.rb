@@ -64,17 +64,16 @@ describe "highest_score_from" do
 
   it "Shorter word wins if scores are the same" do
     short_words = %w(tins doe it to)
-
     Scrabble::Scoring.highest_score_from(short_words).must_equal "doe"
   end
 
   it "7-letter word is the tie-breaker" do
     seven = %w(aaaaaad zzzzzj)
-    highest_score_from(seven).must_equal "aaaaaad"
+    Scrabble::Scoring.highest_score_from(seven).must_equal "aaaaaad"
   end
 
   it "First word wins if all highest-score words have same length" do
-    same = %w(toes tins it to)
-    highest_score_from(same).must_equal "toes"
+    same = %w(so tins toes it to)
+    Scrabble::Scoring.highest_score_from(same).must_equal "toes"
   end
 end

@@ -11,18 +11,42 @@ module Scrabble
       ["Q", "Z"] => 10
     }
 
+
+    # def self.score(word)
+    #  (word.length == 7) ? score = 50 : score = 0
+    #   word_array = word.split("")
+    #   word_array.each do |letter|
+    #     score += Scoring.letter_value(letter.upcase)
+    #   end
+    #   return score
+    # end
+    #
+    #
+    # def self.letter_value(letter)
+    #   letter_value = 0
+    #   SCORE_CHART.each do |array, value|
+    #     if array.include?(letter)
+    #       letter_value = value
+    #       return letter_value
+    #     end
+    #   end
+    # end
+
+
     def self.score(word)
       word_array = word.split("")
       letter_value = 0
+
       word_score = word_array.map do | letter |
-        SCORE_CHART.each do |array, value|
-          if array.include?(letter.upcase)
-            letter_value = value
+        SCORE_CHART.each do |letters, score|
+          if letters.include?(letter.upcase)
+            letter_value = score
           end
         end
       letter_value
       end
-      word_score << (word_array.length == 7) ? 50 : 0
+      (word_array.length == 7) ? word_score << 50 : word_score << 0
+
       return word_score.reduce(:+)
     end
 
@@ -40,8 +64,6 @@ module Scrabble
         return tie_winner.upcase
     end
 
-
-
     def self.tie(word_hash, max_score)
       tie_words = Array.new
       word_hash.each do |word, score|
@@ -50,6 +72,10 @@ module Scrabble
       tie_words.each do |word|
         return word if word.length == 7
       end
+        # word = tie_words.find { |word|
+        #   word.length == 7
+        #   return word
+        # }
         return tie_words.min_by { |x| x.length}
     end
 

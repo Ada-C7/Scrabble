@@ -1,4 +1,5 @@
-# WAVE 2 SPECS
+require 'simplecov'
+SimpleCov.start
 
 require 'minitest/autorun'
 require 'minitest/reporters'
@@ -6,6 +7,9 @@ require 'minitest/skip_dsl'
 require_relative '../lib/player'
 
 describe Scrabble::Player do
+    before do
+        @new_player = Scrabble::Player.new('Tofu')
+    end
     describe '#initialize' do
         it 'creates a new instance of player' do
             Scrabble::Player.new('Tofu').must_be_instance_of Scrabble::Player
@@ -30,42 +34,38 @@ describe Scrabble::Player do
 
     describe '#plays' do
         it 'returns .plays as an Array' do
-          Scrabble::Player.new('Tofu').plays.must_be_kind_of Array
+            @new_player.plays.must_be_kind_of Array
         end
         it 'returns all 5 words played in order' do
-          player = Scrabble::Player.new('Tofu')
-          words = %w(zip sqeeze whiz jerky pig)
-          words.each { |word| player.play(word) }
-          player.plays.must_equal words
+            words = %w(zip sqeeze whiz jerky pig)
+            words.each { |word| @new_player.play(word) }
+            @new_player.plays.must_equal words
         end
     end
 
     describe '#play(word)' do
         it 'returns .play(word) as an Integer' do
-          Scrabble::Player.new('Tofu').play('whiz').must_be_kind_of Integer
+            @new_player.play('whiz').must_be_kind_of Integer
         end
 
         it 'returns the correct score of a 7-letter word' do
-          Scrabble::Player.new('Tofu').play('squeeze').must_equal 75
+            @new_player.play('squeeze').must_equal 75
         end
 
         it 'returns false if @won is true' do
-          player = Scrabble::Player.new('Tofu')
-          @won = true
-          Scrabble::Player.new('Tofu').play('jazz').must_equal false
+            @new_player.play('zzzzzzz')
+            @new_player.play('jazz').must_equal false
         end
     end
 
     describe '#total_score' do
         it 'returns .total_score as an Integer' do
-          player = Scrabble::Player.new('Tofu')
-          %w(zip sqeeze whiz jerky pig).each { |word| player.play(word) }
-          player.total_score.must_be_kind_of Integer
+            %w(zip sqeeze whiz jerky pig).each { |word| @new_player.play(word) }
+            @new_player.total_score.must_be_kind_of Integer
         end
         it 'returns sum of scores of played word' do
-          player = Scrabble::Player.new('Tofu')
-          %w(zip sqeeze whiz).each { |word| player.play(word) }
-          player.total_score.must_equal 89
+            %w(zip sqeeze whiz).each { |word| @new_player.play(word) }
+            @new_player.total_score.must_equal 89
         end
     end
 

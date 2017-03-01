@@ -5,15 +5,23 @@ describe 'Player' do
 
   describe "name" do
     it "returns the name" do
-      Scrabble::Player.new("Ada")
-      @name.must_equal "Ada"
+      ada = Scrabble::Player.new("Ada")
+      ada.name.must_equal "Ada"
     end
   end
 
   describe "plays" do
     it "returns an Array of the words played" do
-      words_played = %w ("hip", "thorax", "clavicle", "philtrum")
-      @plays.must_be_instance_of Array
+      body_words = %w(hip thorax clavicle philtrum)
+      ada = Scrabble::Player.new("Ada")
+
+      body_words.each do |word|
+        ada.play(word)
+      end
+
+      ada.plays.must_be_instance_of Array
+
+      ada.plays.must_equal %w(hip thorax clavicle philtrum)
     end
 
   end

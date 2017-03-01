@@ -13,20 +13,38 @@ module Scrabble
           end
         end
       end
+      if string.length == 7
+        turn_value += 50
+      end
       return turn_value
     end
 
     def self.highest_word(data)
       highest_word = [""]
       data.each do |word|
-        raise ArgumentError.new("word must be a string!") if word.class != String
-        if self.score(word) > self.score(highest_word[-1])
           highest_word = [word]
-        elsif self.score(word) == self.score(highest_word[-1])
+        if self.score(word) == self.score(highest_word[-1])
           highest_word << word
         end
       end
+      if highest_word[1] != nil
+        self.tiebreaker(highest_word)
+      end
       return highest_word[0]
+    end
+
+    def self.tiebreaker(array)
+      winner = ""
+      array.each_with_index do |word, index|
+        if word.length == 7
+          return winner = word
+        elsif word.length < word[index - 1].length
+          winner = word
+        else
+          winner = word[0]
+        end
+      end
+      return winner
     end
 
   end

@@ -31,6 +31,7 @@ module Scrabble
      end
 
 
+
 # puts sample.class
 # puts sample
 # puts sample.inspect
@@ -41,6 +42,7 @@ module Scrabble
 #
 # puts sample = Scrabble::Scoring.highest_score_from(array)
 
+
 end
 
-#sample = Scrabble::Scoring.score("aaa")
+puts sample = Scrabble::Scoring.score("aaa").class

@@ -17,5 +17,14 @@ module Scrabble
 
       return score
     end
+
+    def won?
+      if @total_score > 100
+        true
+      else
+        false
+      end
+    end
+
   end
 end

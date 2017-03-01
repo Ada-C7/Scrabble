@@ -29,14 +29,39 @@ describe "Wave 2" do
       @player.play("hello").must_equal Scrabble::Scoring.score("hello")
     end
 
-  describe "Player#total_score" do
-    it "Returns the sum of scores of played words" do
-      @player.play("green")
-      @player.play("hello")
-      
-      @player.total_score.must_equal Scrabble::Scoring.score("green") + Scrabble::Scoring.score("hello")
+    describe "Player#total_score" do
+      it "Returns the sum of scores of played words" do
+        @player.play("green")
+        @player.play("hello")
+
+        @player.total_score.must_equal Scrabble::Scoring.score("green") + Scrabble::Scoring.score("hello")
+      end
     end
-  end
+
+    describe "Player#won" do
+      it "If player has more than 100, returns true" do
+        @player.play("qzqzq")
+        @player.play("qzqzqa")
+
+        @player.won?.must_equal true
+      end
+
+      it "If player has less than 100, returns false" do
+        @player.play("qzqzq")
+        @player.play("asdf")
+
+        @player.won?.must_equal false
+      end
+
+      it "If player has exactly 100, returns false" do
+        @player.play("qzqzq")
+        @player.play("qzqzq")
+        
+        @player.won?.must_equal false
+      end
+
+    end
+
 
   end
 end

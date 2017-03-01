@@ -3,20 +3,18 @@ module Scrabble
   class Scoring
 
     SCORE_CHART =
-    {1 => ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T" ],
-      2 => ["D", "G" ],
-      3 => ["B", "C", "M", "P" ],
-      4 => ["F", "H", "V", "W", "Y"],
-      5 => ["K"],
-      8 => ["J", "X"],
-      10 => ["Q","Z"] }
+    {1 => ["a", "e", "i", "o", "u", "l", "n", "r", "s", "t" ],
+      2 => ["d", "g" ],
+      3 => ["b", "c", "m", "p" ],
+      4 => ["f", "h", "v", "w", "y"],
+      5 => ["k"],
+      8 => ["j", "x"],
+      10 => ["q","z"] }
 
-      def initialize
-      end
 
       def self.score(word)
 
-        raise ArgumentError.new("Only Letters A-Z") if (/\d|\W/) === word
+        raise ArgumentError.new("Only Letters A-Z") if word.class != String
 
         word_score = 0
         letter_points = []
@@ -28,11 +26,11 @@ module Scrabble
               letter_points << num_key
             end
           end
-        end
 
           letter_points.each do |point|
             word_score += point
           end
+        end
 
         if word.length >= 7
           word_score += 50

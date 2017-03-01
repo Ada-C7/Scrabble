@@ -1,9 +1,8 @@
 Chosen tests
-Wave 1 specs
+
 1. Class exists (A)
 2. self-score returns integer (A)
   -self-score returns the correct integer
-  -self-score adds 50 points for 7 letter word
 3. self.highest word returns string (T)
 4. self.score throws argument error if given anything other than alphabet characters (T)
 5. test self.score to see if seven letter word returns with extra 50 points

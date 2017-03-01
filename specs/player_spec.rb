@@ -104,6 +104,14 @@ describe "Highest Scoring Word and Word Score" do
     @player.highest_scoring_word.must_equal "ELEPHANT"
   end
 
+  it "Highest word score returns an Integer" do
+    @player.highest_word_score.must_be_instance_of Integer
+  end
+
+  it "Highest word score returns right integer" do
+    @player.highest_word_score.must_equal 13
+  end
+
 
 
 end

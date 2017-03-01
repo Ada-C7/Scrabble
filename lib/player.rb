@@ -34,7 +34,8 @@ class Player
     return Scoring.highest_score_from_array(@plays)
   end
 
-  def highest_word_score(word)
+  def highest_word_score
+    return Scoring.score(highest_scoring_word)
   end
 
 end

@@ -30,6 +30,11 @@ describe "Scoring" do
       Scrabble::Scoring.score("WHat").must_equal 10
     end
 
+    it "Raises an argument error if given a number string" do
+      proc {
+        Scrabble::Scoring.score("574548")
+      }.must_raise ArgumentError
+    end 
 
     it "returns a number" do
       Scrabble::Scoring.score("cat").must_be_kind_of Integer

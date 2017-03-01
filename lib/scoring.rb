@@ -20,8 +20,7 @@ module Scrabble
     end
 
     def self.test_for_word_characters?(word)
-      /[[:alpha]]/.match(word)
-
+      /[a-zA-Z]*/.match(word) == nil ? false : true
     end
 
     def self.score(word)
@@ -45,4 +44,7 @@ module Scrabble
 end
 
 # print Scrabble::Scoring.highest_score_from([1, 2, 3])
-# print Scrabble::Scoring.score("12348901")
+# print Scrabble::Scoring.test_for_word_characters?("i")
+# puts Scrabble::Scoring.score("hello")
+# puts Scrabble::Scoring.score("123")
+puts Scrabble::Scoring.test_for_word_characters?("123")

@@ -3,8 +3,6 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
 require_relative '../lib/player'
-# require 'simplecov'
-# SimpleCov
 
 Minitest::Reporters.use!
 Minitest::Reporters::SpecReporter.new
@@ -92,7 +90,6 @@ describe "Wave 2" do
       player.play("OXYPHENBUTAZONE")
       player.best_word
       player.max_score.must_equal 41
-
     end
   end
 

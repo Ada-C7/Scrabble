@@ -14,7 +14,6 @@ module Scrabble
     end
 
     def play(word)
-      # @total_score > 100 ? false : Scrabble::Scoring.score(word)
       if won?
         false
       else
@@ -33,10 +32,8 @@ module Scrabble
     end
 
     def best_word
-      # TW : Need to align this code with updated scoring code
       @highest_scoring_word = Scrabble::Scoring.highest_score_from(@played_words)
       @max_score = Scrabble::Scoring.score(@highest_scoring_word)
-
     end
 
     def won?

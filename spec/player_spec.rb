@@ -55,9 +55,9 @@ describe "Player" do
       @player.play("algebra").must_equal 60
     end
 
-    # might ahve to break this spec up
+    # Feedback needed:: do we need to break up this spec?
     it "adds the word to the plays array" do
-      # @palyer.plays.length.must_equal 0
+      @player.plays.length.must_equal 0
       @player.play("hello")
       @player.plays.length.must_equal 1
       @player.play("algebra")
@@ -106,27 +106,23 @@ describe "Player" do
 
   describe "Player#highest_scoring_word" do
 
-    # it "requires an argument" do
-    #   proc{
-    #     @player.highest_word_score()
-    #   }.must_raise ArgumentError
-    # end
-    #
-    # it "requires an array argument" do
-    #   proc{
-    #     @player.highest_word_score("hello")
-    #   }.must_raise ArgumentError
-    #
-    #   proc{
-    #     @player.highest_word_score(123)
-    #   }.must_raise ArgumentError
-    # end
-
-    it "returns the higest scoring word of the array" do
+    it "returns the highest scoring word of the array" do
       @player.play("hello")
       @player.play("cat")
       @player.play("algebra")
       @player.highest_scoring_word.must_equal "algebra"
     end
+  end
+
+  describe "Player#highest_word_score" do
+
+    it "Returns the highest score of the array" do
+      @player.play("hello")
+      @player.play("cat")
+      @player.play("algebra")
+      @player.highest_scoring_word   # needs to be called in order to call highest_word_score
+      @player.highest_word_score.must_equal 60
+    end
+
   end
 end

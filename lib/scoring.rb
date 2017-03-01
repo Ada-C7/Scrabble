@@ -19,24 +19,19 @@ module Scrabble
     def self.score(word)
       raise ArgumentError.new "Sorry, your word must by a String class type" if word.class != String
 
-      raise ArgumentError.new "Sorry, your word contains a non-letter character" if !word.match?(/^[a-zA-Z]+$/)
-
       raise ArgumentError.new "Your word must be less than or equal to 7 characters" if word.length > 7 || word.length == 0
 
-      # puts LETTER_SCORES
       word_score = 0
       letters = word.upcase.split("")
-      # puts "letters is #{letters}"
+
       letters.each do |letter|
-        # puts "letter is #{letter}"
+        raise ArgumentError.new if !letter.match(/^[A-Z]$/)
+
         LETTER_SCORES.each do |letter_score, letter_array|
           if letter_array.include?(letter)
-            # puts "found #{letter}."
             word_score += letter_score
-            # puts "adding #{letter_score} to total."
           end
         end
-        # return word_score
       end
 
       if word.length == 7
@@ -60,6 +55,7 @@ module Scrabble
       array_of_words.each do |word|
         scores_hash[word] = Scrabble::Scoring.score(word)
       end
+
       max_score = scores_hash.values.max
 
       highest_scores = scores_hash.select {|word, score| score == max_score}

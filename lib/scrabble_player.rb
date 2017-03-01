@@ -53,9 +53,9 @@ module Scrabble
     #word score
     def highest_word_score
       #run highest_scoring_word METHOD
-    highest_word = Scrabble::Scoring.highest_score_from(@plays)
-    return Scrabble::Scoring.score(highest_word)
-    
+      highest_word = Scrabble::Scoring.highest_score_from(@plays)
+      return Scrabble::Scoring.score(highest_word)
+
       #run that return through Scrabble:Scoring.score(word)
       #return as local variable.
     end

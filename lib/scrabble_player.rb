@@ -1,14 +1,13 @@
 module Scrabble
 
   class Player
-    attr_reader :name, :plays
-    attr_accessor :score
+    attr_reader :name, :plays, :total_score
 
     def initialize(name)
       raise ArgumentError.new("Name input must be a String") if name.class != String
       @name = name
       @plays = []
-      @score = 0
+      @total_score = 0
     end
 
     #plays return array of words played by player
@@ -18,36 +17,30 @@ module Scrabble
 
     #return true of player has > 100 points
     def won?
-      return @score > 100 ? true : false
+      return @total_score > 100 ? true : false
       #maybe score needs to be instance variable?
     end
 
     def play(word)
       raise ArgumentError.new("Word must be a string") if word.class != String
-
       if won?
         return false #Allows player to to play until win
       else
         @plays << word
       end
-      return Scrabble::Scoring.score(word)
-      #call METHOD won?
-      #if won == true
-      #return false
-      #else, return score
-      #call Scrabble:Scoring.score(word)
+      word_score = Scrabble::Scoring.score(word)
+      @total_score += word_score
+      return word_score
     end
-  end
 
-  #returns sum of score of played words
-  def total_score
-    #access @plays
-    #LOOP/ITERATE through @plays
-    #run each word in plays through
-    #Scrabble:Scoring.score(word) METHOD
-    #save the total somehow
-    #return the total score
-  end
+
+  # def total_score
+  #   score = 0
+  #   @plays.each do |word|
+  #     score += Scrabble::Scoring.score(word)
+  #   end
+  #   score
+  # end
 
 
   #returns the highest scoring played word
@@ -64,5 +57,5 @@ module Scrabble
     #run that return through Scrabble:Scoring.score(word)
     #return as local variable.
   end
-
+end
 end

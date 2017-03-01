@@ -41,41 +41,27 @@ module Scrabble
         score_array << self.score(word)
       end
 
+    scorepairs = word_array.zip(score_array)
 
 
-      scorepairs = word_array.zip(score_array)
 
-
-      # iterate over score array to find highest scores
-
-      top_scores = []
-      scorepairs.each do |scorepair|
-        if scorepair[1] == score_array.max
-            top_scores << scorepair
-        end
-      end
-
-      # scorepairs.select { |scorepair| scorepair[1] == score_array.max }
-
-
-      #no tie, nominal case returns the undisputed winner
-        if top_scores.length == 1
-            return top_scores[0][0]
+    #no tie, nominal case returns the undisputed winner
+    scorepairs.select! { |scorepair| scorepair[1] == score_array.max }
+        if scorepairs.length == 1
+            return scorepairs[0][0]
         end
 
-        # if scorepairs.length == 1
-        #     return scorepairs[0][0]
-        # end
+
 
       # handle ties
-      top_scores.each do |scorepair|
+      scorepairs.each do |scorepair|
           if scorepair[0].length == 7
               return scorepair[0]
           end
         end
 
     #handles tied scores by finding the shortest word
-      shortest= top_scores.min_by do |scorepair|
+      shortest= scorepairs.min_by do |scorepair|
           scorepair[0].length
       end
         return shortest[0]

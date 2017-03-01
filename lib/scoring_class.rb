@@ -27,6 +27,7 @@ module Scrabble
               letter_points << num_key
             end
           end
+
           letter_points.each do |point|
             return word_score += point
           end

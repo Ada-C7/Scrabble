@@ -16,7 +16,7 @@ module Scrabble
 
       def self.score(word)
 
-        raise ArgumentError.new("Only Letters A-Z") if word.class != String
+        raise ArgumentError.new("Only Letters A-Z") if (/\d|\W/) === word
 
         word_score = 0
         letter_points = []
@@ -30,6 +30,7 @@ module Scrabble
             end
           end
         end
+
           letter_points.each do |point|
             word_score += point
 

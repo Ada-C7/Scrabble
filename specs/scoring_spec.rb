@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
@@ -102,6 +105,11 @@ describe "Scoring class" do
     it "testing the highest score of array" do
       my_array = ["hello", "table", "ball", "martini", "quizzes", "computer"]
         Scrabble::Scoring.highest_score_from(my_array).must_equal "quizzes"
+    end
+
+    it "return the shortest word in case of tie and no 7 long word." do
+      my_array = ["kkk", "qk"]
+      Scrabble::Scoring.highest_score_from(my_array).must_equal "qk"
     end
   end
 end # end of class

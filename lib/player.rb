@@ -10,6 +10,8 @@ module Scrabble
       @name = name
       @plays = []
       @total = 0
+      @highest_word
+      @highest_score
     end
 
     def play(word)
@@ -29,8 +31,13 @@ module Scrabble
     end
 
     def highest_scoring_word
-      highest_score = Scrabble::Scoring.highest_score_from(@plays)
-      return highest_score
+      @highest_word = Scrabble::Scoring.highest_score_from(@plays)
+      return @highest_word
+    end
+
+    def highest_word_score
+      @highest_score = Scrabble::Scoring.score(@highest_word)
+      return @highest_score
     end
 
   end

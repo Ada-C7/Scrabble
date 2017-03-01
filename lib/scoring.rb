@@ -45,6 +45,7 @@ module Scrabble
                     word[0].length
                 end
             end
+
             @highest_word = @highest_word[0]
             @highest_word
             end

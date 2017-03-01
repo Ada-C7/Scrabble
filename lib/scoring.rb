@@ -69,12 +69,12 @@ module Scrabble
       hash_2gether.max_by{|k,v| v}[0] #PASSES!
 
       #Maybe this can include the if conditions?
-      hash_2gether.max_by do |k,v|
-
-        if condition
-
-        end
-      end
+      # hash_2gether.max_by do |k,v|
+      #   v
+      #   if condition
+      #     v
+      #   end
+      # end[0] #looks goofy, but it works.
 
     end
 

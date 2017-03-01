@@ -50,7 +50,6 @@ describe "Scoring class" do
     it "50 extra points for 7 letters word" do
       Scrabble::Scoring.score("jacuzzi").must_equal 84
     end
-
   end # end of score method
 
   describe "Scoring#find_max" do
@@ -68,7 +67,20 @@ describe "Scoring class" do
       my_strings = ["Hello", "quizz", "qqqd"]
       Scrabble::Scoring.find_max(my_strings).must_equal ["quizz", "qqqd"]
     end
+  end
 
+  describe "Scoring#tie" do
+    it "returns an Array" do
+      Scrabble::Scoring.tie(["J", "X"]).class.must_equal String
+    end
+
+    it "returns first word with 7 characters, and same value" do
+      Scrabble::Scoring.tie(["quizzes", "qqqaaaa"]).must_equal "quizzes"
+    end
+
+    it "returns  word with 7 characters, if the values are the same" do
+      Scrabble::Scoring.tie(["quizzes", "qqqqqqqqf"]).must_equal "quizzes"
+    end
   end
 
   describe "Scoring#highest_score_from" do
@@ -89,9 +101,9 @@ describe "Scoring class" do
       }.must_raise ArgumentError
     end
 
+    it "testing the highest score of array" do
+      my_array = ["hello", "table", "ball", "martini", "quizzes", "computer"]
+        Scrabble::Scoring.highest_score_from(my_array).must_equal "quizzes"
+    end
   end
-
-
-
-
 end # end of class

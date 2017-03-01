@@ -6,5 +6,9 @@ module Scrabble
       @name = name
       @plays =[]
     end
+
+    def play(word)
+      @plays << word
+    end
   end
 end

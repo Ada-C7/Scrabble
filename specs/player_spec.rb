@@ -18,4 +18,11 @@ describe "Wave 2" do
     end
 
   end
+
+  describe "Player#play" do
+    it "Adds the input word to the plays Array" do
+      @player.play("hello")
+      @player.plays.must_include "hello"
+    end
+  end
 end

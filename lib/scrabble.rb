@@ -36,9 +36,22 @@ module Scrabble
     def self.highest_score_from(array_of_words)
       scores = array_of_words.map { |word| Scoring.score(word) }
 
-      max_score = array_of_words.zip(scores).to_h.max_by { |k, v| v }
+      words_and_scores = array_of_words.zip(scores).to_h
 
-      return max_score
+      max_score = words_and_scores.values.max
+
+      word_with_max_score = words_and_scores.select { |k, v| v == max_score }
+
+      if word_with_max_score.length == 1
+        return word_with_max_score.keys.join
+      elsif word_with_max_score.keys.any? { |word| word.length == 7 }
+        return (word_with_max_score.keys.select { |word| word.length == 7 }).join
+      # else
+      #   poss_words = array_of_words.select { |word| word_with_max_score.keys.include? }
+      #   return poss_words[0]
+      else
+        return word_with_max_score.keys.min_by { |word| word.length }
+      end
     end
 
   end #end of class

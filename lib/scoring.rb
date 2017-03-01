@@ -29,9 +29,13 @@ module Scrabble
       def self.highest_score_from(array_of_words)
         score_array = {}
         array_of_words.each do |word|
-          score_array[word] = score(word)
+          if score_array[score(word)].nil?
+            score_array[score(word)] = [word]
+          else
+            score_array[score(word)] << word
+          end
         end
-        # return max_score = score_array[1].max
+        # Now need to look up max score, and then choose the word with the minimum length
         return score_array.max_by {|word, score| score}[0]
       end
     end

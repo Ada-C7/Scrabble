@@ -2,6 +2,11 @@ require_relative 'spec_helper'
 require_relative '../lib/player.rb'
 
 describe "Player is a class" do
+
+  before do
+    @player = Scrabble::Player.new("George")
+  end
+
   it "must be type of player" do
     player = Scrabble::Player.new("name")
     player.must_be_instance_of Scrabble::Player
@@ -20,7 +25,6 @@ describe "Player is a class" do
       end
     end
 
-
     it "It returns the name" do
       test_name = "George"
       player = Scrabble::Player.new(test_name)
@@ -29,11 +33,6 @@ describe "Player is a class" do
   end
 
   describe "plays method" do
-    before do
-      test_name = "George"
-      @player = Scrabble::Player.new(test_name)
-    end
-
     it "is an array" do
       @player.plays.must_be_kind_of Array
     end
@@ -46,9 +45,6 @@ describe "Player is a class" do
 
   end
   describe "play(word)" do
-    before do
-      @player = Scrabble::Player.new("George")
-    end
     it "Returns the score of the word" do
       @player.play("oink").must_equal 8
     end
@@ -73,11 +69,8 @@ describe "Player is a class" do
 
     end
   end
-  
+
   describe "won?" do
-    before do
-      @player = Scrabble::Player.new("George")
-    end
     it "Checks if won" do
       @player.won?.must_equal false
       @player.play "zzzzzzz"
@@ -86,13 +79,22 @@ describe "Player is a class" do
   end
 
   describe "highest_scoring_word" do
-    it "" do
-
+    it "returns highest scoring word from @plays array" do
+      test_plays = %w(zzz dog kkkkkk oink)
+      test_plays.each do |word|
+        @player.play(word)
+      end
+      @player.plays.must_equal %w(zzz dog kkkkkk oink)
+      @player.highest_scoring_word.must_equal "zzz"
     end
   end
   describe "highest_word_score" do
-    it "" do
-
+    it "correctly scores highest scoring word" do
+      test_plays = %w(zzz dog kkkkkk oink)
+      test_plays.each do |word|
+        @player.play(word)
+      end
+      @player.highest_word_score.must_equal 30
     end
   end
 

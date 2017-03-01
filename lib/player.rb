@@ -31,10 +31,12 @@ module Scrabble
     end
 
     def highest_scoring_word
+      return Scrabble::Scoring.highest_score_from(@plays)
       # highest scoring played word will be returned
     end
 
     def highest_word_score
+      Scrabble::Scoring.score(highest_scoring_word)
       # Score for highest scoring word will be returned
     end
   end

@@ -5,14 +5,14 @@ describe 'Player' do
 
   describe "name" do
     it "returns the name" do
-      Scrabble::Player.new("Ada")
-      @name.must_equal "Ada"
+      ada = Scrabble::Player.new("Ada")
+      ada.name.must_equal "Ada"
     end
   end
 
   describe "plays" do
     it "returns an Array of the words played" do
-      words_played = %w ("hip", "thorax", "clavicle", "philtrum")
+      words_played = %w(hip thorax clavicle philtrum)
       @plays.must_be_instance_of Array
     end
 
@@ -20,10 +20,14 @@ describe 'Player' do
 
   describe "play(word)" do
     it "adds the input word to the plays Array" do
-
+      al = Scrabble::Player.new("al")
+      al.play("cat")
+      al.plays.must_be_instance_of Array
+      al.plays.must_equal ["cat"]
     end
 
     it "returns false if the player has already won" do
+      al = Scrabble::Player.new("al")
 
     end
 
@@ -34,14 +38,37 @@ describe 'Player' do
 
   describe "total_score" do
     it "returns the sum of scores of played words" do
+      words = %w(owl chicken duck emu kiwi aaaaaad zzzzzj)
+      al = Scrabble::Player.new("al")
+      words.each do |word|
+        al.play(word)
+      end
 
+      al.total_score.must_equal 101
     end
   end
 
   describe "won?" do
     it "returns true if player has more than 100 points, otherwise returns false" do
-
+      words = %w(owl chicken duck emu kiwi aaaaaad zzzzzj)
+      al = Scrabble::Player.new("al")
+      words.each do |word|
+        al.play(word)
+      end
+      al.won?.must_equal true
     end
+
+    it "returns false if player has 100 points or fewer" do
+      words = %w(owl hat duck emu kiwi)
+      al = Scrabble::Player.new("al")
+
+      words.each do |word|
+        al.play(word)
+      end
+
+      al.won?.must_equal false
+    end
+
   end
 
   describe "highest_scoring_word" do

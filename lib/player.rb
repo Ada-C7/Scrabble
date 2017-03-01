@@ -25,6 +25,7 @@ module Scrabble
 
     def won?
       return true if total_score >= 100
+      false
     end
 
     def highest_scoring_word
@@ -40,11 +41,12 @@ module Scrabble
 end
 
 player = Scrabble::Player.new("Natalia")
-puts player.play("hello")
-puts player.play("flower")
+puts player.highest_scoring_word
+#puts player.play("hello")
+#puts player.play("flower")
 # puts player.play("table")
 # puts player.play("hello")
-puts player.highest_scoring_word
-puts player.highest_word_score
-puts
-puts player.plays
+# puts player.highest_scoring_word
+# puts player.highest_word_score
+# puts
+# puts player.plays

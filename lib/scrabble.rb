@@ -34,37 +34,34 @@ module Scrabble
       # Word must be a string data type
       raise ArgumentError.new("Invalid data type entered for array of words") if (array_of_words.class) != Array
 
+      # Word must have length between 0 and 7, and composed of letters only
       array_of_words.each do |word|
-        # Word must have length between 0 and 7, and composed of letters only
         raise ArgumentError.new("Invalid data type entered for array of words: all elements must be string.") if word.class != String
 
         raise ArgumentError.new("Invalid data type entered for array of words: all elements must be string.") if word !~ /^[a-zA-Z]{0,7}$/
       end
 
-      #
       array_of_scores = array_of_words.map { |word| Scrabble::Scoring.score(word)}
-       score_word_pairs = array_of_scores.zip(array_of_words)
-       max_score = 0
-       max_count = 0
-       score_word_pairs.each do |score_word_pair|
-         if score_word_pair[0] > max_score
-           max_score = score_word_pair[0]
-           max_count += 1
-         end
-       end
+      # Creates an array of score_word_pair arrays
+      score_word_pairs = array_of_scores.zip(array_of_words)
 
-      # if max_count == 1
-      #   word paired with
-      # else #multiple max score
-      #   # max_by length == 7
-      #   # length < 7
-      #   least length
-      # end
-      #
+      # Creates a new array containing all score_word_pair that have the max score
+      max_score = array_of_scores.max
+      max_score_word_pairs = score_word_pairs.select { |max_score_word_pair| max_score_word_pair[0] == max_score }
 
+      # No tie case: returns the word with highest score
+      return max_score_word_pairs[0][1] if max_score_word_pairs.length == 1
 
+      # For tied cases, it returns the first word in the array with 7 letters
+      if max_score_word_pairs.any? { |word_pair| word_pair[1].length == 7 }
+        return max_score_word_pairs.select { |word_pair| word_pair[1].length == 7 }.first[1]
+      end
 
-      return ""
+      # For ties cases without 7 letter words, it returns the first shortest length word
+      min_length = max_score_word_pairs.min_by { |word_pair| word_pair[1].length }[1].length
+
+      return max_score_word_pairs.select { |word_pair| word_pair[1].length == min_length }.first[1]
+
     end
   end
 end

@@ -6,27 +6,33 @@ require_relative '../lib/scoring_class'
 describe "Score Method for Scoring Class" do
 
   before do
-
-    word = "camp"
-    7_letter_word = quacked
-    8_letter_word = bushbuck #small African antelope
-
+    @word = "camp"
+    @word_7_letters = "quacked"
+    @word_8_letters = "bushbuck" #small African antelope
+    @edge_word = "W@ter"
   end
+
+it "Raises argumentError if word contains anything other than letters" do
+  skip
+  Scrabble::Scoring::score(@edge_word)
+
+end
 
 
   it "Score Method outputs integer" do
-
-    score(word).must_be_instance_of Interger
-
+  puts Scrabble::Scoring::score(@word).must_be_instance_of Integer
   end
 
   it "Score method will total the value of each letter in the word" do
-      score(word).must_be_equal_to 10
+
+    Scrabble::Scoring::score(@word).must_equal 10
   end
 
   it "Adds a 50 point bonus to a 7 letter word" do
-
+    skip
   end
 
-it "adds 50 point bonus on words greater than 7 letters "
+  it "adds 50 point bonus on words greater than 7 letters " do
+    skip
+  end
 end

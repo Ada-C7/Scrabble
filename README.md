@@ -35,7 +35,7 @@ First, come up with a "plan of action" for how you want to work as a pair. Discu
 
 #### Implementation
 **x** Create a `Scrabble` module at the project root.
-- Create a `Scrabble::Scoring` **class** which contains some sort of data structure to store the **individual letter scores** listed below.
+**x** Create a `Scrabble::Scoring` **class** which contains some sort of data structure to store the **individual letter scores** listed below.
 **x** Create a Spec file which corresponds to your `Scrabble::Scoring` class. This spec should contain one __red__ test as a starting point (this test can be modified as your get further through the requirements).
 **x** Be able to execute your one test using `rake` from the project root.
 

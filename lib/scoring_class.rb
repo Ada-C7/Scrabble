@@ -15,6 +15,7 @@ module Scrabble
       end
 
       def self.score(word)
+        raise ArgumentError.new("Only Letters A-Z") if word.class != String
         array_of_words = []
         word_score = 0
         letter_points = []

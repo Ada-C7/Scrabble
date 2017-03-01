@@ -22,7 +22,6 @@ module Scrabble
         letter_points = []
         split_word = word.upcase.chars
 
-
         split_word.each do |letter|
           SCORE_CHART.each_pair do |num_key, array_of_letters|
             if array_of_letters.include? letter

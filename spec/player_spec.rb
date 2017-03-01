@@ -103,4 +103,30 @@ describe "Player" do
       @player.won?.must_equal false
     end
   end
+
+  describe "Player#highest_word_score" do
+
+    # it "requires an argument" do
+    #   proc{
+    #     @player.highest_word_score()
+    #   }.must_raise ArgumentError
+    # end
+    #
+    # it "requires an array argument" do
+    #   proc{
+    #     @player.highest_word_score("hello")
+    #   }.must_raise ArgumentError
+    #
+    #   proc{
+    #     @player.highest_word_score(123)
+    #   }.must_raise ArgumentError
+    # end
+
+    it "returns the higest scoring word of the array" do
+      @player.play("hello")
+      @player.play("cat")
+      @player.play("algebra")
+      @player.highest_word_score.must_equal "algebra"
+    end
+  end
 end

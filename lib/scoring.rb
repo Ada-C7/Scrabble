@@ -42,11 +42,12 @@ module Scrabble
 
             @highest_word = @high_words.min_by do |word|
                 if word[0].length == 7
-                    @high_words.index
+                    @high_words.index(word)
                 else
                     word[0].length
                 end
             end
+
             @highest_word = @highest_word[0]
             @highest_word
             end

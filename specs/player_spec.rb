@@ -44,45 +44,55 @@ describe "Wave 2" do
     end
 
     it "returns false if the player has won" do
-
+      player = Scrabble::Player.new("Ada")
+      player.play("QUIZZIFY")
+      player.play("GHERKINS")
+      player.play("OXYPHENBUTAZONE")
+      player.play("OXAZEPAM")
+      player.total_score
+      player.play("hello").must_equal false
     end
 
     it "returns the correct score of the played word" do
-
+      player = Scrabble::Player.new("Ada")
+      player.play("QUIZZIFY").must_equal 41
     end
   end
 
   describe "Method Player#total_score" do
     it "returns an integer" do
-
+      player = Scrabble::Player.new("Ada")
+      player.play("QUIZZIFY")
+      player.play("GHERKINS")
+      player.play("OXYPHENBUTAZONE")
+      player.total_score.must_be_kind_of Integer
     end
 
     it "returns the sum of all scores of player's words" do
-
+      player = Scrabble::Player.new("Ada")
+      player.play("QUIZZIFY")
+      player.play("GHERKINS")
+      player.play("OXYPHENBUTAZONE")
+      player.total_score.must_equal 98
     end
 
     it "returns instance of highest_scoring_word" do
 
     end
 
-    it "returns the highest_scoring_word" do
+    it "returns the highest_scoring_word score" do
 
     end
   end
 
   describe "Method Player#won?" do
     it "returns true or false if the score is over 100 points" do
-
+      player = Scrabble::Player.new("Ada")
+      player.play("QUIZZIFY")
+      player.play("GHERKINS")
+      player.play("OXYPHENBUTAZONE")
+      player.play("GENEROSITY")
+      player.won?.must_equal true
     end
   end
 end
-
-# name: returns the value of the @name instance variable
-# plays: returns an Array of the words played by the player
-# play(word): Adds the input word to the plays Array
-# Returns false if player has already won
-# Returns the score of the word
-# total_score: Returns the sum of scores of played words
-# won?: If the player has over 100 points, returns true, otherwise returns false
-# highest_scoring_word: Returns the highest scoring played word
-# highest_word_score: Returns the highest_scoring_word score

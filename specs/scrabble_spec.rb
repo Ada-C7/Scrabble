@@ -46,4 +46,9 @@ describe "Wave 1" do
     word.must_equal "ZZZZ"
   end
 
+  it "Swapped order still returns first word in list if several words are same length and same score" do
+    word = Scrabble::Scoring.highest_score_from_array([ "QQQQ", "ZZZZ", "cat"])
+    word.must_equal "QQQQ"
+  end
+
 end

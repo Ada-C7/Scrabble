@@ -48,7 +48,59 @@ describe "Score Method for Scoring Class" do
 end
 
 
-describe do
+describe "Higest Score From Method for Scoring Class" do
+
+  describe "highest_score_from nomial" do
+    before do
+      @word = "camp" #10
+      @word_7_letters = "quacked" #73
+      @word_8_letters = "bushbuck" #71 #small African antelope
+      @edge_word = "W@ter"
+      @word_array = [@word, @word_8_letters, "sunset", @word_7_letters, "Metz"]
+    end
+
+    it "Raises argumentError if argument is not and array" do
+      skip
+      proc { Scrabble::Scoring::highest_score_from(@edge_word) }.must_raise ArgumentError
+    end
+
+    it "Handles if array had erroneous element , or element that is not a string " do
+      skip
+      @word_array.unshit("good", @edge_word,"word")
+      Scrabble::Scoring::highest_score_from(@word_array)#unknown outcome
+    end
+
+    it "returns the word with the highest score" do
+      skip
+      Scrabble::Scoring::highest_score_from(@word_array).must_be "quacked"
+    end
 
 
+    describe " highest_score_from tiebreaking " do
+
+      before do
+        @tie_array = [ ]
+      end
+
+      it "in the case of a tie, prefer the word with the fewest letters" do
+        skip
+        Scrabble::Scoring::highest_score_from(@tie_array)
+      end
+
+      it "Choose the word with seven letters over the one with fewer tiles" do
+        skip
+        Scrabble::Scoring::highest_score_from(@tie_array).length.must_equal 7
+      end
+
+      it "Pick the first word in array if ties are the same score and same length" do
+        skip
+        Scrabble::Scoring::highest_score_from(@tie_array)
+      end
+
+      it "Still adds 50 point bonus on words greater than 7 letters " do
+        skip
+        Scrabble::Scoring::highest_score_from(@tie_array).score.must_be :>, 50
+      end
+    end
+  end
 end

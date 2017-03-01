@@ -19,6 +19,15 @@ describe "Wave 1" do
       Scrabble::Scoring.score("frog")
     end
 
+    it "raises an argument error if parameter is not a string" do
+      proc { Scrabble::Scoring.score(123) }.must_raise ArgumentError
+    end
+
+    it "raises an argument error if any character in string is not a letter" do
+      proc { Scrabble::Scoring.score("frog!") }.must_raise ArgumentError
+      proc { Scrabble::Scoring.score("fr3og") }.must_raise ArgumentError
+    end
+
 
     it "returns correct score" do
       Scrabble::Scoring.score("frog").must_equal 8
@@ -34,6 +43,14 @@ describe "Wave 1" do
 
 
 describe "highest score method returns word"do
+
+    it "raises an argument error if parameter is not an array" do
+      proc { Scrabble::Scoring.highest_score(123) }.must_raise ArgumentError
+    end
+
+    it "raises an argument error if any element in array is not a string" do
+      proc { Scrabble::Scoring.highest_score(["cow", 45, "pig"]) }.must_raise ArgumentError
+    end
 
     it "returns word that has the highest score" do
     word_array = ["frog", "jazzily", "pencil"]

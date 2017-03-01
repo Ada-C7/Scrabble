@@ -2,6 +2,8 @@ module Scrabble
   class Scoring
 
     def self.score(word)
+      raise ArgumentError.new("Argument must be a string") if word.class != String
+
       letter_scores = {
         a: 1, e: 1, i: 1, o: 1, u: 1, l: 1, n: 1, r: 1, s: 1, t: 1,
         d: 2, g: 2,
@@ -13,8 +15,10 @@ module Scrabble
       }
 
       word_score = 0
-
+      
       word.downcase.each_char do |c|
+
+        raise ArgumentError.new("Argument must contain only letters") if c !~ /[a-z]/
         word_score += letter_scores[c.to_sym]
       end
 
@@ -27,11 +31,13 @@ module Scrabble
     end
 
     def self.highest_score(word_array)
+      raise ArgumentError.new("Argument must be an array") if word_array.class != Array
       score_array = []
 
       # iterate over word array
       # push each score into matching score array
       word_array.each do |word|
+        raise ArgumentError.new("Each value in argument must be a string") if word.class != String
         score_array << self.score(word)
       end
 

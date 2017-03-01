@@ -67,23 +67,21 @@ module Scrabble
       word_lengths = highest_scores.keys.each { |word| word.length }
 
       winner = ""
-      if word_lengths.max == 7
-        # if score is max_score and length is 7, that's the winner
-        winner = highest_scores.find {|word, score| score == max_score && word.length == 7}
-      elsif word_lengths.max < 7
-        winner = highest_scores.keys.min { |word| word.length }
 
-      else # highest_scores.length == 1
+      #If only one highest score => winner
+      if highest_scores.length == 1
         winner = highest_scores.keys.first
+      else
+        if word_lengths.max == 7
+          winner = highest_scores.find {|word, score| score == max_score && word.length == 7}
+        else
+          winner = highest_scores.keys.min { |word| word.length }
+        end
       end
-      return winner
-
     end
-
   end
-
 end
 
 # puts Scrabble::Scoring.score("word")
 
-puts Scrabble::Scoring.highest_score_from(%w(one one thirtae thirte four five))
+#puts Scrabble::Scoring.highest_score_from(%w(one one thirtae thirte four five))

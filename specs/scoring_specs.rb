@@ -106,10 +106,5 @@ describe "Scoring is a class" do
       Scrabble::Scoring.highest_score_from(%w(zzz dog qqq oink)).must_equal "zzz"
       # skip
     end
-
-
-
   end
-
-
 end

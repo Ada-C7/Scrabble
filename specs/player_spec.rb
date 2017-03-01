@@ -43,13 +43,23 @@ describe 'Player' do
 
   describe "highest_scoring_word" do
     it "returns the highest scoring word" do
-
+      words = %w(owl chicken duck emu kiwi)
+      al = Scrabble::Player.new("al")
+      words.each do |word|
+        al.play(word)
+      end
+      al.highest_scoring_word.must_equal "chicken"
     end
   end
 
   describe "highest_word_score" do
     it "returns the highest_scoring_word score" do
-
+      words = %w(owl chicken duck emu kiwi)
+      al = Scrabble::Player.new("al")
+      words.each do |word|
+        al.play(word)
+      end
+      al.highest_word_score.must_equal 68
     end
   end
-end 
+end

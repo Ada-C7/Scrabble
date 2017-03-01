@@ -106,6 +106,6 @@ sample = Scrabble::Scoring
 puts sample.score("cat")
 
 array = %w(A letter means that pliyer pleyer a used all the tiles)
->>>>>>> b5fe89a52922bd634ebd4ffded779fb32a4be638
+
 
 puts sample = Scrabble::Scoring.highest_score_from(array)

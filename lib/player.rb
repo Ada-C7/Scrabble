@@ -14,13 +14,14 @@ module Scrabble
         Scrabble::Scoring.check_input(letter.capitalize)
       end
       @plays << word
-      won?(@total_score) ? false : "not false"
-      @total += Scrabble::Scoring.score(word)
 
+      word_score = Scrabble::Scoring.score(word)
+      @total_score += word_score
+      won? ?   false : (word_score)
     end
 
-    def won?(score)
-      score > 100
+    def won?
+      @total_score > 100
     end
 
     def highest_scoring_word

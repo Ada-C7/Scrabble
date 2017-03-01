@@ -57,12 +57,8 @@ describe "class Player" do
     end
 
     it "returns the score of the word" do
-
-    end
-  end
-
-  describe "#total_score" do
-    it "returns the sum of scores of played words" do
+      player_1 = Scrabble::Player.new("Bob")
+      player_1.play('cat').must_equal 5
 
     end
   end
@@ -70,13 +66,17 @@ describe "class Player" do
   describe "#won?" do
     it "returns true if the player has over 100 points" do
       player_1 = Scrabble::Player.new("Bob")
-      player_1.won?(101).must_equal true
+      player_1.play("qqqqqqqqqqqa")
+      player_1.won?.must_equal true
     end
 
     it "returns false if the player has less than 100 points" do
       player_1 = Scrabble::Player.new("Bob")
-      player_1.won?(99).must_equal false
-      player_1.won?(100).must_equal false
+      player_1.play("qa")
+      player_1.won?.must_equal false
+      player_2 = Scrabble::Player.new("Andy")
+      player_1.play("qqqqqqqqqq")
+      player_2.won?.must_equal false
     end
   end
 

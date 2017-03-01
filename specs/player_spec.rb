@@ -39,6 +39,45 @@ describe "Wave 2" do
           proc {@my_player.play("fr3og") }.must_raise ArgumentError
         end
 
+        it "adds a word to the plays array" do
+          @my_player.play("biscuit")
+          @my_player.plays.last.must_equal "biscuit"
+
+        end
+
+        it "adds three words with three plays, in the right order" do
+          @my_player.play("alidade")
+          @my_player.play("otter")
+          @my_player.play("pinochle")
+          @my_player.plays[-3].must_equal "alidade"
+          @my_player.plays[-2].must_equal "otter"
+          @my_player.plays[-1].must_equal "pinochle"
+        end
+
+        it "returns an integer" do
+          @my_player.play("cat").must_be_instance_of Fixnum
+        end
+
+        it "returns correct score" do
+          @my_player.play("cat").must_equal 5
+        end
+
+        xit "doesn't execute if player has won" do
+
+        end
+
+      describe "total_score method" do
+        it "returns an integer" do
+          @my_player.total_score.must_be_instance_of Fixnum
+        end
+
+        it "returns the correct total" do
+          @my_player.play("cat")
+          @my_player.play("pig")
+          @my_player.total_score.must_equal 11
+        end
+      end
+
 
     end
 

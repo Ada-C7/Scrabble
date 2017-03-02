@@ -7,11 +7,12 @@ require 'minitest/reporters'
 require 'minitest/skip_dsl'
 require_relative '../lib/scrabble_player'
 require_relative '../lib/scrabble'
+require_relative '../lib/scrabble_tilebag'
 
 describe "Scrabble::Tilebag" do
 
   before do
-    @game_pile = Scrabble::Tilebag.new("player_1")
+    @game_pile = Scrabble::Tilebag.new
   end
 
   describe "initiailize method" do
@@ -24,8 +25,8 @@ describe "Scrabble::Tilebag" do
       @game_pile.bag.must_be_instance_of Array
     end
 
-    it "starts with 100 elements in the collection" do
-      @game_pile.bag.length.must_equal 100
+    it "starts with 98 elements in the collection" do
+      @game_pile.bag.length.must_equal 98
     end
   end
 
@@ -40,16 +41,16 @@ describe "Scrabble::Tilebag" do
 
     it "removes the tiles from the default set" do
       @game_pile.draw_tiles(1)
-      @game_pile.bag.length.must_equal @game_pile.bag.length - 1
+      @game_pile.bag.length.must_equal 97
     end
   end
 
   describe "tiles_remaining method" do
-    n = 10
-    n.times do @game_pile.draw_tiles(1)
+    it "draw tiles removes tiles from bag" do
+      2.times do @game_pile.draw_tiles(1)
+
+      @game_pile.tiles_remaining.must_equal 96
+      end
     end
-
-    @game_pile.tiles_remaining must_equal @game_pile.bag.length - n
-
   end
 end

@@ -15,6 +15,14 @@ describe "Wave 3" do
       @new_bag.tiles_left.length.must_equal 98
     end
 
+    it "initial bag has correct number of some letters" do
+      a_tiles = @new_bag.tiles_left.select { |tile| tile == "A" }
+      e_tiles = @new_bag.tiles_left.select { |tile| tile == "E" }
+
+      a_tiles.length.must_equal 9
+      e_tiles.length.must_equal 12
+    end
+
   end
 
 

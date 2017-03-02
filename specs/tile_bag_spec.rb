@@ -1,7 +1,7 @@
 require_relative 'spec_helper'
 require_relative '../lib/tile_bag'
 
-describe "Wave 3" do
+describe "TileBag tests" do
   before do
     @new_bag = Scrabble::TileBag.new
   end

@@ -1,4 +1,4 @@
-require_relative 'scoring'
+require_relative 'tile_bag'
 
 module Scrabble
   class Player
@@ -30,6 +30,10 @@ module Scrabble
 
     def highest_word_score
       return Scoring.score(highest_scoring_word)
+    end
+
+    def draw_tiles(tile_bag)
+      @tiles += tile_bag.draw_tiles(7 - @tiles.length)
     end
 
     def won?

@@ -1,9 +1,10 @@
 require_relative 'spec_helper'
 require_relative '../lib/player'
 
-describe "Wave 2" do
+describe "Player tests" do
   before do
     @player = Scrabble::Player.new("Mary")
+    @tile_bag = Scrabble::TileBag.new
   end
 
   describe "Player#initialize" do
@@ -19,13 +20,13 @@ describe "Wave 2" do
       proc {Scrabble::Player.new("")}.must_raise ArgumentError
     end
 
-    it "returns an empty Array of the words played by the player" do
+    it "plays returns an empty Array of the words played by the player" do
       @player.must_respond_to :plays
       @player.plays.must_be_instance_of Array
       @player.plays.length.must_equal 0
     end
 
-    it "returns an empty Array of tiles" do
+    it "tiles returns an empty Array of tiles" do
       @player.must_respond_to :tiles
       @player.tiles.must_be_instance_of Array
       @player.tiles.length.must_equal 0
@@ -147,6 +148,15 @@ describe "Wave 2" do
         proc {@player.highest_word_score}.must_raise ArgumentError
       end
 
+    end
+
+    describe "Player#draw_tiles" do
+      it "fills tiles array until it has 7 letters" do
+        @player.draw_tiles(@tile_bag)
+
+        @player.tiles.must_be_instance_of Array
+        @player.tiles.length.must_equal 7
+      end
     end
   end
 end

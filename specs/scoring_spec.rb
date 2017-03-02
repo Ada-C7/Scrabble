@@ -3,7 +3,7 @@ require_relative '../lib/scoring'
 
 Minitest::Reporters.use!
 
-describe "Wave 1" do
+describe "Scoring tests" do
 
   describe "Scoring#score" do
 

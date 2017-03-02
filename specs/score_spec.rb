@@ -63,54 +63,54 @@ describe Scrabble::Scoring do
      end
 
 
-     # describe "self.highest_score_from(words)" do
-     #   it "returns a string" do
-     #     array = ["aaa", "bbb", "ccc", "dddddd"]
-     #     word = Scrabble::Scoring.highest_score_from(array)
-     #
-     #     word.must_be_instance_of String
-     #   end
-     #
-     #   it "returns a word with the highest score" do
-     #     array = ["aaa", "bbb", "ccc", "dddddd"]
-     #     winner = "dddddd"
-     #     word = Scrabble::Scoring.highest_score_from(array)
-     #
-     #     word.must_equal winner
-     #   end
-     #
-     #   it "returns the word that is 7 strings long in case of a tie" do
-     #     array = ["hhh", "xxxxx", "aaaaaaa"]
-     #     winner = "aaaaaaa"
-     #     word = Scrabble::Scoring.highest_score_from(array)
-     #
-     #     word.must_equal winner
-     #   end
-     #
-     #   it "returns shortest word in case of a tie" do
-     #     array = ["xxx", "xxhh", "zzaaaa"]
-     #     winner = "xxx"
-     #     word = Scrabble::Scoring.highest_score_from(array)
-     #
-     #     word.must_equal winner
-     #   end
-     #
-     #   it "returns the first word in tie that has words of equal length and points" do
-     #     array = ["fff", "hhh", "vvv"]
-     #     winner = "fff"
-     #     word = Scrabble::Scoring.highest_score_from(array)
-     #
-     #     word.must_equal winner
-     #   end
-     #
-     #   it "Outpus warning if the array contains non letter characters" do
-     #     array = ["bo1", "bzzz", "br@e"]
-     #
-     #     proc {
-     #       Scrabble::Scoring.highest_score_from(array)
-     #     }.must_raise ArgumentError
-     #   end
+     describe "self.highest_score_from(words)" do
+       it "returns a string" do
+         array = ["aaa", "bbb", "ccc", "dddddd"]
+         word = Scrabble::Scoring.highest_score_from(array)
 
-     #end
+         word.must_be_instance_of String
+       end
+
+       it "returns a word with the highest score" do
+         array = ["aaa", "bbb", "ccc", "dddddd"]
+         winner = "dddddd"
+         word = Scrabble::Scoring.highest_score_from(array)
+
+         word.must_equal winner
+       end
+
+       it "returns the word that is 7 strings long in case of a tie" do
+         array = ["hhh", "xxxxx", "aaaaaaa"]
+         winner = "aaaaaaa"
+         word = Scrabble::Scoring.highest_score_from(array)
+
+         word.must_equal winner
+       end
+
+       it "returns shortest word in case of a tie" do
+         array = ["xxx", "xxhh", "zzaaaa"]
+         winner = "xxx"
+         word = Scrabble::Scoring.highest_score_from(array)
+
+         word.must_equal winner
+       end
+
+       it "returns the first word in tie that has words of equal length and points" do
+         array = ["fff", "hhh", "vvv"]
+         winner = "fff"
+         word = Scrabble::Scoring.highest_score_from(array)
+
+         word.must_equal winner
+       end
+
+       it "Outpus warning if the array contains non letter characters" do
+         array = ["bo1", "bzzz", "br@e"]
+
+         proc {
+           Scrabble::Scoring.highest_score_from(array)
+         }.must_raise ArgumentError
+       end
+
+     end
 
 end

@@ -2,6 +2,7 @@ require_relative 'scoring'
 require_relative 'player'
 module Scrabble
   class TileBag
+    attr_reader :tile_bag
 
     def initialize
       @tile_bag = ["A", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "C",

@@ -10,8 +10,8 @@ module Scrabble
       @name = name
       @plays = []
       @total = 0
-      @highest_word
-      @highest_score
+      @highest_word = ""
+      @highest_score = 0
     end
 
     def play(word)

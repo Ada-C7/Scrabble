@@ -4,11 +4,11 @@ module Scrabble
 
     def initialize
       #sets up a collection of all default tiles
-      # Letter : Qty.	Letter : Qty.
       @tile_array = []
       TILE_HASH.each do |letter, number|
-        number.times { tile_array << letter}
+        number.times { @tile_array << letter}
       end
+      @tile_array.shuffle!
     end
 
 TILE_HASH = {

@@ -33,7 +33,7 @@ describe "ScrabblePlayer" do
     end
 
     it "returns an array of played words" do
-      played_words = ["book", "quiver", "pen"]
+      played_words = ["books", "quiver", "pen"]
       3.times { |n| @player.play(played_words[n]) }
 
       @player.plays.must_equal played_words

@@ -6,14 +6,11 @@ describe "Scrabble player" do
     before do
       @player = Scrabble::Player.new("Monalisa")
     end
-    it "Initialize method can be called without an error" do
-      @player.must_respond_to :initialize
+    it "Validates and initializes the name instance variable" do
       @player.name.must_be_instance_of String
       @player.name.must_equal "Monalisa"
     end
-    it "Validates and initializes the instance variables" do
-      @player.name.must_be_instance_of String
-      @player.name.must_equal "Monalisa"
+    it "Validates and initializes the players instance variables" do
       @player.plays.must_be_instance_of Array
       @player.plays.must_equal []
     end
@@ -41,10 +38,11 @@ describe "Scrabble player" do
       @player.play("hiiiiii").must_equal 60
     end
     it "Returns false if player has already won" do
+      @player.play("hiiiiii").must_equal 60
       @player.play("hiiiiii").must_equal false
     end
   end
-  describe "#Total_score method" do
+  describe "#total_score method" do
     it "Returns the sum of the scores of the played word" do
       @player = Scrabble::Player.new("Monalisa")
       @player.total_score.must_equal 0
@@ -54,7 +52,8 @@ describe "Scrabble player" do
       @player.total_score.must_equal 120
     end
   end
-  describe "#Won method" do
+
+  describe "#won method" do
     before do
       @player = Scrabble::Player.new("Monalisa")
     end
@@ -63,10 +62,13 @@ describe "Scrabble player" do
       @player.won.must_equal false
     end
     it "Returns true when total score is greater than 100" do
-      @player.play("hiiiiii")
+      2.times do
+        @player.play("hiiiiii")
+      end
       @player.won.must_equal true
     end
   end
+
   describe "#highest_score_word and #highest_word_score method" do
     before do
       @player = Scrabble::Player.new("Monalisa")
@@ -74,7 +76,7 @@ describe "Scrabble player" do
       @player.play("cat")
     end
     it "Returns the highest scoring played word" do
-      @player.highest_scoring_word.must_equal "bananas"
+      @player.highest_score_word.must_equal "bananas"
     end
     it "Returns the highest_scoring_word score" do
       @player.highest_word_score.must_equal 59

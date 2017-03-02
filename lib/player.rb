@@ -17,13 +17,26 @@ module Scrabble
         return false
       else
         @plays << word
-        Scoring.score(word)
+        return Scoring.score(word)
       end
     end
 
-      def total_score
-        scores = @plays.map{ |word|Scoring.score(word) }
-        return score.redude(:+)
-      end
+    def total_score
+      scores = @plays.map{ |word| Scoring.score(word) }
+      return scores.reduce(0,:+)
+    end
+
+    def won
+      return total_score > 100 ? true : false
+    end
+
+    def highest_score_word
+      return Scoring.highest_score_from(@plays)
+    end
+
+    def highest_word_score
+      scores = @plays.map{ |word| Scoring.score(word) }
+      return scores.max
+    end
   end
 end

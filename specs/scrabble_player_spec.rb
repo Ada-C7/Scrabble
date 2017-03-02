@@ -8,8 +8,8 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Player#initialize" do
   it "Creates a scrabble player class" do
-    game = Scrabble::Player.new("Mickey")
-    game.must_be_kind_of Scrabble::Player
+    player = Scrabble::Player.new("Mickey")
+    player.must_be_kind_of Scrabble::Player
   end
 
   it "Raises an ArgumentError when it's not created with name" do

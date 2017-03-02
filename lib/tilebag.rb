@@ -48,6 +48,7 @@ module Scrabble
     end
 
     def draw_tiles(num)
+      raise ArgumentError.new "input must be integer" if num.class != Integer
       ## returns a collection of random tiles, removes the tiles from the default set
       # Random selection - num is how many tiles user wants
       # Remove random selection from  @tile_set

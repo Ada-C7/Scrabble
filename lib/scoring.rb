@@ -66,7 +66,24 @@ module Scrabble
       # hash_2gether
 
       #NEED LOOP to find highest score (with all if conditions) and return word
-      hash_2gether.max_by{|k,v| v}[0] #PASSES!
+      high_score_word = hash_2gether.max_by{|k,v| v}[0] #PASSES!
+
+      high_same_scoring_words = []
+      hash_2gether.each do |word, score|
+        if score == self.score(high_score_word)
+          high_same_scoring_words << word
+        end
+      end
+
+      # high_same_scoring_words.each do |word|
+      #   word.length ... return lowest...
+      # end
+
+
+      high_same_scoring_words.min_by{|k,v| k.length}[0]
+
+      #which one is the shortest word.lenth?
+
 
       # hash_2gether.max_by{ |k,v|
       #

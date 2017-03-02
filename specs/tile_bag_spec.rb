@@ -7,21 +7,21 @@ describe "Wave 3" do
   end
 
   describe "TileBag#initialize" do
-    it "tiles_remaining is an array" do
-      @new_bag.tiles_remaining.must_be_instance_of Array
+    it "tiles_in_bag is an array" do
+      @new_bag.tiles_in_bag.must_be_instance_of Array
     end
 
     it "initial bag has 98 tiles" do
-      @new_bag.tiles_remaining.length.must_equal 98
+      @new_bag.tiles_in_bag.length.must_equal 98
     end
 
     it "initial bag has correct number of some letters" do
 
-      @new_bag.tiles_remaining.count { |tile| tile == "A" }.must_equal 9
-      @new_bag.tiles_remaining.count { |tile| tile == "E" }.must_equal 12
+      @new_bag.tiles_in_bag.count { |tile| tile == "A" }.must_equal 9
+      @new_bag.tiles_in_bag.count { |tile| tile == "E" }.must_equal 12
 
-      # a_tiles = @new_bag.tiles_remaining.select { |tile| tile == "A" }
-      # e_tiles = @new_bag.tiles_remaining.select { |tile| tile == "E" }
+      # a_tiles = @new_bag.tiles_in_bag.select { |tile| tile == "A" }
+      # e_tiles = @new_bag.tiles_in_bag.select { |tile| tile == "E" }
       #
       # a_tiles.length.must_equal 9
       # e_tiles.length.must_equal 12
@@ -33,7 +33,7 @@ describe "Wave 3" do
         @new_bag.draw_tiles(5).length.must_equal 5
       end
 
-      it "removes the randomly selected tiles from tiles_remaining" do
+      it "removes the randomly selected tiles from tiles_in_bag" do
         skip
         drawn_tiles = @new_bag.draw_tiles(4)
 
@@ -42,19 +42,22 @@ describe "Wave 3" do
         # tile3 = drawn_tiles[2]
         # tile4 = drawn_tiles[3]
         #
-
-
-        @new_bag.tiles_remaining.length.must_equal 94
-
+        @new_bag.tiles_in_bag.length.must_equal 94
 
         #
         # drawn_tiles = @new_bag.draw_tiles(7)
         #
-        # @new_bag.tiles_remaining.length.must_equal 86
-
-
+        # @new_bag.tiles_in_bag.length.must_equal 86
       end
 
+    end
+
+    describe "TileBag#tiles_remaining" do
+      it "returns the number of tiles left in bag" do
+        @new_bag.draw_tiles(3)
+
+        @new_bag.tiles_remaining.must_equal 95
+      end
     end
 
   end

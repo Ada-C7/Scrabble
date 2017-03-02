@@ -42,7 +42,6 @@ describe "Wave 2" do
         it "adds a word to the plays array" do
           @my_player.play("biscuit")
           @my_player.plays.last.must_equal "biscuit"
-
         end
 
         it "adds three words with three plays, in the right order" do
@@ -69,6 +68,7 @@ describe "Wave 2" do
             @my_player.play("banana")
             @my_player.plays.length.must_equal 3
         end
+      end
 
       describe "total_score method" do
         it "returns an integer" do
@@ -83,27 +83,27 @@ describe "Wave 2" do
       end
 
       describe "checks the won method " do
-          it "remains false under 100" do
+        it "remains false under 100" do
+          @my_player.play("zzzzz")
+          @my_player.play("qqqq")
+          @my_player.play("kh")
+          @my_player.won?.must_equal false
+        end
+
+
+        it "still false when 100" do
             @my_player.play("zzzzz")
             @my_player.play("qqqq")
-            @my_player.play("kh")
+            @my_player.play("kk")
             @my_player.won?.must_equal false
-          end
+        end
 
-
-          it "still false when 100" do
-              @my_player.play("zzzzz")
-              @my_player.play("qqqq")
-              @my_player.play("kk")
-              @my_player.won?.must_equal false
-          end
-
-          it "is true over 100" do
-              @my_player.play("zzzzz")
-              @my_player.play("qqqq")
-              @my_player.play("kka")
-              @my_player.won?.must_equal true
-          end
+        it "is true over 100" do
+            @my_player.play("zzzzz")
+            @my_player.play("qqqq")
+            @my_player.play("kka")
+            @my_player.won?.must_equal true
+        end
 
       end
 
@@ -124,19 +124,6 @@ describe "Wave 2" do
           @my_player.highest_word_score.must_equal 8
         end
       end
-
-
-    end
-
-
-
-
-
-
-
-
-
-
 
 
 end

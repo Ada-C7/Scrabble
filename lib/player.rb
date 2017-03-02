@@ -16,9 +16,9 @@ module Scrabble
         end
 
         word.each_char do |c|
-            if c !~ /[a-z]/
-                raise ArgumentError.new("Argument must contain only letters")
-            end
+          if c !~ /[a-z]/
+              raise ArgumentError.new("Argument must contain only letters")
+          end
         end
 
         if won? == true
@@ -28,7 +28,6 @@ module Scrabble
             @scores << Scoring.score(word)
             return @scores[-1]
         end
-
 
     end
 
@@ -43,8 +42,6 @@ module Scrabble
 
       return total
     end
-
-
 
 
     def won?

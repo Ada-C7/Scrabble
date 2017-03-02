@@ -27,6 +27,23 @@ describe "Test Tile_Bag creation" do
   end
 end
 
+describe "draw_tiles" do
+  it "removes tiles from the bag" do
+    newbag = Scrabble::TileBag.new
+    newbag.draw_tiles(1)
+    newbag.tiles_remaining.must_equal 97
+  end
+  it "raises an error if passed a string" do
+    newbag = Scrabble::TileBag.new
+    proc {
+      newbag.draw_tiles("word")
+    }.must_raise ArgumentError
+  end
+  it "returns an array " do
+    newbag = Scrabble::TileBag.new
+    newbag.draw_tiles(7).length.must_equal 7
+  end
+end
 
 describe "Test tiles_remaining method" do
   it "tiles_remaining returns array that is 98 - 7 tiles long" do

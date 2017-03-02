@@ -127,3 +127,27 @@ describe "Wave 2" do
 
 
 end
+
+xdescribe "Wave 3" do
+
+  describe "tiles variable" do
+    it "is an array of strings" do
+
+    end
+
+    it "cannot go above 7 tiles" do
+
+    end
+  end
+
+  describe "draw_tiles for Player class" do
+    it "fills tiles array with letters" do
+
+    end
+
+    it "won't fill the array beyond 7 letters" do
+
+    end
+
+  end
+end

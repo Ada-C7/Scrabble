@@ -2,27 +2,31 @@ require_relative 'spec_helper'
 require_relative '../lib/player'
 
 describe 'Player' do
-
+  before do
+    @body_words = %w(hip thorax clavicle philtrum)
+    @bird_words = %w(owl chicken duck emu kiwi)
+    @ada = Scrabble::Player.new("Ada")
+  end
+  
   describe "name" do
+    it "only accepts a string" do
+      proc { Scrabble::Player.new([4, 5])}.must_raise ArgumentError
+    end
+
     it "returns the name" do
-      ada = Scrabble::Player.new("Ada")
-      ada.name.must_equal "Ada"
+      @ada.name.must_equal "Ada"
     end
   end
 
   describe "plays" do
-    it "returns an Array of the words played" do
-
-      body_words = %w(hip thorax clavicle philtrum)
-      ada = Scrabble::Player.new("Ada")
-
-      body_words.each do |word|
-        ada.play(word)
+    it "returns an Array of all words played" do
+      @body_words.each do |word|
+        @ada.play(word)
       end
 
-      ada.plays.must_be_instance_of Array
+      @ada.plays.must_be_instance_of Array
 
-      ada.plays.must_equal %w(hip thorax clavicle philtrum)
+      @ada.plays.must_equal @body_words
 
     end
 
@@ -30,14 +34,19 @@ describe 'Player' do
 
   describe "play(word)" do
     it "adds the input word to the plays Array" do
-      al = Scrabble::Player.new("al")
-      al.play("cat")
-      al.plays.must_be_instance_of Array
-      al.plays.must_equal ["cat"]
+      @ada.play("cat")
+      @ada.plays.must_be_instance_of Array
+      @ada.plays.must_equal ["cat"]
+
+      @ada.play("tiget")
+      @ada.plays.length.must_equal 2
     end
 
     it "returns false if the player has already won" do
-      al = Scrabble::Player.new("al")
+      @bird_words.each do |word|
+        @ad.play(word)
+      end
+      @ada.play("egg").must_equal false
 
     end
 

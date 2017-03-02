@@ -1,14 +1,19 @@
 module Scrabble
 
   class Player
-  attr_reader :name, :plays, :total_score
+  attr_reader :name, :total_score
 
     def initialize(name)
-      raise ArgumentError.new("You must enter a name with letters.") if name.class != String 
+      raise ArgumentError.new("You must enter a name with letters.") if name.class != String
       @name = name
       @plays = [] #returns an Array of the words played by the player
       @total_score = 0 #total_score: Returns the sum of scores of played words
       @tiles = []
+    end
+
+    def plays
+      raise ArgumentError.new("You haven't played any words yet!") if @plays.empty?
+      @plays
     end
 
     #won?: If the player has over 100 points, returns true, otherwise returns false

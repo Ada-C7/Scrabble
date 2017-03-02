@@ -2,11 +2,14 @@ require_relative 'spec_helper'
 
 describe "Scrabble::Player" do
 
+  before do
+    @player = Scrabble::Player.new("Ada")
+  end
+
   describe "Scrabble::Player#initalize" do
 
     it "can be initialized with a name" do
-      player = Scrabble::Player.new("Ada")
-      player.must_be_instance_of Scrabble::Player
+      @player.must_be_instance_of Scrabble::Player
     end
 
     it "raises argument error if invalid name" do
@@ -15,21 +18,25 @@ describe "Scrabble::Player" do
     end
 
     it "will return name by calling .name" do
-      player = Scrabble::Player.new("Ada")
-      player.name.must_equal "Ada"
+      @player.name.must_equal "Ada"
     end
 
     it "will return an array of played words by calling .plays" do
-      player = Scrabble::Player.new("Ada")
-      player.plays.must_be_kind_of Array
+      @player.play("kitty")
+      @player.plays.must_be_kind_of Array
+    end
+
+    it "will raise ArgumentError if no words have been played" do
+      proc {
+        @player.plays}.must_raise ArgumentError
     end
 
   end
 
   describe "Scrabble::Player#won?" do
 
-    before do
-      @player = Scrabble::Player.new("Ada")
+    it "returns false if the player has not played any words" do
+      @player.won?.must_equal false
     end
 
     it "returns false if the player has already won" do
@@ -49,7 +56,6 @@ describe "Scrabble::Player" do
   describe "Scrabble::Player#plays" do
 
     before do
-      @player = Scrabble::Player.new("Ada")
       @player.play("cat")
     end
 
@@ -78,7 +84,6 @@ describe "Scrabble::Player" do
   describe "Scrabble::Player#highest_scoring_word and #highest_word_score" do
 
     before do
-        @player = Scrabble::Player.new("Ada")
         @player.play("cat")
         @player.play("zzzzz")
         @player.play("horse")

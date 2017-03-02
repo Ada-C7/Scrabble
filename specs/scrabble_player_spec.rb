@@ -40,7 +40,7 @@ describe "Scrabble::Player" do
     it "returns an array of words played by the player" do
       @my_player.play("abc")
       @my_player.play("def")
-      @my_player.plays.must_equal ["abc", "def"]
+      @my_player.plays.must_equal ["", "abc", "def"]
     end
   end
 
@@ -64,7 +64,7 @@ describe "Scrabble::Player" do
   describe "highest_scoring_word" do
 
     before do
-      winner = Scrabble::Player.new("winner")
+      @winner = Scrabble::Player.new("winner")
       2.times do winner.play("zzz")
       end
       2.times do winner.play("aaa")
@@ -74,12 +74,17 @@ describe "Scrabble::Player" do
   end
   it "returns the highest scoring word" do
 
-    winner.highest_scoring_word.must_equal "zzz"
+    @winner.highest_scoring_word.must_equal "zzz"
   end
 
   describe "highest_word_score" do
+
+    before do
+      @winner = Scrabble::Player.new("winner")
+    end
+
     it "returns the score of the highest scoring word" do
-      winner.highest_word_score.must_equal 30
+      @winner.highest_word_score.must_equal 30
     end
 
   end

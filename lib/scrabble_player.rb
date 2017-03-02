@@ -32,19 +32,25 @@ module Scrabble
 
     def play(word)
 
-      if @score_tracker.inject { |sum, n| sum + n } > 100
-        raise ArgumentError.new "Error. You cannot play anymore. Please restart game."
-      else
-        @score_tracker << Scrabble::Scoring.score(word)
-        @words_played << word
-        return Scrabble::Scoring.score(word)
-      end
 
+      raise ArgumentError.new "Error. You cannot play anymore. Please restart game." until @score_tracker.inject { |sum, n| sum + n }  100
 
+      @score_tracker << Scrabble::Scoring.score(word)
+      @words_played << word
+
+      return Scrabble::Scoring.score(word)
+
+      # raise ArgumentError.new "Error. You cannot play anymore. Please restart game."
+      # if @score_tracker.inject { |sum, n| sum + n } > 100
+      #   raise ArgumentError.new "Error. You cannot play anymore. Please restart game."
+      # else
+      # @score_tracker << Scrabble::Scoring.score(word)
+      # @words_played << word
+      # return Scrabble::Scoring.score(word)
     end
 
     def highest_scoring_word
-      return @words_played[@score_tracker.each_with_index.max[1]]
+      @words_played[@score_tracker.each_with_index.max[1]]
     end
 
 
@@ -52,6 +58,5 @@ module Scrabble
       return @score_tracker.max
       # _by { |x| x }
     end
-
   end
 end

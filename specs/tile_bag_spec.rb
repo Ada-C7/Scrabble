@@ -33,8 +33,15 @@ describe "Wave 3" do
         @new_bag.draw_tiles(5).length.must_equal 5
       end
 
-      it "removes the randomly selected tiles from tiles_in_bag" do
-        skip
+      it "removes the correct tiles from the tile bag" do
+        original_tiles = @new_bag.tiles_in_bag.sort
+        drawn_tiles = @new_bag.draw_tiles(6)
+        leftover_tiles = @new_bag.tiles_in_bag
+
+        (leftover_tiles + drawn_tiles).sort.must_equal original_tiles
+      end
+
+      it "checks random stuff" do skip
         drawn_tiles = @new_bag.draw_tiles(4)
 
         # tile1 = drawn_tiles[0]

@@ -30,13 +30,33 @@ describe Scrabble::Player do
     it "is a kind of Player" do
       @player.must_be_kind_of Scrabble::Player
     end
-  end
 
-  describe "Player#play" do
-    it do
-      
+    it "returns an array of played words" do
+      played_words = ["book", "quiver", "pen"]
+      3.times { |n| @player.play(n) }
+
+      @player.plays.must_equal played_words
     end
 
 
   end
+
+  describe "Player#play" do
+    it "returns a string" do
+    end
+
+  end
+
+  describe "Player#total_score" do
+  end
+
+  describe "Player#won?" do
+  end
+
+  describe "Player#highest_scoring_word" do
+  end
+
+  describe "Player#highest_word_score" do
+  end
+
 end

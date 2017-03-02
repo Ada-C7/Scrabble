@@ -39,13 +39,13 @@ describe "Play method" do
   end
 
   it "Returns false if score > 100" do
-    @player.score = 130
+    2.times { @player.play("ZZZZZZZ") }
     @player.play("cat").must_equal false
   end
 
 it "returns word score" do
-  @player.score = 10
-  @player.play("cat").must_equal 5
+  @player.play("cat")
+  @player.total_score.must_equal 5
 end
 
 it "adds a word to @plays" do
@@ -93,7 +93,7 @@ end
 describe "Won" do
   before do
     @player = Scrabble::Player.new('Ada')
-    @player.score = 130
+
   end
 
   it "Raises an error if no words have been played" do
@@ -103,8 +103,8 @@ describe "Won" do
   end
 
   it "Returns true if score is over 100" do
-  @player.play("fox")
-  @player.won?.must_equal true
+    2.times { @player.play("ZZZZZZZ") }
+    @player.won?.must_equal true
   end
 
   it "Returns false if score is not over 100" do

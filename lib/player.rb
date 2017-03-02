@@ -11,7 +11,6 @@ module Scrabble
       @name = name
       @plays = plays
       @plays ||= []
-      @winner = ""
     end
 
     def play(word)

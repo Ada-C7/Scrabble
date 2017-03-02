@@ -25,6 +25,12 @@ describe "Wave 2" do
       @player.plays.length.must_equal 0
     end
 
+    it "returns an empty Array of tiles" do
+      @player.must_respond_to :tiles
+      @player.tiles.must_be_instance_of Array
+      @player.tiles.length.must_equal 0
+    end
+
   end
 
   describe "Player#play" do

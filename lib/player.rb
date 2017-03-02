@@ -2,15 +2,16 @@ require_relative 'scoring'
 
 module Scrabble
   class Player
-    attr_reader :name, :plays, :total_score
+    attr_reader :name, :plays, :total_score, :tiles
 
     def initialize(name)
       raise ArgumentError.new("name must be a string!") if name.class != String
       raise ArgumentError.new("name string cannot be empty!") if name == ""
 
       @name = name
-      @plays =[]
+      @plays = []
       @total_score = 0
+      @tiles = []
     end
 
     def play(word)

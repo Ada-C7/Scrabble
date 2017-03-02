@@ -21,6 +21,7 @@ module Scrabble
     end#end of create_tile_bag method
 
     def draw_tiles(num)
+      raise ArgumentError.new("Parameter must be integer") if num.class != Integer
       drawn_tiles = []
       num.times do
         rand_num = rand(0..@tile_bag.length)

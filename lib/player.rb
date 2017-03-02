@@ -36,17 +36,40 @@ module Scrabble
       Scrabble::Scoring.score(highest_scoring_word)
     end
 
+    def tiles
+      bag = Scrabble::TileBag.new
+      players_tiles = bag.draw_tiles(7)
+      x = rand(0..7)
+      x.times do
+      players_tiles -= players_tiles.last
+      return players_tiles
+      #Scrabble::TileBag.draw_tiles(num)
 
+    end
+
+    def draw_tiles(tile_bag)
+      if tiles.length < 7
+        tiles << tile_bag.draw_tiles(7-tiles.length)
+      # if tiles.length < 7
+      #   Scrabble::TileBag.draw_tiles(7 - tiles.length)
+      end
+    end
+
+
+    end
   end
 end
-
+bag = Scrabble::TileBag
 player = Scrabble::Player.new("Natalia")
-puts player.highest_scoring_word
-#puts player.play("hello")
-#puts player.play("flower")
-# puts player.play("table")
-# puts player.play("hello")
-# puts player.highest_scoring_word
-# puts player.highest_word_score
-# puts
-# puts player.plays
+player.tiles
+puts player.play("hello")
+
+
+
+player.draw_tiles(bag)
+puts player.tiles
+puts player.play("hello")
+puts player.tiles
+puts player.play("flower")
+puts player.play("table")
+puts player.play("hello")

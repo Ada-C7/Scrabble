@@ -33,11 +33,48 @@ describe "Scrabble#TileBag" do
       tile_bag1 = Scrabble::TileBag.new
       tile_bag1.tile_bag.class.must_equal Array
     end
-
-
-
-
-
   end
+
+    describe "TileBag#drawn_tiles(num)" do
+      it  "Returns an array" do
+        bag = Scrabble::TileBag.new
+        bag.draw_tiles(5).class.must_equal Array
+      end
+      it  "Raises ArgumentError if parameter is not an integer" do
+        proc {
+          bag = Scrabble::TileBag.new
+          bag.draw_tiles("4")
+        }.must_raise ArgumentError
+      end
+
+      it "Method deletes drawn tiles from tile bag" do
+        bag = Scrabble::TileBag.new
+        players_tiles = bag.draw_tiles(4)
+        bag.tile_bag.length.must_equal 94
+      end
+      # it  "Resulting array of letters must contain letter from tile_bag" do
+      #   bag = Scrabble::TileBag.new
+      #   ORIGINAL = bag.tile_bag
+      #   puts "ORIGINAL BAG:"
+      #   print ORIGINAL
+      #   puts ORIGINAL.length
+      #   array_of_tiles = bag.draw_tiles(5)
+      #   array_of_tiles.each do |tile|
+      #     ORIGINAL.must_include tile
+      #   end
+      #   print ORIGINAL
+      #   puts ORIGINAL.length
+      # end
+    end
+
+
+
+
+
+
+
+
+
+
 
 end

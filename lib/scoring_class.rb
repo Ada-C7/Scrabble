@@ -43,37 +43,61 @@ module Scrabble
 
 
       def self.highest_score_from(array_of_words)
-      #checks to make sure array has at least one word
-        raise ArgumentError("You need play at least one word") if array_of_words.length :<, 1
-
         array_of_scores = []
 
-#gives us an array of scores corresponding to the indexes in the array of words
         array_of_words.each do |word|
           array_of_scores << self.score(word)
         end
 
-#creating a new array of "highest scores" , arranging the array of socres from smallest number to largest, and starting from the newly ordered array we're dropping all numbers that are less than the last number in the array, any numbers matching the last number are stored in the array of highest scores.
-        array_of_highest_scores = array_of_scores.sort.drop_while do |score|
-          score < array_of_scores[-1]
+        # array_of_highest_scores = array_of_scores.sort.drop_while do |score|
+        #   score < array_of_scores[-1]
+        # end
+
+        word_score_pair = array_of_words.zip(array_of_scores).to_h
+        puts "#{word_score_pair}"
+
+        word_score_pair = word_score_pair.sort_by {|key, value| value} #returns array
+        puts "#{word_score_pair} sorted "
+        #new var
+        array_of_highest_scores = word_score_pair.drop_while do |array|
+          array[1] < word_score_pair[-1][1]
         end
 
-#checking if the array of scores is equal to 1, and if it is, it goes through the zip process and returns the highest scoring word.
+        puts "#{array_of_highest_scores} array of highest scores "
+
+        puts array_of_highest_scores[0][0].length
+        puts array_of_highest_scores[-1][0].length
+        #not a tie
         if array_of_highest_scores.length == 1
 
-          word_score_pair = array_of_words.zip(array_of_scores).to_h
+          #highest_scoring_word = array_of_highest_scores.max_by {|k,v| v}
+          highest_scoring_word = array_of_highest_scores[0][0]
 
-          highest_scoring_word =  word_score_pair.max_by {|k,v| v}
-          puts "#{highest_scoring_word[0]} is the highest scoring word}"
+          return highest_scoring_word
+        #instance of a tie
+        #word lengths are the same
 
+
+      elsif array_of_highest_scores[0][0].length == array_of_highest_scores[-1][0].length
+          highest_scoring_word = array_of_highest_scores[0][0]
           return highest_scoring_word
 
         else
-#if the array of scores does not equal 1 , this means we have a score tie and need more conditionals.
-          return array_of_highest_scores
-        end
-      end #end of method
 
+          highest_scoring_word = array_of_highest_scores[0][0]
+
+          array_of_highest_scores.each do |array|
+
+            if array[0].length < highest_scoring_word.length && array[0].length < 7
+
+            highest_scoring_word = array[0]
+            elsif array[0].length > 6
+              highest_scoring_word = array[0]
+            end
+          end
+        end
+        return highest_scoring_word
+      end #end of method
 
   end #end of class
 end #end of mod

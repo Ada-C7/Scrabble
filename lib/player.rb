@@ -7,9 +7,10 @@ module Scrabble
   class Player
     attr_reader :name, :plays, :winner
 
-    def initialize(name)
+    def initialize(name, plays = nil)
       @name = name
-      @plays = []
+      @plays = plays
+      @plays ||= []
       @winner = ""
     end
 
@@ -30,11 +31,14 @@ module Scrabble
     end
 
     def highest_scoring_word
-      @winner = Scoring.highest_score_from(@plays)
+         Scoring.highest_score_from(@plays)
     end
 
     def highest_word_score
-      Scoring.score(@winner)
+      return Scoring.score(highest_scoring_word)
     end
   end
 end
+
+played_words = %w(grits gravy biscuit greens)
+ada = Scrabble::Player.new("ada", played_words)

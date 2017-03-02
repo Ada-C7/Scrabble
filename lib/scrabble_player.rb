@@ -35,12 +35,14 @@ module Scrabble
 
     #returns the highest scoring played word
     def highest_scoring_word
+      raise ArgumentError.new("Player must play a word") if @plays.empty?
       Scrabble::Scoring.highest_score_from(@plays)
     end
 
     #return the highest scoring word's
     #word score
     def highest_word_score
+      raise ArgumentError.new("Player must play a word") if @plays.empty?
       highest_word = Scrabble::Scoring.highest_score_from(@plays)
       return Scrabble::Scoring.score(highest_word)
     end

@@ -17,48 +17,48 @@ describe "Player Class" do
       end
     end
 
-  describe "Play" do
-    it "Word must be a string" do
-      proc { @new_player.play(123) }.must_raise ArgumentError
-    end
-
-    it "object.play(word) would return correct score as a fixnum"  do
-      score = @new_player.play("hi")
-      score.must_equal 5
-      score.must_be_instance_of Fixnum
-    end
-
-    it "saves word to @plays array" do
-      @new_player.play("hi")
-      @new_player.plays.must_equal ["hi"]
-    end
-
-    it "returns fail if player has already won" do
-      @new_player.play("zzzzzzz")
-      @new_player.play("hi").must_equal false
-    end
-
-  end
-
-  describe "#total_score" do
-    it "returns the sum score of all the words played." do
-      3.times { @new_player.play("hi") }
-      @new_player.total_score.must_equal 15
+    describe "Play" do
+      it "Word must be a string" do
+        proc { @new_player.play(123) }.must_raise ArgumentError
       end
 
-    it "should output 0 if player has not played any words" do
-      @new_player.total_score.must_equal 0
-    end
-  end
+      it "object.play(word) would return correct score as a fixnum"  do
+        score = @new_player.play("hi")
+        score.must_equal 5
+        score.must_be_instance_of Fixnum
+      end
 
-  describe "#won?" do
-    it "should return a value of true if score > 100" do
+      it "saves word to @plays array" do
+        @new_player.play("hi")
+        @new_player.plays.must_equal ["hi"]
+      end
+
+      it "returns fail if player has already won" do
+        @new_player.play("zzzzzzz")
+        @new_player.play("hi").must_equal false
+      end
+
+    end
+
+    describe "#total_score" do
+      it "returns the sum score of all the words played." do
+        3.times { @new_player.play("hi") }
+        @new_player.total_score.must_equal 15
+      end
+
+      it "should output 0 if player has not played any words" do
+        @new_player.total_score.must_equal 0
+      end
+    end
+
+    describe "#won?" do
+      it "should return a value of true if score > 100" do
         @new_player.play("zzzzzzz")
         @new_player.won?.must_equal true
         @new_player.won?.must_be_instance_of TrueClass
       end
 
-    it "should return false if score is < 100" do
+      it "should return false if score is < 100" do
         @new_player.won?.must_equal false
         @new_player.won?.must_be_instance_of FalseClass
       end
@@ -70,14 +70,17 @@ describe "Player Class" do
         @new_player.play("hi")
         @new_player.play("day")
         @new_player.highest_scoring_word.must_equal "day"
-        end
-
-      it "returns the shortest word if a tie in length" do
-
-      end  
       end
 
+      it "returns ArgumentError if player has not played any words" do
+        proc { @new_player.highest_scoring_word}.must_raise ArgumentError
+      end
+    end
+
     describe "#highest_word_score" do
+      it "returns ArgumentError if player has not played any words" do
+        proc { @new_player.highest_word_score}.must_raise ArgumentError
+      end
       it "returns the score of the winning word" do
         @new_player.play("hi")
         @new_player.play("day")

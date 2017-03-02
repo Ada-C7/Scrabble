@@ -5,7 +5,7 @@ require 'awesome_print'
 
 module Scrabble
   class Player
-    attr_reader :name, :plays, :winner
+    attr_reader :name, :plays
 
     def initialize(name)
       @name = name

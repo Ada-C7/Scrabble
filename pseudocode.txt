@@ -66,3 +66,38 @@ Create a Scrabble::Player CLASS with a required parameter of the player's name.
     #highest_word_score: Returns the highest_scoring_word's score
       input - the word from the method highest_scoring word.  possibly by calling it within this method?
       output - the score from that highest scoring word.
+
+  WAVE 3_____________________________________________________
+
+  Create a Scrabble::TileBag class (min 5 specs)
+
+    #initialize should set up an instance with a collection of all default tiles
+      input: Calling TileBag.new
+      output: an object tile_bag with all of the tiles in it.
+
+      in initialize, keep the array of letters, and call .shuffle??
+
+    #draw_tiles(num) RETURNS a collection of random tiles and removes them from the default set
+      input: number of tiles to be removed
+      output: update the tiles in hand (Player CLASS) or tiles in player's hand.  Also update tiles_remaining in bag.
+
+    #tiles_remaining RETURNS the remaining tiles in tile bag.
+      input: method call.
+      output: list/print (from ARRAY?) remaining tiles.
+
+  Add to Player class
+
+    #Do we have to add an instance variable of tile bag, which calls a new tile bag when we instantiate the player?
+
+    #tiles keeps track of the tiles in the player's hand.
+      input calling player_name.tiles
+      output list of tiles in player's hand
+
+    #draw_tiles fills the players hand until it has 7 letters from the tile bag.  Does this by calling Tile Bag method of draw tiles(num)
+      input calling draw tiles
+      output calling draw tiles on tile bag
+        possibly done on an instance variable of tile bag for each player
+
+    def draw_tiles
+      draw_tiles()
+    end

@@ -19,7 +19,7 @@ module Scrabble
       if word.class != String
         raise ArgumentError.new "Input word must be a string"
       elsif  /\b[^\d\W]+\b/.match(word) == nil
-        raise ArgumentError.new "Word cannot include numbers or symbols"
+        raise ArgumentError.new "Word can only include letters"
       end
     end
 
@@ -55,7 +55,7 @@ module Scrabble
 end
 #
 # game = Scrabble::Player.new("Ada")
-# puts game.play("hello")
+# puts game.play("")
 # puts game.play("hi")
 # puts game.play("elephant")
 # puts game.play("algebra")

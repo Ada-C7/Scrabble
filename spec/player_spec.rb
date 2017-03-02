@@ -58,6 +58,12 @@ describe "Player" do
       }.must_raise ArgumentError
     end
 
+    it "will not accept a blank string" do
+      proc {
+        @player.play("")
+      }.must_raise ArgumentError
+    end
+
     it "returns a number(the score)" do
       @player.play("hello").must_be_kind_of Integer
     end

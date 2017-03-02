@@ -28,7 +28,7 @@ describe "Player" do
 
     it "raises an error if givne name is not a string" do
       proc {
-        player = Scrabble::Player.new(24)
+        Scrabble::Player.new(24)
       }.must_raise ArgumentError
     end
   end
@@ -57,11 +57,20 @@ describe "Player" do
       player.play("CAT").must_equal false
     end
 
-    it "returns 'false' if player has 100 points"  do
+    # it "returns 'false' if player has 100 points"  do
+    #   player = Scrabble::Player.new("Ada")
+    #   player.play("QUICKLY")
+    #   player.play("EXEQUY")
+    #   player.play("CAT").must_equal false
+    # end
+
+    it "does not add a word to the plays array if the player has >= 100 pts" do
       player = Scrabble::Player.new("Ada")
       player.play("QUICKLY")
       player.play("EXEQUY")
-      player.play("CAT").must_equal false
+      player.play("CAT")
+
+      player.plays.wont_include "CAT"
     end
   end
 
@@ -73,6 +82,11 @@ describe "Player" do
       player.play("CAT")
       sum_of_scores = player.total_score
       sum_of_scores.must_equal 84
+    end
+
+    it "returns a score of 0 if the plays array is empty" do
+      player = Scrabble::Player.new("Ada")
+      player.total_score.must_equal 0
     end
   end
 
@@ -117,7 +131,7 @@ describe "Player" do
       player = Scrabble::Player.new("Ada")
       player.play("TREE")
       player.play("TORRENT")
-      player.highest_scoring_word.must_equal 57
+      player.highest_word_score.must_equal 57
     end
   end
 

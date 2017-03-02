@@ -68,6 +68,19 @@ module Scrabble
       #NEED LOOP to find highest score (with all if conditions) and return word
       hash_2gether.max_by{|k,v| v}[0] #PASSES!
 
+      # hash_2gether.max_by{ |k,v|
+      #
+      #   if k.length == 7
+      #     v + 50
+      #   elsif
+      #
+      #   elsif condition
+      #
+      #   end
+      #
+      #
+      #   }[0]
+
       #Maybe this can include the if conditions?
       # hash_2gether.max_by do |k,v|
       #   v

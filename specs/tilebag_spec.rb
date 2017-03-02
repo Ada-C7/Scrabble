@@ -44,18 +44,15 @@ describe "Tilebag is a class" do
     end
 
     it "Updates @tile_set correctly" do
-      before_draw = @tilebag.tile_set
-      num = 3
-      @tilebag.draw_tiles(num)
-      after_draw = @tilebag.tile_set
-      after_draw.length.must_equal (before_draw.length - num)
+
+      @tilebag.draw_tiles(3)
+
+      @tilebag.tile_set.length.must_equal 95
     end
 
     it "@tile_set no longer has the three dealt tiles" do
-      before_draw = @tilebag.tile_set
-      num = 1
-      returned_tiles_array = @tilebag.draw_tiles(num)
-      after_draw = @tilebag.tile_set
+      # CALLING @tilebag AND THEN RECALLING IT IS AN ISSUE...
+      returned_tiles_array = @tilebag.draw_tiles(1)
 
       letter = returned_tiles_array[0]
       before_count = before_draw.count(letter)

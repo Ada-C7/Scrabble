@@ -49,6 +49,15 @@ module Scrabble
 
     def draw_tiles(num)
       raise ArgumentError.new "input must be integer" if num.class != Integer
+
+      drawn_tiles = []
+      num.times do
+        tile = ""
+        tile = @tile_set.sample
+        @tile_set.delete_at(@tile_set.find_index(tile))
+        drawn_tiles << tile
+      end
+      return drawn_tiles
       ## returns a collection of random tiles, removes the tiles from the default set
       # Random selection - num is how many tiles user wants
       # Remove random selection from  @tile_set
@@ -62,5 +71,9 @@ module Scrabble
   end
 end
 
-# tile_bag =  Scrabble::TileBag.new
+
+#tile_bag =  Scrabble::TileBag.new
+#puts tile_bag.tile_set.length
+#puts tile_bag.draw_tiles(4)
+#puts tile_bag.tile_set.length
 # puts tile_bag.tile_set.length

@@ -44,26 +44,37 @@ describe "Tilebag is a class" do
     end
 
     it "Updates @tile_set correctly" do
-
+      original = Scrabble::TileBag.new
       @tilebag.draw_tiles(3)
+      changed_original = @tilebag
 
-      @tilebag.tile_set.length.must_equal 95
+      changed_original.tile_set.length.must_equal (original.tile_set.length - 3)
     end
 
     it "@tile_set no longer has the three dealt tiles" do
       # CALLING @tilebag AND THEN RECALLING IT IS AN ISSUE...
+      original = Scrabble::TileBag.new
+
       returned_tiles_array = @tilebag.draw_tiles(1)
 
       letter = returned_tiles_array[0]
-      before_count = before_draw.count(letter)
-      after_count = after_draw.count(letter)
-      after_count.must_equal (before_count - num)
+      before_count = original.tile_set.count(letter)
+      after_count = @tilebag.tile_set.count(letter)
+      after_count.must_equal (before_count - 1)
+    end
+  end
 
+  describe "tiles_remaining" do
+    it "Retruns an integer" do
+      @tilebag.tiles_remaining.must_be_kind_of Integer
     end
 
-  end
-  describe "tiles_remaining" do
-    it "" do
+    it "The integer is the correct amount of tiles remaining" do
+      @tilebag.tiles_remaining.must_equal 98
+
+      @tilebag.draw_tiles(3)
+
+      @tilebag.tiles_remaining.must_equal 95
 
     end
   end

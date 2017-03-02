@@ -1,15 +1,28 @@
+require_relative 'tilebag'
 module Scrabble
   class Player
 
-    attr_reader :name, :plays, :total_score
+    attr_reader :name, :plays, :total_score, :tiles
 
     def initialize(name)
       raise ArgumentError.new "Name must be string" if name.class != String
+
       @plays = []
       @name = name
       @total_score = 0
+
+      @tiles = []
     end
 
+    def draw_tiles(tile_bag)
+      needed_tiles = 7 - @tiles.length
+      puts @tiles.length
+      new_tiles = []
+      new_tiles = tile_bag.draw_tiles(needed_tiles)
+      puts new_tiles.length
+      @tiles.push(new_tiles).flatten!
+      puts @tiles.length
+    end
 
     def play(word)
       # adds the input word to the plays array
@@ -41,3 +54,8 @@ module Scrabble
     end
   end
 end
+
+player = Scrabble::Player.new("Fred")
+tilebag = Scrabble::TileBag.new
+
+player.draw_tiles(tilebag)

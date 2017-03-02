@@ -66,6 +66,8 @@ module Scrabble
 
     def tiles_remaining
       #returns the number of tiles remaining in bag
+      @tile_set.length
+
     end
 
   end

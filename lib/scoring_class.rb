@@ -49,24 +49,15 @@ module Scrabble
           array_of_scores << self.score(word)
         end
 
-        # array_of_highest_scores = array_of_scores.sort.drop_while do |score|
-        #   score < array_of_scores[-1]
-        # end
-
         word_score_pair = array_of_words.zip(array_of_scores).to_h
-        puts "#{word_score_pair}"
 
         word_score_pair = word_score_pair.sort_by {|key, value| value} #returns array
-        puts "#{word_score_pair} sorted "
+
         #new var
         array_of_highest_scores = word_score_pair.drop_while do |array|
           array[1] < word_score_pair[-1][1]
         end
 
-        puts "#{array_of_highest_scores} array of highest scores "
-
-        puts array_of_highest_scores[0][0].length
-        puts array_of_highest_scores[-1][0].length
         #not a tie
         if array_of_highest_scores.length == 1
 
@@ -74,28 +65,24 @@ module Scrabble
           highest_scoring_word = array_of_highest_scores[0][0]
 
           return highest_scoring_word
-        #instance of a tie
-        #word lengths are the same
+          #instance of a tie #word lengths are the same
+        elsif array_of_highest_scores[0][0].length == array_of_highest_scores[-1][0].length
 
-
-      elsif array_of_highest_scores[0][0].length == array_of_highest_scores[-1][0].length
-          highest_scoring_word = array_of_highest_scores[0][0]
-          return highest_scoring_word
+            highest_scoring_word = array_of_highest_scores[0][0]
+            return highest_scoring_word
 
         else
-
           highest_scoring_word = array_of_highest_scores[0][0]
 
           array_of_highest_scores.each do |array|
-
             if array[0].length < highest_scoring_word.length && array[0].length < 7
-
-            highest_scoring_word = array[0]
-            elsif array[0].length > 6
               highest_scoring_word = array[0]
+            else
+              highest_scoring_word = array_of_highest_scores[0][0]
             end
           end
         end
+
         return highest_scoring_word
       end #end of method
 

@@ -18,7 +18,7 @@ module Scrabble
       raise ArgumentError.new("word must be at most 7 letters") if word.length > 7
 
       letters = word.upcase.split("")
-      letter_values = letters.map {|letter| SCORE_CHART[letter]}
+      letter_values = letters.map { |letter| SCORE_CHART[letter] }
       score = letter_values.sum
       word.length < 7 ? score : score + 50
     end
@@ -27,28 +27,12 @@ module Scrabble
     # If theres a tie, any seven letter words win,
     # otherwise the shortest word wins.
     def self.highest_score_from(array_of_words)
-      scores = array_of_words.group_by {|word| score(word)}
-      top_words = scores.max[1] # [10, ["pink", "purple"]]
-      # return top_word(s)[0] if top_word(s).length == 1
-      return top_words[0]
-      # there's a tie
-      #   find the score of each word
-      # return the word with the highest score if there is no tie
-      # otherwise, return 1. 7 letter word 2. shortest word 3. first word
+      raise ArgumentError.new("argument must be an array") if !array_of_words.is_a? Array
 
-        # max_score = 0
-        # best_word = ""
-        # array_of_words.each do |word|
-        #   if score(word) > max
-        #     max_score = score(word)
-        #     best_word = word
-        #   elsif score(word) == max #if tie, winner would be shorter word.
-        #     if word.length < best_word.length
-        #       best_word = word
-        #     end
-        #   end
-        # end
-        # return best_word
+      scores = array_of_words.group_by { |word| score(word) }
+      top_words = scores.max.last # gives you the values associated with the max key
+      top_words.sort_by! { |word| word.length }
+      top_words.last.length == 7 ? top_words.last : top_words.first
     end
 
     private
@@ -60,5 +44,4 @@ module Scrabble
   end
 end
 
-  # letter = Scrabble::Scoring.new
-  # print letter.score_chart
+puts Scrabble::Scoring.highest_score_from(["Tree", "PURPLE", "PINK"])

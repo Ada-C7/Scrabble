@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
@@ -61,13 +64,13 @@ describe "Scoring" do
         Scrabble::Scoring.highest_score_from("BOOK")
       }.must_raise ArgumentError
       #check that each element in the array is a string
-      proc {
-        Scrabble::Scoring.highest_score_from([4, "BOOK"]) #try loop (test each element)
-      }.must_raise ArgumentError
-      #given word contains characters other than a to z
-      proc {
-        Scrabble::Scoring.highest_score_from(["BOOK", "657!"]) #try loop (test each element)
-      }.must_raise ArgumentError
+      # proc {
+      #   Scrabble::Scoring.highest_score_from([4, "BOOK"]) #try loop (test each element)
+      # }.must_raise ArgumentError
+      # #given word contains characters other than a to z
+      # proc {
+      #   Scrabble::Scoring.highest_score_from(["BOOK", "657!"]) #try loop (test each element)
+      # }.must_raise ArgumentError
 
     end
 

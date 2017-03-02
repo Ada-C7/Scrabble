@@ -26,9 +26,8 @@ describe "Scrabble::Player" do
       @player.plays.must_be_kind_of Array
     end
 
-    it "will raise ArgumentError if no words have been played" do
-      proc {
-        @player.plays}.must_raise ArgumentError
+    it "total score starts at 0" do
+      @player.total_score.must_equal 0
     end
 
   end
@@ -59,6 +58,21 @@ describe "Scrabble::Player" do
       @player.play("cat")
     end
 
+    it "Raises error if input is not a String" do
+        proc {
+        @player.play(88)}.must_raise ArgumentError
+    end
+
+    it "Raises error if input has a non-letter" do
+        proc {
+        @player.play("gorilla16")}.must_raise ArgumentError
+    end
+
+    it "Raises error if word is over 7 letters" do
+      proc {
+        @player.play("supercalifragilistic")}.must_raise ArgumentError
+      end
+
     it "adds word to .plays array" do
       @player.plays.must_equal ["cat"]
     end
@@ -67,10 +81,6 @@ describe "Scrabble::Player" do
       @player.play("dog")
       @player.play("Gator")
       @player.plays.must_equal ["cat", "dog", "Gator"]
-    end
-
-    it "raises argument error if invalid word is played" do
-      proc {@player.play("alligator")}.must_raise ArgumentError
     end
 
     it "adds multiple scores to total_score" do
@@ -98,6 +108,15 @@ describe "Scrabble::Player" do
     @player.highest_word_score.must_equal 50
     end
 
+  end
+
+  it "Raises error if no words have been played" do
+      proc {
+        Scrabble::Player.new.plays}.must_raise ArgumentError
+      proc {
+        Scrabble::Player.new.highest_scoring_word}.must_raise ArgumentError
+      proc {
+        Scrabble::Player.new.highest_word_score}.must_raise ArgumentError
   end
 
 end

@@ -16,19 +16,19 @@ end
 describe "TileBag#draw_tiles" do
   it "Returns a collection of random tiles." do
     tilebag = Scrabble::TileBag.new
-    tilebag.draw_tiles.class.must_be Hash
+    tilebag.draw_tiles(5).must_be_kind_of Array
   end
 
   it "After draw, drawn tiles are removed from the default set" do
     tilebag = Scrabble::TileBag.new
-    tilebag.draw_tiles
-    tilebag.values.inject(:+) < 98
+    tilebag.draw_tiles(5)
+    tilebag.all_tiles.values.inject(:+).must_equal 93
   end
 end
 
-describe "TileBag#tiles_remaining" do
-  it "Returns the number of tiles remaining in the bag" do
-    tilebag = Scrabble::TileBag.new
-    tilebag.tiles_remaining.must_equal 98
-  end
-end
+# describe "TileBag#tiles_remaining" do
+#   it "Returns the number of tiles remaining in the bag" do
+#     tilebag = Scrabble::TileBag.new
+#     tilebag.tiles_remaining.must_equal 98
+#   end
+# end

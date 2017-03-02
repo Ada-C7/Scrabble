@@ -8,8 +8,6 @@ module Scrabble
       @plays = []
       @scores = []
       @won = false
-      @total_score = 0
-
       raise ArgumentError.new("Name must be entered") if name == ""
     end
 

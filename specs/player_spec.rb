@@ -137,6 +137,4 @@ describe "Highest Scoring Word and Word Score" do
     @player.highest_word_score.must_equal 13
   end
 
-
-
 end

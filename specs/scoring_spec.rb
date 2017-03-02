@@ -35,10 +35,10 @@ describe "Scoring class" do
     end
 
     it "in tie, fewest letters wins" do
-      skip
-      words_array = Scrabble::Scoring.highest_score_from(["aei", "ad"])
+      # skip
+      words_array = Scrabble::Scoring.highest_score_from(["aei", "ag"])
       #"ad" should be returned. How do we make a word from array return?
-      words_array.must_equal "ad"
+      words_array.must_equal "ag"
     end
 
     it "7 letter word wins in a tie" do
@@ -49,7 +49,7 @@ describe "Scoring class" do
     end
 
     it "7 letter word gets 50 point bonus" do
-      
+
     end
 
     it "multiple words of same score and same length, first one is returned" do

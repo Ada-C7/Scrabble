@@ -80,7 +80,7 @@ module Scrabble
       # end
 
 
-      high_same_scoring_words.min_by{|k,v| k.length}[0]
+      high_same_scoring_words.min_by{|k,v| k.length}
 
       #which one is the shortest word.lenth?
 

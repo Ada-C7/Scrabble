@@ -37,9 +37,23 @@ describe "TileBag" do
     new_players_bag.draw_tiles(6).length.must_equal 6
   end
 
-  it "draw_tiles(num) raises an Argument Error if num is not a non-negative integer"
+  it "draw_tiles(num) raises an Argument Error if num is not a non-negative integer" do
     new_players_bag = Scrabble::TileBag.new
-    new_players_bag.draw_tiles(6).length.must_equal 6
+    proc {
+      new_players_bag.draw_tiles(-2)
+    }.must_raise ArgumentError
+  end
+  it "draw_tiles(num) raises an Argument Error if num is not a integer" do
+    new_players_bag = Scrabble::TileBag.new
+    proc {
+      new_players_bag.draw_tiles(5.2)
+    }.must_raise ArgumentError
+  end
+  it "draw_tiles(num) raises an Argument Error if num is a string" do
+    new_players_bag = Scrabble::TileBag.new
+    proc {
+      new_players_bag.draw_tiles("a")
+    }.must_raise ArgumentError
   end
 
 

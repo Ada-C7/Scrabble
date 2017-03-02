@@ -35,11 +35,12 @@ describe "Wave 1" do
   end
 
   describe "highest_score_from method" do
-    it "test for empty array" do
-      skip
-    end
     it "return highest scoring word from array" do
-      skip
+      # skip
+      word_array = ["apple", "pear", "laptops"]
+      @test_1 = Scrabble::Scoring.highest_score_from(word_array)
+      @test_1.must_equal "laptops"
+
     end
   end
 

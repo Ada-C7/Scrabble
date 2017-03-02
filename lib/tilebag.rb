@@ -34,6 +34,16 @@ module Scrabble
 }
     end
 
+    def draw_tiles(num)
+      my_tiles = []
+      num.times do
+        letter = @tiles.keys.sample
+        @tiles[letter] -= 1
+        my_tiles << letter
+      end
+      return my_tiles
+    end
+
   end
 
 end

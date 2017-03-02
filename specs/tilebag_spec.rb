@@ -23,18 +23,29 @@ describe "Tile Bag class" do
         @ourtiles.tiles["P"].must_equal 2
         @ourtiles.tiles["S"].must_equal 4
         @ourtiles.tiles["Z"].must_equal 1
-
-      #pick keys at random and check value
+        #pick keys at random and check value
     end
 
   end
 
   describe "Draw Tiles" do
+    before do
+        @ourtiles = Scrabble::TileBag.new
+      end
 
-    it "Returns a collection of letters" do
+    it "Returns an array" do
+      @ourtiles.draw_tiles(1).must_be_instance_of Array
+    end
+
+    it "Returns an array of the correct number of tiles" do
+      @ourtiles.draw_tiles(4).length.must_equal 4
     end
 
     it "Decrements letter amount from tile bag" do
+      total = @ourtiles.tiles.values.reduce(:+)
+      @ourtiles.draw_tiles(1)
+      new_total = @ourtiles.tiles.values.reduce(:+)
+      total.wont_equal new_total
     end
 
     it "Does not allow a letter to be drawn if the value is 0" do

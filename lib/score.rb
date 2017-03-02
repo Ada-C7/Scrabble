@@ -32,4 +32,4 @@ module Scrabble
 
 end
 
-puts sample = Scrabble::Scoring.score("abcdef")
+# puts sample = Scrabble::Scoring.score("abcdef")

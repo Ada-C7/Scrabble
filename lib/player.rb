@@ -11,13 +11,11 @@ module Scrabble
       @name = name
       @plays = []
       @winner = ""
-      # @score = 0
     end
 
     def play(word)
       return false if won?
       @plays << word
-      # @score = total_score
       Scoring.score(word)
     end
 
@@ -38,17 +36,5 @@ module Scrabble
     def highest_word_score
       Scoring.score(@winner)
     end
-
   end
-
 end
-# player_one = Scrabble::Player.new("Ada")
-
-# puts player_one.play("book")
-# puts player_one.name
-# player_one.play("aaaa")
-# player_one.play("dddd")
-# player_one.play("jjjj")
-# puts player_one.total_score
-# puts player_one.highest_scoring_word
-# puts player_one.highest_word_score

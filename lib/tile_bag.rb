@@ -7,7 +7,7 @@ module Scrabble
 
     def initialize
       @bag = bag
-      @player_hand = []
+     @player_hand = []
     end
 
     def bag
@@ -53,7 +53,7 @@ module Scrabble
           end
         end
       end
-      return player_hand
+      return @player_hand
     end
 
     def tiles_remaining
@@ -64,7 +64,7 @@ module Scrabble
   end
 end
 
-game = Scrabble::TileBag.new
-print game.draw_tiles(3)
-print game.tiles_remaining
-print game.player_hand
+# game = Scrabble::TileBag.new
+# print game.draw_tiles(3)
+# print game.tiles_remaining
+# print game.player_hand

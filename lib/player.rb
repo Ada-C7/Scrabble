@@ -3,14 +3,28 @@ require_relative 'tile_bag'
 
 module Scrabble
   class Player
-    attr_reader :name, :plays
+    attr_reader :name, :plays, :tiles
     def initialize(name)
       @name = name
       @plays = [""]
+      @tiles = [""]
+      # poop = Scrabble::TileBag.new
     end
 
     def won?
       return false unless total_score > 100
+    end
+
+    def tile_bag_draw(num)
+      trial = Scrabble::TileBag.new
+      return trial.draw_tiles(num)
+    end
+
+    def draw_tiles
+      until tiles.length == 7
+        @tiles << tile_bag_draw(1)
+      end
+      puts @tiles
     end
 
     def score(name)
@@ -44,3 +58,7 @@ module Scrabble
 
   end
 end
+
+ginny = Scrabble::Player.new("ginny")
+ginny.draw_tiles
+puts ginny.tiles

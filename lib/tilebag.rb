@@ -1,5 +1,6 @@
 module Scrabble
   class TileBag
+    attr_reader :available_letters
 
     STARTING_TILE_COUNT = {
       "A"=>9, "B"=>2, "C"=>2, "D"=>4,
@@ -10,7 +11,6 @@ module Scrabble
       "U"=>4, "V"=>2, "W"=>2, "X"=>1,
       "Y"=>2, "Z"=>1
     }
-    attr_reader :available_letters
 
     def initialize
       @available_letters = STARTING_TILE_COUNT.map {
@@ -19,6 +19,7 @@ module Scrabble
     end
 
     def draw_tiles(num)
+      raise ArgumentError.new("Must enter a valid number of tiles to draw.") unless num.class == Integer
       @available_letters.pop(num)
     end
 

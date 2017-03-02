@@ -9,6 +9,7 @@ module Scrabble
     end
 
     def play(word)
+      raise ArgumentError.new("Must enter a valid string.") if word.nil? || word.empty?
       return false if won?
       @plays << word
       Scoring.score(word)

@@ -25,12 +25,13 @@ describe "Wave 1" do
 
     it "word should return correct score" do
       # skip
-      @test_1 = Scrabble::Scoring.score("apple")
-      @test_1.must_equal 9
+      test_1 = Scrabble::Scoring.score("apple")
+      test_1.must_equal 9
     end
     it "seven letter word gets 50 bonus points" do
-      @test_1 = Scrabble::Scoring.score("jazzing")
-      @test_1.must_equal 83
+      # skip
+      test_1 = Scrabble::Scoring.score("jazzing")
+      test_1.must_equal 83
     end
   end
 
@@ -38,15 +39,18 @@ describe "Wave 1" do
     it "return highest scoring word from array" do
       # skip
       word_array = ["apple", "pear", "laptops"]
-      @test_1 = Scrabble::Scoring.highest_score_from(word_array)
-      @test_1.must_equal "laptops"
+      test_1 = Scrabble::Scoring.highest_score_from(word_array)
+      test_1.must_equal "laptops"
 
     end
   end
 
   describe "tiebreaking rules" do
     it "recognize two words with same score" do
-      skip
+      # skip
+      array_of_words = ["apple","almond", "cat"]
+      test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
+      test_1.must_equal 2
     end
     it "if multiple words prefer word with less letters" do
       skip

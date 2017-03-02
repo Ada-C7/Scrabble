@@ -66,21 +66,27 @@ module Scrabble
 
       max = group_test.keys.max
       variable = Hash[group_test.select {|k, v| k == max}]
-      # if value.
-      # end
-      # variable.each do |key, array|
-      #   highest_word = array[0][0]
-      #   return highest_word
-      # end
+
+      group_test.select do |k, v| k == max
+        if v.count > 1
+          puts "Working #{v}"
+          return v.count
+        else
+      variable.each do |key, array|
+        highest_word = array[0][0]
+        return highest_word
+      end
       # {[9]=>[["apple", 9], ["almond", 9]]}
+
     end
-
   end
+
 end
+end
+end
+  array_of_words = ["apple","almond", "cat"]
 
-array_of_words = ["apple", "almond", "cat"]
 
+  # test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
 
-test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
-
-print test_1
+  # print test_1

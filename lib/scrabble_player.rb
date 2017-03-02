@@ -6,7 +6,7 @@ module Scrabble
   # name = gets.chomp.to_s
 
   class Player
-    attr_accessor :words_played
+    attr_accessor :words_played, :score_tracker
     attr_reader :name
 
     def initialize(name)
@@ -32,21 +32,13 @@ module Scrabble
 
     def play(word)
 
-
-      raise ArgumentError.new "Error. You cannot play anymore. Please restart game." until @score_tracker.inject { |sum, n| sum + n }  100
-
-      @score_tracker << Scrabble::Scoring.score(word)
-      @words_played << word
-
-      return Scrabble::Scoring.score(word)
-
-      # raise ArgumentError.new "Error. You cannot play anymore. Please restart game."
-      # if @score_tracker.inject { |sum, n| sum + n } > 100
-      #   raise ArgumentError.new "Error. You cannot play anymore. Please restart game."
-      # else
-      # @score_tracker << Scrabble::Scoring.score(word)
-      # @words_played << word
-      # return Scrabble::Scoring.score(word)
+      if @score_tracker.inject { |sum, n| sum + n } > 100
+        raise ArgumentError.new "Error. You cannot play anymore. Please restart game."
+      else
+        @score_tracker << Scrabble::Scoring.score(word)
+        @words_played << word
+        return Scrabble::Scoring.score(word)
+      end
     end
 
     def highest_scoring_word
@@ -56,7 +48,7 @@ module Scrabble
 
     def highest_word_score
       return @score_tracker.max
-      # _by { |x| x }
     end
+
   end
 end

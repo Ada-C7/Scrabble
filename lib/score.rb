@@ -7,8 +7,8 @@ module Scrabble
      class Scoring
 
           def self.score(word)
-               if word.class != String || word.length > 7 || word.length < 2
-                    raise ArgumentError.new("Word must be a string between 2 and 7 characters long")
+               if word.class != String || word[/[a-zA-Z]+/] != word || word.length > 7 || word.length < 2
+                    raise ArgumentError.new("Word must be a string of letters between 2 and 7 characters long")
                end
                puts word.inspect
                word = word.split("")
@@ -30,19 +30,6 @@ module Scrabble
 
      end
 
-
-
-# puts sample.class
-# puts sample
-# puts sample.inspect
-# puts sample.score("cat")
-#
-# array = %w(A letter means that pliyer pleyer a used all the tiles)
-#
-#
-# puts sample = Scrabble::Scoring.highest_score_from(array)
-
-
 end
 
-puts sample = Scrabble::Scoring.score("aaa").class
+puts sample = Scrabble::Scoring.score("abcdef")

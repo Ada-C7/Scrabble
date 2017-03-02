@@ -50,8 +50,6 @@ module Scrabble
     end
 
     def self.highest_score_from(array_of_words)
-      # array_of_words = ["Apple", "Pear", "Almond", "Raisin"]
-      # counter = 0
       score_array = []
       word_array = []
 
@@ -64,19 +62,22 @@ module Scrabble
       zipper_test = word_array.zip(score_array)
       group_test = zipper_test.group_by { |word, value| [value] }
 
-      max = group_test.keys.max
-      variable = Hash[group_test.select {|k, v| k == max}]
+      @max = group_test.keys.max
+      variable = group_test.select {|k, v| k == @max}
 
-      group_test.select do |k, v| k == max
+      group_test.select do |k, v| k == @max
         if v.count > 1
-          puts "Working #{v}"
+          # multiple_winning_words
           return v.count
         else
       variable.each do |key, array|
         highest_word = array[0][0]
         return highest_word
       end
-      # {[9]=>[["apple", 9], ["almond", 9]]}
+
+      def multiple_winning_words
+        puts "#{@max}"
+      end
 
     end
   end
@@ -87,6 +88,6 @@ end
   array_of_words = ["apple","almond", "cat"]
 
 
-  # test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
+  test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
 
-  # print test_1
+  puts test_1

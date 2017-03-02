@@ -54,9 +54,11 @@ describe "Wave 1" do
     end
     it "if multiple words prefer word with less letters" do
       skip
+
     end
     it "if multiple words prefer word that uses all seven letters" do
       skip
+      array_of_words = ["seaters", "pazazz"] #Need to find one with equal value
     end
 
     it "if multiple words prefer word that was supplied first" do

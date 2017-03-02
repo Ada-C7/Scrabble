@@ -43,16 +43,17 @@ module Scrabble
 
     def draw_tiles(num)
       num.times do
+        tile = ""
         tile = @bag.sample
         player_hand << tile
-          @bag.each_with_index do |letter, index|
-            if letter == tile
-              @bag.delete_at(index)
-              break
-            end
+        @bag.each_with_index do |letter, index|
+          if letter == tile
+            @bag.delete_at(index)
+            break
           end
-        return player_hand
+        end
       end
+      return player_hand
     end
 
     def tiles_remaining
@@ -63,7 +64,7 @@ module Scrabble
   end
 end
 
-# game = Scrabble::TileBag.new
-# print game.draw_tiles(3)
-# print game.tiles_remaining
-# print game.player_hand
+game = Scrabble::TileBag.new
+print game.draw_tiles(3)
+print game.tiles_remaining
+print game.player_hand

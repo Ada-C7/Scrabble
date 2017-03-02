@@ -44,14 +44,25 @@ module Scrabble
         array_of_scores = []
 
         array_of_words.each do |word|
-          array_of_scores << score(word)
+          array_of_scores << self.score(word)
         end
 
-        word_score_pair = array_of_words.zip(array_of_scores).to_h
-        puts "This is word_score_pair #{word_score_pair}"
-        winner =  word_score_pair.max_by {|k,v| v}
-        puts "this is the #{winner[0]}"
-      end
+        array_of_highest_scores = array_of_scores.sort.drop_while do |score|
+          score < array_of_scores[-1]
+        end
+
+        if array_of_highest_scores.length < 2
+
+          word_score_pair = array_of_words.zip(array_of_scores).to_h
+
+          highest_scoring_word =  word_score_pair.max_by {|k,v| v}
+          puts "#{highest_scoring_word[0]} is the highest scoring word}"
+
+        else
+
+          return array_of_highest_scores
+        end
+      end #end of method
 
 
   end #end of class

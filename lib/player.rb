@@ -1,7 +1,7 @@
 require_relative 'scoring'
 
 module Scrabble
-  class Player < Scoring
+  class Player
     attr_reader :name, :plays
     def initialize(name)
       @name = name
@@ -12,25 +12,33 @@ module Scrabble
       return false unless total_score > 100
     end
 
+    def score(name)
+      Scoring.score(name)
+    end
+
+    def highest_word(data)
+      Scoring.highest_word(data)
+    end
+
     def play(word)
       return false if won?
       raise ArgumentError.new "This requires a string" if word.class != String
       @plays << word
-      return self.class.score(word)
+      return score(name)
     end
 
     def total_score
       total = 0
-      @plays.each { |word| total += self.class.score(word) }
+      @plays.each { |word| total += score(word) }
       return total
     end
 
     def highest_scoring_word
-      return self.class.highest_word(@plays)
+      return highest_word(@plays)
     end
 
     def highest_word_score
-      return self.class.score(highest_scoring_word)
+      return score(highest_scoring_word)
     end
 
   end

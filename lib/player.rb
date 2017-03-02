@@ -9,6 +9,18 @@ module Scrabble
       @played_words = []
     end
 
+    def draw_tiles(tile_bag)
+      tile_bag = []
+      7.times do all_tiles.rand
+      tiles <<
+
+
+    end
+
+    def tiles
+
+    end
+
     def plays
       @played_words
     end

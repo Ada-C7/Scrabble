@@ -67,27 +67,21 @@ module Scrabble
 
       group_test.select do |k, v| k == @max
         if v.count > 1
-          # multiple_winning_words
+          variable.each_pair do |k, v|
+            x = v.min_by(&:length)
+            puts x[0]
+          end
           return v.count
         else
-      variable.each do |key, array|
-        highest_word = array[0][0]
-        return highest_word
+          return variable[@max][0][0]
+        end
       end
-
-      def multiple_winning_words
-        puts "#{@max}"
-      end
-
     end
   end
-
 end
-end
-end
-  array_of_words = ["apple","almond", "cat"]
 
+array_of_words = ["laptop", "board", "wipe", "spoon"]
 
-  test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
+test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
 
-  puts test_1
+puts test_1

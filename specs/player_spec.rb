@@ -65,4 +65,41 @@ describe "Player" do
     end
   end
 
+  describe "total score" do
+    it "returns sum of scores of played words" do
+      player = Scrabble::Player.new("Ada")
+      player.play("QUICKLY")
+      player.play("TREE")
+      player.play("CAT")
+      sum_of_scores = player.total_score
+      sum_of_scores.must_equal 84
+    end
+  end
+
+  describe "won?" do
+    it "returns 'true' if the player has > 100 points" do
+      player = Scrabble::Player.new("Ada")
+      player.play("QUICKLY")
+      player.play("TORRENT")
+      player.total_score.must_be :>, 100
+      player.won?.must_equal true
+
+    end
+
+    it "returns 'true' if player has 100 points" do
+      player = Scrabble::Player.new("Ada")
+      player.play("QUICKLY")
+      player.play("EXEQUY")
+      player.total_score.must_equal 100
+      player.won?.must_equal true
+    end
+
+    it "returns 'false' if player has < 100 points" do
+      player = Scrabble::Player.new("Ada")
+      player.play("TREE")
+      player.play("CAT")
+      player.total_score.must_be :<, 100
+      player.won?.must_equal false
+    end
+  end
 end

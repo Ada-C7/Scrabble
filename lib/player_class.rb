@@ -7,6 +7,7 @@ module Scrabble
     def initialize(name)
       @name = name
       @plays = []
+      @tiles = [] #a collection of letters that the player can play (max 7)
       @total_score ||= 0
     end
 
@@ -17,18 +18,14 @@ module Scrabble
     end
 
     def draw_tiles(tile_bag)
-    #WAVE 3 returns a collection of random tiles, removes the tiles from the default set
-    end
-
-    def tiles_remaining
-    #WAVE 3 tiles_remaining returns the number of tiles remaining in the bag
+    #WAVE fills tiles array until it has 7 letters from the given tile bag
     end
 
       def won?
         if @total_score <= 100
           false
         else
-          raise ArgumentError.new puts "There is a clear winner! Great job, #{@name}!! Game over :("
+          raise ArgumentError.new puts "...and the winner is... #{@name}!! Game over bye :("
         end
       end
 

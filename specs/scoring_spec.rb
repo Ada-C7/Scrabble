@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
@@ -43,7 +46,7 @@ describe "Wave 1" do
       Scrabble::Scoring.highest_score_from(array_of_strings).must_equal "risotdo"
     end
 
-    it "return the shortes word out of two word with same score" do
+    it "return the shortest word out of two word with same score" do
       array_of_strings = %w(hello wind to)
       Scrabble::Scoring.highest_score_from(array_of_strings).must_equal "wind"
     end

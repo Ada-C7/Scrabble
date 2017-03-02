@@ -5,9 +5,8 @@ gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
-require_relative '../lib/scrabble_player'
-require_relative '../lib/scrabble'
 require_relative '../lib/scrabble_tilebag'
+require_relative '../lib/scrabble'
 
 describe "Scrabble::Tilebag" do
 
@@ -25,7 +24,7 @@ describe "Scrabble::Tilebag" do
       @game_pile.bag.must_be_instance_of Array
     end
 
-    it "starts with 98 elements in the collection" do
+    it "starts with 100 elements in the collection" do
       @game_pile.bag.length.must_equal 98
     end
   end
@@ -33,10 +32,13 @@ describe "Scrabble::Tilebag" do
   describe "#draw_tiles(num) method" do
 
     it "returns a collection of random tiles" do
-      hand1 = @game_pile.draw_tiles(7)
-      hand2 = @game_pile.draw_tiles(7)
 
-      hand1.wont_be_same_as hand2
+      test_pile_1 = Scrabble::Tilebag.new
+      test_pile_2 = Scrabble::Tilebag.new
+      test_pile_1.draw_tiles(7)
+      test_pile_2.draw_tiles(7)
+
+      test_pile_2.player_bag.wont_be_same_as test_pile_1.player_bag
     end
 
     it "removes the tiles from the default set" do
@@ -46,11 +48,12 @@ describe "Scrabble::Tilebag" do
   end
 
   describe "tiles_remaining method" do
-    it "draw tiles removes tiles from bag" do
-      2.times do @game_pile.draw_tiles(1)
+
+    it "returns the number of tiles when tiles have been removed" do
+      @game_pile.draw_tiles(2)
 
       @game_pile.tiles_remaining.must_equal 96
-      end
     end
+
   end
 end

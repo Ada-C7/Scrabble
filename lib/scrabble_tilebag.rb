@@ -1,13 +1,3 @@
-require 'simplecov'
-SimpleCov.start
-
-gem 'minitest', '>= 5.0.0'
-require 'minitest/autorun'
-require 'minitest/reporters'
-require 'minitest/skip_dsl'
-require_relative '../lib/scrabble_player'
-require_relative '../lib/scrabble'
-
 module Scrabble
 
   class Tilebag
@@ -23,8 +13,14 @@ module Scrabble
     end
 
     def draw_tiles(num)
-      num.times do (@player_bag << @bag.delete(@bag.sample))
+      num.times do
+        tile = @bag.sample
+        @player_bag << tile
+        @bag.slice!(@bag.index(tile))
+        #previous method deleted all matching, this deletes first occurance
       end
+
+
     end
 
     def tiles_remaining

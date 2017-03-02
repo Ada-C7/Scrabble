@@ -5,6 +5,8 @@ describe "Tile Bag class" do
   describe "Initialize" do
 
     it "Initializes with a hash" do
+      ourtiles = Scrabble::TileBag.new
+      ourtiles.tiles.must_be_instance_of Hash
     end
 
     it "Has the correct keys" do

@@ -1,3 +1,4 @@
+require_relative 'tile_bag'
 def bag
 array = []
 9.times { array << "A"}

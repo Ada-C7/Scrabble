@@ -1,4 +1,5 @@
 require_relative 'scoring'
+require_relative 'tile_bag'
 
 module Scrabble
   class Player

@@ -87,6 +87,12 @@ describe "Player Class" do
         @new_player.highest_scoring_word.must_equal "day"
         @new_player.highest_word_score.must_equal 7
       end
+
+      describe "#tile" do
+        it "it returns a maximum of 7 letters a player can play" do
+        
+        end
+      end
     end
 
   end

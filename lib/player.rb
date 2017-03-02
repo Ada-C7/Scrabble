@@ -3,8 +3,7 @@ require_relative 'scrabble'
 module Scrabble
 
   class Player
-    attr_reader :name, :plays, :score_array
-    attr_accessor :score
+    attr_reader :name, :plays, :score_array, :score
 
     def initialize(name)
       raise ArgumentError.new "Player must have a valid name" if name.class != String

@@ -109,7 +109,6 @@ describe "Won" do
 
   it "Returns false if score is not over 100" do
     @player.play("fox")
-    @player.score = 50
     @player.won?.must_equal false
   end
 

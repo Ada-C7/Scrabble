@@ -1,12 +1,14 @@
 require_relative '../lib/score'
+require_relative '../lib/tilebag'
 
 module Scrabble
   class Player
-    attr_reader :name, :plays
+    attr_reader :name, :plays, :tiles
     def initialize(name, plays=[])
       @name = name
       @plays = plays
       @total_score = 0
+      @tiles = []
     end
 
     def play(word)

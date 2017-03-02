@@ -8,8 +8,32 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require_relative '../lib/score'
 require_relative '../lib/player'
 
-
 describe "class Player" do
+
+  describe "#tiles" do
+    it "returns an array of letter that the player can play" do
+      player_1 = Scrabble::Player.new("Bob")
+      player_1.tiles.must_be_kind_of Array
+    end
+
+    it "has length of 7 or less" do
+      player_1 = Scrabble::Player.new("Bob")
+      player_1.tiles.must_be_kind_of Array
+    end
+
+    it "contains only proper letters" do
+
+    end
+  end
+
+  describe "#draw_tiles" do
+    it "fills tiles array until it has 7 letters from the given file bag" do
+
+    end
+
+  end
+
+
   describe "initialize" do
     it "can return the value of name as instance variable" do
       player_1 = Scrabble::Player.new("Bob")

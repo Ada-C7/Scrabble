@@ -12,17 +12,19 @@ module Scrabble
       @plays = []
       @score = 0
       @score_array = []
+    end
 
     def play(word)
       raise ArgumentError.new "Word must be a valid word" if word.class != String
       @plays << word
-      return ((won?) ? false : Scoring.score(word))
+      word_score = Scoring.score(word)
+      @score_array << word_score
+      return ((won?) ? false : word_score)
     end
 
     def total_score
       raise ArgumentError.new "No words have been played" if @plays.length == 0
-      score_array = @plays.map { |word| play(word) }
-      return score_array.reduce(:+)
+      return @score_array.reduce(:+)
     end
 
     def won?

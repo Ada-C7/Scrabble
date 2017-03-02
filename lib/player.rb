@@ -13,7 +13,7 @@ module Scrabble
     def play(word)
       raise ArgumentError.new("Invalid argument for word") if word.class != String
       raise ArgumentError.new("Invalid data type entered for word") if word !~ /^[a-zA-Z]{0,7}$/
-      if won
+      if won?
         return false
       else
         @plays << word

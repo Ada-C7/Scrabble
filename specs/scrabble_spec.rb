@@ -38,7 +38,6 @@ describe "Scrabble::Scoring" do
 
   describe "self.highest_score_from" do
 
-
     it "returns a string" do
       array = ["zzz", "aaa"]
       Scrabble::Scoring.highest_score_from(array).must_be_instance_of String
@@ -62,8 +61,6 @@ describe "Scrabble::Scoring" do
     it "picks first word as winner if letters and point are equal" do
       array = ["dog", "gog"]
       array2 = ["gog", "dog"]
-
-
       Scrabble::Scoring.highest_score_from(array).must_equal "dog"
       Scrabble::Scoring.highest_score_from(array2).must_equal "gog"
 

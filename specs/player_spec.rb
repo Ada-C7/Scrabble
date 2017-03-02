@@ -102,4 +102,24 @@ describe "Player" do
       player.won?.must_equal false
     end
   end
+
+  describe "highest_scoring_word" do
+    it "returns the highest scoring played word" do
+      player = Scrabble::Player.new("Ada")
+      player.play("TREE")
+      player.play("TORRENT")
+      player.highest_scoring_word.must_equal "TORRENT"
+    end
+  end
+
+  describe "highest_word_score" do
+    it "returns score of highest_scoring_word" do
+      player = Scrabble::Player.new("Ada")
+      player.play("TREE")
+      player.play("TORRENT")
+      player.highest_scoring_word.must_equal 57
+    end
+  end
+
+
 end

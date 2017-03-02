@@ -16,9 +16,13 @@ module Scrabble
     def play(word)
       raise ArgumentError.new "Word must be a valid word" if word.class != String
       plays << word
-      word_score = Scoring.score(word)
-      score_array << word_score
-      return ((won?) ? false : word_score)
+      single_score(word)
+      return ((won?) ? false : score)
+    end
+
+    def single_score(word)
+      score = Scoring.score(word)
+      score_array << score
     end
 
     def total_score
@@ -41,7 +45,4 @@ module Scrabble
     end
 
   end
-
-
-
 end

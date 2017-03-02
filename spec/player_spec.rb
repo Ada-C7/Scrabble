@@ -46,6 +46,18 @@ describe "Player" do
 
   describe "Player#play" do
 
+    it "Raises an ArgumentError if not string" do
+      proc {
+        @player.play(3455)
+      }.must_raise ArgumentError
+    end
+
+    it "Raises an argument error if given a number string" do
+      proc {
+        @player.play("574548")
+      }.must_raise ArgumentError
+    end
+
     it "returns a number(the score)" do
       @player.play("hello").must_be_kind_of Integer
     end
@@ -53,6 +65,14 @@ describe "Player" do
     it "returns the appropriate score" do
       @player.play("hello").must_equal 8
       @player.play("algebra").must_equal 60
+    end
+
+    it "doesn't care about case of word" do
+      @player.play("WHat").must_equal 10
+    end
+
+    it "take 1 letter words" do
+      @player.play("i").must_equal 1
     end
 
     # Feedback needed:: do we need to break up this spec?

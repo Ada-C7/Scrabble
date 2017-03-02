@@ -12,7 +12,7 @@ describe "Scoring" do
 
   describe "Scoring#score" do
 
-    it "initializes" do
+    it "has a class method called score" do
       Scrabble::Scoring.must_respond_to :score
     end
 
@@ -20,23 +20,6 @@ describe "Scoring" do
       proc {
         Scrabble::Scoring.score
       }.must_raise ArgumentError
-    end
-
-    it "Raises an ArgumentError if not string" do
-      word = 34355
-      proc {
-        Scrabble::Scoring.score(word)
-      }.must_raise ArgumentError
-    end
-
-    it "Raises an argument error if given a number string" do
-      proc {
-        Scrabble::Scoring.score("574548")
-      }.must_raise ArgumentError
-    end
-
-    it "words are case insensitive" do
-      Scrabble::Scoring.score("WHat").must_equal 10
     end
 
     it "returns a number" do

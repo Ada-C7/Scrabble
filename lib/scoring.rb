@@ -19,16 +19,7 @@ module Scrabble
       end
     end
 
-    # think of better name
-    def self.test_for_word_characters?(word)
-       /\b[^\d\W]+\b/.match(word) == nil ? false : true
-    end
-
-    def self.score(word)
-      # and add a condition for empty strings - or figure out a better regexs
-      unless word.class == String && test_for_word_characters?(word)
-        raise ArgumentError.new "Input word must be a string"
-      end
+    def self.score(word)  
       # The *  splat operator expands an Array into a list of arguments
       word_score = LETTER_SCORES.values_at(*word.downcase.chars).reduce(:+)
       word.length == 7 ? word_score += 50 : word_score

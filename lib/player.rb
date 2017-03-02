@@ -14,7 +14,18 @@ module Scrabble
       @highest_score = 0
     end
 
+    # think of better name
+    def test_word(word)
+      if word.class != String
+        raise ArgumentError.new "Input word must be a string"
+      elsif  /\b[^\d\W]+\b/.match(word) == nil
+        raise ArgumentError.new "Word cannot include numbers or symbols"
+      end
+    end
+
     def play(word)
+      test_word(word)
+      word.downcase
       return false if won?
       @plays << word
       score = Scrabble::Scoring.score(word)

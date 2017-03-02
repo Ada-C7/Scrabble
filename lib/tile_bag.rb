@@ -1,7 +1,7 @@
 require_relative 'scoring'
 require_relative 'player'
 module Scrabble
-  class TileBag
+    class TileBag
 
     def bag
     array = []
@@ -43,6 +43,6 @@ module Scrabble
     def tiles_remaining
     end
 
-    end
+    
   end
 end

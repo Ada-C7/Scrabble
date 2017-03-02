@@ -63,7 +63,7 @@ describe "Player Class" do
         tofu = Scrabble::Player.new("tofu")
         proc {
         tofu.play(3)
-      }.must_raise ArgumentError
+        }.must_raise ArgumentError
       end
 
   end
@@ -111,6 +111,15 @@ describe "Player Class" do
       ginny.highest_word_score.must_equal 64
     end
   end
+end
+describe "wave 3 player class requirements" do
+  it "can call .tiles and return an array" do
+    ginny = Scrabble::Player.new("ginny")
+    ginny.draw_tiles
+    ginny.tiles.must_be_kind_of Array
+    ginny.tiles.length.must_equal 7
+  end
+
 end
 
 end

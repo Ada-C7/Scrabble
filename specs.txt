@@ -21,5 +21,17 @@ Wave 2 specs
 7. highest_scoring_word returns a string
 8. highest_word_score returns an integer
 9. highest_word_score returns the correct value
-10.
-11.
+10. play(word) returns an error if called with an integer
+11. play(word) returns the correct value for the word
+
+Wave 3 specs
+. Tilebag class exists
+. TileBag class initalizes with empty player_hand array
+. Tilebag class initializes with full bag []
+. draw_tiles removes (num) tiles from bag []
+. draw_tiles raises error if passed !String
+. draw_tiles returns array .length 7
+. tiles_remaining returns bag.length 7
+
+. Player class can call .tiles and return an array
+. calling .tiles after .draw_tiles return array.length 7

@@ -18,11 +18,12 @@ module Scrabble
       total = 0
 
       word.each_char do |letter|
-        score_chart.each do |tile, value|
-          if letter == tile
-            total += value
-          end #end of if
-        end #end of do
+        total += score_chart[letter]
+        # score_chart.each do |tile, value|
+        #   if letter == tile
+        #     total += value
+        #   end #end of if
+        # end #end of do
       end #end of do
 
       if word.length == 7

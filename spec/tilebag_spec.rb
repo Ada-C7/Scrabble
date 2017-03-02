@@ -26,4 +26,39 @@ describe "TileBag" do
       end
     end
   end
+
+  describe "TileBag#draw_tiles" do
+
+    it "Can be called by an instance of TileBag class" do
+      @bag.must_respond_to :draw_tiles
+    end
+
+    it "Raises ArgumentError if no parameter given" do
+      proc {
+        @bag.draw_tiles
+      }.must_raise ArgumentError
+    end
+
+    it "Raises ArgumentError if parameter is not an Integer" do
+      proc {
+        @bag.draw_tiles("five")
+      }.must_raise ArgumentError
+    end
+
+    it "Returns an array" do
+      @bag.draw_tiles(7).must_be_kind_of Array
+    end
+
+    it "Returns an array of the appropriate length" do
+      @bag.draw_tiles(7).length.must_equal 7
+    end
+
+    it "Removes collection from default" do
+      num = 7
+      number_of_tiles = @bag.tile_bag.length
+      @bag.draw_tiles(num)
+      @bag.tile_bag.length.must_equal (number_of_tiles - num)
+    end
+  end
+  
 end

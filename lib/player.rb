@@ -37,7 +37,7 @@ module Scrabble
     end
 
     def highest_word_score
-      return Scoring.score(highest_scoring_word)
+      return @score_array.max 
     end
 
   end

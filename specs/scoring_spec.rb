@@ -6,12 +6,9 @@ require_relative '../lib/scoring'
 describe "Scoring" do
 
   describe "score" do
-    before do
-      @score = Scrabble::Scoring.score("word")
-    end
-
+    
     it "Must return an integer" do
-      @score.must_be_instance_of Integer
+      Scrabble::Scoring.score("word").must_be_instance_of Integer
     end
 
     it "Must receive String of letters as input" do

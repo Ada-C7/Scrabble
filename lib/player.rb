@@ -1,4 +1,4 @@
-require_relative 'letter'
+
 require_relative 'score'
 require 'awesome_print'
 
@@ -11,11 +11,11 @@ module Scrabble
       @name = name
       @plays = []
       @winner = ""
-      @score = 0
+      # @score = 0
     end
 
     def play(word)
-      return false if won? true
+      return false if won?
       @plays << word
       # @score = total_score
       Scoring.score(word)
@@ -28,7 +28,7 @@ module Scrabble
     end
 
     def won?
-      total_score > 100 ? true : false
+      return total_score > 100 ? true : false
     end
 
     def highest_scoring_word
@@ -36,13 +36,19 @@ module Scrabble
     end
 
     def highest_word_score
-      score(@winner)
+      Scoring.score(@winner)
     end
 
   end
 
 end
-ada = Scrabble::Player.new("Ada")
+# player_one = Scrabble::Player.new("Ada")
 
-puts ada.name
-puts ada.play("book")
+# puts player_one.play("book")
+# puts player_one.name
+# player_one.play("aaaa")
+# player_one.play("dddd")
+# player_one.play("jjjj")
+# puts player_one.total_score
+# puts player_one.highest_scoring_word
+# puts player_one.highest_word_score

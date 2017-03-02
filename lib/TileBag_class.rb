@@ -1,25 +1,57 @@
 module Scrabble
-  #
+
+LETTER_POINT_VALUES = { 1 => ["a", "e", "i", "o", "u", "l", "n", "r", "s", "t"],
+												2 => ["d", "g"],
+												3 => ["b", "c", "m", "p"],
+												4 => ["f", "h", "v", "w", "y"],
+												5 => ["k"],
+												8 => ["j", "x"],
+												10 => ["q", "z"]}
+
   class TileBag
     # =>    attr_reader
 
     def initialize
       #set up the instance with a collection of all default tiles
-      @default_set = [ [A, 9], [B, 2], [C, 2], [D, 4], [E, 12],
-      [F, 2], [G, 3], [H, 2], [I, 9], [J, 1], [K, 1], [L, 4],
-      [M, 2], [N, 6], [O, 8], [P, 2], [Q, 1], [R, 6], [S, 4],
-      [T, 6], [U, 4], [V, 2], [W, 2], [X, 1], [Y, 2], [Z, 1] ]
-      #interate through 0-25 for alpha 1-26
+      @default_set = ["A", "A", "A", "A", "A", "A", "A", "A", "A",
+      "B", "B",
+      "C", "C",
+      "D", "D", "D", "D",
+      "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E",
+      "F", "F",
+      "G", "G", "G",
+      "H", "H",
+      "I", "I", "I", "I", "I", "I", "I", "I", "I",
+      "J",
+      "K",
+      "L", "L", "L", "L",
+      "M", "M",
+      "N", "N", "N", "N", "N", "N",
+      "O", "O", "O", "O", "O", "O", "O", "O",
+      "P", "P",
+      "Q",
+      "R", "R", "R", "R", "R", "R",
+      "S", "S", "S", "S",
+      "T", "T", "T", "T", "T", "T",
+      "U", "U", "U", "U",
+      "V", "V",
+      "W", "W",
+      "X",
+      "Y","Y",
+      "Z"]
+      #iterate through 0-25 for alpha 1-26
       @draw_tiles = draw_tiles
-      @tiles_remaining ||=
+      @tiles_remaining ||= @tiles
     end
 
+    #fills tiles array until it has 7 letters from the given tile bag
     def draw_tiles(num)
-      #return a collection of random tiles, removes the tiles from the default set
+    num.times do
+    @tiles << default_set.pop!(rand(1..default_set.length))
     end
 
-    def tiles_remaining
-      #return the number of tiles remaining in the bag
+    def tiles_remaining#in tile bag
+    return @default_set
     end
 
   end#class end

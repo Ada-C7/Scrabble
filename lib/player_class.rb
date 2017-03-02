@@ -7,7 +7,8 @@ module Scrabble
     def initialize(name)
       @name = name
       @plays = []
-      @tiles = [] #a collection of letters that the player can play (max 7)
+      @tiles ||= tiles <= 7
+      @draw_tiles = draw_tiles
       @total_score ||= 0
     end
 
@@ -18,7 +19,7 @@ module Scrabble
     end
 
     def draw_tiles(tile_bag)
-    #WAVE fills tiles array until it has 7 letters from the given tile bag
+        draw_tiles = 7 - @tiles
     end
 
       def won?
@@ -29,15 +30,16 @@ module Scrabble
         end
       end
 
+      def highest_word_score(array_of_words)
+        word = Scoring::highest_score_from(array_of_words)
+        return Scoring::score(word)
+      end
 
       def highest_scoring_word(array_of_words)
         return Scoring::highest_score_from(array_of_words)
       end
 
-      def highest_word_score(array_of_words)
-        word = Scoring::highest_score_from(array_of_words)
-        return Scoring::score(word)
-      end
+
 
 
     end#class end

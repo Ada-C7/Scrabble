@@ -23,10 +23,11 @@ module Scrabble
         end
       end
       return @picked_tiles
-
     end
 
-
+    def tiles_remaining
+      @all_tiles.values.inject(:+)
+    end
 
   end
 end

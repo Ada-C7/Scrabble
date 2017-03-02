@@ -24,11 +24,19 @@ describe "TileBag#draw_tiles" do
     tilebag.draw_tiles(5)
     tilebag.all_tiles.values.inject(:+).must_equal 93
   end
+
+
 end
 
-# describe "TileBag#tiles_remaining" do
-#   it "Returns the number of tiles remaining in the bag" do
-#     tilebag = Scrabble::TileBag.new
-#     tilebag.tiles_remaining.must_equal 98
-#   end
-# end
+describe "TileBag#tiles_remaining" do
+  it "Returns the number of tiles remaining in the bag" do
+    tilebag = Scrabble::TileBag.new
+    tilebag.tiles_remaining.must_equal 98
+  end
+
+  it "Returns the number of tiles remaining in the bag after drawing some files" do
+    tilebag = Scrabble::TileBag.new
+    tilebag.draw_tiles(7)
+    tilebag.tiles_remaining.must_equal 91
+  end
+end

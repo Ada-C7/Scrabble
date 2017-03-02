@@ -51,7 +51,8 @@ describe 'Player' do
     end
 
     it "returns the score of the word" do
-
+      al = Scrabble::Player.new("al")
+      al.play("philtrum").must_equal 15
     end
   end
 

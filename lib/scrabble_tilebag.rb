@@ -31,13 +31,15 @@ module Scrabble
       new_tiles = []
       num.times {new_tiles << @bag_of_tiles.pop }
       return new_tiles
-
-      #returns a collection of num random tiles
-      #updates set in tilebag instance.
       #also may eventually update tiles in player hand
     end
 
     def tiles_remaining
+      if @bag_of_tiles.empty?
+        puts "There are no more tiles!"
+      else
+        return @bag_of_tiles
+      end
       #returns the remaining tiles in bag.
       #accesses array and puts or prints it.
     end

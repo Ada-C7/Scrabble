@@ -27,9 +27,11 @@ module Scrabble
     }
 
     def draw_tiles(num)
+      raise ArgumentError.new("Please draw less than 7 tiles") if num > 7
       new_tiles = []
       num.times {new_tiles << @bag_of_tiles.pop }
       return new_tiles
+
       #returns a collection of num random tiles
       #updates set in tilebag instance.
       #also may eventually update tiles in player hand

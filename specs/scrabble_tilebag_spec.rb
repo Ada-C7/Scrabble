@@ -23,9 +23,11 @@ describe "TileBag class" do
 
         first_draw.wont_equal second_draw
       end
+      it "Cannot draw more than 7 tiles" do
+        proc { @tiles.draw_tiles(8) }.must_raise ArgumentError
+      end
+
     end
 
   end
-
-
 end

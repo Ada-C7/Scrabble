@@ -52,19 +52,21 @@ describe "Scrabble#TileBag" do
         players_tiles = bag.draw_tiles(4)
         bag.tile_bag.length.must_equal 94
       end
-      # it  "Resulting array of letters must contain letter from tile_bag" do
-      #   bag = Scrabble::TileBag.new
-      #   ORIGINAL = bag.tile_bag
-      #   puts "ORIGINAL BAG:"
-      #   print ORIGINAL
-      #   puts ORIGINAL.length
-      #   array_of_tiles = bag.draw_tiles(5)
-      #   array_of_tiles.each do |tile|
-      #     ORIGINAL.must_include tile
-      #   end
-      #   print ORIGINAL
-      #   puts ORIGINAL.length
-      # end
+      it  "Resulting array of letters must contain letter from tile_bag" do
+        bag = Scrabble::TileBag.new
+        # used clone method to copy actual array's values,
+        # not a references to array:
+        original_tile_bag = bag.tile_bag.clone
+        puts "ORIGINAL BAG:"
+        print original_tile_bag
+        puts original_tile_bag.length
+        array_of_tiles = bag.draw_tiles(5)
+        array_of_tiles.each do |tile|
+          original_tile_bag.must_include tile
+        end
+        print original_tile_bag
+        puts original_tile_bag.length
+      end
     end
 
 

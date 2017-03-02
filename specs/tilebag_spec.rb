@@ -4,15 +4,26 @@ describe "Tile Bag class" do
 
   describe "Initialize" do
 
+    before do
+        @ourtiles = Scrabble::TileBag.new
+      end
+
     it "Initializes with a hash" do
-      ourtiles = Scrabble::TileBag.new
-      ourtiles.tiles.must_be_instance_of Hash
+      @ourtiles.tiles.must_be_instance_of Hash
     end
 
     it "Has the correct keys" do
+        @ourtiles.tiles.keys.each do |key|
+          key.must_be_instance_of String
+        end
     end
 
     it "Has the correct value" do
+        @ourtiles.tiles["B"].must_equal 2
+        @ourtiles.tiles["P"].must_equal 2
+        @ourtiles.tiles["S"].must_equal 4
+        @ourtiles.tiles["Z"].must_equal 1
+
       #pick keys at random and check value
     end
 

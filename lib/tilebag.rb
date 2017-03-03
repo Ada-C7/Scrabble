@@ -48,6 +48,10 @@ module Scrabble
       return my_tiles
     end
 
+    def tiles_remaining
+      return tiles.values.reduce(:+)
+    end
+
   end
 
 end

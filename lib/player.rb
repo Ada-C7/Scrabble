@@ -40,5 +40,12 @@ module Scrabble
       # Returns the highest_scoring_word score
     end
 
-  end
-end
+    def draw_tiles(tile_bag)
+      raise ArgumentError.new "The argument must be a TileBag" if tile_bag.class != TileBag
+      if @tiles.length < 7
+       @tiles += tile_bag.draw_tiles(7-tiles.length)
+      end
+    end
+
+  end # end of Class
+end # end of Module

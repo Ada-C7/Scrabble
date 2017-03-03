@@ -96,6 +96,15 @@ describe "Wave 2: class Player" do
     player1.tiles.length.must_equal 7
   end
 
+  it "tiles left in bag after player draws" do
+    tile_bag_in_play = Scrabble::TileBag.new
+    player1 = Scrabble::Player.new("Maria", tile_bag_in_play)
+    player1.draw_tiles(tile_bag_in_play)
+    tile_bag_in_play.tiles_remaining.must_equal 91
+  end
+
+
+
 
 
 

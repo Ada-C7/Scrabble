@@ -35,4 +35,5 @@ build/
 .rvmrc
 
 
-## Anna's secret files
+## Anna's and Maria's secret files
+lib/played_word.rb

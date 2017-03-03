@@ -51,48 +51,42 @@ describe "Highest Score From Method for Scoring Class" do
       @array = ["camp", "pamc", "toy", "love"]
       @array2 = ["Tweens", "Camp", "toy" ,"Key"] #73
       @fail_array = ["camp", "w@ter", "toy", "love"] #71 #small African antelope
-      @super_edge_word = ["Tweens", "Camp", "toy" ,"Key", "aeiourh", "Doloring"]
+      @super_edge_array = ["Tweens", "Camp", "toy" ,"Key", "aeiourh", "Doloring"]
     end
 
     it "Raises argumentError if argument is not an array" do
       proc { Scrabble::Scoring::highest_score_from(@edge_word) }.must_raise ArgumentError
     end
 
-    # it "Handles if array had erroneous element , or element that is not a string " do
-    #   skip
-    #   @word_array.unshift("good", @edge_word,"word")
-    #   Scrabble::Scoring::highest_score_from(@word_array)#unknown outcome
-    # end
 
     it "returns the word with the highest score" do
       Scrabble::Scoring::highest_score_from(@array2).must_equal "Key"
     end
 
 
-    xdescribe " highest_score_from tiebreaking " do
+    describe " highest_score_from tiebreaking " do
 
       before do
-        @tie_array = [ ]
+        @tie_array = ["Tweens", "Camp", "toy" ,"Key"]
+        @super_edge_word = ["Tweens", "Camp", "toy" ,"Key", "aeiourh", "Doloring"]
       end
 
       it "in the case of a tie, prefer the word with the fewest letters" do
-        skip
-        Scrabble::Scoring::highest_score_from(@tie_array)
+        Scrabble::Scoring::highest_score_from(@tie_array).must_equal "Key"
       end
 
       it "Choose the word with seven letters over the one with fewer tiles" do
-        skip
-        Scrabble::Scoring::highest_score_from(@tie_array).length.must_equal 7
+        Scrabble::Scoring::highest_score_from(["Tweens", "Camp", "Ulnrstv", "toy" ,"Key"]).length.must_equal 7
       end
 
       it "Pick the first word in array if ties are the same score and same length" do
-        skip
-        Scrabble::Scoring::highest_score_from(@tie_array)
+
+        Scrabble::Scoring::highest_score_from(["Tweens", "Lunrstv", "Ulnrstv", "toy" ,"Key"]).must_equal "Lunrstv"
       end
 
       it "Still adds 50 point bonus on words greater than 7 letters " do
-        skip
-        Scrabble::Scoring::highest_score_from(@tie_array).score.must_be :>, 50
+        word = Scrabble::Scoring::highest_score_from(@super_edge_word)
+        Scrabble::Scoring::score(word).must_be :>, 50
       end
     end
   end

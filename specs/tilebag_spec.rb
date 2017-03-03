@@ -54,16 +54,25 @@ describe "Tile Bag class" do
         puts value
         value.must_be :>, -1
       end
-
     end
 
     it "Requires a number" do
+      proc {
+      @ourtiles.draw_tiles("D")
+    }.must_raise ArgumentError
+
     end
 
     it "Requires a positive number" do
+      proc {
+      @ourtiles.draw_tiles(-1)
+    }.must_raise ArgumentError
     end
 
     it "Requires a number between 0 and 7" do
+      proc {
+      @ourtiles.draw_tiles(8)
+    }.must_raise ArgumentError
     end
 
   end

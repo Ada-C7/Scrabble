@@ -27,7 +27,23 @@ describe "TileBag tests" do
       # e_tiles.length.must_equal 12
     end
 
-    describe "TileBag#draw_tiles" do
+    describe "TileBag#draw_tiles(num)" do
+      it "raises an error if anything other than an integer is passed in as num" do
+        proc {@new_bag.draw_tiles("3")}.must_raise ArgumentError
+
+        proc {@new_bag.draw_tiles(4.0)}.must_raise ArgumentError
+
+        proc {@new_bag.draw_tiles(true)}.must_raise ArgumentError
+
+      end
+
+      it "raises an error if num is a negative number or 0" do
+        proc {@new_bag.draw_tiles(0)}.must_raise ArgumentError
+
+        proc {@new_bag.draw_tiles(-4)}.must_raise ArgumentError
+
+      end
+
       it "returns a collection of random tiles" do
         @new_bag.draw_tiles(5).must_be_instance_of Array
         @new_bag.draw_tiles(5).length.must_equal 5

@@ -9,6 +9,10 @@ module Scrabble
     end
 
     def draw_tiles(num)
+      raise ArgumentError.new("Number of tiles to draw must be an integer") if num.class != Integer
+
+      raise ArgumentError.new("You must draw at least one tile!") if num <= 0
+
       tiles_drawn = []
       @tiles_in_bag.shuffle!
       num.times { tiles_drawn << @tiles_in_bag.pop }

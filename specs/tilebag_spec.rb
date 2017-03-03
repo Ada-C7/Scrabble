@@ -79,10 +79,18 @@ describe "Tile Bag class" do
 
   describe "Tiles Remaining" do
 
+    before do
+        @ourtiles = Scrabble::TileBag.new
+      end
+
     it "Returns an Integer" do
+      @ourtiles.tiles_remaining.must_be_instance_of Integer
     end
 
     it "Returns the correct integer" do
+      total = @ourtiles.tiles.values.reduce(:+)
+      @ourtiles.draw_tiles(7)
+      @ourtiles.tiles_remaining.must_equal (total - 7)
     end
   end
 

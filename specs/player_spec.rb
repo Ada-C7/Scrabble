@@ -136,18 +136,17 @@ describe Scrabble::Player do
     end
 
     describe '#draw_tiles(tile_bag,amt)' do
-      before do
-          @game_tile_bag = Scrabble::TileBag.new
-          @player = Scrabble::Player.new('Tofu')
-      end
-      it 'returns an array of letters for the player' do
-          @player.draw_tiles(@game_tile_bag, 7).must_be_kind_of Array
-      end
-      it 'subtracts the tiles from the game_tile_bag' do
-          start_num = @game_tile_bag.tiles_remaining
-          @player.draw_tiles(@game_tile_bag, 7)
-          end_num = @game_tile_bag.tiles_remaining
-          (start_num - end_num).must_equal 7
-      end
+        before do
+            @game_tile_bag = Scrabble::TileBag.new
+        end
+        it 'returns an array of letters for the player' do
+            @new_player.draw_tiles(@game_tile_bag, 7).must_be_kind_of Array
+        end
+        it 'subtracts the tiles from the instance of TileBag' do
+            start_num = @game_tile_bag.tiles_remaining
+            @new_player.draw_tiles(@game_tile_bag, 7)
+            end_num = @game_tile_bag.tiles_remaining
+            (start_num - end_num).must_equal 7
+        end
     end
 end

@@ -36,6 +36,7 @@ describe Scrabble::TileBag do
         it 'removes the correct letters from the set' do
             other_tilebag = Scrabble::TileBag.new
             first_tilebag = other_tilebag.in_bag
+
             @new_tilebag.draw_tiles(3)
             second_tilebag = @new_tilebag.in_bag
 
@@ -43,7 +44,7 @@ describe Scrabble::TileBag do
             one = first_tilebag.find_all { |letter| @new_tilebag.tiles_drawn.include? letter }
 
             @new_tilebag.tiles_drawn.each do |letter|
-                two[letter].count.wont_equal one[letter].count
+                two.count(letter).wont_equal one.count(letter)
             end
         end
 

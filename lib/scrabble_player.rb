@@ -1,4 +1,6 @@
-require_relative './scrabble_scoring.rb'
+require_relative './scrabble_scoring'
+require_relative './scrabble_tilebag'
+
 module Scrabble
   class Player
     attr_reader :name
@@ -38,10 +40,16 @@ module Scrabble
     end
 
     def tiles
-      Scrabble::TileBag.picked_tiles
+      player_tilebag = Scrabble::TileBag.new
+      return player_tilebag.picked_tiles
     end
 
     def draw_tiles(tile_bag)
     end
   end
 end
+
+# player = Scrabble::Player.new("Mickey")
+# player.plays = %w[blue yellow black]
+# puts player.highest_scoring_word
+# puts player.tiles

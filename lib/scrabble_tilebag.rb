@@ -1,3 +1,6 @@
+require_relative './scrabble_scoring'
+# require_relative './scrabble_player'
+
 module Scrabble
   class TileBag
     attr_reader :all_tiles

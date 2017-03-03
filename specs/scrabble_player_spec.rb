@@ -93,7 +93,7 @@ end
 describe "Player#tiles" do
   it "Returns a collection of letters that the player can play" do
     player = Scrabble::Player.new("Mickey")
-    player.tiles
+    player.tiles.must_be_kind_of Array
   end
 
   it "Cannot have more than 7 tiles" do
@@ -101,3 +101,10 @@ describe "Player#tiles" do
     player.tiles.length.must_be :<=, 7
   end
 end
+
+# describe "Player#draw_tiles(tiel_bag)" do
+#   it "Fills tiles array until it has 7 letters from the given tile bag" do
+#     player = Scrabble::Player.new("Mickey")
+#
+#   end
+# end

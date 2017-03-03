@@ -68,16 +68,36 @@ describe "TileBag" do
       }.must_raise ArgumentError
     end
 
-    it "outputs a warning if the # of requested tiles > # of tiles remaining" do
+    # it "outputs a warning if the # of requested tiles > # of tiles remaining" do
+    #
+    # end
+    #
+    # it "doesnt modify the tiles array if there's not enough tiles in the bag" do
+    #
+    # end
+    #
+    # it "doesnt modify the tiles array if 0 tiles are drawn" do
+
+  end
+
+  describe "tiles_remaining" do
+    it "returns an integer" do
+      tile_bag = Scrabble::TileBag.new
+      tile_bag.tiles_remaining.must_be_instance_of Integer
+    end
+
+    it "returns # of tiles left in the bag" do
+      tile_bag = Scrabble::TileBag.new
+      default_number_of_tiles = tile_bag.tiles
+      tile_bag.draw(10)
+      tile_bag.tiles_remaining.must_equal default_number_of_tiles - 10
 
     end
 
-    it "doesnt modify the tiles array if there's not enough tiles in the bag" do
-
-    end
-
-    it "doesnt modify the tiles array if 0 tiles are drawn" do
-
+    it "returns the default # of tiles if no tiles have been drawn" do
+      tile_bag = Scrabble::TileBag.new
+      default_number_of_tiles = tile_bag.tiles
+      tile_bag.tiles_remaining.must_equal default_number_of_tiles
     end
   end
 end

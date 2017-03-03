@@ -22,9 +22,16 @@ describe "TileBag" do
     Scrabble::TileBag::DEFAULT_TILES["e"].must_equal 12
   end
 
-  it "initialize sets up the instance with a tile_bag of all default tiles" do
+  it "initialize sets up the instance with a tile_bag array of all the default tiles" do
     new_players_bag = Scrabble::TileBag.new
-    new_players_bag.tile_bag.must_equal Scrabble::TileBag::DEFAULT_TILES
+    Scrabble::TileBag::DEFAULT_TILES.each do |letter, amount|
+    new_players_bag.tile_bag.count(letter).must_equal amount
+    end
+  end
+
+  it "initialize sets up the instance with a tile_bag array with the correct number of a given tile" do
+    new_players_bag = Scrabble::TileBag.new
+    new_players_bag.tile_bag.count('n').must_equal 6
   end
 
   it "draw_tiles(num) returns a collection of random tiles" do

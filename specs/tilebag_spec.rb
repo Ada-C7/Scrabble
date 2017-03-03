@@ -25,39 +25,31 @@ describe Scrabble::TileBag do
      describe "#initialize" do
 
           it "Is a kind of TileBag" do
-
                 @my_tilebag.must_be_kind_of Scrabble::TileBag
-
           end
 
           it "Contains ## tiles in TileBag" do
-
                @my_tilebag.tile.length.must_equal 98
 
           end
      end
 
      describe "#draw_tiles(num) method" do
-
           it "Removes the designated number of tiles from the bag" do
 
                @my_tilebag.draw_tiles(7)
                @my_tilebag.drawn_tiles.length.must_equal 7
                @my_tilebag.tile.length.must_equal 91
-
           end
 
           it "Returns a collection of random tiles" do
-
                first_hand = @my_tilebag.draw_tiles(7)
                second_hand = @my_tilebag.draw_tiles(7)
 
                first_hand.wont_equal second_hand
-
           end
 
           it "Won't allow more than 7 tiles or less than 0 tiles" do
-
                proc {@my_tilebag.draw_tiles(8)}.must_raise ArgumentError
                proc {@my_tilebag.draw_tiles(-1)}.must_raise ArgumentError
                @my_tilebag.tile.length.must_equal 98

@@ -1,5 +1,6 @@
 
 require_relative 'score'
+require_relative 'tilebag'
 require 'awesome_print'
 
 
@@ -11,6 +12,7 @@ module Scrabble
       @name = name
       @plays = plays
       @plays ||= []
+      @tiles = []
     end
 
     def play(word)
@@ -30,7 +32,7 @@ module Scrabble
     end
 
     def highest_scoring_word
-      Scoring.highest_score_from(@plays)  
+      Scoring.highest_score_from(@plays)
     end
 
     def highest_word_score
@@ -41,5 +43,22 @@ module Scrabble
       end
       Scoring.score(word)
     end
+
+    def tiles
+      @tiles
+    end
+
+    def draw_tiles(tile_bag)
+      draws = 7 - @tiles.length
+      @tiles += tile_bag.draw_tiles(draws)
+    end
+
   end
 end
+
+player_one = Scrabble::Player.new("Ada")
+
+bag = Scrabble::TileBag.new
+
+player_one.draw_tiles(bag)
+puts player_one.tiles

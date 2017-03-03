@@ -45,12 +45,13 @@ describe "Scrabble tilebag" do
   describe "#draw_tiles method" do
     it "Should return a collection of random tiles" do
       @tilebag.draw_tiles(1).must_be_instance_of Array
+      @tilebag.draw_tiles(0).length.must_equal 0
       @tilebag.draw_tiles(3).length.must_equal 3
     end
 
     it "Should remove the tiles from the default set" do
       @tilebag.draw_tiles(3)
-      @tilebag.tiles_remaining.must_equal 95
+      @tilebag.tiles.length.must_equal 95
     end
   end
 
@@ -58,8 +59,10 @@ describe "Scrabble tilebag" do
     it "Returns the number of tiles remaining in the bag" do
       @tilebag.draw_tiles(7)
       @tilebag.tiles_remaining.must_equal 91
+      @tilebag.tiles.length.must_equal 91
       @tilebag.draw_tiles(91)
       @tilebag.tiles_remaining.must_equal 0
+      @tilebag.tiles.length.must_equal 0
     end
   end
 end

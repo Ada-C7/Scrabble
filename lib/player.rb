@@ -3,16 +3,14 @@ require_relative 'scrabble'
 module Scrabble
 
   class Player
-    attr_reader :name, :plays, :score_array, :score, :tilebag, :tiles
+    attr_reader :name, :plays, :score_array, :score
 
-    def initialize(name, tilebag=nil)
+    def initialize(name)
       raise ArgumentError.new "Player must have a valid name" if name.class != String
       @name = name
       @plays = []
       @score = 0
       @score_array = []
-      @tilebag = tilebag
-      @tiles = @tilebag.draw(7)
     end
 
     def play(word)
@@ -45,6 +43,8 @@ module Scrabble
     def highest_word_score
       return score_array.max
     end
+
+
 
   end
 end

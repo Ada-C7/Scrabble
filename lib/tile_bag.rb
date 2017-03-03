@@ -20,6 +20,7 @@ module Scrabble
       tile_bag
     end#end of create_tile_bag method
 
+
     def draw_tiles(num)
       raise ArgumentError.new("Parameter must be integer") if num.class != Integer
       drawn_tiles = []
@@ -31,5 +32,12 @@ module Scrabble
       drawn_tiles
     end
 
+    def tiles_remaining
+      @tile_bag.length
+    end
+
   end#end of TileBag class
 end#end of Scrabble module
+# bag = Scrabble::TileBag.new
+# bag.draw_tiles(5)
+# puts bag.tiles_remaining

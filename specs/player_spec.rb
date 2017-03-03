@@ -45,65 +45,74 @@ describe "Player class" do
       proc {
         player = Scrabble::Player.new("Natalia")
         player.play("sd234ddm") }.must_raise ArgumentError
-    end
-  end
-
-  describe "Player#total_score" do
-    it "returns an integer" do
-      player = Scrabble::Player.new("Natalia")
-      player.play("flower")
-      player.total_score.class.must_equal Integer
+      end
     end
 
-    it "Returns total score of words" do
-      player = Scrabble::Player.new("Natalia")
-      player.play("flower")
-      player.play("hello")
-      player.total_score.must_equal 20
+    describe "Player#total_score" do
+      it "returns an integer" do
+        player = Scrabble::Player.new("Natalia")
+        player.play("flower")
+        player.total_score.class.must_equal Integer
+      end
+
+      it "Returns total score of words" do
+        player = Scrabble::Player.new("Natalia")
+        player.play("flower")
+        player.play("hello")
+        player.total_score.must_equal 20
+      end
+
+      it "Returns 0 if plays array is empty" do
+        player = Scrabble::Player.new("Natalia")
+        player.total_score.must_equal 0
+      end
     end
 
-    it "Returns 0 if plays array is empty" do
-      player = Scrabble::Player.new("Natalia")
-      player.total_score.must_equal 0
+    describe "Player#won?" do
+      it "Returns true if total score > 100" do
+        player = Scrabble::Player.new("Natalia")
+        player.play("flower")
+        player.play("quizzes")
+        player.play("hello")
+        player.won?.must_equal true
+      end
+
+      it "Returns false if total score < 100" do
+        player = Scrabble::Player.new("Natalia")
+        player.play("flower")
+        player.play("hello")
+        player.won?.must_equal false
+      end
+    end#end won?
+
+    describe "Player#highest_scoring_word" do
+      it "Must return a string with the highest scoring" do
+        player = Scrabble::Player.new("Natalia")
+        player.play("word")
+        player.play("quizz")
+        player.highest_scoring_word.class.must_equal String
+        player.highest_scoring_word.must_equal "quizz"
+      end
     end
-  end
 
-  describe "Player#won?" do
-    it "Returns true if total score > 100" do
-      player = Scrabble::Player.new("Natalia")
-      player.play("flower")
-      player.play("quizzes")
-      player.play("hello")
-      player.won?.must_equal true
+    describe "Player#highest_word_score" do
+      it "Must return score of the highest_scoring_word" do
+        player = Scrabble::Player.new("Natalia")
+        player.play("word")
+        player.play("quizzes")
+        player.highest_word_score.class.must_equal Integer
+        player.highest_word_score.must_equal 84
+      end
     end
 
-    it "Returns false if total score < 100" do
-      player = Scrabble::Player.new("Natalia")
-      player.play("flower")
-      player.play("hello")
-      player.won?.must_equal false
+    describe "Player#tiles" do
+      it "return an empty array" do
+        Scrabble::Player.new("laura").tiles.class.must_equal Array
+        Scrabble::Player.new("laura").tiles.must_be_empty
+
+      end
+
     end
-  end#end won?
-
-  describe "Player#highest_scoring_word" do
-    it "Must return a string with the highest scoring" do
-      player = Scrabble::Player.new("Natalia")
-      player.play("word")
-      player.play("quizz")
-      player.highest_scoring_word.class.must_equal String
-      player.highest_scoring_word.must_equal "quizz"
-    end
-  end
-
-  describe "Player#highest_word_score" do
-    it "Must return score of the highest_scoring_word" do
-      player = Scrabble::Player.new("Natalia")
-      player.play("word")
-      player.play("quizzes")
-      player.highest_word_score.class.must_equal Integer
-      player.highest_word_score.must_equal 84
-    end
-  end
 
 
-end # end of class
+  end # end of class

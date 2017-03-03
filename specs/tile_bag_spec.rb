@@ -19,8 +19,7 @@ describe "Scrabble#TileBag" do
         letter.class.must_equal String
       end
     end
-
-  end
+  end#end of TileBag#create_tile_bag
 
   describe "TileBag#initialize" do
     it "Creates new instance of TileBag class" do
@@ -33,7 +32,7 @@ describe "Scrabble#TileBag" do
       tile_bag1 = Scrabble::TileBag.new
       tile_bag1.tile_bag.class.must_equal Array
     end
-  end
+  end#end of TileBag#initialize
 
     describe "TileBag#drawn_tiles(num)" do
       it  "Returns an array" do
@@ -52,31 +51,31 @@ describe "Scrabble#TileBag" do
         players_tiles = bag.draw_tiles(4)
         bag.tile_bag.length.must_equal 94
       end
+
       it  "Resulting array of letters must contain letter from tile_bag" do
         bag = Scrabble::TileBag.new
         # used clone method to copy actual array's values,
         # not a references to array:
         original_tile_bag = bag.tile_bag.clone
-        puts "ORIGINAL BAG:"
-        print original_tile_bag
-        puts original_tile_bag.length
         array_of_tiles = bag.draw_tiles(5)
         array_of_tiles.each do |tile|
           original_tile_bag.must_include tile
         end
-        print original_tile_bag
-        puts original_tile_bag.length
+      end
+    end#TileBag#draw_tiles
+
+    describe "TileBag#tiles_remaining" do
+      it "Returns an Integer" do
+        bag = Scrabble::TileBag.new
+        bag.tiles_remaining.class.must_equal Integer
+      end
+
+      it "length of remaining tile bag must be less than length tile_bag" do
+        bag = Scrabble::TileBag.new
+        bag.draw_tiles(5)
+        bag.tiles_remaining.must_equal 93
       end
     end
 
 
-
-
-
-
-
-
-
-
-
-end
+end#end of Scrabble::TileBag

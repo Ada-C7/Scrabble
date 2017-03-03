@@ -1,8 +1,10 @@
+require 'simplecov'
+SimpleCov.start
 require 'rake/testtask'
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
-# require 'csv'
+
 require_relative '../lib/scoring'
 require_relative '../lib/player'
 require_relative '../lib/tile_bag'

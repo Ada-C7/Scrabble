@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'rake/testtask'
 require 'minitest/autorun'
 require 'minitest/reporters'

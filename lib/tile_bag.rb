@@ -1,10 +1,8 @@
 module Scrabble
   class TileBag
-    attr_reader :player_hand
 
     def initialize
       @bag = bag
-      @player_hand = []
     end
 
     def bag
@@ -40,9 +38,10 @@ module Scrabble
 
     def draw_tiles(num)
       tile = ""
+      player_hand = []
       num.times do
         tile = @bag.sample
-        @player_hand << tile
+        player_hand << tile
         @bag.each_with_index do |letter, index|
           if letter == tile
             @bag.delete_at(index)
@@ -50,7 +49,7 @@ module Scrabble
           end
         end
       end
-      return @player_hand
+      return player_hand
     end
 
     def tiles_remaining
@@ -60,3 +59,6 @@ module Scrabble
 
   end
 end
+
+# game = Scrabble::TileBag.new
+# # puts game.draw_tiles(3)

@@ -8,6 +8,7 @@ module Scrabble
       @name = name
       @plays = []
       @tiles = []
+      @tile_bag = TileBag.new
     end
 
     def won?
@@ -15,15 +16,13 @@ module Scrabble
     end
 
     def tile_bag_draw(num)
-      trial = Scrabble::TileBag.new
-      return trial.draw_tiles(num)
+      return @tile_bag.draw_tiles(1)
     end
 
     def draw_tiles
-      until tiles.length == 7
-        @tiles << tile_bag_draw(1)
+      until @tiles.length == 7
+        @tiles << tile_bag_draw(1)[0]
       end
-      puts @tiles
     end
 
     def score(name)
@@ -37,7 +36,7 @@ module Scrabble
     def play(word)
       return false if won?
       raise ArgumentError.new "This requires a string" if word.class != String
-      @plays.push(word)
+      @plays << word
       return score(name)
     end
 
@@ -57,7 +56,3 @@ module Scrabble
 
   end
 end
-
-ginny = Scrabble::Player.new("ginny")
-ginny.draw_tiles
-puts ginny.tiles

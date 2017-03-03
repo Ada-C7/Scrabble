@@ -17,11 +17,19 @@ describe "Wave 3" do
             @my_tiles.tilebag.must_be_instance_of Array
         end
 
+        it "has populated the tilebag with the correct numbers of tiles" do
+          sample = @my_tiles.tilebag.find_all {|tile| tile == "o"}
+          sample.length.must_equal 8
+        end
+
     end
 
-    xdescribe "draw_tiles(num) method for TileBag class" do
+    describe "draw_tiles(num) method for TileBag class" do
 
       it "removes num items from the default tile collection " do
+        length_before = @my_tiles.tilebag.length
+        @my_tiles.draw_tiles(5)
+        @my_tiles.tilebag.length.must_equal (length_before - 5)
       end
 
       it "returns an array of the letters it removes" do

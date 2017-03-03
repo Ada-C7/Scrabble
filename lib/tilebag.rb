@@ -19,8 +19,9 @@ module Scrabble
             @tilebag << letter
             end
         end
+      end
 
-
+      def draw_tiles(num)
       end
 
   end

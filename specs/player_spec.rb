@@ -71,29 +71,32 @@ describe "Player is a class" do
 
   describe "won?" do
     it "Checks if won" do
+      4.times do
+        @player.play("syzygy")
+      end
       @player.won?.must_equal false
-      @player.play "zzzzzzz"
+      @player.play("pink")
       @player.won?.must_equal true
     end
   end
 
   describe "highest_scoring_word" do
     it "returns highest scoring word from @plays array" do
-      test_plays = %w(zzz dog kkkkkk oink)
+      test_plays = %w(zyme dog zoysia oink)
       test_plays.each do |word|
         @player.play(word)
       end
-      @player.plays.must_equal %w(zzz dog kkkkkk oink)
-      @player.highest_scoring_word.must_equal "zzz"
+      @player.plays.must_equal %w(zyme dog zoysia oink)
+      @player.highest_scoring_word.must_equal "zyme"
     end
   end
   describe "highest_word_score" do
     it "correctly scores highest scoring word" do
-      test_plays = %w(zzz dog kkkkkk oink)
+      test_plays = %w(zyme dog zoysia oink)
       test_plays.each do |word|
         @player.play(word)
       end
-      @player.highest_word_score.must_equal 30
+      @player.highest_word_score.must_equal 18
     end
   end
 

@@ -16,6 +16,9 @@ describe "Dictionary is a class" do
       @test_dictionary.dictionary.empty?.must_equal false
     end
 
+  end
+
+  describe "build_list method" do
     it "Make sure the first word < 8 letters is read in from file" do
       @test_dictionary.dictionary.include?("aa").must_equal true
     end
@@ -29,7 +32,25 @@ describe "Dictionary is a class" do
         word.length.must_be :<, 8
       end
     end
+  end # end of describe
+
+  describe "validate_players_word method" do
+
+    it "errors out if not a string passed in" do
+      proc {@test_dictionary.validate_players_word(34)}.must_raise ArgumentError
+    end
+
+    it "returns true if word in @dictionary" do
+
+    end
+
+    it "returns false if word not in @dictionary" do
+
+    end
+
   end
+
+
 
 
 

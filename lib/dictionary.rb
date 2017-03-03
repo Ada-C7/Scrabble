@@ -17,7 +17,9 @@ module Scrabble
     end
     # method to generate the list of words / Dictionary from a text file... could be in initialize
 
-    def validate_players_word
+    def validate_players_word(word)
+      raise ArgumentError.new "must be string" if word.class != String
+      return @dictionary.include?(word) ? true : false
     # method to validate word given by a player(will check our word list)
     end
   end

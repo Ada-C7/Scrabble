@@ -11,7 +11,7 @@ module Scrabble
       @plays = []
       @name = name
       @total_score = 0
-
+      @dictionary = Scrabble::Dictionary.new
       @tiles = []
     end
 
@@ -26,16 +26,24 @@ module Scrabble
       # puts @tiles.length
     end
 
-    def play(word)
+    def validate_word(word)
+      @dictionary.validate_players_word(word)
+    end
 
+    def play(word)
       # adds the input word to the plays array
+      valid = validate_word(word)
       if won?
         return false
       else
-        @plays << word
-        word_score = Scrabble::Scoring.score(word)
-        @total_score += word_score
-        return word_score
+        if valid
+          @plays << word
+          word_score = Scrabble::Scoring.score(word)
+          @total_score += word_score
+          return word_score
+        else
+          puts "Not a valid word"
+        end
       end
 
     end

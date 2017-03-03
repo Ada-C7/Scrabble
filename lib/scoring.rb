@@ -84,6 +84,6 @@ end
 
 # puts Scrabble::Scoring.highest_score_from(%w(qqqqqj daaaaaa i))
 
-# puts Scrabble::Scoring.score("word")
+# puts Scrabble::Scoring.score("syzygy")
 
 #puts Scrabble::Scoring.highest_score_from(%w(one one thirtae thirte four five))

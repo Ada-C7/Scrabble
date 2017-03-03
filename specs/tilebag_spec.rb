@@ -12,3 +12,6 @@ require_relative '../lib/tilebag.rb'
 
 Minitest::Reporters.use!
 Minitest::Reporters::SpecReporter.new
+
+describe "TileBag" do
+end

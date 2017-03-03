@@ -43,42 +43,43 @@ module Scrabble
 
 
       def self.highest_score_from(array_of_words)
-        array_of_scores = []
+        hash_of_word_score = {}
 
         array_of_words.each do |word|
-          array_of_scores << self.score(word)
+          hash_of_word_score[word] = self.score(word)
         end
 
-        word_score_pair = array_of_words.zip(array_of_scores).to_h
+        higgest_score = hash_of_word_score.max_by{|k,v| v}
 
-        word_score_pair = word_score_pair.sort_by {|key, value| value} #returns array
+        array_of_highest_words = hash_of_word_score.map do | word , score |
 
-        #new var
-        array_of_highest_scores = word_score_pair.drop_while do |array|
-          array[1] < word_score_pair[-1][1]
-        end
+          if score == higgest_score[1]
+            word
+          end
+        end.select { |value| value }
 
         #not a tie
-        if array_of_highest_scores.length == 1
+        if array_of_highest_words.length == 1
 
-          #highest_scoring_word = array_of_highest_scores.max_by {|k,v| v}
-          highest_scoring_word = array_of_highest_scores[0][0]
+          #highest_scoring_word = array_of_highest_words.max_by {|k,v| v}
+          highest_scoring_word = array_of_highest_words.first
 
           return highest_scoring_word
-          #instance of a tie #word lengths are the same
-        elsif array_of_highest_scores[0][0].length == array_of_highest_scores[-1][0].length
 
-            highest_scoring_word = array_of_highest_scores[0][0]
+          #instance of a tie #word lengths are the same
+        elsif array_of_highest_words.first.length == array_of_highest_words.last.length
+
+            highest_scoring_word = array_of_highest_words.first
             return highest_scoring_word
 
         else
-          highest_scoring_word = array_of_highest_scores[0][0]
+          highest_scoring_word = array_of_highest_words.first
 
-          array_of_highest_scores.each do |array|
-            if array[0].length < highest_scoring_word.length && array[0].length < 7
-              highest_scoring_word = array[0]
+          array_of_highest_words.each do |word|
+            if word.length < highest_scoring_word.length && word.length < 7
+              highest_scoring_word = word
             else
-              highest_scoring_word = array_of_highest_scores[0][0]
+              highest_scoring_word = array_of_highest_words.first
             end
           end
         end

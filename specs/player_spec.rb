@@ -197,16 +197,14 @@ describe "More Draw Tiles" do
     @player.tiles.length.must_equal 7
   end
 
-  # it "ensures word played is in tiles" do
-  #
-  #   proc {
-  #     @player.play("elephant")
-  #   }.must_raise ArgumentError
-  #   end
+  it "ensures word played is in tiles" do
+    proc {
+      @player.play("words")
+    }.must_raise ArgumentError
+    end
 
 
-  it "" do
-   @player.play("cat")
-   @player.check_play("cat")
+  it "Returns true if word is in tiles" do
+   @player.check_play("CAT").must_equal true
   end
   end

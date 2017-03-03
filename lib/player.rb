@@ -30,14 +30,16 @@ module Scrabble
     end
 
     def highest_scoring_word
-         Scoring.highest_score_from(@plays)
+      Scoring.highest_score_from(@plays)  
     end
 
     def highest_word_score
-      return Scoring.score(highest_scoring_word)
+      begin
+        word = highest_scoring_word
+      rescue ArgumentError
+        return 0
+      end
+      Scoring.score(word)
     end
   end
 end
-
-played_words = %w(grits gravy biscuit greens)
-ada = Scrabble::Player.new("ada", played_words)

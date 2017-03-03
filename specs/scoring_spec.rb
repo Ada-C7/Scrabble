@@ -2,7 +2,6 @@ require_relative 'spec_helper'
 
 describe "Scrabble::Scoring" do
 
-  # test if letters have correct values attached
   it "Letters have correct values" do
     Scrabble::Scoring::LETTER_VALUES[:A].must_equal 1
     Scrabble::Scoring::LETTER_VALUES[:B].must_equal 3
@@ -11,7 +10,6 @@ describe "Scrabble::Scoring" do
   end
 
   describe "self.score" do
-    # check that word is no more than 7 letters long
 
     it "Raises error if input is not a String" do
         proc {

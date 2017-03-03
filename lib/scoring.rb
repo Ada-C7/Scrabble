@@ -2,7 +2,6 @@ module Scrabble
 
   class Scoring
 
-    # constant to hold letter-points
     LETTER_VALUES = {
       A: 1, B: 3, C: 3, D: 2,
       E: 1, F: 4, G: 2, H: 4,
@@ -13,7 +12,6 @@ module Scrabble
       Y: 4,Z: 10
     }
 
-    # method to calculate & return score, given a word as an argument, call add_word method
     def self.score(word)
       raise ArgumentError.new("That is not String.") if word.class != String
       raise ArgumentError.new("That word includes invalid characters!") if !word.match(/^[a-zA-Z]+$/)
@@ -22,7 +20,6 @@ module Scrabble
       word_array = word.upcase.split("")
       word_score = 0
 
-      # if word length is 7, 50 bonus points
       if word_array.length == 7
         word_score += 50
       end
@@ -34,7 +31,6 @@ module Scrabble
       return word_score
     end
 
-    # method to iterate through wordarray and return word with the highest score
     def self.highest_score_from(array_of_words)
       raise ArgumentError.new("That's not an array") if array_of_words.class != Array
       winner = ""
@@ -67,22 +63,15 @@ module Scrabble
       return winner
     end
 
-    # if words are tied, tiebreaker method returns the shorter word
-    # if multiple words are same length and score, just pick first word
     def self.tiebreaker(word, winner)
-      tie_winner = ""
-      if word.length <= winner.length
-          winner.length == 7 ? tie_winner = winner : tie_winner = word
+
+      if winner.length == 7 || word.length == 7
+        winner.length <= word.length ? tie_winner = word : tie_winner = winner
       else
-          word.length == 7 ? tie_winner = word : tie_winner = winner
+        word.length <= winner.length ? tie_winner = winner : tie_winner = word
       end
 
-      # attempt to get 100% coverage for scoring_spec, failed for now
-      # if word.length == 7 || winner.length == 7
-      #   word.length <= winner.length ? tie_winner = winner : tie_winner = word
-      # else
-      #   word.length <= winner.length ? tie_winner = winner : tie_winner = word
-      # end
     end
+
   end
 end

@@ -11,6 +11,14 @@ module Scrabble
       @tiles = []
     end
 
+    def tiles
+      #tiles a collection of letters that the player can play (max 7)
+    end
+
+    def draw_tiles(tile_bag)
+      #draw_tiles(tile_bag) fills tiles array until it has 7 letters from the given tile bag
+    end
+
     def plays
       raise ArgumentError.new("You haven't played any words yet!") if @plays.empty?
       @plays

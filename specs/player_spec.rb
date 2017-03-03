@@ -119,4 +119,9 @@ describe "Scrabble::Player" do
         Scrabble::Player.new.highest_word_score}.must_raise ArgumentError
   end
 
+describe "Player#tiles and #draw_tiles" do
+  #tiles a collection of letters that the player can play (max 7)
+  #draw_tiles(tile_bag) fills tiles array until it has 7 letters from the given tile bag
+end
+
 end

@@ -11,7 +11,7 @@ module Scrabble
         M: 2, N: 6, O: 8, P: 2,
         Q: 1, R: 6, S: 4, T: 6,
         U: 4, V: 2, W: 2, X: 1,
-        Y: 2,Z: 1 }
+        Y: 2, Z: 1 }
     end
 
     # returns a collection of random tiles, removes the tiles from the default set
@@ -26,9 +26,22 @@ module Scrabble
 
     end
 
-    def draw_letter
-      selected_letter = @letter_quantity.keys.sample
+    def random_letter()
+      case rand(1..98)
+        when 1..12 then :E
+        when 13..30 then [:I, :A].sample
+        when 31..38 then :O
+        when 39..56 then [:T, :R, :N].sample
+        when 57..72 then [:U, :S, :L, :D].sample
+        when 73..75 then :G
+        when 76..93 then [:Y, :W, :V, :P, :M, :H, :F, :C, :B].sample
+        when 94..98 then [:Z, :X, :Q, :K, :J].sample
+      end
+    end
 
+    def draw_letter
+#  selected_letter = @letter_quantity.keys.sample
+    selected_letter = random_letter()
       if @letter_quantity[selected_letter] != 0
         @letter_quantity[selected_letter] -= 1
         return selected_letter
@@ -37,34 +50,10 @@ module Scrabble
       end
     end
 
-
-    # returns the number of tiles remaining in the bag
-    # def tiles_remaning
-    #   @letter_quantity.values.inject { | total, value | total + value }
-    # end
+# returns the number of tiles remaining in the bag
+    def remaining_tiles
+    @letter_quantity.values.inject { | total, value | total + value }
+    end
 
   end
 end
-
-# hash.key(value)
-# h = Scrabble::Tilebag.new
-#
-#
-#
-# all_letters = []
-#
-# 98.times do
-#   all_letters << h.draw_letter
-# end
-#
-# group = all_letters.sort.group_by {| letter | letter }
-# puts group.map { |letter, count | count.length }
-
-
-
-# puts h.draw_tiles(5)
-# 98.times do
-# puts h.draw_letter
-# end
-# puts h.letter_quantity.values.inject{ | total, value | total + value }
-# puts h.letter_quantity

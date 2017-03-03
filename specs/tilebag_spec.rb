@@ -13,7 +13,7 @@ describe "Scrabble::Tilebag" do
 
   end
 
-  describe "Scrabble::Tilebag#draw_tiles and draw_letter" do
+  describe "Scrabble::Tilebag#draw_tiles and #draw_letter and #random_letter" do
 
     before do
       @game = Scrabble::Tilebag.new
@@ -30,18 +30,31 @@ describe "Scrabble::Tilebag" do
     end
 
     it "Draws all letters so all letters have value of 0" do
-      proc{
-
-      all_letters = []
-
-      98.times do
-        all_letters << @game.draw_letter
-      end
-
-      group = all_letters.sort.group_by {| letter | letter }
-      puts group.map { |letter, count | count.length }
-      }
+      # proc{
+      #
+      # all_letters = []
+      #
+      # 98.times do
+      #   all_letters << @game.draw_letter
+      # end
+      #
+      # group = all_letters.sort.group_by {| letter | letter }
+      # puts group.map { |letter, count | count.length }
+      # }
     end
 
+    it "random_letter returns a letter" do
+
+    end
+
+    # it "another edge case?" do
+    # end
+
   end
+
+
+  describe "Scrabble::Tilebag#remaining_tiles" do
+
+  end
+
 end

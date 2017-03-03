@@ -138,3 +138,18 @@ describe "Highest Scoring Word and Word Score" do
   end
 
 end
+
+describe "initialize player tiles" do
+  it "initializez with a tilebag object" do
+
+
+  end
+
+  it "initializes with an array of 7 tiles" do
+  end
+
+
+  it "tiles is an array of letter" do
+  end
+
+end

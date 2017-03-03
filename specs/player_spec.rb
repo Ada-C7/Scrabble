@@ -7,7 +7,7 @@ require 'minitest/skip_dsl'
 require_relative '../lib/score'
 require_relative '../lib/letter'
 require_relative '../lib/player'
-
+require_relative '../lib/tilebag'
 
 Minitest::Reporters.use!
 Minitest::Reporters::SpecReporter.new
@@ -115,13 +115,41 @@ describe "ScrabblePlayer" do
            end
      end
 
-     describe "ScrabblePlayer" do
-            before do
-              @player = Scrabble::Player.new("Ada", @played_words)
-            end
+     # describe "draw_tiles(tile_bag)" do
+     #
+     # #       it "Allows player a collection of tiles" do
+     #    #
+     # #            player = Scrabble::Player.new("Ada")
+     # #            player.tiles.must_be_class Array
+     # #            player.tiles.length.must_equal 0
+     #    #
+     # #      end
+     #    #
+     # #      it "Selects 3 tiles when the player has 4" do
+     # #
+     # #           tiles = %w(e e t v)
+     # #           bag = Scramble::TileBag.new
+     # #           player = Scrabble::Player.new("Ada", nil, tiles)
+     #    #
+     # #           player.draw_tiles(bag).length.must_equal 7
+     # #      end
+     #    #
+     # #     it "Selects 4 tiles when the player has 3" do
+     # #
+     # #          tiles = %w(e e v)
+     # #          bag = Scramble::TileBag.new
+     # #          player = Scrabble::Player.new("Ada", nil, tiles)
+     #    #
+     # #          player.draw_tiles(bag).length.must_equal 7
+     # #     end
+     #    #
+     # #    it "Selects 0 tiles when the player has 7" do
+     # #
+     # #         bag = Scramble::TileBag.new
+     # #         player = Scrabble::Player.new("Ada")
+     #    #
+     # #         player.draw_tiles(bag).length.must_equal 7
+     # #     end
+     # end
 
-            @player.tiles.must_be_class Array
-
-
-        end
 end

@@ -1,12 +1,13 @@
 
 require_relative 'score'
 require_relative 'tilebag'
+
 require 'awesome_print'
 
 
 module Scrabble
   class Player
-    attr_reader :name, :plays
+    attr_reader :name, :plays, :tiles
 
     def initialize(name, plays = nil)
       @name = name
@@ -44,11 +45,7 @@ module Scrabble
       Scoring.score(word)
     end
 
-    def tiles
-      @tiles
-    end
-
-    def draw_tiles(tile_bag)
+    def draw_tiles(bag)
       draws = 7 - @tiles.length
       @tiles += tile_bag.draw_tiles(draws)
     end
@@ -58,7 +55,12 @@ end
 
 player_one = Scrabble::Player.new("Ada")
 
-bag = Scrabble::TileBag.new
+puts player_one.name
+puts player_one.tiles.inspect
 
-player_one.draw_tiles(bag)
-puts player_one.tiles
+bag = Scrabble::Letter.new("k")
+
+puts bag.inspect
+#
+# player_one.draw_tiles(bag)
+# puts player_one.tiles

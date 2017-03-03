@@ -41,10 +41,12 @@ describe "Dictionary is a class" do
     end
 
     it "returns true if word in @dictionary" do
+      @test_dictionary.validate_players_word("zyzzyva").must_equal true
 
     end
 
     it "returns false if word not in @dictionary" do
+      @test_dictionary.validate_players_word("zzzzzzz").must_equal false
 
     end
 

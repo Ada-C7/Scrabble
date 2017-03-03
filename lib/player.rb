@@ -36,21 +36,20 @@ module Scrabble
       if won?
         return false
       else
-        if valid
-          @plays << word
-          word_score = Scrabble::Scoring.score(word)
-          @total_score += word_score
-          return word_score
-        else
-          puts "Not a valid word"
-        end
+        raise ArgumentError.new "Not a valid word" if !valid
+
+        @plays << word
+        word_score = Scrabble::Scoring.score(word)
+        @total_score += word_score
+        return word_score
+
       end
 
     end
 
     def won?
 
-      return @total_score > 100 ? true : false
+      return @total_score >= 100 ? true : false
 
     end
 

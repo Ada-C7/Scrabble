@@ -31,7 +31,7 @@ describe "Player is a class" do
     end
   end
 
-  describe "plays method" do
+  describe "plays array" do
     it "is an array" do
       @player.plays.must_be_kind_of Array
     end
@@ -44,6 +44,18 @@ describe "Player is a class" do
 
   end
   describe "play(word)" do
+
+    it "errors out if not a valid word" do
+      proc {@player.play("xxx")}.must_raise ArgumentError
+    end
+    it "Returns false if won" do
+      4.times do
+        @player.play("syzygy")
+      end
+      @player.total_score.must_equal 100
+      @player.play("pink").must_equal false
+    end
+
     it "Returns the score of the word" do
       @player.play("oink").must_equal 8
     end
@@ -61,21 +73,15 @@ describe "Player is a class" do
 
     end
 
-    it "Return false if won" do
-      @player.play("zzzzzzz")
-      @player.play("oink").must_equal false
-
-
-    end
   end
 
   describe "won?" do
     it "Checks if won" do
-      4.times do
+      3.times do
         @player.play("syzygy")
       end
       @player.won?.must_equal false
-      @player.play("pink")
+      @player.play("syzygy")
       @player.won?.must_equal true
     end
   end

@@ -53,7 +53,6 @@ describe "Wave 2: class Player" do
     player1.total_score.must_equal 26
   end
 
-
   it "#won?: If the player has over 100 points, returns true, otherwise returns false" do
     player1 = Scrabble::Player.new("Maria")
     played_words = %w(quiz risotto dog) #
@@ -63,7 +62,6 @@ describe "Wave 2: class Player" do
     player1.won?.must_equal false
     player1.play("jinx")
     player1.won?.must_equal true
-
   end
 
   it "#highest_scoring_word: Returns the highest scoring played word" do
@@ -102,10 +100,4 @@ describe "Wave 2: class Player" do
     player1.draw_tiles(tile_bag_in_play)
     tile_bag_in_play.tiles_remaining.must_equal 91
   end
-
-
-
-
-
-
 end # End of describe "Wave 2: class Player"

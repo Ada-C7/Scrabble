@@ -7,12 +7,6 @@ module Scrabble
       input_array = input_string.upcase.split("")
       score = input_array.map {|letter| SCORE_CHART[letter.to_sym]}.reduce(:+)
       input_array.length == 7 ? score += 50 : score
-
-      # if input_array.length == 7
-      #   score += 50
-      # end
-      #
-      # return score
     end
 
     def self.highest_score_from(array_of_words)
@@ -25,13 +19,6 @@ module Scrabble
       words_with_shortest_length = highest_score_words.find_all { |str| str.length == shortest_length}
 
       words_with_length_7.length == 0 ? words_with_shortest_length.first : words_with_length_7.first
-
-      # if words_with_length_7.length == 0
-      #   return words_with_shortest_length[0]
-      # else
-      #   return words_with_length_7[0]
-      # end
     end
-
   end # End of class Scoring
 end # End of module Scrabble

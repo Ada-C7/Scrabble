@@ -8,9 +8,6 @@ require_relative '../lib/scoring'
 
 
 describe "Wave 1" do
-  describe "Scoring#initialize" do
-
-  end
 
   describe "Scoring#score" do
     it "returns a number for the total score" do
@@ -55,7 +52,5 @@ describe "Wave 1" do
       array_of_strings = %w(hello silly)
       Scrabble::Scoring.highest_score_from(array_of_strings).must_equal "hello"
     end
-
   end
-
 end

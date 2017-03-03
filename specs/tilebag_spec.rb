@@ -41,5 +41,4 @@ describe "Wave 3: class TileBag" do
       tile_bag_1.draw_tiles(10)
       tile_bag_1.tiles_remaining.must_equal 88
   end
-
 end #End of describe "Wave 3: class TileBag"

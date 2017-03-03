@@ -2,15 +2,15 @@ require_relative "./scoring.rb"
 
 module Scrabble
   class Player
-    attr_reader :name, :plays, :tiles
+    attr_reader :name, :plays, :players_tiles
 
     def initialize(name)
         @name = name
         @plays = []
         @scores = []
-        @tiles = []
+        @players_tiles = []
         @current_tilebag = Scrabble::TileBag.new
-        @tiles = draw_tiles(@current_tilebag)
+        draw_tiles(@current_tilebag)
     end
 
     def play(word)
@@ -35,8 +35,12 @@ module Scrabble
     end
 
     def draw_tiles(tilebag)
-        num = 7 - tiles.length
-        tilebag.draw_tiles(num)
+        num = 7 - @players_tiles.length
+        new_tiles = tilebag.draw_tiles(num)
+        new_tiles.each do |tile|
+          @players_tiles << tile
+        end
+
     end
 
     def total_score

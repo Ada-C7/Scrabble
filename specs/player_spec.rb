@@ -136,14 +136,15 @@ describe "Wave 3" do
 
   describe "draw_tiles for Player class" do
     it "fills tiles array with letters" do
-     @my_player.tiles.must_be_instance_of Array
-     @my_player.tiles[0].must_be_instance_of String
+     @my_player.players_tiles.must_be_instance_of Array
+     @my_player.players_tiles[0].must_be_instance_of String
 
     end
 
     it "won't fill the array beyond 7 letters" do
-    my_tiles = Scrabble::TileBag.new
-    proc{@my_player.draw_tiles(my_tiles)}.must_raise ArgumentError
+      new_tilebag = Scrabble::TileBag.new
+      @my_player.draw_tiles(new_tilebag)
+      @my_player.players_tiles.length.must_equal 7
 
     end
 

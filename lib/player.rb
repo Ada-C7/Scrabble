@@ -12,9 +12,18 @@ module Scrabble
       @tiles = []
     end
 
+<<<<<<< HEAD
     def draw_tiles(tile_bag)
       until @tiles.size == 7
         @tiles << tile_bag.Scrabble::TileBag.draw_tiles(1)
+=======
+    def draw_tiles(name_of_tile_bag)
+      if @tiles.nil?
+        @tiles << name_of_tile_bag.Scrabble::TileBag.draw_tiles(7)
+        puts @tiles
+      else
+        @tiles << name_of_tile_bag.draw_tiles(7 - @tiles.length)
+>>>>>>> 555454c104d4ce0db0220465d8b7029d7bc5192e
       end
 
 
@@ -65,7 +74,16 @@ module Scrabble
 end
 
 player = Scrabble::Player.new("Ada")
+<<<<<<< HEAD
 tiles = Scrabble::TileBag.new(tiles)
 
 
 p player.draw_tiles(tiles)
+=======
+tiles = Scrabble::TileBag.new
+p player.tiles
+player.draw_tiles(tiles)
+p player.tiles
+# p player.tiles.length
+# player.draw_tiles
+>>>>>>> 555454c104d4ce0db0220465d8b7029d7bc5192e

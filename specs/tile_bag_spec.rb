@@ -86,24 +86,24 @@ describe "TileBag" do
 
   end
 #
-#   describe "tiles_remaining" do
-#     it "returns an integer" do
-#       tile_bag = Scrabble::TileBag.new
-#       tile_bag.tiles_remaining.must_be_instance_of Integer
-#     end
-#
-#     it "returns # of tiles left in the bag" do
-#       tile_bag = Scrabble::TileBag.new
-#       default_number_of_tiles = tile_bag.tiles
-#       tile_bag.draw(10)
-#       tile_bag.tiles_remaining.must_equal default_number_of_tiles - 10
-#
-#     end
-#
-#     it "returns the default # of tiles if no tiles have been drawn" do
-#       tile_bag = Scrabble::TileBag.new
-#       default_number_of_tiles = tile_bag.tiles
-#       tile_bag.tiles_remaining.must_equal default_number_of_tiles
-#     end
-#   end
+  describe "tiles_remaining" do
+    it "returns an integer" do
+      tile_bag = Scrabble::TileBag.new
+      tile_bag.tiles_remaining.must_be_instance_of Integer
+    end
+
+    it "returns # of tiles left in the bag" do
+      tile_bag = Scrabble::TileBag.new
+      default_number_of_tiles = 98
+      tile_bag.draw_tiles(10)
+      tile_bag.tiles_remaining.must_equal 88
+
+    end
+
+    it "returns the default # of tiles if no tiles have been drawn" do
+      tile_bag = Scrabble::TileBag.new
+      default_number_of_tiles = 98
+      tile_bag.tiles_remaining.must_equal default_number_of_tiles
+    end
+  end
 end

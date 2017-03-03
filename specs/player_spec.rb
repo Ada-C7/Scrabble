@@ -142,6 +142,9 @@ describe Scrabble::Player do
         it 'returns an array of letters for the player' do
             @new_player.draw_tiles(@game_tile_bag, 7).must_be_kind_of Array
         end
+        it 'Only allows up to 7 tiles to be drawn at once' do
+            proc { @new_player.draw_tiles(@game_tile_bag, 8) }.must_raise ArgumentError
+        end
         it 'subtracts the tiles from the instance of TileBag' do
             start_num = @game_tile_bag.tiles_remaining
             @new_player.draw_tiles(@game_tile_bag, 7)

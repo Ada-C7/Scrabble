@@ -28,6 +28,7 @@ module Scrabble
         end
 
         def draw_tiles(tile_bag, num)
+            raise ArgumentError, 'You can only draw up to 7' if num > 7
             @tiles = tile_bag.draw_tiles(num)
         end
 

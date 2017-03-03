@@ -37,12 +37,12 @@ module Scrabble
 end
 
 # # <-- TEST PURPOSES ONLY
-test_one = Scrabble::TileBag.new
-test_two = Scrabble::TileBag.new
-
-test_one.draw_tiles(3)
-this = test_one.in_bag.find_all { |letter| test_one.tiles_drawn.include? letter }
-print this
+# test_one = Scrabble::TileBag.new
+# test_two = Scrabble::TileBag.new
+#
+# test_one.draw_tiles(3)
+# this = test_one.in_bag.find_all { |letter| test_one.tiles_drawn.include? letter }
+# print this
 # puts "remaining tiles: #{test_one.tiles_remaining}"
 # test_one.draw_tiles(99)
 # puts "remaining tiles: #{test_one.tiles_remaining}"

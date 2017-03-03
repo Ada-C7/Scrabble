@@ -98,19 +98,20 @@ describe "Player Class" do
         end
 
         it "returns an array of 7 tiles" do
-          draw = @new_player.draw_tiles(@my_bag)
-
-          draw.must_be_instance_of Array
-          draw.length.must_equal 7
+          @new_player.draw_tiles(@my_bag)
+          @new_player.tiles.length.must_equal 7
+          @new_player.tiles.pop
+          @new_player.draw_tiles(@my_bag)
+          @new_player.tiles.length.must_equal 7
+          # draw.must_be_instance_of Array
+          # draw.length.must_equal 7
 
         end
       end
 
 
-      describe "#tile" do
+      describe "#tiles" do
         it "it returns an array of letters" do
-          @my_bag = Scrabble::TileBag.new
-          @new_player.draw_tiles(@my_bag)
           @new_player.tiles.must_be_instance_of Array
         end
 

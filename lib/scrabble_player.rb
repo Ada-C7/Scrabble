@@ -54,8 +54,8 @@ module Scrabble
     def draw_tiles(tile_bag) #fills tiles array until it has 7 letters from tile bag
       raise ArgumentError.new("You can only draw tiles from an object class TileBag.") if tile_bag.class != Scrabble::TileBag
 
-      #this is a problem because this will write over tiles!
-      @tiles = tile_bag.draw_tiles(7 - tiles.length)
+      #this is a problem because this will write over tiles! Actually not anymore ! :)
+      tiles.concat tile_bag.draw_tiles(7 - tiles.length) #tilebag give tiles
     end
   end
 end

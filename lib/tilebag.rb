@@ -6,7 +6,7 @@ require 'awesome_print'
 module Scrabble
 
   class TileBag
-    attr_reader :tile
+    attr_reader :tile, :drawn_tiles
 
     def initialize
       @tile = %w(
@@ -39,7 +39,18 @@ module Scrabble
       )
     end
 
+    def draw_tiles(num)
+      # returns a collection of random tiles, removes the tiles from the default set
+      @tile.shuffle!
+
+      @drawn_tiles = []
+      num.times { drawn_tiles << @tile.pop }
+      @drawn_tiles
+    end
+
   end
 end
 bag = Scrabble::TileBag.new
+# puts bag.tile.length
+puts bag.draw_tiles(7)
 puts bag.tile.length

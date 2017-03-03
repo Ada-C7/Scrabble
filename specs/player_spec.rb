@@ -58,6 +58,12 @@ describe "ScrabblePlayer" do
       @player.play("book").must_equal false
     end
 
+    it "does not allow invalid word input" do
+      proc {
+        @player.play
+      }.must_raise ArgumentError
+    end
+
   end
 
   describe "ScrabblePlayer" do
@@ -86,11 +92,26 @@ describe "ScrabblePlayer" do
       it 'Returns string with the most points.' do
         @player.highest_scoring_word.must_equal "biscuit"
       end
+
+      it "outputs a message if no words played yet" do
+        player = Scrabble::Player.new("Boo")
+
+        proc {
+          player.highest_scoring_word
+        }.must_raise ArgumentError
+      end
     end
 
     describe 'Score of highest scoring word played by player' do
       it 'Returns value of string with the most points.' do
         @player.highest_word_score.must_equal 61
+      end
+
+      it "returns 0 if there is no word" do
+        player = Scrabble::Player.new("Boo")
+
+        player.highest_word_score.must_equal 0
+
       end
     end
   end
@@ -118,5 +139,6 @@ end
 #   describe "Player#highest_word_score" do
 #     # outputs a number
 #     # correct number for the winning word
+#     # returns 0 if there is no word
 #   end
 #

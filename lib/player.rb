@@ -14,6 +14,16 @@ module Scrabble
       @highest_score = 0
     end
 
+    def play(word)
+      test_word(word)
+      word.downcase
+      return false if won?
+      @plays << word
+      score = get_score(word)
+      total_score(score)
+      return score
+    end
+
     # think of better name
     def test_word(word)
       if word.class != String
@@ -23,14 +33,9 @@ module Scrabble
       end
     end
 
-    def play(word)
-      test_word(word)
-      word.downcase
-      return false if won?
-      @plays << word
-      score = Scrabble::Scoring.score(word)
-      total_score(score)
-      return score
+    # isolate the dependency on scoring class in its own method :)
+    def get_score(word)
+       Scrabble::Scoring.score(word)
     end
 
     def total_score(score)
@@ -47,10 +52,9 @@ module Scrabble
     end
 
     def highest_word_score
-      @highest_score = Scrabble::Scoring.score(@highest_word)
+      @highest_score = get_score(@highest_word)
       return @highest_score
     end
-
   end
 end
 #

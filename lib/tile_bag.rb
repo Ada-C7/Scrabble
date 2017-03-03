@@ -33,7 +33,12 @@ module Scrabble
     attr_reader :tile_bag
 
     def initialize
-      @tile_bag = DEFAULT_TILES
+      @tile_bag = []
+      DEFAULT_TILES.each do |letter, amount|
+        amount.times do
+          @tile_bag << letter
+        end
+      end
     end
 
     def draw_tiles(num)
@@ -43,3 +48,7 @@ module Scrabble
 
   end
 end
+
+
+
+new_bag = Scrabble::TileBag.new

@@ -150,10 +150,25 @@ describe "initialize player tiles" do
   end
 
   it "initializes with an array of 7 tiles" do
+    @player.tiles.length.must_equal 7
   end
 
 
   it "tiles is an array of letter" do
+    @player.tiles.each do |letter|
+      ("A".."Z").must_include letter
+    end
   end
+
+
+  describe "draw_tiles" do
+    before do
+      @player = Scrabble::Player.new('Ada', Scrabble::TileBag.new)
+    end
+
+
+    it
+  end
+
 
 end

@@ -46,5 +46,13 @@ module Scrabble
       return score_array.max
     end
 
+    def draw_tiles
+      if 7 - tiles.length > 0
+        drawn = @tilebag.draw_tiles(7-tiles.length)
+        drawn.each { |l| @tiles << l }
+      end
+    end
+
+
   end
 end

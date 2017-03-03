@@ -32,8 +32,9 @@ describe "Scrabble::Board" do
     end
   end
 
-  it "check_playable method " do
-
+  it "check_playable method accepts 4 parameters and returns true or false" do
+    game_board = Scrabble::Board.new
+    [true, false].must_include game_board.check_playable('word', 2 ,12 ,'right')
   end
 
 end

@@ -1,6 +1,6 @@
 module Scrabble
-  attr_accessor :word_score
   class Scoring
+    attr_accessor :word_score
     SCORE_CHART = {
       1 => ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
       2 => ["D", "G"],

@@ -19,7 +19,6 @@ module Scrabble
       W Y Y Z )
     end
 
-
     def draw_tiles(num)
       raise ArgumentError.new("Argument must be an Integer") if num.class != Integer
 
@@ -36,6 +35,5 @@ module Scrabble
     def tiles_remaining
       @tile_bag.length
     end
-
   end
 end

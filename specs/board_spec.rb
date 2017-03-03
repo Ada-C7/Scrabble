@@ -15,8 +15,25 @@ describe "Scrabble::Board" do
     game_board.must_be_instance_of Scrabble::Board
   end
 
-  it "initializes with a board of 15 row arrays" do
+  it "initializes with a board as an array" do
     game_board = Scrabble::Board.new
-    game_board.must_be_instance_of Scrabble::Board
+    game_board.board.must_be_instance_of Array
   end
+
+  it "initializes with a board of 15 items in the board array" do
+    game_board = Scrabble::Board.new
+    game_board.board.length.must_equal 15
+  end
+
+  it "each initialization of a board creates arrays with 15 elements in each" do
+    game_board = Scrabble::Board.new
+    game_board.board.each do |row|
+      row.length.must_equal 15
+    end
+  end
+
+  it "check_playable method " do
+
+  end
+
 end

@@ -68,9 +68,17 @@ puts bag.inspect
 # puts player_one.tiles
 =======
 
+<<<<<<< HEAD
 player = Scrabble::Player.new("Ada")
 bag = Scrabble::TileBag.new
 
 player.draw_tiles(bag)
 puts player.tiles
 >>>>>>> e8c86a940006f567d77a6e45b707af6d8532153a
+=======
+# player = Scrabble::Player.new("Ada")
+# bag = Scrabble::TileBag.new
+#
+# player.draw_tiles(bag)
+# puts player.tiles
+>>>>>>> 7f22c40dc5553d79c658a88e2200e0641d71c5ec

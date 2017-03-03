@@ -8,6 +8,7 @@ module Scrabble
 
     def draw_tiles(num_of_tiles)
       raise ArgumentError.new("Argument must be an Integer") if num_of_tiles.class != Integer
+      raise ArgumentError.new("Sorry, only #{tiles_remaining} tiles left in the bag") if num_of_tiles > tiles_remaining
       tiles_drawn = []
       num_of_tiles.times do |number|
         draw = @bag_of_letters.keys.sample

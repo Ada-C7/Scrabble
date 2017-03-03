@@ -41,4 +41,11 @@ describe "Wave 3: class TileBag" do
       tile_bag_1.draw_tiles(10)
       tile_bag_1.tiles_remaining.must_equal 88
   end
+
+  it "argument error if tiles taken is greater than the number of tiles in the bag" do
+    tile_bag_1 = Scrabble::TileBag.new
+    proc {
+      tile_bag_1.draw_tiles(99)
+    }.must_raise ArgumentError
+  end
 end #End of describe "Wave 3: class TileBag"

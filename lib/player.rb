@@ -12,6 +12,10 @@ module Scrabble
     end
 
     def play(word)
+      input_letters = word.upcase.split("")
+      input_letters.each do |letter|
+        raise ArgumentError.new("Sorry. This word cannot be scored") if !("A".."Z").include?(letter)
+      end
       if won?
         return false
       else

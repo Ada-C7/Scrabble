@@ -100,4 +100,11 @@ describe "Wave 2: class Player" do
     player1.draw_tiles(tile_bag_in_play)
     tile_bag_in_play.tiles_remaining.must_equal 91
   end
+
+  it "throws an argument error if the played word cannot be scored" do
+    player1 = Scrabble::Player.new("Maria")
+    proc {
+      player1.play("seven7")
+    }.must_raise ArgumentError
+  end
 end # End of describe "Wave 2: class Player"

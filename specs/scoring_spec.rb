@@ -52,5 +52,6 @@ describe "Wave 1" do
       array_of_strings = %w(hello silly)
       Scrabble::Scoring.highest_score_from(array_of_strings).must_equal "hello"
     end
+
   end
 end

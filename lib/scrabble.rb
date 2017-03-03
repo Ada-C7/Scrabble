@@ -75,7 +75,7 @@ module Scrabble
             end
             puts x
           end
-          return v.count
+          # return v.count
         else
           return variable[@max][0][0]
         end

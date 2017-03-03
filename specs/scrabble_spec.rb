@@ -47,18 +47,23 @@ describe "Wave 1" do
 
   describe "tiebreaking rules" do
     it "recognize two words with same score" do
-      # skip
+      # skip #This one is the problem...
       array_of_words = ["apple","almond", "cat"]
       test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
       test_1.must_equal 2
     end
     it "if multiple words prefer word with less letters" do
-      skip
+      # skip
+      array_of_words = ["apple","almond", "cat"]
+      test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
+      test_1.must_equal "apple"
 
     end
     it "if multiple words prefer word that uses all seven letters" do
-      skip
-      array_of_words = ["seaters", "pazazz"] #Need to find one with equal value
+      # skip
+      array_of_words = ["zzzzzz", "aaaaaaf", "wipe"]
+      test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
+      test_1.must_equal "aaaaaaf"
     end
 
     it "if multiple words prefer word that was supplied first" do

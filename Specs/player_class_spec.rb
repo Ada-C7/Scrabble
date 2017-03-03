@@ -3,7 +3,7 @@ require 'minitest/reporters'
 require 'minitest/skip_dsl'
 require_relative '../lib/pc'
 
-describe "Player Class" do
+xdescribe "Player Class" do
 
   before do
     Ada = Scrabble::Player.new("Ada")

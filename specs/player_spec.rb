@@ -43,6 +43,15 @@ describe Scrabble::Player do
     end
   end
 
+  describe "#remove_tiles" do
+    it "Removes given letters from the player's tiles" do
+      tile_bag = Scrabble::TileBag.new
+      @ada.draw_tiles(tile_bag)
+      @ada.remove_tiles(@ada.tiles[0..2])
+      @ada.tiles.length.must_equal 4
+    end
+  end
+
   describe "#total_score" do
     it "Returns the player's total score" do
       @ada.play("pizzazz") # 95 points

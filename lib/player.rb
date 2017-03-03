@@ -15,6 +15,10 @@ module Scrabble
       Scoring.score(word)
     end
 
+    def remove_tiles(letters)
+      letters.each { |letter| @tiles.delete_at(@tiles.index(letter)) }
+    end
+
     def total_score
       @plays.map { |word| Scoring.score(word) }.reduce(0, :+)
     end

@@ -18,6 +18,7 @@ module Scrabble
       @plays << word
     end
 
+# fills tiles array until it has 7 letters from the given tile bag
     def draw_tiles(tile_bag)
         draw_tiles = 7 - @tiles
     end
@@ -38,8 +39,6 @@ module Scrabble
       def highest_scoring_word(array_of_words)
         return Scoring::highest_score_from(array_of_words)
       end
-
-
 
 
     end#class end

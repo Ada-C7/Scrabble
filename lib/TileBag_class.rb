@@ -1,12 +1,12 @@
 module Scrabble
 
-LETTER_POINT_VALUES = { 1 => ["a", "e", "i", "o", "u", "l", "n", "r", "s", "t"],
-												2 => ["d", "g"],
-												3 => ["b", "c", "m", "p"],
-												4 => ["f", "h", "v", "w", "y"],
-												5 => ["k"],
-												8 => ["j", "x"],
-												10 => ["q", "z"]}
+# LETTER_POINT_VALUES = { 1 => ["a", "e", "i", "o", "u", "l", "n", "r", "s", "t"],
+# 												2 => ["d", "g"],
+# 												3 => ["b", "c", "m", "p"],
+# 												4 => ["f", "h", "v", "w", "y"],
+# 												5 => ["k"],
+# 												8 => ["j", "x"],
+# 												10 => ["q", "z"]}
 
   class TileBag
     # =>    attr_reader
@@ -39,7 +39,6 @@ LETTER_POINT_VALUES = { 1 => ["a", "e", "i", "o", "u", "l", "n", "r", "s", "t"],
       "X",
       "Y","Y",
       "Z"]
-      #iterate through 0-25 for alpha 1-26
       @draw_tiles = draw_tiles
       @tiles_remaining ||= @tiles
     end

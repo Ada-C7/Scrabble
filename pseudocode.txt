@@ -1,0 +1,103 @@
+Create a MODULE named Scrabble to encapsulate all
+
+There will be a CLASS called Scoring.
+
+  and a CLASS METHOD self.score(word)
+    input: letter or word
+    output: corresponding value or score of word.
+
+    There should be a DATA Structure with letters and their corresponding values.
+    Hash - key is letter, value is score?
+
+    When the method is called, it takes an INPUT of a word as a string.
+
+    Then the method should ITERATE through the Data Structure and return the cumulative value or score of the word.
+
+    IF the word INPUT is 7 letters, they get a 50 point bonus.
+
+  and another CLASS METHOD of self.highest_score_from(array_of_words)
+    input: array of words
+    output: returns the array with the highest score.
+
+    IF there is a tie.
+      Return the letter with the shortest length or number of tiles used.
+      UNLESS one of the words is 7 letters.
+        Then that word wins.
+    IF there are multiple words with the same length and score, pick the FIRST in the array.
+
+WAVE 2 _______________________________________
+
+Create a Scrabble::Player CLASS with a required parameter of the player's name.
+
+  #name returns the value of the @name instance variable.
+    input: Player.name
+    output: value saved within @name INSTANCE VARIABLE - should be in attr_reader?
+
+  #plays returns an Array of the words played by the player
+    input: Player.plays
+    output: returns an ARRAY of words played by the player
+
+  #play(word) : Adds the input word to the plays ARRAY
+    input word
+    **CALL WON?
+    output -
+      IF player has already won, return value of FALSE.
+      ELSE returns the SCORE of the word, from calling the CLASS METHOD Scrabble:Scoring.score(word)
+
+    #total_score: Returns the sum of scores of played words.
+      input - calling the method on instance.
+      output - returns sum of played words.  possibly accesses the array of played words using the METHOD PLAYS to return an array of words played by the player.
+        @plays possibly stored in a variable, OR maybe should just be called as a method here.
+
+    #won?:
+      input - calling method
+      output:
+        IF the player has > 100 points
+          return true
+        ELSE
+          return false
+
+    #highest_scoring_word: Returns the highest scoring played word
+      input - calling method
+      output - highest scoring word from ARRAY OF PLAYED WORDS. (saved?)
+        Using instance method plays
+        Feeding that output through class method of Scrabble::Scoring.highest_score_from
+
+    #highest_word_score: Returns the highest_scoring_word's score
+      input - the word from the method highest_scoring word.  possibly by calling it within this method?
+      output - the score from that highest scoring word.
+
+  WAVE 3_____________________________________________________
+
+  Create a Scrabble::TileBag class (min 5 specs)
+
+    #initialize should set up an instance with a collection of all default tiles
+      input: Calling TileBag.new
+      output: an object tile_bag with all of the tiles in it.
+
+      in initialize, keep the array of letters, and call .shuffle??
+
+    #draw_tiles(num) RETURNS a collection of random tiles and removes them from the default set
+      input: number of tiles to be removed
+      output: update the tiles in hand (Player CLASS) or tiles in player's hand.  Also update tiles_remaining in bag.
+
+    #tiles_remaining RETURNS the remaining tiles in tile bag.
+      input: method call.
+      output: list/print (from ARRAY?) remaining tiles.
+
+  Add to Player class
+
+    #Do we have to add an instance variable of tile bag, which calls a new tile bag when we instantiate the player?
+
+    #tiles keeps track of the tiles in the player's hand.
+      input calling player_name.tiles
+      output list of tiles in player's hand
+
+    #draw_tiles fills the players hand until it has 7 letters from the tile bag.  Does this by calling Tile Bag method of draw tiles(num)
+      input calling draw tiles
+      output calling draw tiles on tile bag
+        possibly done on an instance variable of tile bag for each player
+
+    def draw_tiles
+      draw_tiles()
+    end

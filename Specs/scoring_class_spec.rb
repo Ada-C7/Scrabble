@@ -43,7 +43,7 @@ xdescribe "Score Method for Scoring Class" do
 end
 
 
-describe "Highest Score From Method for Scoring Class" do
+xdescribe "Highest Score From Method for Scoring Class" do
 
   describe "highest_score_from nomial" do
     before do

@@ -2,32 +2,41 @@ module Scrabble
 
   class Player
 
-    attr_reader :highest_scoring_word, :highest_word_score
+    attr_reader :highest_scoring_word, :highest_word_score, :plays
 
     def initialize(name)
       @name = name
       @plays = []
-      @tiles ||= tiles <= 7
-      @draw_tiles = draw_tiles
+      # @tiles ||= tiles
+      #@draw_tiles = draw_tiles
       @total_score ||= 0
     end
 
-    def plays(word)
-      word.score
-      won?
+    def play(word)
+      raise ArgumentError.new("Only Letters A-Z") if (/\d|\W/) === word
       @plays << word
+
+      tally = Scrabble::Scoring::score(word)
+
+      @total_score += tally
+
+      puts @total_score #test
+      if won?
+        return false
+      end
+      return tally
     end
 
 # fills tiles array until it has 7 letters from the given tile bag
-    def draw_tiles(tile_bag)
-        draw_tiles = 7 - @tiles
-    end
+    # def draw_tiles(tile_bag)
+    #     draw_tiles = 7 - @tiles
+    # end
 
       def won?
         if @total_score <= 100
           false
         else
-          raise ArgumentError.new puts "...and the winner is... #{@name}!! Game over bye :("
+          "...and the winner is... #{@name}!! Game over bye :("
         end
       end
 

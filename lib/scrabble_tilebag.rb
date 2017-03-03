@@ -15,10 +15,10 @@ module Scrabble
     def draw_tiles(num)
       player_bag = []
       num.times do
-        tile = @bag.sample
-        @player_bag << tile
-        player_bag << tile
-        @bag.slice!(@bag.index(tile))
+        tile = @bag.sample # we can't use pop because it doesn't give us a random set
+         @player_bag << tile
+        player_bag << tile # player bag is used in the Player class where we don't need to track the same player bag, it's just a new one over and over
+        @bag.slice!(@bag.index(tile)) # we use slice vs delete because it will only delete one instance of the letter rather than all instances of that letter
         #previous method deleted all matching, this deletes first occurance
       end
 

@@ -9,8 +9,7 @@ module Scrabble
         @plays = []
         @scores = []
         @players_tiles = []
-        @current_tilebag = Scrabble::TileBag.new
-        draw_tiles(@current_tilebag)
+        
     end
 
     def play(word)

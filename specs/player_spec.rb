@@ -132,21 +132,24 @@ describe "Wave 3" do
 
   before do
     @my_player = Scrabble::Player.new('Charlemagne')
+    @new_tilebag = Scrabble::TileBag.new
   end
 
   describe "draw_tiles for Player class" do
     it "fills tiles array with letters" do
+      @my_player.draw_tiles(@new_tilebag)
      @my_player.players_tiles.must_be_instance_of Array
      @my_player.players_tiles[0].must_be_instance_of String
 
     end
 
     it "won't fill the array beyond 7 letters" do
-      new_tilebag = Scrabble::TileBag.new
-      @my_player.draw_tiles(new_tilebag)
+
+      @my_player.draw_tiles(@new_tilebag)
       @my_player.players_tiles.length.must_equal 7
 
     end
+
 
   end
 end

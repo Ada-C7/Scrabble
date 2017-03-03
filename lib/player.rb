@@ -3,8 +3,8 @@ require_relative 'scrabble'
 module Scrabble
 
   class Player
-    attr_reader :name, :plays, :score_array, :score, :tilebag, :tiles
-
+    attr_reader :name, :plays, :score_array, :score
+    attr_accessor :tiles
     def initialize(name)
       raise ArgumentError.new "Player must have a valid name" if name.class != String
       @name = name
@@ -16,14 +16,15 @@ module Scrabble
 
     def play(word)
       raise ArgumentError.new "Word must be a valid word" if word.class != String
-      plays << word
-      single_score(word)
+      @plays << word
+      single_score(word.upcase)
       return ((won?) ? false : score)
     end
 
     def single_score(word)
       score = Scoring.score(word)
       score_array << score
+      # word.each.split("").each { |c| @tiles.delete(c) }
     end
 
     def total_score

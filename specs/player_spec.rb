@@ -140,21 +140,42 @@ describe "Highest Scoring Word and Word Score" do
 
 end
 
-describe "initialize player tiles" do
+describe "Draw Tiles" do
   before do
     @player = Scrabble::Player.new('Ada')
     @tiles = Scrabble::TileBag.new
   end
 
-  it "initializez with a tiles array" do
+  it "initializes with a tiles array" do
     @player.tiles.must_be_instance_of Array
   end
 
-  it "initializes with an array of 7 tiles" do
+  it "Fills tiles with 7 tiles when called for first time" do
+    @player.draw_tiles(@tiles)
+    @player.tiles.length.must_equal 7
   end
 
 
-  it "tiles is an array of letter" do
+  it "Each element must be a letter" do
+    @player.draw_tiles(@tiles)
+    @player.tiles.each do |letter|
+      ("A".."Z").must_include letter
+    end
+  end
+
+end
+
+describe "More Draw Tiles" do
+  before do
+    @player = Scrabble::Player.new('Ada')
+    @tiles = Scrabble::TileBag.new
+    @player.tiles = ["C", "R", "A"]
+  end
+
+
+  it "Adds correct number of element when tiles are drawn again" do
+    @player.draw_tiles(@tiles)
+    @player.tiles.length.must_equal 7
   end
 
 end

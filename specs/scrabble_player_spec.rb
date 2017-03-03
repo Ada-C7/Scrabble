@@ -103,7 +103,6 @@ describe "Player Class" do
         @new_player.tiles.pop
         @new_player.draw_tiles(@my_bag)
         @new_player.tiles.length.must_equal 7
-        # draw.must_be_instance_of Array          # draw.length.must_equal 7
       end
 
       it "updates bag to remove tiles drawn" do

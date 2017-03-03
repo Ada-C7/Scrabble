@@ -9,10 +9,11 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "TileBag" do
 
+  before do
+    @bag = Scrabble::TileBag.new
+  end
+
   describe "TileBag#initialize" do
-    before do
-      @bag = Scrabble::TileBag.new
-    end
 
     it "creates a TileBag class object" do
       @bag.must_be_instance_of Scrabble::TileBag
@@ -60,5 +61,20 @@ describe "TileBag" do
       @bag.tile_bag.length.must_equal (number_of_tiles - num)
     end
   end
-  
+
+  describe "TileBag#tiles_remaining" do
+
+    it "it can be called by a TileBag object" do
+      @bag.must_respond_to :tiles_remaining
+    end
+
+    it "returns an integer" do
+      @bag.tiles_remaining.must_be_kind_of Integer
+    end
+
+    it "returns the number of tiles in the tile bag" do
+      number_of_tiles = @bag.tile_bag.length
+      @bag.tiles_remaining.must_equal number_of_tiles
+    end
+  end
 end

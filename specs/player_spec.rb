@@ -4,7 +4,7 @@ require_relative '../lib/tilebag'
 describe "Player class" do
 
   before do
-    @player = Scrabble::Player.new('Ada', Scrabble::TileBag.new)
+    @player = Scrabble::Player.new('Ada')
   end
 
   it "Makes a Player class" do
@@ -30,7 +30,7 @@ end
 describe "Play method" do
 
   before do
-    @player = Scrabble::Player.new('Ada', Scrabble::TileBag.new)
+    @player = Scrabble::Player.new('Ada')
   end
 
   it "Must be a String" do
@@ -70,7 +70,7 @@ end
 describe "Total Score" do
 
   before do
-    @player = Scrabble::Player.new('Ada', Scrabble::TileBag.new)
+    @player = Scrabble::Player.new('Ada')
   end
 
  it "total score returns an integer" do
@@ -93,7 +93,7 @@ end
 
 describe "Won" do
   before do
-    @player = Scrabble::Player.new('Ada', Scrabble::TileBag.new)
+    @player = Scrabble::Player.new('Ada')
 
   end
 
@@ -117,7 +117,7 @@ end
 
 describe "Highest Scoring Word and Word Score" do
   before do
-    @player = Scrabble::Player.new('Ada', Scrabble::TileBag.new)
+    @player = Scrabble::Player.new('Ada')
     3.times { @player.play("cat") }
     @player.play("elephant")
   end
@@ -142,33 +142,19 @@ end
 
 describe "initialize player tiles" do
   before do
-    @player = Scrabble::Player.new('Ada', Scrabble::TileBag.new)
+    @player = Scrabble::Player.new('Ada')
+    @tiles = Scrabble::TileBag.new
   end
 
-  it "initializez with a tilebag object" do
-    @player.tilebag.must_be_instance_of Scrabble::TileBag
+  it "initializez with a tiles array" do
+    @player.tiles.must_be_instance_of Array
   end
 
   it "initializes with an array of 7 tiles" do
-    @player.tiles.length.must_equal 7
   end
 
 
   it "tiles is an array of letter" do
-    @player.tiles.each do |letter|
-      ("A".."Z").must_include letter
-    end
   end
-
-
-  describe "draw_tiles" do
-    before do
-      @player = Scrabble::Player.new('Ada', Scrabble::TileBag.new)
-    end
-
-
-    it
-  end
-
 
 end

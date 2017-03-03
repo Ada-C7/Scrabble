@@ -5,14 +5,13 @@ module Scrabble
   class Player
     attr_reader :name, :plays, :score_array, :score, :tilebag, :tiles
 
-    def initialize(name, tilebag)
+    def initialize(name)
       raise ArgumentError.new "Player must have a valid name" if name.class != String
       @name = name
       @plays = []
       @score = 0
       @score_array = []
-      @tilebag = tilebag
-      @tiles = @tilebag.draw_tiles(7)
+      @tiles = []
     end
 
     def play(word)
@@ -46,9 +45,9 @@ module Scrabble
       return score_array.max
     end
 
-    def draw_tiles
+    def draw_tiles(tile_bag)
       if 7 - tiles.length > 0
-        drawn = @tilebag.draw_tiles(7-tiles.length)
+        drawn = tile_bag.draw_tiles(7-tiles.length)
         drawn.each { |l| @tiles << l }
       end
     end

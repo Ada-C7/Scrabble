@@ -63,7 +63,13 @@ describe "TileBag" do
     }.must_raise ArgumentError
   end
 
-  it 
+  it "tiles_remaining returns the number of tiles remaining in the bag" do
+    new_players_bag = Scrabble::TileBag.new
+    start_length = new_players_bag.tile_bag.length
+    new_players_bag.draw_tiles(7)
+    new_players_bag.draw_tiles(3)
+    new_players_bag.tiles_remaining.must_equal (start_length - 10)
+  end
 
 
 end

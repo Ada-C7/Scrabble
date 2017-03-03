@@ -46,6 +46,10 @@ module Scrabble
       @tile_bag.shuffle!.pop(num)
     end
 
+    def tiles_remaining
+      @tile_bag.length
+    end
+
   end
 end
 

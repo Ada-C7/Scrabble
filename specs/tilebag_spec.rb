@@ -24,30 +24,30 @@ describe TileBag do
       test_hash = test_letters.each { | k, v | letters[k] = v.length }
 
       letters = @tile_bag.collection.group_by { |letter| letter[0] }
+
       letter_hash = letters.each { |k, v| letters[k] = v.length }
 
       letter_hash.must_equal test_hash
     end
 
-  end
 
-  describe "draw_tiles" do
+    describe "draw_tiles" do
 
-    it "takes an Integer" do
-      proc { @tile_bag.draw_tiles("cat")}.must_raise ArgumentError
+      it "takes an Integer" do
+        proc { @tile_bag.draw_tiles("cat")}.must_raise ArgumentError
+      end
+
+      it "returns an Array of same length as number of tiles drawn" do
+        @tile_bag.draw_tiles(4).must_be_instance_of Array
+        @tile_bag.draw_tiles(4).length.must_equal 4
+      end
+
+      it "returns an Array of one-character length strings" do
+        draw = @tile_bag.draw_tiles(3)
+        draw.
+      end
+
     end
-
-    it "returns an Array of same length as number of tiles drawn" do
-      @tile_bag.draw_tiles(4).must_be_instance_of Array
-      @tile_bag.draw_tiles(4).length.must_equal 4
-    end
-
-    it "returns an Array of one-character length strings" do
-      draw = @tile_bag.draw_tiles(3)
-      draw.
-    end
-
-  end
 
   describe "tiles_remaining" do
     it "returns the number of tiles remaining in the bag" do
@@ -60,5 +60,5 @@ describe TileBag do
       @tile_bag.tiles_remaining.must_equal 88
     end
   end
-end
+
 end

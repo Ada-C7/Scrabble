@@ -7,12 +7,12 @@ describe "Scoring Class" do
     before do
       @my_score = Scrabble::Scoring.new("Happy")
     end
-    it "Raises an ArgumentError if param is not a string" do
 
+    it "Raises an ArgumentError if param is not a string" do
       proc { Scrabble::Scoring.new(123)}.must_raise ArgumentError
     end
 
-    it "Takes a word to initialize & is class Scoring" do
+    it "Is class Scoring" do
       @my_score.must_be_instance_of Scrabble::Scoring
     end
   end
@@ -47,7 +47,6 @@ describe "Scoring Class" do
     end
 
     it "returns the word with the fewest letters if a tie occurs" do
-
       tie_array = ["que", "jaaaa", "dope"]
       Scrabble::Scoring.highest_score_from(tie_array).must_equal "que"
     end

@@ -48,15 +48,13 @@ module Scrabble
       word_array.each do |letter|
         score_total += SCORE_CHART[letter]
       end
-      # seven_bonus(word)
-      # #50 bonus points for 7 letter word
+
       if word.length >= 7
         score_total += 50
       end
+
       return score_total
     end
-
-    # returns the word in the array with the highest score
 
     def self.highest_score_from(array_of_words)
       raise ArgumentError.new("Argument must be an array") if array_of_words.class != Array
@@ -66,13 +64,13 @@ module Scrabble
         word_scores[word] = Scrabble::Scoring.score(word)
       end
 
-      # tie = Array.new
       winner = []
       word_scores.each do |word, score|
         if score == word_scores.values.max
           winner << word
         end
       end
+
       winner.each do |winning_word|
         if winning_word.length == 7
           return winning_word
@@ -81,5 +79,6 @@ module Scrabble
         end
       end
     end
+
   end
 end

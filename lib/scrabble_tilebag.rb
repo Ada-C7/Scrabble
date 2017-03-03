@@ -1,11 +1,10 @@
 module Scrabble
 
   class TileBag
-    attr_reader :bag_of_tiles
-
+    
     def initialize
 
-      @bag_of_tiles = shuffle_tiles
+      @tiles_remaining = shuffle_tiles
       #sets up a collection of all default tiles
 
     end
@@ -29,16 +28,16 @@ module Scrabble
     def draw_tiles(num)
       raise ArgumentError.new("Please draw less than 7 tiles") if num > 7
       new_tiles = []
-      num.times {new_tiles << @bag_of_tiles.pop }
+      num.times {new_tiles << @tiles_remaining.pop }
       return new_tiles
       #also may eventually update tiles in player hand
     end
 
     def tiles_remaining
-      if @bag_of_tiles.empty?
+      if @tiles_remaining.empty?
         puts "There are no more tiles!"
       else
-        return @bag_of_tiles
+        return @tiles_remaining
       end
       #returns the remaining tiles in bag.
       #accesses array and puts or prints it.

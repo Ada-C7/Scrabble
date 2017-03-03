@@ -8,8 +8,8 @@ describe "TileBag class" do
   end
 
   describe "Scrabble::TileBag#initialize" do
-    it "Responds to an instance of bag_of_tiles" do
-      @tiles.must_respond_to :bag_of_tiles
+    it "Responds to an instance of tiles_remaining" do
+      @tiles.must_respond_to :tiles_remaining
     end
 
     describe "draw_tiles" do
@@ -18,10 +18,10 @@ describe "TileBag class" do
         new_tiles.must_be_instance_of Array
         new_tiles.length.must_equal 4
       end
-      it "Removes correct number of tiles from bag_of_tiles" do
-        first_draw = @tiles.bag_of_tiles.length
+      it "Removes correct number of tiles" do
+        first_draw = @tiles.tiles_remaining.length
         @tiles.draw_tiles(5)
-        second_draw = @tiles.bag_of_tiles.length
+        second_draw = @tiles.tiles_remaining.length
         first_draw.wont_equal second_draw
       end
       it "Cannot draw more than 7 tiles" do

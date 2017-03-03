@@ -10,9 +10,8 @@ module Scrabble
                if word.class != String || word[/[a-zA-Z]+/] != word || word.length > 7 || word.length < 2
                     raise ArgumentError.new("Word must be a string of letters between 2 and 7 characters long")
                end
-              #  puts word.inspect
+
                word = word.split("")
-              #  puts word.inspect
                word.map! {| letter | Letter.new(letter.upcase).point}
                score = word.inject { | sum, points | sum + points }
                score += 50 if word.length == 7
@@ -31,5 +30,3 @@ module Scrabble
      end
 
 end
-
-# puts sample = Scrabble::Scoring.score("abcdef")

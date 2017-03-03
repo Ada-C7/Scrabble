@@ -18,7 +18,6 @@ describe "Scoring is a class" do
       }.must_raise ArgumentError
     end
 
-
     it "Raise ArgumentError if word length > 7 or empty" do
       proc {
         Scrabble::Scoring.score("thoughtfull")
@@ -75,7 +74,6 @@ describe "Scoring is a class" do
 
     it "If tie for highest score, fewer letters wins" do
       Scrabble::Scoring.highest_score_from(%w(zzz dog kkkkkk oink)).must_equal "zzz"
-
     end
 
     it "If tie words are same length pick the first in max array" do

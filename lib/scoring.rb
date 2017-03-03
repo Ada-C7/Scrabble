@@ -12,8 +12,7 @@ module Scrabble
 
     attr_reader :letter_values, :highest_scores
     def initialize
-
-
+      # might put something here in the future
     end
 
     def self.score(word)
@@ -66,24 +65,14 @@ module Scrabble
 
       #If only one highest score => winner
       if @highest_scores.length == 1
-        # puts "in no ties"
         winner = @highest_scores.keys.first
       else
         if word_lengths.max == 7
-          # puts "in max word length is 7"
-
           winner = @highest_scores.keys.max { |word| word.length }
         else
-          # puts "in max word length is < 7"
           winner = @highest_scores.keys.min { |word| word.length }
         end
       end
     end
   end
 end
-
-# puts Scrabble::Scoring.highest_score_from(%w(qqqqqj daaaaaa i))
-
-# puts Scrabble::Scoring.score("syzygy")
-
-#puts Scrabble::Scoring.highest_score_from(%w(one one thirtae thirte four five))

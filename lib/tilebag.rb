@@ -34,7 +34,6 @@ module Scrabble
 
     def initialize
       @tile_set = new_tileset(ORIGINAL_TILE_SET)
-
     end
 
     def new_tileset(hash)
@@ -58,24 +57,11 @@ module Scrabble
         drawn_tiles << tile
       end
       return drawn_tiles
-      ## returns a collection of random tiles, removes the tiles from the default set
-      # Random selection - num is how many tiles user wants
-      # Remove random selection from  @tile_set
-
     end
 
     def tiles_remaining
-      #returns the number of tiles remaining in bag
       @tile_set.length
-
     end
 
   end
 end
-
-
-#tile_bag =  Scrabble::TileBag.new
-#puts tile_bag.tile_set.length
-#puts tile_bag.draw_tiles(4)
-#puts tile_bag.tile_set.length
-# puts tile_bag.tile_set.length

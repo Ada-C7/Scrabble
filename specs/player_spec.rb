@@ -13,10 +13,8 @@ describe "Player is a class" do
   end
 
   describe "initialize" do
-    #name will be an argument
     it "Raise error if parameter is not string class type for the name " do
       all_other_things = [17, [], {}, nil]
-
       all_other_things.each do |class_type|
         proc {
           Scrabble::Player.new(class_type)
@@ -43,11 +41,12 @@ describe "Player is a class" do
     end
 
   end
-  describe "play(word)" do
 
+  describe "play(word)" do
     it "errors out if not a valid word" do
       proc {@player.play("xxx")}.must_raise ArgumentError
     end
+
     it "Returns false if won" do
       4.times do
         @player.play("syzygy")
@@ -64,15 +63,13 @@ describe "Player is a class" do
       @player.total_score.must_equal 0
       @player.play("oink")
       @player.total_score.must_equal 8
-
     end
+
     it "Updates plays array" do
       @player.plays.must_equal []
       @player.play("oink")
       @player.plays.must_equal ["oink"]
-
     end
-
   end
 
   describe "won?" do
@@ -96,6 +93,7 @@ describe "Player is a class" do
       @player.highest_scoring_word.must_equal "zyme"
     end
   end
+
   describe "highest_word_score" do
     it "correctly scores highest scoring word" do
       test_plays = %w(zyme dog zoysia oink)
@@ -122,7 +120,6 @@ describe "Player is a class" do
       player.draw_tiles(tilebag)
       player.tiles.length.must_equal 7
     end
-
   end
 
 end

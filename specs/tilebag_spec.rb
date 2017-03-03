@@ -1,5 +1,6 @@
 require_relative 'spec_helper'
 require_relative '../lib/tilebag.rb'
+
 describe "Tilebag is a class" do
 
   before do
@@ -22,14 +23,6 @@ describe "Tilebag is a class" do
     end
   end
 
-  # describe "self.new_tileset" do
-  #   it "" do
-  #   end
-  #
-  # end
-
-  # what about checking for non-strings that aren't integers, like "#" or "%" not in quotes?
-
   describe "draw_tiles(num)" do
     it "Raise error if number parameter not given" do
       incorrect_input = [[], "string", nil, {}]
@@ -47,16 +40,12 @@ describe "Tilebag is a class" do
       original = Scrabble::TileBag.new
       @tilebag.draw_tiles(3)
       changed_original = @tilebag
-
       changed_original.tile_set.length.must_equal (original.tile_set.length - 3)
     end
 
     it "@tile_set no longer has the three dealt tiles" do
-      # CALLING @tilebag AND THEN RECALLING IT IS AN ISSUE...
       original = Scrabble::TileBag.new
-
       returned_tiles_array = @tilebag.draw_tiles(1)
-
       letter = returned_tiles_array[0]
       before_count = original.tile_set.count(letter)
       after_count = @tilebag.tile_set.count(letter)
@@ -71,11 +60,8 @@ describe "Tilebag is a class" do
 
     it "The integer is the correct amount of tiles remaining" do
       @tilebag.tiles_remaining.must_equal 98
-
       @tilebag.draw_tiles(3)
-
       @tilebag.tiles_remaining.must_equal 95
-
     end
   end
 

@@ -29,31 +29,55 @@ describe "TileBag" do
 
   describe "draw_tiles" do
     it "returns an array" do
+      tile_bag = Scrabble::TileBag.new
 
+      tiles_drawn = tile_bag.draw_tiles(3)
+      tiles_drawn.must_be_instance_of Array
     end
 
-    it "removes tiles from the tiles array" do
+    it "removes the correct number of tiles from the tiles array" do
+      tile_bag = Scrabble::TileBag.new
+      initial_num_of_tiles = tile_bag.tiles
 
+      tile_bag.draw_tiles(3)
+      tiles_remaining = tile_bag.tiles
+
+      tiles_remaining.must_equal initial_num_of_tiles - 3
     end
 
     it "draws the correct number of tiles" do
-      #array.size = num argument
+      tile_bag = Scrabble::TileBag.new
+      tiles_drawn = tile_bag.draw_tiles(5)
+
+      tiles_drawn.size.must_equal 5
     end
 
     it "raises an error if the argument isn't an integer" do
+      tile_bag = Scrabble::TileBag.new
+
+      proc {
+        tile_bag.draw_tiles("two")
+      }.must_raise ArgumentError
+    end
+
+    it "requires a positive argument" do
+      tile_bag = Scrabble::TileBag.new
+
+      proc {
+        tile_bag.draw_tiles(-5)
+      }.must_raise ArgumentError
+    end
+
+    it "outputs a warning if the # of requested tiles > # of tiles remaining" do
 
     end
 
-    it "requires an positive num" do
+    it "doesnt modify the tiles array if there's not enough tiles in the bag" do
 
     end
 
-    it "outputs a warning if num > tiles remaining" do
+    it "doesnt modify the tiles array if 0 tiles are drawn" do
 
-    end
-
-    it "doesnt modify tiles array if num > tiles" do
-      
     end
   end
 end

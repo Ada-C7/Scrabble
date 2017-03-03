@@ -68,19 +68,49 @@ module Scrabble
       #NEED LOOP to find highest score (with all if conditions) and return word
       high_score_word = hash_2gether.max_by{|k,v| v}[0] #PASSES!
 
+# The following is searching for a tie in the hash :D
       high_same_scoring_words = []
       hash_2gether.each do |word, score|
         if score == self.score(high_score_word)
           high_same_scoring_words << word
+
         end
       end
 
       # high_same_scoring_words.each do |word|
       #   word.length ... return lowest...
       # end
+# move min_by deeper into the loop. Make it an each loop, if length is 7 it wins, elsif min_by to find shortest word and it wins
+      # high_same_scoring_words.min_by do |word|
+      #   word.length
+      #   unless word.length == 7
+      #   end
+      # end
+
+      # high_same_scoring_words.each do |word|
+      #   word.length
+      #   if word.length == 7
+      #     word
+      #   elsif high_same_scoring_words.min_by{|k| k.length}
+      #     # high_same_scoring_words.min_by do |word|
+      #     #   word.length
+      #     # end
+      #
+      #   end
+      #   return word
+      # end
+      seven_letter = high_same_scoring_words.select{|word| word.length == 7}
+
+      if !seven_letter.empty?
+        return seven_letter[0]
+      else
+        return high_same_scoring_words.min_by{|word| word.length}
+      end
 
 
-      high_same_scoring_words.min_by{|k,v| k.length}
+      # high_same_scoring_words.min_by{|k| k.length}
+      # elsif word.length == 7
+      #   high_same_scoring_words << word
 
       #which one is the shortest word.lenth?
 

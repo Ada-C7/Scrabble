@@ -1,12 +1,14 @@
 require_relative 'scoring'
+#require_relative 'tilebag'
 
 module Scrabble
   class Player
-    attr_reader :name, :plays, :total
+    attr_reader :name, :plays, :total, :score, :all_scores
 
     def initialize(name)
       @name = name
       @plays = []
+      @all_scores = []
     end
 
     def play(word)
@@ -14,7 +16,16 @@ module Scrabble
       #returns score of word
       @plays << word
       #plays << word
-      if won? 
+
+      ##play(word) NEEDS TO RETURN THE SCORE OF word
+      ##WAS CALCULATING indiv scores and total in total_score
+      @score = Scoring.score(word)
+      @all_scores << @score
+      #.zip @plays and @scores so the word is the symbol key?
+      #if zipped, @plays and @scores still live independently
+      #that seems convenient, basically it be an additional 3rd
+
+      if won?
         return false
       end
     end
@@ -29,8 +40,12 @@ module Scrabble
       #need to calculate scores
       #we have an existing scoring method in Scoring class
       #believe we should call scoring method from scoring class
-      score = @plays.map { |word| Scoring.score(word) }
-      @total = score.inject(0) {|sum, num| sum + num}
+      # score = @plays.map { |word| Scoring.score(word) }
+      # @total = score.inject(0) {|sum, num| sum + num}
+      # return @total
+
+      #BASED ON CHANGed addition of scores instance variable
+      @total = @all_scores.inject(0) {|sum, num| sum + num}
       return @total
     end
 
@@ -59,6 +74,19 @@ module Scrabble
       high_score = Scoring.score(Scoring.highest_score_from(@plays))
       return high_score
     end
+
+=begin
+
+  def tiles
+
+  end
+
+
+  def draw_tiles(tile_bag)
+
+  end
+
+=end
 
 
   end

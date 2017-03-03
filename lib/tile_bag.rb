@@ -1,9 +1,8 @@
-require_relative 'scoring'
-require_relative 'player'
+require_relative 'scoring.rb'
 
 module Scrabble
   class TileBag
-    attr_reader :tile_bag , :tile , :players_tiles
+    attr_accessor :tile_bag, :tile, :players_tiles
 
     def initialize
       @tile_bag = %w( A A A A A A A A A

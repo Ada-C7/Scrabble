@@ -43,6 +43,8 @@ module Scrabble
 
 
       def self.highest_score_from(array_of_words)
+        raise ArgumentError.new("Must be an array!") if array_of_words != Array.class
+
         hash_of_word_score = {}
 
         array_of_words.each do |word|

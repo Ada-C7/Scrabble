@@ -56,6 +56,9 @@ module Scrabble
     end
 
     def self.tie(max_words)
+      if max_words.class != Array
+        raise ArgumentError.new("parameter must be an array")
+      end
       max_word = max_words.select{|word| word.length == 7}
 
       if !max_word.empty?

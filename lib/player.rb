@@ -5,6 +5,7 @@ module Scrabble
 
     attr_reader :name, :plays
     def initialize(name)
+      raise ArgumentError.new("Name must be a string") if name.class != String
       @name = name
       @plays = []
       @tiles = [] # tiles that player has right now
@@ -43,22 +44,13 @@ module Scrabble
     end
 
     def draw_tiles(tile_bag)
+      if tile_bag.class != Scrabble::TileBag
+        raise ArgumentError.new("parameter must be an instance of TileBag")
+      end
       if tiles.length < 7
         @tiles += tile_bag.draw_tiles(7 - tiles.length)
       end
       @tiles
     end
-
   end # end of class
 end # end of module
-# 
-# bag = Scrabble::TileBag.new
-# player = Scrabble::Player.new("Natalia")
-# puts "-" * 30
-# puts player.tiles
-# puts "-" * 30
-# player.draw_tiles(bag)
-# puts player.tiles
-# puts "-" * 30
-# player.play("dog")
-# puts player.tiles

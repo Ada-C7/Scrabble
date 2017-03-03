@@ -1,6 +1,5 @@
 module Scrabble
   class TileBag
-
     attr_reader :tile_bag
 
     def initialize
@@ -20,13 +19,15 @@ module Scrabble
       tile_bag
     end#end of create_tile_bag method
 
-
     def draw_tiles(num)
-      raise ArgumentError.new("Parameter must be integer") if num.class != Integer
+      if num.class != Integer
+        raise ArgumentError.new("Parameter must be integer")
+      end
+
       drawn_tiles = []
       num.times do
-        rand_num = rand(0..@tile_bag.length)
-        drawn_tiles<< @tile_bag[rand_num]
+        rand_num = rand(0...@tile_bag.length)
+        drawn_tiles << @tile_bag[rand_num]
         @tile_bag.delete_at(rand_num)
       end
       drawn_tiles
@@ -35,9 +36,5 @@ module Scrabble
     def tiles_remaining
       @tile_bag.length
     end
-
   end#end of TileBag class
 end#end of Scrabble module
-# bag = Scrabble::TileBag.new
-# bag.draw_tiles(5)
-# puts bag.tiles_remaining

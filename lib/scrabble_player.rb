@@ -3,9 +3,6 @@ require_relative '../lib/scrabble_tilebag'
 
 
 module Scrabble
-  #
-  # puts "Please enter your username (characters only): "
-  # name = gets.chomp.to_s
 
   class Player
     attr_accessor :words_played, :score_tracker, :player_tiles, :tile_bag
@@ -22,26 +19,20 @@ module Scrabble
       return @words_played
     end
 
-
     def won?
-      if @score_tracker.inject { |sum, n| sum + n } > 100
-        puts "you won!"
-        return true
-      else
-        return false
-      end
+      @score_tracker.inject { |sum, n| sum + n } > 100 ? true : false #determines winner based on number of points
     end
 
 
     def play(word)
 
-      if @score_tracker.inject { |sum, n| sum + n } > 100
-        raise ArgumentError.new "Error. You cannot play anymore. Please restart game."
-      else
-        @score_tracker << Scrabble::Scoring.score(word)
-        @words_played << word
-        return Scrabble::Scoring.score(word)
-      end
+      raise ArgumentError.new "Error. You cannot play anymore. Please restart game." if @score_tracker.inject { |sum, n| sum + n } > 100
+      #determines whether or not player can continue the game based on how many points they have
+
+      @score_tracker << Scrabble::Scoring.score(word)
+      @words_played << word
+      return Scrabble::Scoring.score(word)
+
     end
 
     def highest_scoring_word

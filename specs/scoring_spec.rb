@@ -50,7 +50,11 @@ describe "Scrabble::Scoring" do
     end
 
     # test that highest score handles ties
-    it "Handles ties correctly" do
+    it "Handles tied scores with tied word lengths correctly" do
+      Scrabble::Scoring.highest_score_from(["cat", "bat", "l", "a"]).must_equal "cat"
+    end
+
+    it "handles tied scores correctly" do
       Scrabble::Scoring.highest_score_from(["cat", "bat", "l", "a"]).must_equal "cat"
     end
 
@@ -58,7 +62,7 @@ describe "Scrabble::Scoring" do
     it "Handles 7 letter word ties correctly" do
       Scrabble::Scoring.highest_score_from(["cat", "goooooo", "zzzzzx"]).must_equal "goooooo"
       # attempt to get 100% coverage for scoring_spec, failed for now
-      # Scrabble::Scoring.highest_score_from(["cat", "zzzzzx", "goooooo"]).must_equal "goooooo"
+      # Scrabble::Scoring.highest_score_from(["cat", "zzzzzx", "goooooo", "job"]).must_equal "goooooo"
     end
   end
 end

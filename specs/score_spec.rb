@@ -64,9 +64,14 @@ describe Scrabble::Scoring do
 
 
      describe "self.highest_score_from(words)" do
+
+       before do
+            @my_words = Scrabble::Scoring
+       end
+
        it "returns a string" do
          array = ["aaa", "bbb", "ccc", "dddddd"]
-         word = Scrabble::Scoring.highest_score_from(array)
+         word = @my_words.highest_score_from(array)
 
          word.must_be_instance_of String
        end
@@ -74,7 +79,7 @@ describe Scrabble::Scoring do
        it "returns a word with the highest score" do
          array = ["aaa", "bbb", "ccc", "dddddd"]
          winner = "dddddd"
-         word = Scrabble::Scoring.highest_score_from(array)
+         word = @my_words.highest_score_from(array)
 
          word.must_equal winner
        end
@@ -82,7 +87,7 @@ describe Scrabble::Scoring do
        it "returns the word that is 7 strings long in case of a tie" do
          array = ["hhh", "xxxxx", "aaaaaaa"]
          winner = "aaaaaaa"
-         word = Scrabble::Scoring.highest_score_from(array)
+         word = @my_words.highest_score_from(array)
 
          word.must_equal winner
        end
@@ -90,7 +95,7 @@ describe Scrabble::Scoring do
        it "returns shortest word in case of a tie" do
          array = ["xxx", "xxhh", "zzaaaa"]
          winner = "xxx"
-         word = Scrabble::Scoring.highest_score_from(array)
+         word = @my_words.highest_score_from(array)
 
          word.must_equal winner
        end
@@ -98,16 +103,24 @@ describe Scrabble::Scoring do
        it "returns the first word in tie that has words of equal length and points" do
          array = ["fff", "hhh", "vvv"]
          winner = "fff"
-         word = Scrabble::Scoring.highest_score_from(array)
+         word = @my_words.highest_score_from(array)
 
          word.must_equal winner
        end
 
-       it "Outpus warning if the array contains non letter characters" do
+       it "outpus warning if the array contains non letter characters" do
          array = ["bo1", "bzzz", "br@e"]
 
          proc {
-           Scrabble::Scoring.highest_score_from(array)
+           @my_words.highest_score_from(array)
+         }.must_raise ArgumentError
+       end
+
+       it "does not allow empty array as an argument" do
+         array = []
+
+         proc {
+           @my_words.highest_score_from(array)
          }.must_raise ArgumentError
        end
 

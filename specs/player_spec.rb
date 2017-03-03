@@ -143,7 +143,7 @@ describe Scrabble::Player do
       it 'returns an array of letters for the player' do
           @player.draw_tiles(@game_tile_bag, 7).must_be_kind_of Array
       end
-      it 'subtracts the tiles from the game_tile_bag' do
+      it 'subtracts the tiles from the instance of TileBag' do
           start_num = @game_tile_bag.tiles_remaining
           @player.draw_tiles(@game_tile_bag, 7)
           end_num = @game_tile_bag.tiles_remaining

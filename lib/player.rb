@@ -27,8 +27,8 @@ module Scrabble
               end
         end
 
-        def draw_tiles(tile_bag, amt)
-            @tiles = tile_bag.draw_tiles(amt)
+        def draw_tiles(tile_bag,num)
+            @tiles = tile_bag.draw_tiles(num)
         end
 
         def highest_scoring_word

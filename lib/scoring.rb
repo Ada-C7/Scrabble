@@ -20,8 +20,11 @@ module Scrabble
     end
 
     def self.score(word)
-      # The *  splat operator expands an Array into a list of arguments
-      word_score = LETTER_SCORES.values_at(*word.downcase.chars).reduce(:+)
+      # Word gets changed into an Array by the chars method
+      # The *  splat operator expands an Array (the word array) into a list of arguments
+      # those arguments (the letters) get converted to the appropriate value that corresponds with LETTER_SCORES
+      # last, the sum method adds up the list of integers
+      word_score = LETTER_SCORES.values_at(*word.downcase.chars).sum
       word.length == 7 ? word_score += 50 : word_score
     end
 

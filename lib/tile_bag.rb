@@ -13,6 +13,8 @@ module Scrabble
 
       raise ArgumentError.new("You must draw at least one tile!") if num <= 0
 
+      raise ArgumentError.new("You cannot draw more than are available!") if num > @tiles_in_bag.length
+
       tiles_drawn = []
       @tiles_in_bag.shuffle!
       num.times { tiles_drawn << @tiles_in_bag.pop }

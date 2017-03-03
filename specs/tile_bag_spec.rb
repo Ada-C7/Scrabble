@@ -37,6 +37,11 @@ describe "TileBag tests" do
 
       end
 
+      it "raises an error if num is more than number tiles originally in the bag" do
+        proc {@new_bag.draw_tiles(@new_bag.tiles_in_bag.length + 1)}.must_raise ArgumentError
+      end
+
+
       it "returns a collection of random tiles" do
         @new_bag.draw_tiles(5).must_be_instance_of Array
         @new_bag.draw_tiles(5).length.must_equal 5

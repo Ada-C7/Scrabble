@@ -1,6 +1,6 @@
 module Scrabble
   class Game
-    attr_accessor :current_turn
+    attr_accessor :current_turn, :board
     attr_reader :active_player, :inactive_player
 
     def initialize(player1_name, player2_name)

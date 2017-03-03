@@ -34,6 +34,13 @@ describe Scrabble::Game do
   end
 
   describe "#valid_placement?" do
+    it "Returns true if the board is blank and all params are valid" do
+      @s.current_turn = {word: 'test', row: 10, column: 10, direction: 'right'}
+      proc {
+        @s.valid_placement?
+      }.must_be_silent
+    end
+
     it "Outputs error message if row is not between 1 and 15" do
       @s.current_turn = {row: 100, column: 10, direction: 'down'}
       proc {
@@ -52,6 +59,23 @@ describe Scrabble::Game do
       @s.current_turn = {row: 10, column: 10, direction: 'left'}
       proc {
         @s.valid_placement?
+      }.must_output
+    end
+
+    it "Outputs error message if there isn't space on the board" do
+      @s.board.place_word({word: 'test', row: 10, column: 10, direction: 'right'})
+      @s.current_turn = {word: 'test', row: 10, column: 10, direction: 'right'}
+      proc {
+        @s.valid_placement?
+      }.must_output
+    end
+  end
+
+  describe "#valid_tiles?" do
+    it "Outputs error if the player does not have the tiles" do
+      @s.current_turn = {word: 'test', row: 10, column: 10, direction: 'right'}
+      proc {
+        @s.valid_tiles?
       }.must_output
     end
   end

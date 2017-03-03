@@ -10,6 +10,7 @@ module Scrabble
       @plays = []
       @scores = []
       @won = false
+      @tile_bag = Scrabble::TileBag.new
       raise ArgumentError.new("Name must be entered") if name == ""
     end
 
@@ -40,11 +41,11 @@ module Scrabble
     end
 
     def tiles
-      player_tilebag = Scrabble::TileBag.new
-      return player_tilebag.picked_tiles
+      return @tile_bag.picked_tiles
     end
 
     def draw_tiles(tile_bag)
+      @tile_bag
     end
   end
 end

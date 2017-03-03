@@ -21,7 +21,7 @@ module Scrabble
 
     #tiles_remaining returns the number of tiles remaining in the bag
     def tiles_remaining
-      return @collection
+      return @collection.length
     end
 
   end

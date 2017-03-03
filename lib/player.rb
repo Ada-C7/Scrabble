@@ -12,11 +12,11 @@ module Scrabble
     end
 
     def won?
-      return false unless total_score > 100
+      false unless total_score > 100
     end
 
     def tile_bag_draw(num)
-      return @tile_bag.draw_tiles(1)
+      @tile_bag.draw_tiles(1)
     end
 
     def draw_tiles
@@ -37,7 +37,7 @@ module Scrabble
       return false if won?
       raise ArgumentError.new "This requires a string" if word.class != String
       @plays << word
-      return score(name)
+      score(name)
     end
 
     def total_score
@@ -45,11 +45,11 @@ module Scrabble
     end
 
     def highest_scoring_word
-      return highest_word(@plays)
+      highest_word(@plays)
     end
 
     def highest_word_score
-      return score(highest_scoring_word)
+      score(highest_scoring_word)
     end
 
   end

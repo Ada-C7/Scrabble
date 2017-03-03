@@ -33,7 +33,7 @@ module Scrabble
       1.times { array << "X"}
       2.times { array << "Y"}
       1.times { array << "Z"}
-      return array
+      array
     end
 
     def draw_tiles(num)
@@ -49,13 +49,12 @@ module Scrabble
           end
         end
       end
-      return player_hand
+      player_hand
     end
 
     def tiles_remaining
-      return @bag.length
+      @bag.length
     end
-
 
   end
 end

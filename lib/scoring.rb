@@ -10,7 +10,7 @@ module Scrabble
         SCORES.each { |point, value| turn_value += point if value.include?(letter) }
       end
       turn_value += 50 if string.length == 7
-      return turn_value
+      turn_value
     end
 
     def self.highest_word(data)
@@ -23,7 +23,7 @@ module Scrabble
         end
       end
       highest_word = self.tiebreaker(highest_word) if highest_word[1] != nil
-      return highest_word[0]
+      highest_word[0]
     end
 
     def self.tiebreaker(array)
@@ -37,7 +37,7 @@ module Scrabble
           winner = array[0]
         end
       end
-      return [winner]
+      [winner]
     end
 
   end

@@ -39,11 +39,5 @@ module Scrabble
       to_draw = 7 - @tiles.length
       @tiles.concat(tile_bag.draw_tiles(to_draw))
     end
-
   end
-
 end
-
-
-# player1 = Scrabble::Player.new("Bob", ["ox", "rat"])
-# p player1.tiles

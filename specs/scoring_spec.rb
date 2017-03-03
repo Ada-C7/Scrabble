@@ -9,14 +9,6 @@ require_relative '../lib/score.rb'
 
 
 describe "class Scoring" do
-  # it "reads in DICTIONARY" do
-  # end
-  #
-  # # it "reads in SCORES" do
-  # #
-  # # end
-
-
   describe "#self.calculate_letter" do
     it "gives an error if a non-letter is entered" do
       proc{
@@ -49,15 +41,7 @@ describe "class Scoring" do
       Scrabble::Scoring.score("rainbows").must_equal 63
     end
 
-
-
     describe "break_ties" do
-
-      it "returns the shortest word when the shortest word is last" do
-        Scrabble::Scoring.break_ties(["tepee", "bird", "cat"]).must_equal "cat"
-          #it takes 2 words as params
-        # it compares the length of two words if word1 is bigger than word2, it returns word1 else, word2.
-      end
 
       it "returns the shortest word when the shortest word is first" do
         Scrabble::Scoring.break_ties(["cat","tepee"]).must_equal "cat"
@@ -73,7 +57,7 @@ describe "class Scoring" do
       it "returns a single word if the array contains one word" do
         Scrabble::Scoring.highest_score_from(["bat"]).must_equal "bat"
       end
-    #
+      #
       it "returns the highest scoring word when given two words" do
         Scrabble::Scoring.highest_score_from(["oxen","rat"]).must_equal "oxen"
       end
@@ -85,8 +69,6 @@ describe "class Scoring" do
       it "returns the first word as the best word if the two words with the same length" do
         Scrabble::Scoring.highest_score_from(["bat","cat"]).must_equal "bat"
       end
-     end
-
-     
+    end
   end
 end

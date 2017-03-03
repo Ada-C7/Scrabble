@@ -99,4 +99,24 @@ describe 'Player' do
       @ada.highest_word_score.must_equal 68
     end
   end
+
+  describe "draw_tiles(tile_bag)" do
+    before do
+      @tile_bag = Scrabble::TileBag.new
+    end
+
+    it "argument must be instance of TileBag" do
+      proc { @ada.draw_tiles([]) }.must_raise ArgumentError
+
+      proc { @ada.draw_tiles() }.must_raise ArgumentError
+
+      proc { @ada.draw_tiles("hey") }.must_raise ArgumentError
+    end
+
+    it "returns tiles Array of 7" do
+      what_do_i_have = @ada.draw_tiles(@tile_bag)
+      what_do_i_have.length.must_equal 7
+    end
+    
+  end
 end

@@ -11,7 +11,7 @@ module Scrabble
       @plays = []
       @total = 0
       @tile_bag = tile_bag
-      @tiles = []
+      @tiles = ["A", "C", "T"]
     end
 
     def play(word)
@@ -56,10 +56,12 @@ module Scrabble
     end
 
     # This method tiles is created by attr_reader, so we don't need to implement it here.
-    # def tiles
-    #   @tiles
-    # end
+    def tiles
+      @tiles
+    end
 
+    # tile_bag is called the tile_bag reader method
+    # is initialization the best place for tile_bag to be formed?
     def draw_tiles(tile_bag)
       current_tiles = @tiles.length
       tiles_wanted = 7 - current_tiles
@@ -67,3 +69,10 @@ module Scrabble
     end
   end
 end
+# bag = Scrabble::TileBag.new
+# game = Scrabble::Player.new("Ada", bag)
+# print bag.tile_bag.length
+# puts
+# print game.draw_tiles(bag)
+# puts
+# print bag.tile_bag.length

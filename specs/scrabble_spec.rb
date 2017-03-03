@@ -48,7 +48,7 @@ describe "Wave 1" do
   describe "tiebreaking rules" do
     it "recognize two words with same score" do
       # skip #This one is the problem...
-      array_of_words = ["apple","almond", "cat"]
+      array_of_words = ["apple","almond","cat"]
       test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
       test_1.must_equal 2
     end

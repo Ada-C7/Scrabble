@@ -58,33 +58,42 @@ module Scrabble
         score_array << word_score
         word_array << word
       end
-
+######ZIPPERthis was going to go below
       zipper_test = word_array.zip(score_array)
+      highest_score = zipper_test.max_by {|x| x[1]}[1]
+      words_with_highest_score = zipper_test.select{|x| x[1] == highest_score}
+      max_string = words_with_highest_score.max_by {|x| x[0].length}[0].length
+      first_word = words_with_highest_score.select {|x| x[0].length == max_string}
+######this ends
+
+
       group_test = zipper_test.group_by { |word, value| [value] }
 
       @max = group_test.keys.max
       group_test.select do |k, v| k == @max
         variable = group_test.select {|k, v| k == @max}
         if v.count > 1
-          variable.each_pair do |k, v|
-            x = v.min_by(&:length)
-            v.each do |word|
+          variable.each_pair do |k, words|
+            words.each do |word|
               if word[0].length == 7
                 x = word[0]
+                return x
               end
             end
-            puts x
+            #insert if else here to account for words with same score and length, we have this above between some comments. We were going to enter the code between the ZIPPER comments with a conditional for if there were multiple words with the same score and length but with lengths less than 7
+            return words.min_by {|x| x[0].length}[0]
           end
           # return v.count
         else
-          return variable[@max][0][0]
+          return variable[@max][0][0] #returning out non-tie word
         end
       end
     end
+
   end
 end
-
-array_of_words = ["zzzzzz", "aaaaaaf", "wipe", "spoon", "laptops"]
+# array_of_words = ["aaaaaaf", "zzzzzz", "cat"] #array for if you have 2 words with the same score but one witha  length of 7 and one with less than 7
+array_of_words = ["almood","almond", "apple", "cat"]
 
 test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
 

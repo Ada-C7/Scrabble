@@ -26,7 +26,7 @@ module Scrabble
       return scores.reduce(0,:+)
     end
 
-    def won
+    def won?
       return total_score > 100 ? true : false
     end
 

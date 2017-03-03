@@ -70,14 +70,14 @@ describe "Scrabble player" do
 
     it "Returns false when total score is less than equal to 100" do
       @player.play("fiiiiii")
-      @player.won.must_equal false
+      @player.won?.must_equal false
     end
 
     it "Returns true when total score is greater than 100" do
       2.times do
         @player.play("hiiiiii")
       end
-      @player.won.must_equal true
+      @player.won?.must_equal true
     end
   end
 

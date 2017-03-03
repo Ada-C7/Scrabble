@@ -6,6 +6,7 @@ module Scrabble
 
     attr_reader :SCOREBOARD
 
+    # constant that is a hash of the point values of the letters
     SCOREBOARD = {
       %w[a e i o u l n r s t]=>1,
       %w[d g]=> 2, %w[b c m p]=>3,
@@ -23,83 +24,39 @@ module Scrabble
 
       raise ArgumentError.new "Error. Please enter a string of letters." if word.match(/^[[:alpha:]]+$/) == nil
 
+      word_array = word.downcase.scan /\w/ # regex that checks to make sure the string consists of only letters
 
-      word_array = word.downcase.scan /\w/
-
+      # this checks the value of our letters
       SCOREBOARD.each do |key, value|
         word_array.each do |letter|
-          if key.include?(letter)
-            letter_values << value
-          else
-            letter_values << 0
-          end
+          key.include?(letter) ? letter_values << value : letter_values << 0
         end
       end
 
-      points_count = 0
+      points_count = letter_values.inject { |points, n| points + n }
 
-
-      letter_values.each do |points|
-        points_count += points
-      end
-
-      if word_array.size < 7
-        return points_count
-      else
-        return points_count + 50
-      end
-
+      word_array.size < 7 ? points_count : points_count + 50 # adds bonus points for 7 letter words
     end
 
     def self.highest_score_from array
 
       score = []
 
-      array.each do |word|
-        score << Scoring.score(word)
-      end
+      score << (array.map { |word| Scoring.score(word) }).first # score for the entire word
 
       winning_words = []
       losing_words = []
 
       array.each do |word|
-        if score.max == Scoring.score(word)
-          winning_words << word
-        else
-          losing_words << word
-        end
+        score.max == Scoring.score(word) ? winning_words << word : losing_words << word
       end
 
-      if winning_words.length > 1
-        if winning_words.any? { |word| word.length == 7 }
-          return winning_words.find { |word| word.length == 7 }
-        else
-          return winning_words.min_by { |word| word.length}
-        end
-
-        #   return winning_words.min_by { |word| word.length}
-        #   unless
-        #     winning_words.any? { |word| word.length == 7 }
-        #     return winning_words.find { |word| word.length == 7 }
-        #   end
-        # else
-        #   return winning_words[0]
+      if winning_words.length > 1 ##
+        winning_words.any? { |word| word.length == 7 } ? winning_words.find { |word| word.length == 7 } : winning_words.min_by { |word| word.length}
       end
+      
       return winning_words[0]
+
     end
-
-
-
-    # return array[score.each_with_index.max[1]]
-
   end
-
 end
-
-
-
-
-
-
-puts Scrabble::Scoring.score("aaaaaad")
-puts Scrabble::Scoring.score("zzzzzx")

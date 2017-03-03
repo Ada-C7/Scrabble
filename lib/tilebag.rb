@@ -6,6 +6,7 @@ require 'awesome_print'
 module Scrabble
 
   class TileBag
+    @tile = []
 
 puts random, random
 

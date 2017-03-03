@@ -102,9 +102,25 @@ describe "Player#tiles" do
   end
 end
 
-# describe "Player#draw_tiles(tiel_bag)" do
-#   it "Fills tiles array until it has 7 letters from the given tile bag" do
-#     player = Scrabble::Player.new("Mickey")
-#
-#   end
-# end
+describe "Player#draw_tiles(tile_bag)" do
+  it "Fills tiles array until it has 7 letters from the given tile bag" do
+    player = Scrabble::Player.new("Mickey")
+    game_tile_bag = Scrabble::TileBag.new
+    player.draw_tiles(game_tile_bag)
+    player.tiles.length.wont_be :==, 0
+  end
+
+  it "Doesn't fill more tiles if player's tiles array is full(7)" do
+    player = Scrabble::Player.new("Mickey")
+    game_tile_bag = Scrabble::TileBag.new
+    player.draw_tiles(game_tile_bag)
+    player.draw_tiles(game_tile_bag)
+    player.draw_tiles(game_tile_bag)
+    player.draw_tiles(game_tile_bag)
+    player.draw_tiles(game_tile_bag)
+    player.draw_tiles(game_tile_bag)
+    player.draw_tiles(game_tile_bag)
+    player.draw_tiles(game_tile_bag)
+    player.tiles.length.must_equal 7
+  end
+end

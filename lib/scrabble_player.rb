@@ -10,7 +10,7 @@ module Scrabble
       @plays = []
       @scores = []
       @won = false
-      @tile_bag = Scrabble::TileBag.new
+      @player_tiles = []
       raise ArgumentError.new("Name must be entered") if name == ""
     end
 
@@ -41,11 +41,11 @@ module Scrabble
     end
 
     def tiles
-      return @tile_bag.picked_tiles
+      @player_tiles
     end
 
     def draw_tiles(tile_bag)
-      @tile_bag
+       @player_tiles << tile_bag.draw_tiles(1) if tiles.length < 7
     end
   end
 end
@@ -53,4 +53,6 @@ end
 # player = Scrabble::Player.new("Mickey")
 # player.plays = %w[blue yellow black]
 # puts player.highest_scoring_word
+# a = Scrabble::TileBag.new
+# player.draw_tiles(a)
 # puts player.tiles

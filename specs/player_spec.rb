@@ -153,7 +153,6 @@ describe "Player tests" do
     describe "Player#draw_tiles" do
       it "fills tiles array until it has 7 letters" do
         @player.draw_tiles(@tile_bag)
-
         @player.tiles.must_be_instance_of Array
         @player.tiles.length.must_equal 7
       end

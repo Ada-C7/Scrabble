@@ -33,6 +33,7 @@ module Scrabble
     end
 
     def draw_tiles(tile_bag)
+      raise ArgumentError.new "You must draw tiles from a TileBag" if tile_bag.class != TileBag
       @tiles += tile_bag.draw_tiles(7 - @tiles.length)
     end
 

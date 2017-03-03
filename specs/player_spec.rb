@@ -157,6 +157,11 @@ describe "Player tests" do
         @player.tiles.must_be_instance_of Array
         @player.tiles.length.must_equal 7
       end
+
+      it "raises argument error if argument isn't a TileBag" do
+        proc { @player.draw_tiles(["A", "B"]) }.must_raise ArgumentError
+        proc { @player.draw_tiles(5) }.must_raise ArgumentError
+      end
     end
   end
 end

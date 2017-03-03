@@ -15,7 +15,7 @@ module Scrabble
     end
 
     def play(word)
-      raise ArgumentError.new "Word must be a valid word" if word.class != String
+        raise ArgumentError.new "Word must be a valid word" if word.class != String
         @plays << word
         single_score(word.upcase)
         return ((won?) ? false : score)
@@ -23,6 +23,7 @@ module Scrabble
 
 
       def single_score(word)
+        raise ArgumentError.new "You don't have those tiles" if check_play(word) == false
         score = Scoring.score(word)
         score_array << score
         word.split("").each { |c| @tiles.delete(c) }
@@ -55,7 +56,7 @@ module Scrabble
       end
 
     def check_play(word)
-      check = @tiles.select { |letter| word.includes? letter }
+      check = @tiles.select { |letter| word.include? letter }
       return check.length == word.length
     end
 

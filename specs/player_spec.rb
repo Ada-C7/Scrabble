@@ -41,7 +41,9 @@ describe "Play method" do
 
   it "Returns false if score > 100" do
     @player.tiles = ["Z", "Z", "Z", "Z", "Z", "Z", "Z"]
-    2.times { @player.play("ZZZZZZZ") }
+    @player.play("ZZZZZZZ")
+    @player.tiles = ["Z", "Z", "Z", "Z", "Z", "Z", "Z"]
+    @player.play("ZZZZZZZ")
     @player.tiles = ["C", "A", "T"]
     @player.play("cat").must_equal false
   end
@@ -115,12 +117,16 @@ describe "Won" do
   end
 
   it "Returns true if score is over 100" do
-    2.times { @player.play("ZZZZZZZ") }
+    @player.tiles = ["Z", "Z", "Z", "Z", "Z", "Z", "Z"]
+    @player.play("ZZZZZZZ")
+    @player.tiles = ["Q", "Q", "Q", "Q", "Q", "Q", "Q"]
+    @player.play("QQQQQQQ")
     @player.won?.must_equal true
   end
 
   it "Returns false if score is not over 100" do
-    @player.play("fox")
+    @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
+    @player.play("CAT")
     @player.won?.must_equal false
   end
 
@@ -129,9 +135,9 @@ end
 describe "Highest Scoring Word and Word Score" do
   before do
     @player = Scrabble::Player.new('Ada')
-
-    3.times { @player.play("cat") }
-    @player.play("elephant")
+    @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
+    @player.play("CATS")
+    @player.play("DOG")
   end
 
   it "Returns a string" do
@@ -139,7 +145,7 @@ describe "Highest Scoring Word and Word Score" do
   end
 
   it "Returns the correct word" do
-    @player.highest_scoring_word.must_equal "ELEPHANT"
+    @player.highest_scoring_word.must_equal "CATS"
   end
 
   it "Highest word score returns an Integer" do
@@ -147,7 +153,7 @@ describe "Highest Scoring Word and Word Score" do
   end
 
   it "Highest word score returns right integer" do
-    @player.highest_word_score.must_equal 13
+    @player.highest_word_score.must_equal 6
   end
 
 end

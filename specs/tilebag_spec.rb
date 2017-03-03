@@ -9,12 +9,26 @@ describe "Scrabble::Tilebag" do
   describe "Scrabble::Tilebag#initialize" do
 
     it "Letters have correct quantities" do
-      Scrabble::Tilebag.new.letter_quantity[:A].must_equal 9
-      Scrabble::Tilebag.new.letter_quantity[:D].must_equal 4
-      Scrabble::Tilebag.new.letter_quantity[:N].must_equal 6
-      Scrabble::Tilebag.new.letter_quantity[:Z].must_equal 1
+      @game.letter_quantity.each do | letter, value |
+        @game.letter_quantity[letter].must_equal value
+      end
     end
 
+    it "Bag is an array" do
+      @game.bag.must_be_kind_of Array
+      @game.bag.length.must_equal 98
+    end
+
+    it "Fill_bag fills @bag with correct number of letters" do
+      @game.letter_quantity.each do | letter, value |
+        @game.bag.count(letter).must_equal value
+      end
+    end
+
+    it "Randomizes bag with each instance"
+      game2 = Scrabble::Tilebag.new
+      game2.bag.must_be_kind_of Array
+      # @game.bag.wont_equal @game2.bag
   end
 
   describe "Scrabble::Tilebag#draw_tiles and #draw_letter and #random_letter" do
@@ -32,28 +46,12 @@ describe "Scrabble::Tilebag" do
       end
     end
 
-    it "Draws all letters so all letters have value of 0" do
-      # proc{
-      #
-      # all_letters = []
-      #
-      # 98.times do
-      #   all_letters << @game.draw_letter
-      # end
-      #
-      # group = all_letters.sort.group_by {| letter | letter }
-      # puts group.map { |letter, count | count.length }
-      # }
+    it "will raise an error if there aren't enough tiles" do
+      proc{
+        @game.draw_tiles(98)
+        @game.draw_tiles(5)
+      }.must_raise ArgumentError
     end
-
-    it "random_letter returns a letter" do
-
-    end
-
-    # it "another edge case?" do
-    # end
-
-    # it will raise an error if there aren't enough tiles
   end
 
 

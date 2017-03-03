@@ -1,7 +1,7 @@
 module Scrabble
 
   class Tilebag
-    attr_reader :letter_quantity
+    attr_reader :letter_quantity, :bag
 
     def initialize
       @letter_quantity = {
@@ -26,15 +26,14 @@ module Scrabble
       bag.shuffle!
     end
 
-    # returns a collection of random tiles, removes the tiles from the default set
     def draw_tiles(num)
+      raise ArgumentError.new("There aren't that many tiles left!") if num > @bag.length
       user_bag = []
       num.times { user_bag << @bag.pop }
 
       return user_bag
     end
 
-# returns the number of tiles remaining in the bag
     def remaining_tiles
       @bag.length
     end

@@ -72,7 +72,8 @@ describe "Wave 2" do
 
       describe "total_score method" do
         it "returns an integer" do
-          @my_player.total_score.must_be_instance_of Fixnum
+            @my_player.play("banana")
+            @my_player.total_score.must_be_instance_of Fixnum
         end
 
         it "returns the correct total" do
@@ -144,7 +145,6 @@ describe "Wave 3" do
     end
 
     it "won't fill the array beyond 7 letters" do
-
       @my_player.draw_tiles(@new_tilebag)
       @my_player.players_tiles.length.must_equal 7
 

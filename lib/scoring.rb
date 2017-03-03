@@ -17,7 +17,6 @@ module Scrabble
       word_score = 0
 
       word.downcase.each_char do |c|
-
         raise ArgumentError.new("Argument must contain only letters") if c !~ /[a-z]/
         word_score += letter_scores[c.to_sym]
       end
@@ -27,7 +26,6 @@ module Scrabble
         word_score += 50
       end
       word_score
-
     end
 
     def self.highest_score(word_array)

@@ -2,14 +2,13 @@ require_relative "./scoring.rb"
 
 module Scrabble
   class Player
-    attr_reader :name, :plays, :players_tiles
+    attr_reader :name, :plays, :players_tiles, :scores
 
     def initialize(name)
         @name = name
         @plays = []
         @scores = []
         @players_tiles = []
-        
     end
 
     def play(word)
@@ -23,13 +22,20 @@ module Scrabble
           end
         end
 
-        if won? == true
-            puts "You've already won!"
-        else
+        if @plays.length < 1
             @plays << word
             @scores << Scoring.score(word)
             return @scores[-1]
+        else
+            if won?
+                puts "You've already won!"
+            else
+                @plays << word
+                @scores << Scoring.score(word)
+                return @scores[-1]
+            end
         end
+
 
     end
 
@@ -43,15 +49,7 @@ module Scrabble
     end
 
     def total_score
-      total = 0
-
-      @scores.each do |score|
-          total +=score
-      end
-    #   total = @scores.reduce(:+)
-    #   total = @scores.inject { |total,score| total + score }
-
-      return total
+        @scores.reduce(:+)
     end
 
 

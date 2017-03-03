@@ -49,15 +49,26 @@ describe "Tile Bag class" do
     end
 
     it "Does not allow a letter to be drawn if the value is 0" do
+
     end
 
     it "Requires a number" do
+      proc {
+      @ourtiles.draw_tiles("D")
+    }.must_raise ArgumentError
+
     end
 
     it "Requires a positive number" do
+      proc {
+      @ourtiles.draw_tiles(-1)
+    }.must_raise ArgumentError
     end
 
     it "Requires a number between 0 and 7" do
+      proc {
+      @ourtiles.draw_tiles(8)
+    }.must_raise ArgumentError
     end
 
   end

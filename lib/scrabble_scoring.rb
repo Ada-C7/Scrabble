@@ -12,10 +12,6 @@ module Scrabble
       10 => ["Q", "Z"]
     }
 
-    #do I need the total array to be initialized because I need it in all things
-
-    def initialize
-
     def letters
       return LETTERS
     end
@@ -38,24 +34,40 @@ module Scrabble
     end
 
     def self.highest_score_from(array_of_words)
-      highest = 0
+      score = []
       array_of_words.each do |word|
-        # tile = word.length
-        score = Scrabble::Scoring.score(word)
-        highest = score if score > highest
-        highest_word = word if score > highest
+        score << Scrabble::Scoring.score(word)
+      end
+      word_score_hash = Hash[array_of_words.zip(score)]
+      max_score = word_score_hash.select{|word, score| score == word_score_hash.values.max}
 
-        # if score == highest
-        #still need to figure out how to firgure out tiles as a qualifier
-        print highest
-        print highest_word
-        return highest_word
+      if max_score != 1
+        #if there are multiple words that tie, then choose the shortest word
+        max_score_sorted = max_score.sort_by {|key, value| key.length}
+        max_score.each do |word, score|
+          if max_score.keys.length == 7
+            return word
+          else
+            return max_score_sorted[0][0]
+          end
+        end
       end
 
+
+      # highest = 0
+      # array_of_words.each do |word|
+      #   score = Scrabble::Scoring.score(word)
+      #   highest = score if score > highest
+      #   highest_word = word if word == score
+      #   # highest_word = word if word.score = highest
+      #   print highest
+      #   # print highest_word
+      #   # print highest_word
+      #   # return highest_word
     end
-    #something like word.length = tiles
   end
 end
 
-a = Scrabble::Scoring
-a.highest_score_from(["no", "high", "hello"])
+Scrabble::Scoring.new
+print Scrabble::Scoring.score("hello")
+print Scrabble::Scoring.highest_score_from(["hello", "yay"])

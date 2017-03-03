@@ -30,6 +30,7 @@ describe "Scrabble::Tilebag" do
       game2.bag.must_be_kind_of Array
       @game.bag.wont_equal game2.bag
     end
+
   end
 
   describe "Scrabble::Tilebag#draw_tiles" do
@@ -61,7 +62,6 @@ describe "Scrabble::Tilebag" do
     end
 
   end
-
 
   describe "Scrabble::Tilebag#remaining_tiles" do
 

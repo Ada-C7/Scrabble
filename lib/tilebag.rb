@@ -12,11 +12,12 @@ module Scrabble
         Q: 1, R: 6, S: 4, T: 6,
         U: 4, V: 2, W: 2, X: 1,
         Y: 2, Z: 1 }
-      @bag ||= fill_bag
+        @bag ||= fill_bag
     end
 
     def fill_bag
       bag = []
+
       @letter_quantity.map do |key, value|
         value.times do
           bag << key
@@ -29,6 +30,7 @@ module Scrabble
     def draw_tiles(num)
       raise ArgumentError.new("You have to pick a number of tiles to draw!") if num.class != Integer
       raise ArgumentError.new("There aren't that many tiles left!") if num > @bag.length
+
       user_bag = []
       num.times { user_bag << @bag.pop }
 

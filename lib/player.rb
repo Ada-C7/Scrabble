@@ -24,7 +24,7 @@ module Scrabble
     def single_score(word)
       score = Scoring.score(word)
       score_array << score
-      # word.each.split("").each { |c| @tiles.delete(c) }
+      word.split("").each { |c| @tiles.delete(c) }
     end
 
     def total_score

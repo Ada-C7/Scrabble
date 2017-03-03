@@ -40,27 +40,34 @@ describe "Play method" do
   end
 
   it "Returns false if score > 100" do
+    @player.tiles = ["Z", "Z", "Z", "Z", "Z", "Z", "Z"]
     2.times { @player.play("ZZZZZZZ") }
+    @player.tiles = ["C", "A", "T"]
     @player.play("cat").must_equal false
   end
 
 it "returns word score" do
+  @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
   @player.play("cat")
   @player.total_score.must_equal 5
 end
 
 it "adds a word to @plays" do
+  @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
   @player.play("dog")
   @player.plays.must_be_instance_of Array
 end
 
 it "adds a word to @plays" do
+  @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
   @player.play("dog")
   @player.plays[-1].must_equal "dog"
 end
 
 it "holds multiple elements" do
-  3.times { @player.play("dog") }
+  @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
+  @player.play("CAT")
+  @player.play("DOG")
   @player.plays.length.must_be :> , 1
 end
 end
@@ -71,10 +78,13 @@ describe "Total Score" do
 
   before do
     @player = Scrabble::Player.new('Ada')
+    @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
+
   end
 
  it "total score returns an integer" do
-  3.times { @player.play("cat") }
+  @player.play("CATS")
+  @player.play("DOG")
   @player.total_score.must_be_instance_of Integer
  end
 
@@ -85,8 +95,9 @@ describe "Total Score" do
  end
 
  it "total score returns the correct score" do
-  3.times { @player.play("cat") }
-  @player.total_score.must_equal 15
+  @player.play("CATS")
+  @player.play("DOG")
+  @player.total_score.must_equal 11
  end
 
 end
@@ -118,6 +129,7 @@ end
 describe "Highest Scoring Word and Word Score" do
   before do
     @player = Scrabble::Player.new('Ada')
+
     3.times { @player.play("cat") }
     @player.play("elephant")
   end
@@ -169,7 +181,7 @@ describe "More Draw Tiles" do
   before do
     @player = Scrabble::Player.new('Ada')
     @tiles = Scrabble::TileBag.new
-    @player.tiles = ["C", "R", "A"]
+    @player.tiles = ["C", "G", "A", "T", "O", "D", ]
   end
 
 

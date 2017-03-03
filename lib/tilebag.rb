@@ -13,7 +13,7 @@ module Scrabble
     end
 
     def draw_tiles(num)
-      @tilebag.shuffle!.pop(num)
+      return @tilebag.shuffle!.pop(num)
     end
   end
 end

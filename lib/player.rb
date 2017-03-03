@@ -4,12 +4,11 @@ require_relative '../lib/tilebag'
 module Scrabble
   class Player
     attr_accessor:name, :plays, :tiles
-    def initialize(name, plays=[])
+    def initialize(name, plays=[], tile_instance = Scrabble::Tilebag.new)
       @name = name
       @plays = plays
       @total_score = 0
-      @tile_bag = Scrabble::Tilebag.new
-      @tiles = @tile_bag.draw_tiles(7)
+      @tiles = tile_instance.draw_tiles(7)
     end
 
 
@@ -36,8 +35,9 @@ module Scrabble
       Scrabble::Scoring.score(highest_scoring_word)
     end
 
-    def draw_tiles
-      @tiles << @tile_bag.draw_tiles(15)
+    def draw_tiles(tile_bag)
+      to_draw = 7 - @tiles.length
+      @tiles.concat(tile_bag.draw_tiles(to_draw))
     end
 
   end
@@ -45,5 +45,5 @@ module Scrabble
 end
 
 
-player1 = Scrabble::Player.new("Bob", ["ox", "rat"])
-p player1.tiles
+# player1 = Scrabble::Player.new("Bob", ["ox", "rat"])
+# p player1.tiles

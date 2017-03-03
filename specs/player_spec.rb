@@ -33,8 +33,9 @@ describe "class Player" do
   describe "#draw_tiles" do
     it "fills tiles array until it has 7 letters from the given file bag" do
       player_1 = Scrabble::Player.new("Bob")
-      player_1.tiles = []
-      player_1.draw_tiles
+      player_1.tiles = ["C","D","E"]
+      tile_bag = Scrabble::Tilebag.new
+      player_1.draw_tiles(tile_bag)
       player_1.tiles.length.must_equal 7
 
 

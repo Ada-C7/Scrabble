@@ -36,7 +36,7 @@ module Scrabble
         Z
       )
     end
-
+  random
 
 
   end

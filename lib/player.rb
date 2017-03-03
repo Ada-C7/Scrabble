@@ -53,6 +53,11 @@ module Scrabble
       end
     end
 
+    def check_play(word)
+      check = @tiles.select { |letter| word.includes? letter }
+      return check.length == word.length
+    end
+
 
   end
 end

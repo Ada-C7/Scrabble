@@ -8,7 +8,7 @@ module Scrabble
   class TileBag
 
     def initialize
-      @tile = %w (
+      @tile = %w(
       A A A A A A A A
       B B
       C C
@@ -17,10 +17,6 @@ module Scrabble
       F F
       )
     end
-
-
-
-    puts random, random
 
   end
 end

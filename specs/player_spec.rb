@@ -46,30 +46,30 @@ describe "Play method" do
     @player.play("cat").must_equal false
   end
 
-it "returns word score" do
-  @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
-  @player.play("cat")
-  @player.total_score.must_equal 5
-end
+  it "returns word score" do
+    @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
+    @player.play("cat")
+    @player.total_score.must_equal 5
+  end
 
-it "adds a word to @plays" do
-  @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
-  @player.play("dog")
-  @player.plays.must_be_instance_of Array
-end
+  it "adds a word to @plays" do
+    @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
+    @player.play("dog")
+    @player.plays.must_be_instance_of Array
+  end
 
-it "adds a word to @plays" do
-  @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
-  @player.play("dog")
-  @player.plays[-1].must_equal "dog"
-end
+  it "adds a word to @plays" do
+    @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
+    @player.play("dog")
+    @player.plays[-1].must_equal "dog"
+  end
 
-it "holds multiple elements" do
-  @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
-  @player.play("CAT")
-  @player.play("DOG")
-  @player.plays.length.must_be :> , 1
-end
+  it "holds multiple elements" do
+    @player.tiles = ["C", "G", "A", "T", "O", "D", "S" ]
+    @player.play("CAT")
+    @player.play("DOG")
+    @player.plays.length.must_be :> , 1
+  end
 end
 
 
@@ -82,23 +82,23 @@ describe "Total Score" do
 
   end
 
- it "total score returns an integer" do
-  @player.play("CATS")
-  @player.play("DOG")
-  @player.total_score.must_be_instance_of Integer
- end
+  it "total score returns an integer" do
+    @player.play("CATS")
+    @player.play("DOG")
+    @player.total_score.must_be_instance_of Integer
+  end
 
- it "Raises an error if it is called before a word has been played" do
-   proc {
-     @player.total_score
-   }.must_raise ArgumentError
- end
+  it "Raises an error if it is called before a word has been played" do
+    proc {
+      @player.total_score
+    }.must_raise ArgumentError
+  end
 
- it "total score returns the correct score" do
-  @player.play("CATS")
-  @player.play("DOG")
-  @player.total_score.must_equal 11
- end
+  it "total score returns the correct score" do
+    @player.play("CATS")
+    @player.play("DOG")
+    @player.total_score.must_equal 11
+  end
 
 end
 
@@ -186,8 +186,21 @@ describe "More Draw Tiles" do
 
 
   it "Adds correct number of element when tiles are drawn again" do
+    @player.play("cat")
     @player.draw_tiles(@tiles)
     @player.tiles.length.must_equal 7
   end
 
-end
+  # it "ensures word played is in tiles" do
+  #
+  #   proc {
+  #     @player.play("elephant")
+  #   }.must_raise ArgumentError
+  #   end
+
+
+  it "" do
+   @player.play("cat")
+   @player.check_play("cat")
+  end
+  end

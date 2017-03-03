@@ -10,7 +10,7 @@ module Scrabble
 
     def draw_tiles(num)
       tiles_drawn = []
-      @tiles_in_bag.shuffle
+      @tiles_in_bag.shuffle!
       num.times { tiles_drawn << @tiles_in_bag.pop }
 
       return tiles_drawn
@@ -19,8 +19,5 @@ module Scrabble
     def tiles_remaining
       return @tiles_in_bag.length
     end
-
-
-
   end
 end

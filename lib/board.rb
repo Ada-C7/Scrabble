@@ -19,10 +19,6 @@ module Scrabble
       x = turn[:column] - 1
       y = turn[:row] - 1
 
-      unless ['down', 'right'].include? turn[:direction].downcase
-        raise ArgumentError.new("Direction must be 'down' or 'right'.")
-      end
-
       turn[:word].upcase!
       turn[:word].length.times do |index|
         @board[y][x] = turn[:word].chars[index]

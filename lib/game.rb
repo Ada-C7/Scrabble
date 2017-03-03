@@ -70,6 +70,9 @@ module Scrabble
       if !(1..15).include?(@current_turn[:row]) || !(1..15).include?(@current_turn[:column])
         puts "Row and column number must be between 1 and 15."
         false
+      elsif !['down', 'right'].include? @current_turn[:direction].downcase
+        puts "Direction must be 'down' or 'right'."
+        false
       elsif !@board.space_available?(@current_turn)
         puts "Space unavailable."
         false

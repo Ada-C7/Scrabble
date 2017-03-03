@@ -35,14 +35,21 @@ describe Scrabble::Game do
 
   describe "#valid_placement?" do
     it "Outputs error message if row is not between 1 and 15" do
-      @s.current_turn = {row: 100, column: 10}
+      @s.current_turn = {row: 100, column: 10, direction: 'down'}
       proc {
         @s.valid_placement?
       }.must_output
     end
 
     it "Outputs error message if column is not between 1 and 15" do
-      @s.current_turn = {row: 10, column: 100}
+      @s.current_turn = {row: 10, column: 100, direction: 'down'}
+      proc {
+        @s.valid_placement?
+      }.must_output
+    end
+
+    it "Outputs error message if direction is not 'down' or 'right'" do
+      @s.current_turn = {row: 10, column: 10, direction: 'left'}
       proc {
         @s.valid_placement?
       }.must_output

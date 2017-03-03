@@ -45,12 +45,6 @@ describe Scrabble::Board do
       @b.board[6][5].must_equal 'O'
       @b.board[7][5].must_equal 'O'
     end
-
-    it "Raises an argument error if an invalid direction is given" do
-      proc {
-        @b.place_word(word: 'TEST', column: 6, row: 6, direction: 'left')
-      }.must_raise ArgumentError
-    end
   end
 
   describe "#tiles_needed" do

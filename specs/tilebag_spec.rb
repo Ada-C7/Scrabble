@@ -36,5 +36,17 @@ describe "Wave 3 :: TileBag" do
       tiles.draw_tiles(10)
       tiles.tiles_remaining.must_equal 86
     end
+
+    it "tells you if all tiles are gone " do
+      tiles = Scrabble::TileBag.new
+      tiles.draw_tiles(100)
+      tiles.tiles_remaining.must_be_nil
+
+    end
+
+
   end
+
+
+
 end

@@ -103,4 +103,19 @@ describe "Wave 2" do
       player.won?.must_equal true
     end
   end
+
+  describe " Method Player#draw_tiles(tile_bag)"do
+  it "returns true or false if there are 7 tiles"
+  player = Scrabble::Player.new("Ada")
+  player.draw_tiles(7)
+  player.draw_tiles.must_equal true
+end
+
+
+describe "Method Player#tiles"
+it "players tiles are in an array?"
+player = Scrabble::Player.new("Ada")
+player.tiles.must_be_kind_of Array
+
+end
 end

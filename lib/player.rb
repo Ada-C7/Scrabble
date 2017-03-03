@@ -7,9 +7,17 @@ module Scrabble
       raise ArgumentError.new "Name must be a string!" if name.class != String
       @name = name
       @plays = []
+      @tiles = draw_tiles(7)
+    end
+
+    def tiles
+      @tiles
     end
 
     def play word
+      word_array = word.split('')
+      raise ArgumentError.new "You don't have the right tiles!" if word_array != word_array & @tiles
+    
       return false if won?
 
       @plays << word

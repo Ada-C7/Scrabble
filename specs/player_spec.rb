@@ -53,6 +53,23 @@ describe 'Player' do
     end
   end
 
+  describe "tiles" do
+
+    it "must be an array" do
+      @ada.tiles.must_be_instance_of Array
+    end
+
+    it "must be max 7 characters in length" do
+      @ada.tiles.length.must_be :<, 7
+    end
+
+    it "each element in the array is a one-char string" do
+      @ada.tiles.each do |letter|
+        letter.length == 1 && letter.length.class == String
+      end
+    end
+  end
+
   describe "total_score" do
     it "returns the sum of scores of played words" do
       @bird_words.each do |word|
@@ -117,6 +134,6 @@ describe 'Player' do
       what_do_i_have = @ada.draw_tiles(@tile_bag)
       what_do_i_have.length.must_equal 7
     end
-    
+
   end
 end

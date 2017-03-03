@@ -1,14 +1,13 @@
-
 require_relative 'scoring'
 require_relative 'player'
 
 module Scrabble
 
-  attr_reader :tiles
+  attr_reader :tile_bag , :tile , :players_tiles
 
   class TileBag
-
-      tiles = %w( A A A A A A A A A
+    def initialize
+      @tile_bag = %w( A A A A A A A A A
       B B C C D D D D
       E E E E E E E E E E E E
       F F G G G H H
@@ -20,19 +19,24 @@ module Scrabble
       S S S S T T T T T T
       U U U U V V
       W Y Y Z )
-
-    def initialize
-
     end
 
-    def draw_tiles
-    players_tiles = ALL_TILES.sample(7)
 
+    def draw_tiles(num)
+      raise ArgumentError.new("Argument must be an Integer") if num.class != Integer
+
+      tiles_selected = []
+
+      num.times do |tile|
+        selection = @tile_bag.sample
+        tiles_selected << selection
+        @tile_bag.delete_at(@tile_bag.index(selection) || @tile_bag.length)
+      end
+      return tiles_selected
     end
 
-    def tiles_remaining(players_tiles)
-
-
+    def tiles_remaining
+      @tile_bag.length
     end
 
   end

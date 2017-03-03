@@ -54,7 +54,7 @@ Create a `Scrabble::Scoring` class with a __minimum of 8 specs__. The class shou
 
 - `self.score(word)`: returns the total score for the given word. The word is input as a string (case insensitive). The chart in the baseline requirements shows the point value for a given letter.
   - A seven letter word means that a player used all the tiles. Seven letter words receive a __50__ point bonus.
-  
+
 - `self.highest_score_from(array_of_words)`: returns **the word in the array with the highest score**. In the case of tie, use these tiebreaking rules:
     - It’s better to use fewer tiles, in the case of a tie, prefer the word with the fewest letters.
     - There is a bonus for words that are seven letters. If the top score is tied between multiple words and one used all seven letters, choose the one with seven letters over the one with fewer tiles.
@@ -65,30 +65,30 @@ Create a `Scrabble::Scoring` class with a __minimum of 8 specs__. The class shou
 ### Primary Requirements
 Create a `Scrabble::Player` class with a __minimum of 11 specs__. The only required parameter for instances of the class is the player's `name`. Instances of the class should respond to the following messages (note, this does not necessarily mean that each of these need to be written as _new methods_):
 
-- `#name`: returns the value of the `@name` instance variable
-- `#plays`: returns an Array of the words played by the player
-- `#play(word)`: Adds the input word to the `plays` Array
+*x* `#name`: returns the value of the `@name` instance variable
+*x* `#plays`: returns an Array of the words played by the player
+*x* `#play(word)`: Adds the input word to the `plays` Array
     - Returns `false` if player has already won
     - Returns the score of the `word`
-- `#total_score`: Returns the sum of scores of played words
-- `#won?`: If the player has over 100 points, returns `true`, otherwise returns `false`
-- `#highest_scoring_word`: Returns the highest scoring played word
-- `#highest_word_score`: Returns the `highest_scoring_word` score
+*x* `#total_score`: Returns the sum of scores of played words
+*x* `#won?`: If the player has over 100 points, returns `true`, otherwise returns `false`
+*x* `#highest_scoring_word`: Returns the highest scoring played word
+*x* `#highest_word_score`: Returns the `highest_scoring_word` score
 
 For example,
 ```ruby
 player = Scrabble::Player.new("Ada")
 player.name #=> "Ada"
 ```
-<!--
+
 ## Wave 3
 ### Primary Requirements
 #### `TileBag`
 Create a `Scrabble::TileBag` class with a __minimum of 5 specs__. It should have the following class and instance methods:
 
-- `#initialize` Should set up the instance with a collection of all default tiles
-- `#draw_tiles(num)` returns a collection of random tiles, removes the tiles from the default set
-- `#tiles_remaining` returns the number of tiles remaining in the bag
+*x* `#initialize` Should set up the instance with a collection of all default tiles
+*x* `#draw_tiles(num)` returns a collection of random tiles, removes the tiles from the default set
+*x* `#tiles_remaining` returns the number of tiles remaining in the bag
 
 ##### Initial Distribution of Letters
 | Letter : Qty. | Letter : Qty. |
@@ -116,4 +116,3 @@ Create specs for (__minimum 2__) and add to the `Player` class the following ins
 ### Optional Enhancements
 - Create a `Scrabble::Dictionary` class that includes a method (class or instance) for searching a list of words to determine if a given word is valid (__minimum of 5 specs__).
 - Create a `Scrabble::Board` class (__minimum of 15 specs__) that has a matrix (array of arrays) of tile places. Check if a word can be played on a given tile place in a certain direction (up/down or left/right).
- -->

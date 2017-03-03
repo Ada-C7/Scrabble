@@ -3,7 +3,7 @@ require 'minitest/reporters'
 require 'minitest/skip_dsl'
 require_relative '../lib/scoring_class'
 
-describe "Score Method for Scoring Class" do
+xdescribe "Score Method for Scoring Class" do
 
   before do
     @word = "camp"
@@ -43,21 +43,20 @@ describe "Score Method for Scoring Class" do
   end
 
   it "adds 50 point bonus on words greater than 7 letters " do
-    
+
     Scrabble::Scoring::score(@word_8_letters).must_equal 71
   end
 end
 
 
-describe "Higest Score From Method for Scoring Class" do
+xdescribe "Higest Score From Method for Scoring Class" do
 
-  describe "highest_score_from nomial" do
+  xdescribe "highest_score_from nomial" do
     before do
-      @word = "camp" #10
-      @word_7_letters = "quacked" #73
-      @word_8_letters = "bushbuck" #71 #small African antelope
-      @edge_word = "W@ter"
-      @word_array = [@word, @word_8_letters, "sunset", @word_7_letters, "Metz"]
+      @array = ["camp", "pamc", "toy", "love"]
+      @array2 = ["Tweens", "Camp", "toy" ,"Key"] #73
+      @fail_array = ["camp", "w@ter", "toy", "love"] #71 #small African antelope
+      @super_edge_word = ["Tweens", "Camp", "toy" ,"Key", "aeiourh", "Doloring"]
     end
 
     it "Raises argumentError if argument is not and array" do
@@ -77,7 +76,7 @@ describe "Higest Score From Method for Scoring Class" do
     end
 
 
-    describe " highest_score_from tiebreaking " do
+    xdescribe " highest_score_from tiebreaking " do
 
       before do
         @tie_array = [ ]

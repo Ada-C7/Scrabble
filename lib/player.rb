@@ -6,9 +6,8 @@ module Scrabble
     attr_reader :name, :plays, :tiles
     def initialize(name)
       @name = name
-      @plays = [""]
-      @tiles = [""]
-      # poop = Scrabble::TileBag.new
+      @plays = []
+      @tiles = []
     end
 
     def won?
@@ -38,7 +37,7 @@ module Scrabble
     def play(word)
       return false if won?
       raise ArgumentError.new "This requires a string" if word.class != String
-      @plays << word
+      @plays.push(word)
       return score(name)
     end
 

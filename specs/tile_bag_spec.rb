@@ -5,7 +5,7 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 # require 'minitest/skip_dsl'
 require 'minitest/pride'
-require_relative '../lib/scoring'
+require_relative '../lib/tile_bag'
 
 describe "Test Tile_Bag creation" do
   it "instantiates and can be called" do

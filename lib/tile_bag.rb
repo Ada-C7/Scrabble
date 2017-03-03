@@ -1,13 +1,10 @@
-require_relative 'scoring'
-require_relative 'player'
-
 module Scrabble
   class TileBag
     attr_reader :player_hand
 
     def initialize
       @bag = bag
-     @player_hand = []
+      @player_hand = []
     end
 
     def bag
@@ -42,10 +39,10 @@ module Scrabble
     end
 
     def draw_tiles(num)
+      tile = ""
       num.times do
-        tile = ""
         tile = @bag.sample
-        player_hand << tile
+        @player_hand << tile
         @bag.each_with_index do |letter, index|
           if letter == tile
             @bag.delete_at(index)
@@ -63,8 +60,3 @@ module Scrabble
 
   end
 end
-
-# game = Scrabble::TileBag.new
-# print game.draw_tiles(3)
-# print game.tiles_remaining
-# print game.player_hand

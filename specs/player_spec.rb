@@ -60,7 +60,7 @@ describe 'Player' do
     end
 
     it "must be max 7 characters in length" do
-      @ada.tiles.length.must_be :<, 7
+      @ada.tiles.length.must_be :<=, 7
     end
 
     it "each element in the array is a one-char string" do
@@ -68,6 +68,7 @@ describe 'Player' do
         letter.length == 1 && letter.length.class == String
       end
     end
+
   end
 
   describe "total_score" do
@@ -125,12 +126,12 @@ describe 'Player' do
     it "argument must be instance of TileBag" do
       proc { @ada.draw_tiles([]) }.must_raise ArgumentError
 
-      proc { @ada.draw_tiles() }.must_raise ArgumentError
+      proc { @ada.draw_tiles("") }.must_raise ArgumentError
 
-      proc { @ada.draw_tiles("hey") }.must_raise ArgumentError
+      proc { @ada.draw_tiles(nil) }.must_raise ArgumentError
     end
 
-    it "returns tiles Array of 7" do
+    it "returns Array of 7 tiles" do
       what_do_i_have = @ada.draw_tiles(@tile_bag)
       what_do_i_have.length.must_equal 7
     end

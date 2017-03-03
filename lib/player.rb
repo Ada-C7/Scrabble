@@ -2,12 +2,13 @@ require_relative 'scoring.rb'
 
 module Scrabble
   class Player
+    MAX_TILES = 7
     attr_reader :name, :plays
     def initialize name
       raise ArgumentError.new "Name must be a string!" if name.class != String
       @name = name
       @plays = []
-      @tiles = draw_tiles(7)
+      @tiles = []
     end
 
     def tiles
@@ -15,9 +16,10 @@ module Scrabble
     end
 
     def play word
-      word_array = word.split('')
-      raise ArgumentError.new "You don't have the right tiles!" if word_array != word_array & @tiles
-    
+      #this bit of code checks if the word is in @tiles
+      # word_array = word.split('')
+      # raise ArgumentError.new "You don't have the right tiles!" if word_array != word_array & @tiles
+
       return false if won?
 
       @plays << word
@@ -50,8 +52,8 @@ module Scrabble
 
     def draw_tiles(tile_bag)
       raise ArgumentError.new "The argument must be a TileBag" if tile_bag.class != TileBag
-      if @tiles.length < 7
-       @tiles += tile_bag.draw_tiles(7-tiles.length)
+      if @tiles.length < MAX_TILES
+        @tiles += tile_bag.draw_tiles(MAX_TILES-tiles.length)
       end
     end
 

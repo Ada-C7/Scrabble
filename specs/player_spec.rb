@@ -97,4 +97,23 @@ describe "Player is a class" do
     end
   end
 
+  describe "draw_tiles method" do
+    it "raise error if arg is not TileBag object" do
+      proc {Scrabble::Player.new("Felix").draw_tiles("nope")}.must_raise ArgumentError
+    end
+
+    it "fills @tiles array with 7 tiles" do
+      player = Scrabble::Player.new("Felix")
+      tilebag = Scrabble::TileBag.new
+      player.tiles.length.must_equal 0
+      player.draw_tiles(tilebag)
+      player.tiles.length.must_equal 7
+      player.tiles = ["a", "b", "c"]
+      player.tiles.length.must_equal 3
+      player.draw_tiles(tilebag)
+      player.tiles.length.must_equal 7
+    end
+
+  end
+
 end

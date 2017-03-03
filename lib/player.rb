@@ -1,9 +1,9 @@
-
 require_relative 'scoring'
+require_relative './tilebag/'
 module Scrabble
 
   class Player
-    attr_reader :name, :plays, :tile_bag, :total
+    attr_reader :name, :plays, :tile_bag, :total, :tiles
 
     def initialize(name, tile_bag)
       raise ArgumentError unless name.class == String
@@ -11,6 +11,7 @@ module Scrabble
       @plays = []
       @total = 0
       @tile_bag = tile_bag
+      @tiles = []
     end
 
     def play(word)
@@ -54,12 +55,25 @@ module Scrabble
       highest_score = get_score(highest_scoring_word)
       return highest_score
     end
+
+    # This method tiles is created by attr_reader, so we don't need to implement it here.
+    # def tiles
+    #   @tiles
+    # end
+
+    def draw_tiles(tile_bag)
+      current_tiles = @tiles.length
+      tiles_wanted = 7 - current_tiles
+      @tiles += tile_bag.draw_tiles(tiles_wanted)
+    end
   end
 end
-#
-# game = Scrabble::Player.new("Ada")
+
+bag = Scrabble::TileBag.new
+game = Scrabble::Player.new("Ada", bag)
 # puts game.play("")
 # puts game.play("hi")
 # puts game.play("elephant")
 # puts game.play("algebra")
 # puts game.highest_scoring_word
+puts game.draw_tiles(bag)

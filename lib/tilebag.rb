@@ -1,5 +1,3 @@
-require_relative 'scoring'
-require_relative 'player'
 module Scrabble
   class TileBag
     attr_reader :tile_bag

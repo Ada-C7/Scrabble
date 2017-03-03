@@ -155,6 +155,33 @@ describe "Player" do
       @player.highest_scoring_word   # needs to be called in order to call highest_word_score
       @player.highest_word_score.must_equal 60
     end
+  end
 
+  describe "Player#tiles" do
+
+    it "Returns an array" do
+      @player.tiles.must_be_kind_of Array
+    end
+  end
+
+  describe "Player#draw_tiles" do
+
+    it "Raises an ArgumentError if not given a tile_bag parameter" do
+      proc {
+        @player.draw_tiles
+      }.must_raise ArgumentError
+    end
+
+    it "Adds tiles to the tiles array" do
+      starting_tiles = @player.tiles.length
+      @player.draw_tiles(@tile_bag)
+      ending_tiles = @player.tiles.length
+      ending_tiles.must_be :>=, starting_tiles
+    end
+
+    it "Always ends with 7 tiles in the array" do
+      @player.draw_tiles(@tile_bag)
+      @player.tiles.length.must_equal 7
+    end
   end
 end

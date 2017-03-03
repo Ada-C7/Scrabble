@@ -49,6 +49,12 @@ describe "Tile Bag class" do
     end
 
     it "Does not allow a letter to be drawn if the value is 0" do
+      @ourtiles.draw_tiles(7)
+      @ourtiles.tiles.each do |key, value|
+        puts value
+        value.must_be :>, -1
+      end
+
     end
 
     it "Requires a number" do

@@ -35,11 +35,15 @@ module Scrabble
     end
 
     def draw_tiles(num)
+      raise ArgumentError.new "Must be valid number" if !((1..7).include? num)
       my_tiles = []
-      num.times do
+      until num == 0
         letter = @tiles.keys.sample
-        @tiles[letter] -= 1
-        my_tiles << letter
+        if @tiles[letter] != 0
+          @tiles[letter] -= 1
+          my_tiles << letter
+          num -= 1
+        end
       end
       return my_tiles
     end

@@ -43,6 +43,9 @@ module Scrabble
 
     def draw_tiles(num)
       raise ArgumentError.new("Number of tiles must be 0 or positive") if ( (num < 0) || (num.class != Integer) )
+      # num.times do
+      #   @tile_bag.shuffle!.pop
+      # end
       @tile_bag.shuffle!.pop(num)
     end
 

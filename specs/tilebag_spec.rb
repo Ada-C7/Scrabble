@@ -8,8 +8,8 @@ describe "Scrabble tilebag" do
 
   describe "#initialize method" do
     it "Should have a colection of default tiles" do
-      @tilebag.tiles_remaining.wont_be_empty
-      @tilebag.tiles_remaining.length.must_equal 98
+      @tilebag.tiles.wont_be_empty
+      @tilebag.tiles.length.must_equal 98
     end
 
     it "Should have appropriate number of tiles per each alphabet" do

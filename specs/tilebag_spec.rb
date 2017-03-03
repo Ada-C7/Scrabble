@@ -2,6 +2,10 @@ require_relative 'spec_helper'
 
 describe "Scrabble::Tilebag" do
 
+  before do
+    @game = Scrabble::Tilebag.new
+  end
+
   describe "Scrabble::Tilebag#initialize" do
 
     it "Letters have correct quantities" do
@@ -16,7 +20,6 @@ describe "Scrabble::Tilebag" do
   describe "Scrabble::Tilebag#draw_tiles and #draw_letter and #random_letter" do
 
     before do
-      @game = Scrabble::Tilebag.new
       @draw = @game.draw_tiles(5)
     end
 
@@ -50,10 +53,20 @@ describe "Scrabble::Tilebag" do
     # it "another edge case?" do
     # end
 
+    # it will raise an error if there aren't enough tiles
   end
 
 
   describe "Scrabble::Tilebag#remaining_tiles" do
+
+    it "Returns amount of remaining tiles" do
+      @game.remaining_tiles.must_equal 98
+    end
+
+    it "Returns correct amount of remaining tiles after draw method has been called" do
+      @game.draw_tiles(30)
+      @game.remaining_tiles.must_equal 68
+    end
 
   end
 

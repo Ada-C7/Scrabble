@@ -52,8 +52,14 @@ module Scrabble
 
 # returns the number of tiles remaining in the bag
     def remaining_tiles
-    @letter_quantity.values.inject { | total, value | total + value }
+      @letter_quantity.values.inject(:+)
+      
+      # remaning =  @letter_quantity.map { | key, values | values }
+      # remaning.inject(:+)
     end
 
   end
 end
+
+# x = Scrabble::Tilebag.new
+# puts x.remaining_tiles

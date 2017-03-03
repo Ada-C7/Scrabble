@@ -14,7 +14,8 @@ module Scrabble
 
     def draw_tiles(name_of_tile_bag)
       if @tiles.nil?
-        @tiles << name_of_tile_bag.draw_tiles(7).flatten
+        @tiles << name_of_tile_bag.Scrabble::TileBag.draw_tiles(7)
+        puts @tiles
       else
         @tiles << name_of_tile_bag.draw_tiles(7 - @tiles.length)
       end
@@ -60,5 +61,8 @@ end
 
 player = Scrabble::Player.new("Ada")
 tiles = Scrabble::TileBag.new
+p player.tiles
 player.draw_tiles(tiles)
+p player.tiles
+# p player.tiles.length
 # player.draw_tiles

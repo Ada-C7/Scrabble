@@ -13,20 +13,20 @@ module Scrabble
         else
           # The & calls to_proc on the object
           # Returns a proc object that expects a parameter and calls a method
-          # parameter is the tie_words and the method is :length
+          # parameter is the tie_words and the method is length
           return tie_words.min_by(&:length)
         end
       end
     end
 
-    def self.score(word)  
+    def self.score(word)
       # The *  splat operator expands an Array into a list of arguments
       word_score = LETTER_SCORES.values_at(*word.downcase.chars).reduce(:+)
       word.length == 7 ? word_score += 50 : word_score
     end
 
     def self.highest_score_from(words)
-      unless words.class == Array && words.length > 0 #&& words.each { |element| element.class == "string" }
+      unless words.class == Array && words.length > 0
         raise ArgumentError
       end
       scores_and_words = words.group_by { |word| score(word) }
@@ -35,9 +35,3 @@ module Scrabble
     end
   end
 end
-
-# print Scrabble::Scoring.highest_score_from(["cat", "dig", "123"])
-# print Scrabble::Scoring.test_for_word_characters?("i")
-# puts Scrabble::Scoring.score("hello")
-# puts Scrabble::Scoring.score("123")
-# puts Scrabble::Scoring.test_for_word_characters?("123")

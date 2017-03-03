@@ -24,7 +24,6 @@ module Scrabble
       return score
     end
 
-    # think of better name
     def test_word(word)
       if word.class != String
         raise ArgumentError.new "Input word must be a string"
@@ -68,12 +67,3 @@ module Scrabble
     end
   end
 end
-
-bag = Scrabble::TileBag.new
-game = Scrabble::Player.new("Ada", bag)
-# puts game.play("")
-# puts game.play("hi")
-# puts game.play("elephant")
-# puts game.play("algebra")
-# puts game.highest_scoring_word
-puts game.draw_tiles(bag)

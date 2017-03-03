@@ -22,7 +22,11 @@ describe "Scrabble class tests" do
       Scrabble::Scoring.score("apple").must_equal 9
     end
 
-    it "self.score adds 50 points to 7 letter words" do
+    it "self.score correctly scores 1 letter words" do
+    Scrabble::Scoring.score("a").must_equal 1
+    end
+
+    it "self.score correctly scores and adds 50 points to 7 letter words" do
     Scrabble::Scoring.score("peaches").must_equal 64
     end
   end
@@ -32,9 +36,12 @@ describe "Scrabble class tests" do
       # skip
       Scrabble::Scoring.highest_word(["APPLE", "TEHUT", "ANNA"]).must_be_kind_of String
     end
-
-    it "must throw ArgumentError if given non-text arguments" do
-
+    it "must throw ArgumentError if given no input" do
+      proc {
+        Scrabble::Scoring.highest_word()
+      }.must_raise ArgumentError
+    end
+    it "must throw NoMethodError if given non-text arguments" do
       proc {
         Scrabble::Scoring.highest_word(9)
       }.must_raise NoMethodError

@@ -14,12 +14,11 @@ Minitest::Reporters::SpecReporter.new
 
 describe Scrabble::Scoring do
 
+  before do
+       @my_word = Scrabble::Scoring
+  end
 
      describe 'feature to score word' do
-
-          before do
-               @my_word = Scrabble::Scoring
-          end
 
           it 'raises an argument error if argument is not a string' do
                proc { @my_word.score(1) }.must_raise ArgumentError
@@ -65,54 +64,45 @@ describe Scrabble::Scoring do
 
      describe "self.highest_score_from(words)" do
 
-       before do
-            @my_words = Scrabble::Scoring
-       end
-
        it "returns a string" do
          array = ["aaa", "bbb", "ccc", "dddddd"]
-         word = @my_words.highest_score_from(array)
 
-         word.must_be_instance_of String
+         @my_word.highest_score_from(array).must_be_instance_of String
        end
 
        it "returns a word with the highest score" do
          array = ["aaa", "bbb", "ccc", "dddddd"]
          winner = "dddddd"
-         word = @my_words.highest_score_from(array)
 
-         word.must_equal winner
+         @my_word.highest_score_from(array).must_equal winner
        end
 
        it "returns the word that is 7 strings long in case of a tie" do
          array = ["hhh", "xxxxx", "aaaaaaa"]
          winner = "aaaaaaa"
-         word = @my_words.highest_score_from(array)
 
-         word.must_equal winner
+         @my_word.highest_score_from(array).must_equal winner
        end
 
        it "returns shortest word in case of a tie" do
          array = ["xxx", "xxhh", "zzaaaa"]
          winner = "xxx"
-         word = @my_words.highest_score_from(array)
 
-         word.must_equal winner
+         @my_word.highest_score_from(array).must_equal winner
        end
 
        it "returns the first word in tie that has words of equal length and points" do
          array = ["fff", "hhh", "vvv"]
          winner = "fff"
-         word = @my_words.highest_score_from(array)
 
-         word.must_equal winner
+        @my_word.highest_score_from(array).must_equal winner
        end
 
        it "outpus warning if the array contains non letter characters" do
          array = ["bo1", "bzzz", "br@e"]
 
          proc {
-           @my_words.highest_score_from(array)
+           @my_word.highest_score_from(array)
          }.must_raise ArgumentError
        end
 
@@ -120,10 +110,9 @@ describe Scrabble::Scoring do
          array = []
 
          proc {
-           @my_words.highest_score_from(array)
+           @my_word.highest_score_from(array)
          }.must_raise ArgumentError
        end
-
      end
 
 end

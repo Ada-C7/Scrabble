@@ -1,10 +1,6 @@
-require_relative 'score'
-require_relative 'player'
 require 'awesome_print'
 
-
 module Scrabble
-
   class TileBag
     attr_reader :tile, :drawn_tiles
 
@@ -49,9 +45,9 @@ module Scrabble
       @drawn_tiles
     end
 
-  def tiles_remaining
-    @tile.length
-  end
+    def tiles_remaining
+      @tile.length
+    end
 
   end
 end

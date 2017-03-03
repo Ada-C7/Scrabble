@@ -1,10 +1,5 @@
-
 require_relative 'tilebag'
-<<<<<<< HEAD
-
-=======
 require_relative 'score'
->>>>>>> e8c86a940006f567d77a6e45b707af6d8532153a
 require 'awesome_print'
 
 module Scrabble
@@ -47,7 +42,7 @@ module Scrabble
       Scoring.score(word)
     end
 
-    def draw_tiles(bag)
+    def draw_tiles(tile_bag)
       draws = 7 - @tiles.length
       @tiles += tile_bag.draw_tiles(draws)
     end
@@ -56,29 +51,25 @@ module Scrabble
 end
 
 
-<<<<<<< HEAD
-puts player_one.name
-puts player_one.tiles.inspect
 
-bag = Scrabble::Letter.new("k")
-
-puts bag.inspect
+# puts player_one.name
+# puts player_one.tiles.inspect
 #
-# player_one.draw_tiles(bag)
-# puts player_one.tiles
-=======
-
-<<<<<<< HEAD
-player = Scrabble::Player.new("Ada")
-bag = Scrabble::TileBag.new
-
-player.draw_tiles(bag)
-puts player.tiles
->>>>>>> e8c86a940006f567d77a6e45b707af6d8532153a
-=======
+# bag = Scrabble::Letter.new("k")
+#
+# puts bag.inspect
+# #
+# # player_one.draw_tiles(bag)
+# # puts player_one.tiles
+#
 # player = Scrabble::Player.new("Ada")
 # bag = Scrabble::TileBag.new
 #
 # player.draw_tiles(bag)
 # puts player.tiles
->>>>>>> 7f22c40dc5553d79c658a88e2200e0641d71c5ec
+#
+# # player = Scrabble::Player.new("Ada")
+# # bag = Scrabble::TileBag.new
+# #
+# # player.draw_tiles(bag)
+# # puts player.tiles

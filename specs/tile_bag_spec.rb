@@ -25,6 +25,11 @@ describe "TileBag" do
         tile.length == 1
       end
     end
+
+    it "creates an array with the correct number of tiles" do
+      number_of_tiles = tile_bag.tiles.length
+      number_of_tiles.must_equal 98
+    end
   end
 
   describe "draw_tiles" do
@@ -37,12 +42,13 @@ describe "TileBag" do
 
     it "removes the correct number of tiles from the tiles array" do
       tile_bag = Scrabble::TileBag.new
-      initial_num_of_tiles = tile_bag.tiles
+      initial_num_of_tiles = tile_bag.tiles.length
 
       tile_bag.draw_tiles(3)
       expected_tiles_left = initial_num_of_tiles - 3
+      tiles_left = tile_bag.tiles.length
 
-      tile_bag.tiles.must_equal expected_tiles_left
+      tiles_left.must_equal expected_tiles_left
     end
 
     it "draws the correct number of tiles" do

@@ -16,11 +16,13 @@ module Scrabble
     end
 
     def draw_tiles(num)
+      raise ArgumentError.new("argument must be positive") if num < 0
+      # write conidition of tiles remaining
       tiles_drawn = []
       num.times do
         new_tile = @tiles.sample
         tiles_drawn.push(new_tile)
-        @tiles.delete(new_tile)
+        @tiles.delete_at(@tiles.find_index(new_tile))
       end
       return tiles_drawn
     end

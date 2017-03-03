@@ -49,11 +49,11 @@ module Scrabble
           hash_of_word_score[word] = self.score(word)
         end
 
-        compare_score = hash_of_word_score.max_by{|k,v| v}
+        higgest_score = hash_of_word_score.max_by{|k,v| v}
 
         array_of_highest_words = hash_of_word_score.map do | word , score |
 
-          if score == compare_score[1]
+          if score == higgest_score[1]
             word
           end
         end.select { |value| value }
@@ -62,9 +62,10 @@ module Scrabble
         if array_of_highest_words.length == 1
 
           #highest_scoring_word = array_of_highest_words.max_by {|k,v| v}
-          highest_scoring_word = array_of_highest_words.first.first
+          highest_scoring_word = array_of_highest_words.first
 
           return highest_scoring_word
+
           #instance of a tie #word lengths are the same
         elsif array_of_highest_words.first.length == array_of_highest_words.last.length
 
@@ -88,7 +89,3 @@ module Scrabble
 
   end #end of class
 end #end of mod
-
-array = ["Tweens", "Camp", "toy" ,"Key", "aeiourh", "Doloring"]
-array2 = ["camp", "pamc", "toy", "love"]
-puts Scrabble::Scoring::highest_score_from(array)

@@ -8,9 +8,10 @@ module Scrabble
       raise ArgumentError.new("name must be a string") if !name.is_a? String
       @name = name
       @plays = []
+      @tiles = []
     end
 
-    def play(word) 
+    def play(word)
       return false if won?
       word_score = Scrabble::Scoring.score(word)
       @plays << word
@@ -36,6 +37,10 @@ module Scrabble
     # returns the highest_scoring_word score
     def highest_word_score
       Scrabble::Scoring.score(highest_scoring_word)
+    end
+
+    def draw_tiles(tile_bag)
+      raise ArgumentError.new("")
     end
   end
 end

@@ -106,4 +106,5 @@ describe "TileBag" do
       tile_bag.tiles_remaining.must_equal default_number_of_tiles
     end
   end
+
 end

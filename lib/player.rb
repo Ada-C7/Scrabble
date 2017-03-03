@@ -1,19 +1,21 @@
 
-require_relative 'score'
 require_relative 'tilebag'
+<<<<<<< HEAD
 
+=======
+require_relative 'score'
+>>>>>>> e8c86a940006f567d77a6e45b707af6d8532153a
 require 'awesome_print'
-
 
 module Scrabble
   class Player
     attr_reader :name, :plays, :tiles
 
-    def initialize(name, plays = nil)
+    def initialize(name, plays = nil, tiles = nil)
       @name = name
       @plays = plays
       @plays ||= []
-      @tiles = []
+      @tiles ||= []
     end
 
     def play(word)
@@ -53,8 +55,8 @@ module Scrabble
   end
 end
 
-player_one = Scrabble::Player.new("Ada")
 
+<<<<<<< HEAD
 puts player_one.name
 puts player_one.tiles.inspect
 
@@ -64,3 +66,11 @@ puts bag.inspect
 #
 # player_one.draw_tiles(bag)
 # puts player_one.tiles
+=======
+
+player = Scrabble::Player.new("Ada")
+bag = Scrabble::TileBag.new
+
+player.draw_tiles(bag)
+puts player.tiles
+>>>>>>> e8c86a940006f567d77a6e45b707af6d8532153a

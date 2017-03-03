@@ -24,7 +24,7 @@ describe "Scrabble::Tilebag" do
       @game_pile.bag.must_be_instance_of Array
     end
 
-    it "starts with 100 elements in the collection" do
+    it "starts with 98 elements in the collection" do
       @game_pile.bag.length.must_equal 98
     end
   end

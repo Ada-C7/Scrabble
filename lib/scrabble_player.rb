@@ -1,4 +1,6 @@
 require_relative '../lib/scrabble'
+require_relative '../lib/scrabble_tilebag'
+
 
 module Scrabble
   #
@@ -6,13 +8,14 @@ module Scrabble
   # name = gets.chomp.to_s
 
   class Player
-    attr_accessor :words_played, :score_tracker
+    attr_accessor :words_played, :score_tracker, :player_tiles
     attr_reader :name
 
     def initialize(name)
       @name = name.to_s
       @words_played = [""]
       @score_tracker = [0]
+      @player_tiles = []
     end
 
     def plays
@@ -50,5 +53,18 @@ module Scrabble
       return @score_tracker.max
     end
 
+    def tiles
+      return @player_tiles
+    end
+
+    def draw_tiles(tile_bag)
+      tile_bag = @player_tiles
+      tiles_avail = Scrabble::Tilebag.new
+
+      until @player_tiles.length == 7
+        @player_tiles << tiles_avail.draw_tiles(1)
+      end
+      return @player_tiles
+    end
   end
 end

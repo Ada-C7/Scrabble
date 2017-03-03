@@ -85,4 +85,22 @@ describe "Scrabble::Player" do
     end
 
   end
+
+  describe "tiles" do
+
+    before do
+      @my_player.draw_tiles(%w[a x t])
+    end
+
+    it "returns an array" do
+      @my_player.tiles.must_be_kind_of Array
+    end
+
+    it "contains up to 7 tiles" do
+      @my_player.player_tiles.length.must_equal 7
+    end
+  end
+
+  # describe ""
+
 end

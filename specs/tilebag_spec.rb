@@ -34,8 +34,17 @@ describe Scrabble::TileBag do
         end
 
         it 'removes the correct letters from the set' do
+            other_tilebag = Scrabble::TileBag.new
+            first_tilebag = other_tilebag.in_bag
             @new_tilebag.draw_tiles(3)
-            @new_tilebag.in_bag.wont_include @new_tilebag.tiles_drawn
+            second_tilebag = @new_tilebag.in_bag
+
+            two = second_tilebag.find_all { |letter| @new_tilebag.tiles_drawn.include? letter }
+            one = first_tilebag.find_all { |letter| @new_tilebag.tiles_drawn.include? letter }
+
+            @new_tilebag.tiles_drawn.each do |letter|
+                two[letter].count.wont_equal one[letter].count
+            end
         end
 
         it 'raises an error if user tries to draw more tiles than available' do

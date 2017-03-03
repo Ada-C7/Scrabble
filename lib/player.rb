@@ -52,12 +52,12 @@ module Scrabble
         end
     end
 end
-game_tile_bag = Scrabble::TileBag.new
-print game_tile_bag.tiles_remaining
-test = Scrabble::Player.new('Tamago')
-test.draw_tiles(game_tile_bag, 7)
-print test.tiles
-print game_tile_bag.tiles_remaining
+# game_tile_bag = Scrabble::TileBag.new
+# print game_tile_bag.tiles_remaining
+# test = Scrabble::Player.new('Tamago')
+# test.draw_tiles(game_tile_bag, 7)
+# print test.tiles
+# print game_tile_bag.tiles_remaining
 # test.play('word')
 # test.play('cow')
 # test.play('zizzl')

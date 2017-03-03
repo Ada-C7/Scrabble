@@ -17,62 +17,55 @@ xdescribe "Score Method for Scoring Class" do
   end
 
   it "Handles if the word passed has a space (two words)" do
-
     proc { Scrabble::Scoring::score("two words") }.must_raise ArgumentError
   end
 
   it "Handles if the word passed has cAmeLCase " do
-
     Scrabble::Scoring::score("cAmeLCase").must_be :>, 10
   end
 
   it "Score Method outputs integer" do
-
     puts Scrabble::Scoring::score(@word).must_be_instance_of Integer
   end
 
   it "Score method will total the value of each letter in the word" do
-
     Scrabble::Scoring::score(@word).must_equal 10
 
   end
 
   it "Adds a 50 point bonus to a 7 letter word" do
-
     Scrabble::Scoring::score(@word_7_letters).must_equal 73
   end
 
   it "adds 50 point bonus on words greater than 7 letters " do
-
     Scrabble::Scoring::score(@word_8_letters).must_equal 71
   end
 end
 
 
-xdescribe "Higest Score From Method for Scoring Class" do
+describe "Higest Score From Method for Scoring Class" do
 
-  xdescribe "highest_score_from nomial" do
+  describe "highest_score_from nomial" do
     before do
+      @edge_word = "W@ter"
       @array = ["camp", "pamc", "toy", "love"]
       @array2 = ["Tweens", "Camp", "toy" ,"Key"] #73
       @fail_array = ["camp", "w@ter", "toy", "love"] #71 #small African antelope
       @super_edge_word = ["Tweens", "Camp", "toy" ,"Key", "aeiourh", "Doloring"]
     end
 
-    it "Raises argumentError if argument is not and array" do
-      skip
+    it "Raises argumentError if argument is not an array" do
       proc { Scrabble::Scoring::highest_score_from(@edge_word) }.must_raise ArgumentError
     end
 
-    it "Handles if array had erroneous element , or element that is not a string " do
-      skip
-      @word_array.unshit("good", @edge_word,"word")
-      Scrabble::Scoring::highest_score_from(@word_array)#unknown outcome
-    end
+    # it "Handles if array had erroneous element , or element that is not a string " do
+    #   skip
+    #   @word_array.unshift("good", @edge_word,"word")
+    #   Scrabble::Scoring::highest_score_from(@word_array)#unknown outcome
+    # end
 
     it "returns the word with the highest score" do
-      skip
-      Scrabble::Scoring::highest_score_from(@word_array).must_be "quacked"
+      Scrabble::Scoring::highest_score_from(@array2).must_be "key"
     end
 
 

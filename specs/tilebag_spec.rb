@@ -32,10 +32,30 @@ describe Scrabble::TileBag do
 
           it "Contains ## tiles in TileBag" do
 
-               @my_tilebag.length.must_equal @my_tilebag.tiles
-               @my_tilebag.length.must_equal 98
+               @my_tilebag.tile.length.must_equal 98
 
           end
      end
+
+     describe "#draw_tiles(num) method" do
+
+          it "Removes the designated number of tiles from the bag" do
+
+               @my_tilebag.draw_tiles(7)
+               @my_tilebag.drawn_tiles.length = 7
+               @my_tilebag.tile.must_equal 91
+
+          end
+
+          it "Returns a collection of random tiles" do
+
+               first_hand = @my_tilebag.draw_tiles(7)
+               second_hand = @my_tilebag.draw_tiles(7)
+
+               first_hand.wont_equal second_hand
+
+          end
+     end
+
 
 end

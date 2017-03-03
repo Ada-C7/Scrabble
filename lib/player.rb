@@ -57,8 +57,8 @@ end
 
 
 
-player = Scrabble::Player.new("Ada")
-bag = Scrabble::TileBag.new
-
-player.draw_tiles(bag)
-puts player.tiles
+# player = Scrabble::Player.new("Ada")
+# bag = Scrabble::TileBag.new
+#
+# player.draw_tiles(bag)
+# puts player.tiles

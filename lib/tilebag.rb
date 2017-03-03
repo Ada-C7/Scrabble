@@ -40,6 +40,7 @@ module Scrabble
     end
 
     def draw_tiles(num)
+      raise ArgumentError.new("You may draw only 1 - 7 tiles") if num > 7 || num <= 0
       # returns a collection of random tiles, removes the tiles from the default set
       @tile.shuffle!
 
@@ -48,9 +49,14 @@ module Scrabble
       @drawn_tiles
     end
 
+  def tiles_remaining
+    @tile.length
+  end
+
   end
 end
 bag = Scrabble::TileBag.new
 # puts bag.tile.length
-puts bag.draw_tiles(7)
+puts bag.draw_tiles(-7)
+puts bag.drawn_tiles.class
 puts bag.tile.length

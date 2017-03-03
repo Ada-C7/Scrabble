@@ -34,7 +34,7 @@ describe "Wave 3 :: TileBag" do
     it "returns number of tiles remaining in the bag" do
       tiles = Scrabble::TileBag.new
       tiles.draw_tiles(10)
-      tiles.tiles_remaining.must_equal 86
+      tiles.tiles_remaining.must_equal 88
     end
 
     it "tells you if all tiles are gone " do

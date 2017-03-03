@@ -85,9 +85,9 @@ describe "Scrabble::Player" do
     new_player.highest_word_score.must_equal 70
   end
 
-  it "tiles returns an array" do
+  it "tiles returns an empty array" do
     new_player = Scrabble::Player.new("Dan")
-    new_player.tiles.must_be_instance_of Array
+    new_player.tiles.must_equal []
   end
 
   # it "tiles raises an argument error if more than 7 tiles are in the array" do

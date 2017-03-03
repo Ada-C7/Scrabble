@@ -66,7 +66,6 @@ describe "Wave 2: class Player" do
 
   end
 
-
   it "#highest_scoring_word: Returns the highest scoring played word" do
     player1 = Scrabble::Player.new("Maria")
     played_words = %w(quiz risotto jinx dog) #
@@ -84,6 +83,19 @@ describe "Wave 2: class Player" do
     end
     player1.highest_word_score.must_equal 57
   end
+
+  it "#tiles is an array" do
+    player1 = Scrabble::Player.new("Maria")
+    player1.tiles.must_be_kind_of Array
+  end
+
+  it "fill tiles until there are 7 letters" do
+    tile_bag_in_play = Scrabble::TileBag.new
+    player1 = Scrabble::Player.new("Maria", tile_bag_in_play)
+    player1.draw_tiles(tile_bag_in_play)
+    player1.tiles.length.must_equal 7
+  end
+
 
 
 

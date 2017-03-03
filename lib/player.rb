@@ -2,12 +2,13 @@ require_relative "scrabble"
 
 module Scrabble
   class Player
-    attr_reader :name, :plays
+    attr_reader :name, :plays, :tiles
 
     def initialize(name)
       raise ArgumentError.new("Invalid argument for name") if name.class != String
       @name = name
       @plays = []
+      @tiles = []
     end
 
     def play(word)
@@ -17,6 +18,11 @@ module Scrabble
         return false
       else
         @plays << word
+
+        (word.length).times do |letter|
+          @tiles.delete(letter)
+        end
+
         return Scoring.score(word)
       end
     end
@@ -37,6 +43,15 @@ module Scrabble
     def highest_word_score
       scores = @plays.map{ |word| Scoring.score(word) }
       return scores.max
+    end
+
+    def draw_tiles(tile_bag)
+      num = 7 - @tiles.length
+      if tile_bag.tiles_remaining < num
+        @tiles = tile_bag.draw_tiles(tile_bag.tiles_remaning)
+      else
+        @tiles = tile_bag.draw_tiles(num)
+      end
     end
   end
 end

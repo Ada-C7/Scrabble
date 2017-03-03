@@ -63,7 +63,7 @@ describe "Scrabble player" do
     end
   end
 
-  describe "#won method" do
+  describe "#won? method" do
     before do
       @player = Scrabble::Player.new("Monalisa")
     end
@@ -94,6 +94,24 @@ describe "Scrabble player" do
 
     it "Returns the highest_scoring_word score" do
       @player.highest_word_score.must_equal 59
+    end
+  end
+
+  describe "#draw_tiles(tile_bag) method" do
+    before do
+      @player = Scrabble::Player.new("Monalisa")
+      @tile_bag = Scrabble::TileBag.new
+    end
+
+    it "Fills tiles array until it has 7 letters from the given tile bag" do
+      @player.draw_tiles(@tile_bag)
+      @player.tiles.length.must_equal 7
+      word = @player.tiles.join
+      @player.play(word)
+
+      @player.tiles.length.must_equal 0
+      # @player.draw_tiles(@tile_bag)
+      # @player.tiles.length.must_equal 0
     end
   end
 end

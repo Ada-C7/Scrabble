@@ -3,7 +3,7 @@ require_relative '../lib/tilebag'
 
 describe "Scrabble tilebag" do
   before do
-    @tilebag = Scrabble::Tilebag.new
+    @tilebag = Scrabble::TileBag.new
   end
 
   describe "#initialize method" do

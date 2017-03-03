@@ -4,7 +4,7 @@ require_relative 'tile_bag.rb'
 module Scrabble
   class Player
     attr_accessor :name, :played_words, :max_score, :highest_scoring_word, :tiles
-    # attr_accessor :tile_bag
+
 
     def initialize(name)
       @name = name
@@ -15,18 +15,14 @@ module Scrabble
 
     def draw_tiles(name_of_tile_bag)
       if @tiles.nil?
-        @tiles << name_of_tile_bag.Scrabble::TileBag.draw_tiles(7)
+        @tiles += name_of_tile_bag.Scrabble::TileBag.draw_tiles(7)
       else
-        @tiles << name_of_tile_bag.draw_tiles(7 - @tiles.size)
-
+        @tiles += name_of_tile_bag.draw_tiles(7 - @tiles.size)
       end
-
-
     end
 
-    def tiles
-      @tiles = Scrabble::TileBag.draw_tiles(num)
-    end
+
+
 
 
     def plays
@@ -67,9 +63,3 @@ tiles = Scrabble::TileBag.new
 
 
 p player.draw_tiles(tiles)
-
-
-
-# player.draw_tiles(tiles)
-# p player.tiles
-#

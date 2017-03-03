@@ -42,8 +42,8 @@ describe Scrabble::TileBag do
           it "Removes the designated number of tiles from the bag" do
 
                @my_tilebag.draw_tiles(7)
-               @my_tilebag.drawn_tiles.length = 7
-               @my_tilebag.tile.must_equal 91
+               @my_tilebag.drawn_tiles.length.must_equal 7
+               @my_tilebag.tile.length.must_equal 91
 
           end
 
@@ -55,6 +55,19 @@ describe Scrabble::TileBag do
                first_hand.wont_equal second_hand
 
           end
+
+          it "Won't allow more than 7 tiles or less than 0 tiles" do
+
+               proc {@my_tilebag.draw_tiles(8)}.must_raise ArgumentError
+               proc {@my_tilebag.draw_tiles(-1)}.must_raise ArgumentError
+
+               @my_tilebag.tile.length.must_equal 98
+          end
+          
+
+
+
+
      end
 
 

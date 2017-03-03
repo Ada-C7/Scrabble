@@ -43,7 +43,7 @@ module Scrabble
 
 
       def self.highest_score_from(array_of_words)
-        raise ArgumentError.new("Must be an array!") if array_of_words != Array.class
+        raise ArgumentError.new("Must be an array!") if array_of_words.class != Array
 
         hash_of_word_score = {}
 

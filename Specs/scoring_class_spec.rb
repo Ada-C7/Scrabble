@@ -43,7 +43,7 @@ xdescribe "Score Method for Scoring Class" do
 end
 
 
-describe "Higest Score From Method for Scoring Class" do
+describe "Highest Score From Method for Scoring Class" do
 
   describe "highest_score_from nomial" do
     before do
@@ -65,7 +65,7 @@ describe "Higest Score From Method for Scoring Class" do
     # end
 
     it "returns the word with the highest score" do
-      Scrabble::Scoring::highest_score_from(@array2).must_be "key"
+      Scrabble::Scoring::highest_score_from(@array2).must_equal "Key"
     end
 
 

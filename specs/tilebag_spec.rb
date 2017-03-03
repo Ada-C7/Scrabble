@@ -30,12 +30,12 @@ describe Scrabble::TileBag do
 
           end
 
-          # it "Contains ## tiles in TileBag" do
-          #
-          #       @my_tilebag.length.must_equal @my_tilebag.tiles
-               # @my_tilebag.length.must_equal
-          #
-          # end
+          it "Contains ## tiles in TileBag" do
+
+               @my_tilebag.length.must_equal @my_tilebag.tiles
+               @my_tilebag.length.must_equal 98
+
+          end
      end
 
 end

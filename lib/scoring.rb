@@ -27,15 +27,18 @@ module Scrabble
       end
 
       def self.highest_score_from(array_of_words)
-        score_array = {}
+        score_array = {} #shoud this be scores? ... if not add []
         array_of_words.each do |word|
+          # you only need the value of score(word) once, so save in a variable?
           if score_array[score(word)].nil?
             score_array[score(word)] = [word]
           else
             score_array[score(word)] << word
           end
         end
-        max_score = score_array.max_by {|score, word| score}[1]
+        max_score = score_array.max_by {|score, word| score}
+        # puts max_score[1]
+
         sorted_array = max_score.sort_by {|word| word.length}
         sorted_array.each do |word|
           if word.length == 7

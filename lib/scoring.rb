@@ -17,14 +17,9 @@ module Scrabble
       raise ArgumentError.new("That word includes invalid characters!") if !word.match(/^[a-zA-Z]+$/)
       raise ArgumentError.new("That word is too long! Must be 7 characters or less.") if word.length > 7
 
-      word_array = word.upcase.split("")
-      word_score = 0
+      word.length == 7 ? word_score = 50 : word_score = 0
 
-      if word_array.length == 7
-        word_score += 50
-      end
-
-      word_array.each do |letter|
+      word.upcase.each_char do |letter|
         word_score += LETTER_VALUES[letter.to_sym]
       end
 
@@ -46,32 +41,31 @@ module Scrabble
         end
       end
 
-        # attempt at adding words + scores to a hash to keep
-        # could be used in a method to add a word and its score (as an array) to the @wordarray (from which high score will be calculated)
-        # winner_score = 0
-        # scores = {}
-        # array_of_words.each do |word|
-        #   word_score = self.score(word)
-        #   scores[word] = word_score
-        # end
-        # scores.each do|word, score|
-        #   winner = word if score == scores.values.max
-        #   winner_score = scores.values.max
-        # end
-        # scores.find_all { |word, score| score == winner_score }
-
       return winner
+
+
+      # STARTED BUT DIDN'T FINISH
+      #
+      # word_scores = array_of_words.map { | word | self.score(word) }
+      #
+      # word_plus_score = array_of_words.zip(word_scores).to_h
+      #
+      # max_score_count = word_plus_score.values.count(word_plus_score.values.max)
+      #
+      # tiebreaker if max_score_count > 1
+      #
+      # winning_score = word_plus_score.max_by { | word, score | score }[1]
+      # winning_word = word_plus_score.max_by { | word, score | score }[0]
     end
 
-    def self.tiebreaker(word, winner)
 
+    def self.tiebreaker(word, winner)
       if winner.length == 7 || word.length == 7
         winner.length <= word.length ? tie_winner = word : tie_winner = winner
       else
         word.length <= winner.length ? tie_winner = winner : tie_winner = word
       end
-
     end
-
   end
+
 end

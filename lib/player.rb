@@ -1,7 +1,7 @@
 module Scrabble
 
   class Player
-  attr_reader :name, :total_score
+    attr_reader :name, :total_score, :tiles
 
     def initialize(name)
       raise ArgumentError.new("You must enter a name with letters.") if name.class != String
@@ -11,12 +11,9 @@ module Scrabble
       @tiles = []
     end
 
-    def tiles
-      #tiles a collection of letters that the player can play (max 7)
-    end
-
-    def draw_tiles(tile_bag) #instance of tilebag, call draw tiles method )
-      #draw_tiles(tile_bag) fills tiles array until it has 7 letters from the given tile bag
+    def draw_tiles(tile_bag)
+      num = 7 - @tiles.length
+      @tiles += tile_bag.draw_tiles(num)
     end
 
     def plays

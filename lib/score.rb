@@ -20,6 +20,7 @@ module Scrabble
           end
 
           def self.highest_score_from(words)
+               raise ArgumentError.new if words ==  [] 
                scores = words.map {| word | score(word)} # calculate scores of words
                composite = words.zip(scores).to_h # combine scores and words
                composite = composite.group_by {| key, value | value } # group words by scores

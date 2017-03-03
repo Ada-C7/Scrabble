@@ -27,6 +27,7 @@ module Scrabble
     end
 
     def draw_tiles(num)
+      raise ArgumentError.new("You have to pick a number of tiles to draw!") if num.class != Integer
       raise ArgumentError.new("There aren't that many tiles left!") if num > @bag.length
       user_bag = []
       num.times { user_bag << @bag.pop }

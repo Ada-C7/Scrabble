@@ -25,13 +25,14 @@ describe "Scrabble::Tilebag" do
       end
     end
 
-    it "Randomizes bag with each instance"
+    it "Randomizes bag with each instance" do
       game2 = Scrabble::Tilebag.new
       game2.bag.must_be_kind_of Array
-      # @game.bag.wont_equal @game2.bag
+      @game.bag.wont_equal game2.bag
+    end
   end
 
-  describe "Scrabble::Tilebag#draw_tiles and #draw_letter and #random_letter" do
+  describe "Scrabble::Tilebag#draw_tiles" do
 
     before do
       @draw = @game.draw_tiles(5)
@@ -46,12 +47,19 @@ describe "Scrabble::Tilebag" do
       end
     end
 
+    it "will raise an error if the argument isn't an integer" do
+      proc {
+        @game.draw_tiles([:A, :B, :C])
+      }.must_raise ArgumentError
+    end
+
     it "will raise an error if there aren't enough tiles" do
       proc{
         @game.draw_tiles(98)
         @game.draw_tiles(5)
       }.must_raise ArgumentError
     end
+
   end
 
 

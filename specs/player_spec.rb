@@ -93,7 +93,7 @@ describe "ScrabblePlayer" do
         @player.highest_scoring_word.must_equal "biscuit"
       end
 
-      it "outputs a message if no words played yet" do
+      it "raises argument error if no words played yet" do
         player = Scrabble::Player.new("Boo")
 
         proc {
@@ -109,7 +109,6 @@ describe "ScrabblePlayer" do
 
       it "returns 0 if there is no word" do
         player = Scrabble::Player.new("Boo")
-
         player.highest_word_score.must_equal 0
       end
     end

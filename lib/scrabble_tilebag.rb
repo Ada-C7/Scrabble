@@ -13,6 +13,8 @@ module Scrabble
     end
 
     def draw_tiles(num)
+
+      raise ArgumentError.new "Not enough tiles left in the pile." if num > @bag.length
       player_bag = []
       num.times do
         tile = @bag.sample # we can't use pop because it doesn't give us a random set

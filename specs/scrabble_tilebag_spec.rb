@@ -45,6 +45,10 @@ describe "Scrabble::Tilebag" do
       @game_pile.draw_tiles(1)
       @game_pile.bag.length.must_equal 97
     end
+
+    it "raises error when the number of tiles requested is larger than that remaining" do
+      proc { @game_pile.draw_tiles(100)}.must_raise ArgumentError
+    end
   end
 
   describe "tiles_remaining method" do
@@ -54,6 +58,7 @@ describe "Scrabble::Tilebag" do
 
       @game_pile.tiles_remaining.must_equal 96
     end
+
 
   end
 end

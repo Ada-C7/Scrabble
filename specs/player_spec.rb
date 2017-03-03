@@ -1,4 +1,5 @@
 require_relative '../lib/player'
+require_relative '../lib/tilebag'
 
 describe "Player class" do
 
@@ -140,6 +141,10 @@ describe "Highest Scoring Word and Word Score" do
 end
 
 describe "initialize player tiles" do
+  before do
+    @player = Scrabble::Player.new('Ada', Scrabble::Tilebag.new)
+  end
+
   it "initializez with a tilebag object" do
 
 

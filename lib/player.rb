@@ -7,11 +7,11 @@ module Scrabble
   class Player
     attr_reader :name, :plays, :tiles
 
-    def initialize(name, plays = nil)
+    def initialize(name, plays = nil, tiles = nil)
       @name = name
       @plays = plays
       @plays ||= []
-      @tiles = []
+      @tiles ||= []
     end
 
     def play(word)

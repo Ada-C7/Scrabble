@@ -12,6 +12,8 @@ describe "Scrabble::Player" do
 
   before do
     @my_player = Scrabble::Player.new("you123***")
+    @my_tile_bag = Scrabble::Tilebag.new
+
   end
 
 
@@ -88,19 +90,15 @@ describe "Scrabble::Player" do
 
   describe "tiles" do
 
-    before do
-      @my_player.draw_tiles(%w[a x t])
-    end
-
     it "returns an array" do
-      @my_player.tiles.must_be_kind_of Array
+      @my_player.draw_tiles(@my_tile_bag).must_be_kind_of Array
     end
 
     it "contains up to 7 tiles" do
-      @my_player.player_tiles.length.must_equal 7
+      @my_player.draw_tiles(@my_tile_bag)
+      @my_player.tiles.length.must_equal 7
+      print @my_player.tiles
     end
   end
-
-  # describe ""
 
 end

@@ -13,13 +13,16 @@ module Scrabble
     end
 
     def draw_tiles(num)
+      player_bag = []
       num.times do
         tile = @bag.sample
         @player_bag << tile
+        player_bag << tile
         @bag.slice!(@bag.index(tile))
         #previous method deleted all matching, this deletes first occurance
       end
 
+      return player_bag
 
     end
 

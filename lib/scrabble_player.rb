@@ -8,7 +8,7 @@ module Scrabble
   # name = gets.chomp.to_s
 
   class Player
-    attr_accessor :words_played, :score_tracker, :player_tiles
+    attr_accessor :words_played, :score_tracker, :player_tiles, :tile_bag
     attr_reader :name
 
     def initialize(name)
@@ -58,11 +58,10 @@ module Scrabble
     end
 
     def draw_tiles(tile_bag)
-      tile_bag = @player_tiles
-      tiles_avail = Scrabble::Tilebag.new
-
+      #need way to track change in the instance of the tilebag
       until @player_tiles.length == 7
-        @player_tiles << tiles_avail.draw_tiles(1)
+        draw = tile_bag.draw_tiles(1).first
+        @player_tiles << draw
       end
       return @player_tiles
     end

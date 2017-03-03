@@ -1,41 +1,40 @@
 
-require_relative './player'
-
 module Scrabble
-    class TileBag < Player
-        TILES = { 1 => %w(J K Q X Z),
-                  2 => %w(B C F H M P V W Y),
-                  3 => %w(G),
-                  4 => %w(D L U S),
-                  6 => %w(N R T),
-                  8 => %w(O),
-                  9 => %w(A I),
-                  12 => %w(E) }.freeze
+    class TileBag
+        attr_accessor :tiles_drawn, :in_bag
+        TILES = {
+            A: 9, B: 2, C: 2, D: 4, E: 12, F: 2, G: 3, H: 2, I: 9,
+            J: 1, K: 1, L: 4, M: 2, N: 6, O: 8, P: 2, Q: 1, R: 6,
+            S: 4, T: 6, U: 4, V: 2, W: 2, X: 1, Y: 2, Z: 1
+        }.freeze
         def initialize
-            @in_bag = TILES.to_a.reject { |array| array.each { |things| things[0] } }
-            print TILES.to_a
-            print @in_bag
-            # TILES.each do |key, value|
-            #   value.times { @in_bag << key.to_s }
-            # end
+            @in_bag = [] # tiles in bag
+            TILES.each do |key, values| # create all tiles and put in bag
+                values.times { @in_bag << key.to_s }
+            end
+            @in_bag.shuffle!
+            @tiles_drawn = []
         end
 
-        def draw_tiles(num) # 1 - 7
-            num.times { @tiles << @in_bag.shuffle!.pop }
-            @tiles
+        def draw_tiles(number)
+            raise ArgumentError 'not enough tiles' if tiles_remaining < number
+            @tiles_drawn = @in_bag.pop(number)
+            @tiles_drawn # <-- TEST PURPOSES ONLY
         end
 
         def tiles_remaining
             @in_bag.length
         end
-    end
+  end
 end
 
-test_one = Scrabble::TileBag.new
-puts test_one.tiles_remaining
-print test_one.draw_tiles(2)
-test_one.draw_tiles(7)
-# test_one.draw_tiles(6)
-puts test_one.tiles_remaining
-# test_one.draw_tiles(3)
-# puts test_one.tiles_remaining
+# # <-- TEST PURPOSES ONLY
+# test_one = Scrabble::TileBag.new
+#
+# puts "remaining tiles: #{test_one.tiles_remaining}"
+# test_one.draw_tiles(70)
+# puts "remaining tiles: #{test_one.tiles_remaining}"
+# test_one.draw_tiles(20)
+# puts "remaining tiles: #{test_one.tiles_remaining}"
+# test_one.draw_tiles(10)
+# puts "remaining tiles: #{test_one.tiles_remaining}"

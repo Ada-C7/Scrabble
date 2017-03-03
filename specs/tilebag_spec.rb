@@ -1,7 +1,7 @@
 require_relative 'spec_helper'
 require_relative '../lib/tilebag'
 
-describe TileBag do
+describe "TileBag" do
 
   before do
     @tile_bag = Scrabble::TileBag.new
@@ -20,8 +20,8 @@ describe TileBag do
       letter_a = @tile_bag.collection.select { |letter| letter == "a"}
       letter_a.length.must_equal 9
 
-      test_letters = @collection.group_by { |letter| letter[0] }
-      test_hash = test_letters.each { | k, v | letters[k] = v.length }
+      test_letters = @tile_bag.collection.group_by { |letter| letter[0] }
+      test_hash = test_letters.each { | k, v | test_letters[k] = v.length }
 
       letters = @tile_bag.collection.group_by { |letter| letter[0] }
 
@@ -30,24 +30,29 @@ describe TileBag do
       letter_hash.must_equal test_hash
     end
 
+  end
 
-    describe "draw_tiles" do
 
-      it "takes an Integer" do
-        proc { @tile_bag.draw_tiles("cat")}.must_raise ArgumentError
-      end
+  describe "draw_tiles" do
 
-      it "returns an Array of same length as number of tiles drawn" do
-        @tile_bag.draw_tiles(4).must_be_instance_of Array
-        @tile_bag.draw_tiles(4).length.must_equal 4
-      end
-
-      it "returns an Array of one-character length strings" do
-        draw = @tile_bag.draw_tiles(3)
-        draw.
-      end
-
+    it "takes an Integer" do
+      proc { @tile_bag.draw_tiles("cat")}.must_raise ArgumentError
     end
+
+    it "returns an Array of same length as number of tiles drawn" do
+      @tile_bag.draw_tiles(4).must_be_instance_of Array
+      @tile_bag.draw_tiles(4).length.must_equal 4
+    end
+
+    it "returns an Array of one-character length strings" do
+      draw = @tile_bag.draw_tiles(3)
+      draw.length.must_equal 3
+      draw.each do |letter|
+        letter.class == true && letter.length == 1
+      end
+    end
+
+  end
 
   describe "tiles_remaining" do
     it "returns the number of tiles remaining in the bag" do

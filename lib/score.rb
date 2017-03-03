@@ -19,12 +19,13 @@ module Scrabble
           end
 
           def self.highest_score_from(words)
+               raise ArgumentError.new if words ==  []
                scores = words.map {| word | score(word)} # calculate scores of words
                composite = words.zip(scores).to_h # combine scores and words
                composite = composite.group_by {| key, value | value } # group words by scores
                composite = composite.sort_by {| key, value | key} # sort words by scores
                winners = composite[-1].flatten.grep(String) # select winning word(s)
-               winner = winners.min_by { | word | word.length} # tile tie-breaker
+               winners.min_by { | word | word.length} # tile tie-breaker
           end
 
      end

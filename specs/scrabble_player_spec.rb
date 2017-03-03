@@ -88,10 +88,32 @@ describe "Player Class" do
         @new_player.highest_word_score.must_equal 7
       end
 
-      describe "#tile" do
-        it "it returns a maximum of 7 letters a player can play" do
-        
+      describe "draw_tiles" do
+        before do
+          @my_bag = Scrabble::TileBag.new
         end
+
+        it "returns ArgumentError if argument is not class TileBag" do
+          proc {@new_player.draw_tiles("hi")}.must_raise ArgumentError
+        end
+
+        it "returns an array of 7 tiles" do
+          draw = @new_player.draw_tiles(@my_bag)
+
+          draw.must_be_instance_of Array
+          draw.length.must_equal 7
+
+        end
+      end
+
+
+      describe "#tile" do
+        it "it returns an array of letters" do
+          @my_bag = Scrabble::TileBag.new
+          @new_player.draw_tiles(@my_bag)
+          @new_player.tiles.must_be_instance_of Array
+        end
+
       end
     end
 

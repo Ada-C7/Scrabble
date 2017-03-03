@@ -1,13 +1,12 @@
 module Scrabble
 
   class Player
-    attr_reader :name, :plays, :tile_tray
+    attr_reader :name, :plays
 
     def initialize(name)
       raise ArgumentError.new("Name input must be a String") if name.class != String
       @name = name
       @plays = []
-      @tile_tray = []
     end
 
     #return true of player has > 100 points
@@ -36,29 +35,27 @@ module Scrabble
 
     #returns the highest scoring played word
     def highest_scoring_word
-      raise ArgumentError.new("Player must play a word") if @plays.empty?
+      raise ArgumentError.new("Player has not played a word") if @plays.empty?
       Scrabble::Scoring.highest_score_from(@plays)
     end
 
     #return the highest scoring word's
     #word score
     def highest_word_score
-      raise ArgumentError.new("Player must play a word") if @plays.empty?
+      raise ArgumentError.new("Player has not played a word") if @plays.empty?
       highest_word = Scrabble::Scoring.highest_score_from(@plays)
       return Scrabble::Scoring.score(highest_word)
     end
 
-    def player_bag
-      @tile_bag ||= Scrabble::TileBag.new
-    end
-
     def tiles #a collection of letters that the player can play -max 7
-      return @tile_tray
+      @tiles ||= Array.new
     end
 
     def draw_tiles(tile_bag) #fills tiles array until it has 7 letters from tile bag
+      raise ArgumentError.new("You can only draw tiles from an object class TileBag.") if tile_bag.class != Scrabble::TileBag
 
-      @tile_tray << (player_bag.draw_tiles (7 - tiles))
+      #this is a problem because this will write over tiles!
+      @tiles = tile_bag.draw_tiles(7 - tiles.length)
     end
   end
 end

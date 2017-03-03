@@ -5,20 +5,20 @@ require_relative '../lib/scoring'
 
 describe "Scoring class" do
   it "Creates a new instance of Scoring class" do
-    skip
+    # skip
     score = Scrabble::Scoring.new
     score.must_be_instance_of Scrabble::Scoring
   end
 
   describe "self.score method" do
     it "Compares word to score chart by each letter and adds up the score" do
-      skip
+      # skip
       word = Scrabble::Scoring.score("ruby")
       word.must_equal 9
     end
 
     it "Adds 50 bonus points for a seven-letter word" do
-      skip
+      # skip
       word = Scrabble::Scoring.score("kaitlin")
       word.must_equal 61
     end
@@ -56,7 +56,7 @@ describe "Scoring class" do
     end
 
     it "multiple words of same score and same length, first one is returned" do
-      skip
+      # skip
       words_array = Scrabble::Scoring.highest_score_from(["aei", "oul"])
       words_array.must_equal "aei"
     end

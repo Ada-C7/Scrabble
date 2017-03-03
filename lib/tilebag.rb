@@ -12,54 +12,32 @@ module Scrabble
         Q: 1, R: 6, S: 4, T: 6,
         U: 4, V: 2, W: 2, X: 1,
         Y: 2, Z: 1 }
+      @bag ||= fill_bag
+    end
+
+    def fill_bag
+      bag = []
+      @letter_quantity.map do |key, value|
+        value.times do
+          bag << key
+        end
+      end
+
+      bag.shuffle!
     end
 
     # returns a collection of random tiles, removes the tiles from the default set
     def draw_tiles(num)
       user_bag = []
-
-      num.times do
-        user_bag << draw_letter
-      end
+      num.times { user_bag << @bag.pop }
 
       return user_bag
-
-    end
-
-    def random_letter()
-      case rand(1..98)
-        when 1..12 then :E
-        when 13..30 then [:I, :A].sample
-        when 31..38 then :O
-        when 39..56 then [:T, :R, :N].sample
-        when 57..72 then [:U, :S, :L, :D].sample
-        when 73..75 then :G
-        when 76..93 then [:Y, :W, :V, :P, :M, :H, :F, :C, :B].sample
-        when 94..98 then [:Z, :X, :Q, :K, :J].sample
-      end
-    end
-
-    def draw_letter
-#  selected_letter = @letter_quantity.keys.sample
-    selected_letter = random_letter()
-      if @letter_quantity[selected_letter] != 0
-        @letter_quantity[selected_letter] -= 1
-        return selected_letter
-      else
-        draw_letter
-      end
     end
 
 # returns the number of tiles remaining in the bag
     def remaining_tiles
-      @letter_quantity.values.inject(:+)
-      
-      # remaning =  @letter_quantity.map { | key, values | values }
-      # remaning.inject(:+)
+      @bag.length
     end
 
   end
 end
-
-# x = Scrabble::Tilebag.new
-# puts x.remaining_tiles

@@ -6,7 +6,7 @@ module Scrabble
     def initialize(name)
       raise ArgumentError.new("You must enter a name with letters.") if name.class != String
       @name = name
-      @plays = [] #returns an Array of the words played by the player
+      @plays = [] #returns an Array of the words played by the playera
       @total_score = 0 #total_score: Returns the sum of scores of played words
       @tiles = []
     end

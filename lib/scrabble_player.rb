@@ -36,5 +36,12 @@ module Scrabble
     def highest_word_score
       @scores.max
     end
+
+    def tiles
+      Scrabble::TileBag.picked_tiles
+    end
+
+    def draw_tiles(tile_bag)
+    end
   end
 end

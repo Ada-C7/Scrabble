@@ -89,3 +89,15 @@ describe "Player#higest_word_score" do
     player.highest_word_score.must_equal 13
   end
 end
+
+describe "Player#tiles" do
+  it "Returns a collection of letters that the player can play" do
+    player = Scrabble::Player.new("Mickey")
+    player.tiles
+  end
+
+  it "Cannot have more than 7 tiles" do
+    player = Scrabble::Player.new("Mickey")
+    player.tiles.length.must_be :<=, 7
+  end
+end

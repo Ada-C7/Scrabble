@@ -74,6 +74,11 @@ describe "Scrabble::Tilebag" do
       @game.remaining_tiles.must_equal 68
     end
 
+    it "Returns 0 if all tiles have been drawn" do
+      @game.draw_tiles(98)
+      @game.remaining_tiles.must_equal 0
+    end
+
   end
 
 end

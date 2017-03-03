@@ -12,11 +12,7 @@ module Scrabble
     end
 
     def draw_tiles(name_of_tile_bag)
-      if @tiles.nil?
-        @tiles += name_of_tile_bag.Scrabble::TileBag.draw_tiles(7)
-      else
         @tiles += name_of_tile_bag.draw_tiles(7 - @tiles.size)
-      end
     end
 
     def plays

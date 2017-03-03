@@ -5,9 +5,9 @@ Congratulations! You're submitting your assignment.
 
 |  Feature 	|   Feedback	|
 |---	|---	|
-|   How do you feel you and your partner did in sharing responsibilities?	|   	|
-|   Why do you think we chose to make the `score` method in the `Scoring` class a **class method** instead of an **instance method**? |    |
-|   Describe an example of a test you wrote for a _nominal case_. |   	|
-|   Describe an example of a test you wrote for an _edge case_. |   	|
-|   What was your final test coverage percentage?	|   	|
-|   Is there a specific piece of code you'd like feedback on?	|   	|
+|   How do you feel you and your partner did in sharing responsibilities?	|  We were able to collaborate well & learn from each other throughout the various waves.    	|
+|   Why do you think we chose to make the `score` method in the `Scoring` class a **class method** instead of an **instance method**? | We chose to make the score method in the scoring class a class method because the function it was performing was something we would also be calling upon in the player class. So therefore, we saved times on rewriting code and helped simply our code/ not having repeat code.    |
+|   Describe an example of a test you wrote for a _nominal case_. |   We wrote a nominal case for scoring, where in the event of a tie across words of the same high score, it would first pick the 7-letter word, then the shortest word. The tests for this, tested all the cases of this to ensure the right order of priority was respected. 	|
+|   Describe an example of a test you wrote for an _edge case_. |  An example of a test case we wrote to check for an edge case within our tile bag spec is drawing (100) tiles from our bag of tiles and ensuring that it returns a value of zero. Before that test was written in, I had not realized that there was a major flaw in my code where it was actually removing every instance of the letter, instead of just one (ex. if i randomly removed "A", it was deleting all of my "A"'s & I was getting an array with too many nils. |
+|   What was your final test coverage percentage?	|  100.0% covered at 82.16 hits/line 	|
+|   Is there a specific piece of code you'd like feedback on?	|  We would love to get feedback on our tile_bag spec, as well as the method "draw_tiles(num)". |

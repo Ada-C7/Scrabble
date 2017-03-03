@@ -1,51 +1,41 @@
+
 require_relative './player'
 
 module Scrabble
     class TileBag < Player
-        TILEBAG = {
-            0=>[],
-            1 => %w(J K Q X Z),
-            2 => %w(B C F H M P V W Y),
-            3 => %w(G),
-            4 => %w(D L U S),
-            6 => %w(N R T),
-            8 => %w(O),
-            9 => %w(A I),
-            12 => %w(E)
-        }
-
+        TILES = { 1 => %w(J K Q X Z),
+                  2 => %w(B C F H M P V W Y),
+                  3 => %w(G),
+                  4 => %w(D L U S),
+                  6 => %w(N R T),
+                  8 => %w(O),
+                  9 => %w(A I),
+                  12 => %w(E) }.freeze
         def initialize
-            @tilebag = TILEBAG
-            @drawn_tiles = []
+            @in_bag = TILES.to_a.reject { |array| array.each { |things| things[0] } }
+            print TILES.to_a
+            print @in_bag
+            # TILES.each do |key, value|
+            #   value.times { @in_bag << key.to_s }
+            # end
         end
 
-        def draw_tiles(num)
-            until @drawn_tiles.length == num
-                @letters = ('A'..'Z').to_a.sample
-                @tilebag.each do |amt, letters|
-                    next unless letters.any? { |_letter| @letters }
-                    @tilebag[amt].delete_if { |letter| letter == @letters }
-                    @tilebag[amt - 1] += letters.select! { |letter| letter == @letters }
-                    @drawn_tiles << @letters
-                end
-            end
+        def draw_tiles(num) # 1 - 7
+            num.times { @tiles << @in_bag.shuffle!.pop }
+            @tiles
+        end
 
-            # @temp_bag = @tilebag.values.group_by do |letters|
-            #     letters.each do |letter|
-            #         if @drawn_tiles.include? letter
-            #             @tilebag[letter] - 1
-            #         else
-            #             @tilebag[letter]
-            #         end
-            #     end
-            # end
-
-            print @tilebag
-            print @drawn_tiles
+        def tiles_remaining
+            @in_bag.length
         end
     end
 end
 
-test = Scrabble::TileBag.new
-
-test.draw_tiles(7)
+test_one = Scrabble::TileBag.new
+puts test_one.tiles_remaining
+print test_one.draw_tiles(2)
+test_one.draw_tiles(7)
+# test_one.draw_tiles(6)
+puts test_one.tiles_remaining
+# test_one.draw_tiles(3)
+# puts test_one.tiles_remaining

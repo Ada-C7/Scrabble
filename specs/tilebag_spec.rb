@@ -32,15 +32,18 @@ describe "Wave 3" do
         @my_tiles.tilebag.length.must_equal (length_before - 5)
       end
 
-      it "returns an array of the letters it removes" do
+      it "returns an array of letters" do
+        new_tiles = @my_tiles.draw_tiles(5)
+        new_tiles.must_be_instance_of Array
+        new_tiles[3].must_be_instance_of String
       end
     end
 
-    xdescribe "tiles_remaining method" do
+    describe "tiles_remaining method" do
       it "returns an integer that is the number of items remaining in default tile collection" do
-        # default_tiles size
-        # draw_tiles(7)
-        # tiles_remaining should be initial size - 7
+        length_before = @my_tiles.tilebag.length
+        @my_tiles.draw_tiles(7)
+        @my_tiles.tiles_remaining.must_equal (length_before - 7)
       end
     end
 

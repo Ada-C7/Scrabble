@@ -128,20 +128,23 @@ describe "Wave 2" do
 
 end
 
-xdescribe "Wave 3" do
+describe "Wave 3" do
+
+  before do
+    @my_player = Scrabble::Player.new('Charlemagne')
+  end
 
   describe "tiles variable" do
     it "is an array of strings" do
-
+      @my_player.tiles.must_be_instance_of Array
+      @my_player.tiles[0].must_be_instance_of String
     end
 
-    it "cannot go above 7 tiles" do
-
-    end
   end
 
   describe "draw_tiles for Player class" do
     it "fills tiles array with letters" do
+      
 
     end
 

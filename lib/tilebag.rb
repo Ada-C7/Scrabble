@@ -22,6 +22,15 @@ module Scrabble
       end
 
       def draw_tiles(num)
+        new_tiles = []
+        num.times do
+          new_tiles << @tilebag.delete_at(rand(@tilebag.length))
+        end
+        return new_tiles
+      end
+
+      def tiles_remaining
+        @tilebag.length
       end
 
   end

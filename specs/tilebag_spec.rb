@@ -60,13 +60,8 @@ describe Scrabble::TileBag do
 
                proc {@my_tilebag.draw_tiles(8)}.must_raise ArgumentError
                proc {@my_tilebag.draw_tiles(-1)}.must_raise ArgumentError
-
                @my_tilebag.tile.length.must_equal 98
           end
-          
-
-
-
 
      end
 

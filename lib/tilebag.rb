@@ -55,11 +55,3 @@ module Scrabble
 
   end
 end
-# bag = Scrabble::TileBag.new
-# # puts bag.tile.length
-# puts bag.draw_tiles(7)
-# puts bag.tile.length
-
-puts bag.draw_tiles(-7)
-puts bag.drawn_tiles.class
-puts bag.tile.length

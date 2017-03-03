@@ -63,7 +63,7 @@ describe "Player Class" do
         tofu = Scrabble::Player.new("tofu")
         proc {
         tofu.play(3)
-        }.must_raise ArgumentError
+      }.must_raise ArgumentError
       end
 
   end

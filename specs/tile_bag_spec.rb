@@ -14,12 +14,6 @@ describe "Test Tile_Bag creation" do
     newbag.class.must_be_kind_of Class
   end
 
-  it "Tile_Bag class initializes with empty player hand []"do
-    # skip
-    newbag = Scrabble::TileBag.new
-    newbag.player_hand.length.must_equal 0
-  end
-
   it "Tile_Bag class intializes with full bag " do
     # skip
     newbag = Scrabble::TileBag.new

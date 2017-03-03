@@ -59,6 +59,3 @@ module Scrabble
 
   end
 end
-
-# game = Scrabble::TileBag.new
-# # puts game.draw_tiles(3)

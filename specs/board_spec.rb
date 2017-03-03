@@ -37,4 +37,6 @@ describe "Scrabble::Board" do
     [true, false].must_include game_board.check_playable('word', 2 ,12 ,'right')
   end
 
+# We stopped here due to time constraints. If we had more time, we would have created more tests for the check_playable method and written tests for the play method.
+
 end

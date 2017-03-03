@@ -14,6 +14,9 @@ module Scrabble
       end
     end
 
+
+    # We did not finish writing tests for the methods below here due to time constraints.
+
     def check_playable(word, starting_row, starting_col , direction)
       playable = true
       case direction
@@ -40,7 +43,6 @@ module Scrabble
       end
       return playable
     end
-
 
 
     def play(word, starting_row, starting_col , direction)
@@ -73,35 +75,16 @@ module Scrabble
       return board
     end
 
-
-
   end
 end
 
 
-
-
-
-
-
-
-
-
-game_board = Scrabble::Board.new
-game_board.play("word", 0, 0 , "right")
-game_board.play("thingy", 1, 0 , "down")
-game_board.play("hidden", 10, 10 , "up").each do |row|
-print  row
-puts
-end
-
-
+# # DEMO RUN
 #
-# puts
-# puts
-# print game_board.play("th", 1, 0 , "down")
-#
-# #  print game_board.board
-# #  puts
-# #  puts  game_board.board.length
-# # print game_board.board[2].length
+# game_board = Scrabble::Board.new
+# game_board.play("word", 0, 0 , "right")
+# game_board.play("thingy", 1, 0 , "down")
+# game_board.play("hidden", 10, 10 , "up").each do |row|
+#   print  row
+#   puts
+# end

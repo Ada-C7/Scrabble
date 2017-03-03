@@ -7,7 +7,6 @@ module Scrabble
       @name = name
       @plays = []
       @tiles = []
-      # raise ArgumentError.new("Number of tiles must not be greater than 7") if tiles.length > 7
     end
 
 

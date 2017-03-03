@@ -85,17 +85,10 @@ describe "Scrabble::Player" do
     new_player.highest_word_score.must_equal 70
   end
 
-  it "tiles returns an empty array" do
+  it "when a new player is initialized, tiles returns an empty array" do
     new_player = Scrabble::Player.new("Dan")
     new_player.tiles.must_equal []
   end
-
-  # it "tiles raises an argument error if more than 7 tiles are in the array" do
-  #   new_player = Scrabble::Player.new("Dan")
-  #   proc {
-  #     new_player.tiles.length > 7
-  #   }.must_raise ArgumentError
-  # end
 
   it "draw_tiles(tile_bag) fills tiles array until it has 7 letters" do
     new_player = Scrabble::Player.new("Dan")
@@ -103,7 +96,5 @@ describe "Scrabble::Player" do
     new_player.draw_tiles(new_game_bag)
     new_player.tiles.length.must_equal 7
   end
-
-
 
 end

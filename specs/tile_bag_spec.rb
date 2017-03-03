@@ -50,12 +50,14 @@ describe "TileBag" do
       new_players_bag.draw_tiles(-2)
     }.must_raise ArgumentError
   end
+
   it "draw_tiles(num) raises an Argument Error if num is not a integer" do
     new_players_bag = Scrabble::TileBag.new
     proc {
       new_players_bag.draw_tiles(5.2)
     }.must_raise ArgumentError
   end
+
   it "draw_tiles(num) raises an Argument Error if num is a string" do
     new_players_bag = Scrabble::TileBag.new
     proc {
@@ -70,6 +72,5 @@ describe "TileBag" do
     new_players_bag.draw_tiles(3)
     new_players_bag.tiles_remaining.must_equal (start_length - 10)
   end
-
 
 end

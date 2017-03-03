@@ -3,15 +3,14 @@ require_relative 'scoring'
 module Scrabble
 
   class Player
-    attr_reader :name, :plays
+    attr_reader :name, :plays, :tile_bag, :total
 
-    def initialize(name)
+    def initialize(name, tile_bag)
       raise ArgumentError unless name.class == String
       @name = name
       @plays = []
       @total = 0
-      @highest_word = ""
-      @highest_score = 0
+      @tile_bag = tile_bag
     end
 
     def play(word)
@@ -47,13 +46,13 @@ module Scrabble
     end
 
     def highest_scoring_word
-      @highest_word = Scrabble::Scoring.highest_score_from(@plays)
-      return @highest_word
+      highest_word = Scrabble::Scoring.highest_score_from(@plays)
+      return highest_word
     end
 
     def highest_word_score
-      @highest_score = get_score(@highest_word)
-      return @highest_score
+      highest_score = get_score(highest_scoring_word)
+      return highest_score
     end
   end
 end

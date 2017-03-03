@@ -11,7 +11,8 @@ describe "Player" do
 
   before do
     @name = "Ada"
-    @player = Scrabble::Player.new(@name)
+    @tile_bag = Scrabble::TileBag.new
+    @player = Scrabble::Player.new(@name, @tile_bag)
   end
 
   describe "Player#initialize" do
@@ -25,13 +26,18 @@ describe "Player" do
       @player.name.must_equal @name
     end
 
-    it "Raises ArgumentError if no name is given" do
+    it "Take a TileBag object" do
+      @player.must_respond_to :tile_bag
+      @player.tile_bag.must_be_instance_of Scrabble::TileBag
+    end
+
+    it "Raises ArgumentError if both parameters are not given" do
       proc {
         Scrabble::Player.new
       }.must_raise ArgumentError
     end
 
-    it "Raises an ArgumentError if not string" do
+    it "Raises an ArgumentError if given improper argument(s)" do
       proc {
         Scrabble::Player.new(4587)
       }.must_raise ArgumentError

@@ -13,21 +13,35 @@ describe "Scrabble::Tilebag" do
 
   end
 
-  describe "Scrabble::Tilebag#draw_tiles and #draw_letter" do
+  describe "Scrabble::Tilebag#draw_tiles and draw_letter" do
 
     before do
       @game = Scrabble::Tilebag.new
+      @draw = @game.draw_tiles(5)
     end
 
-    it "Returns an array that's the same length as given argument" do
-      @game.draw_tiles(5).must_be_kind_of Array
-      @game.draw_tiles(5).length.must_equal 5
+    it "Returns an array of letter symbols that's the same length as given argument" do
+      @draw.must_be_kind_of Array
+      @draw.length.must_equal 5
+      @draw.each do | letter |
+        letter.must_be_kind_of Symbol
+        @game.letter_quantity.must_include letter
+      end
     end
-     
-    # for tilebag, don't try to test what's randomized, just test what you can know: how many tiles are drawn, how many are left in tilebag, if the tiles drawn are symbols (regex?)
 
+    it "Draws all letters so all letters have value of 0" do
+      proc{
 
+      all_letters = []
+
+      98.times do
+        all_letters << @game.draw_letter
+      end
+
+      group = all_letters.sort.group_by {| letter | letter }
+      puts group.map { |letter, count | count.length }
+      }
+    end
 
   end
-
 end

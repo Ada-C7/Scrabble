@@ -48,5 +48,23 @@ end
 
 # hash.key(value)
 # h = Scrabble::Tilebag.new
+#
+#
+#
+# all_letters = []
+#
+# 98.times do
+#   all_letters << h.draw_letter
+# end
+#
+# group = all_letters.sort.group_by {| letter | letter }
+# puts group.map { |letter, count | count.length }
+
+
+
 # puts h.draw_tiles(5)
+# 98.times do
+# puts h.draw_letter
+# end
+# puts h.letter_quantity.values.inject{ | total, value | total + value }
 # puts h.letter_quantity

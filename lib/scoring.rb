@@ -71,7 +71,7 @@ module Scrabble
     # if multiple words are same length and score, just pick first word
     def self.tiebreaker(word, winner)
       tie_winner = ""
-      if word.length < winner.length
+      if word.length <= winner.length
           winner.length == 7 ? tie_winner = winner : tie_winner = word
       elsif word.length > winner.length
           winner.length == 7 ? tie_winner = word : tie_winner = winner

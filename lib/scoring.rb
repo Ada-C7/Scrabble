@@ -7,9 +7,7 @@ module Scrabble
       string.upcase!
       turn_value = 0
       string.each_char do |letter|
-        SCORES.each do |point, value|
-          turn_value += point if value.include?(letter)
-        end
+        SCORES.each { |point, value| turn_value += point if value.include?(letter) }
       end
       turn_value += 50 if string.length == 7
       return turn_value

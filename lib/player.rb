@@ -41,9 +41,7 @@ module Scrabble
     end
 
     def total_score
-      total = 0
-      @plays.each { |word| total += score(word) }
-      return total
+      total = @plays.sum { |word| score(word) }
     end
 
     def highest_scoring_word

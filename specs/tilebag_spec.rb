@@ -13,6 +13,7 @@ require_relative '../lib/tilebag.rb'
 Minitest::Reporters.use!
 Minitest::Reporters::SpecReporter.new
 
+<<<<<<< HEAD
 
 describe Scrabble::TileBag do
 
@@ -31,4 +32,7 @@ describe Scrabble::TileBag do
           end
      end
 
+=======
+describe "TileBag" do
+>>>>>>> 153d91505006de3e4cef8f50398ea0abfcb5ad1d
 end

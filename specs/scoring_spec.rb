@@ -58,20 +58,10 @@ describe "Scoring" do
 
   describe "highest_score_from" do
 
-    it "raises an error" do
-      #check that input is an array
+    it "raises an error if the argument is not an array" do
       proc {
         Scrabble::Scoring.highest_score_from("BOOK")
       }.must_raise ArgumentError
-      #check that each element in the array is a string
-      # proc {
-      #   Scrabble::Scoring.highest_score_from([4, "BOOK"]) #try loop (test each element)
-      # }.must_raise ArgumentError
-      # #given word contains characters other than a to z
-      # proc {
-      #   Scrabble::Scoring.highest_score_from(["BOOK", "657!"]) #try loop (test each element)
-      # }.must_raise ArgumentError
-
     end
 
     it "returns a string" do

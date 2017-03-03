@@ -111,34 +111,8 @@ describe "ScrabblePlayer" do
         player = Scrabble::Player.new("Boo")
 
         player.highest_word_score.must_equal 0
-
       end
     end
-  end
 
+  end
 end
-#   describe "Player#total_score" do
-#     # @plays is empty, should return 0
-#     # output is a number
-#     # it outputs correct total for an array of words
-#
-#   end
-#
-#   describe "Player#won?" do
-#     # check for more than 100 points
-#     # less than hundred points
-#     # no points
-#   end
-#
-#   describe "Player#highest_scoring_word" do
-#     # outputs a String
-#     # outputs correct word from an array
-#
-#   end
-#
-#   describe "Player#highest_word_score" do
-#     # outputs a number
-#     # correct number for the winning word
-#     # returns 0 if there is no word
-#   end
-#

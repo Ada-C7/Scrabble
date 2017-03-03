@@ -10,7 +10,7 @@ module Scrabble
             @plays = []
             @word_scores = []
             @total_score = 0
-            # @highest_word_score = 0
+            @tiles = [] # a collection of 7 letters
         end
 
         def play(word)
@@ -45,11 +45,15 @@ module Scrabble
         def score(word)
             super(word)
         end
+
+        def draw_tiles(tile_bag)
+
+
+        end
     end
 end
 
 # test = Scrabble::Player.new('Tamago')
-#
 # test.name
 # test.play('word')
 # test.play('cow')

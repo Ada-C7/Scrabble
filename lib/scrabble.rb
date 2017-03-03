@@ -63,13 +63,17 @@ module Scrabble
       group_test = zipper_test.group_by { |word, value| [value] }
 
       @max = group_test.keys.max
-      variable = group_test.select {|k, v| k == @max}
-
       group_test.select do |k, v| k == @max
+        variable = group_test.select {|k, v| k == @max}
         if v.count > 1
           variable.each_pair do |k, v|
             x = v.min_by(&:length)
-            puts x[0]
+            v.each do |word|
+              if word[0].length == 7
+                x = word[0]
+              end
+            end
+            puts x
           end
           return v.count
         else
@@ -80,8 +84,8 @@ module Scrabble
   end
 end
 
-array_of_words = ["laptop", "board", "wipe", "spoon"]
+array_of_words = ["zzzzzz", "aaaaaaf", "wipe", "spoon", "laptops"]
 
 test_1 = Scrabble::Scoring.highest_score_from(array_of_words)
 
-puts test_1
+# puts test_1

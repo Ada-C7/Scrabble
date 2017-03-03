@@ -38,9 +38,9 @@ describe "Wave 1" do
   describe "highest_score_from method" do
     it "return highest scoring word from array" do
       # skip
-      word_array = ["apple", "pear", "laptops"]
+      word_array = ["apple", "pear", "cat"]
       test_1 = Scrabble::Scoring.highest_score_from(word_array)
-      test_1.must_equal "laptops"
+      test_1.must_equal "apple"
 
     end
   end

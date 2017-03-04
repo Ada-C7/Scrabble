@@ -1,8 +1,9 @@
 require_relative 'scoring'
+require_relative 'tile_bag'
 
 module Scrabble
   class Player
-    attr_reader :name, :plays
+    attr_reader :name, :plays, :tiles
 
     def initialize(name)
       raise ArgumentError.new("name must be a string") if !name.is_a? String
@@ -40,7 +41,12 @@ module Scrabble
     end
 
     def draw_tiles(tile_bag)
-      raise ArgumentError.new("")
+      raise ArgumentError.new("tile_bag must be a TileBag") if !tile_bag.is_a? TileBag
+
+      tiles_to_draw = 7 - @tiles.length # player cannot have more than 7 tiles at a time
+
+      new_tiles = tile_bag.draw_tiles(tiles_to_draw)
+      @tiles += new_tiles
     end
   end
 end

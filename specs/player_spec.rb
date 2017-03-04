@@ -5,6 +5,7 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
 require_relative '../lib/player.rb'
+require_relative '../lib/tile_bag.rb'
 
 describe "Player" do
   describe "initalize" do
@@ -39,8 +40,8 @@ describe "Player" do
       player = Scrabble::Player.new("ada")
 
       player.must_respond_to :tiles
-      player.plays.must_be_instance_of Array
-      player.plays.must_be_empty
+      player.tiles.must_be_instance_of Array
+      player.tiles.must_be_empty
     end
   end
 
@@ -67,13 +68,6 @@ describe "Player" do
       player.play("TORRENT")
       player.play("CAT").must_equal false
     end
-
-    # it "returns 'false' if player has 100 points"  do
-    #   player = Scrabble::Player.new("Ada")
-    #   player.play("QUICKLY")
-    #   player.play("EXEQUY")
-    #   player.play("CAT").must_equal false
-    # end
 
     it "does not add a word to the plays array if the player has >= 100 pts" do
       player = Scrabble::Player.new("Ada")
@@ -154,10 +148,13 @@ describe "Player" do
     }.must_raise ArgumentError
     end
 
-    it "fills tiles array from given bag until it reaches 7" do
+    it "fills the tiles array from the given bag until it reaches 7" do
       player = Scrabble::Player.new("Ada")
-      player.
+      tile_bag = Scrabble::TileBag.new
 
+      player.draw_tiles(tile_bag)
+      players_tiles = player.tiles.length
+      players_tiles.must_equal 7
     end
   end
 end

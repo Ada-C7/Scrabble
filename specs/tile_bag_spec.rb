@@ -1,5 +1,5 @@
-# require 'simplecov'
-# SimpleCov.start
+require 'simplecov'
+SimpleCov.start
 
 require 'minitest/autorun'
 require 'minitest/reporters'
@@ -74,16 +74,31 @@ describe "TileBag" do
       }.must_raise ArgumentError
     end
 
-    # it "outputs a warning if the # of requested tiles > # of tiles remaining" do
-    #
-    # end
-    #
-    # it "doesnt modify the tiles array if there's not enough tiles in the bag" do
-    #
-    # end
-    #
-    # it "doesnt modify the tiles array if 0 tiles are drawn" do
+    it "returns the remaining tiles if there are not enough tiles to draw" do
+      tile_bag = Scrabble::TileBag.new
+      # 98 default tiles
+      tile_bag.draw_tiles(94) # 4 remaining tiles
+      tiles_drawn = tile_bag.draw_tiles(8)
 
+      tiles_drawn.length.must_equal 4
+    end
+
+    it "doesn't modify the tiles array if 0 tiles are drawn" do
+      tile_bag = Scrabble::TileBag.new
+      default_number_of_tiles = 98
+
+      tiles_drawn = tile_bag.draw_tiles(0)
+
+      tiles_drawn.must_be_empty
+      tile_bag.tiles.length.must_equal default_number_of_tiles
+    end
+
+    it "allows the tile bag to become empty" do
+      tile_bag = Scrabble::TileBag.new
+      tile_bag.draw_tiles(98) # 98 default tiles
+
+      tile_bag.tiles.must_be_empty
+    end
   end
 #
   describe "tiles_remaining" do
@@ -96,8 +111,7 @@ describe "TileBag" do
       tile_bag = Scrabble::TileBag.new
       default_number_of_tiles = 98
       tile_bag.draw_tiles(10)
-      tile_bag.tiles_remaining.must_equal 88
-
+      tile_bag.tiles_remaining.must_equal default_number_of_tiles - 10
     end
 
     it "returns the default # of tiles if no tiles have been drawn" do
@@ -105,6 +119,11 @@ describe "TileBag" do
       default_number_of_tiles = 98
       tile_bag.tiles_remaining.must_equal default_number_of_tiles
     end
-  end
 
+    it "returns 0 if there are no tiles remaining in the tile bag" do
+      tile_bag = Scrabble::TileBag.new
+      tile_bag.draw_tiles(98) # defauly number of tiles
+      tile_bag.tiles_remaining.must_equal 0
+    end
+  end
 end

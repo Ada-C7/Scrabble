@@ -43,5 +43,3 @@ module Scrabble
     end
   end
 end
-
-puts Scrabble::Scoring.highest_score_from(["Tree", "PURPLE", "PINK"])

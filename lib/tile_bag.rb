@@ -17,8 +17,10 @@ module Scrabble
 
     def draw_tiles(num)
       raise ArgumentError.new("argument must be positive") if num < 0
-      raise ArgumentError.new("there isn't enough tiles to draw #{num}") if num > tiles_remaining
-  
+
+      # If there are not enough tiles to draw, take the remaining tiles
+      num = tiles_remaining if num > tiles_remaining
+
       tiles_drawn = []
       num.times do
         new_tile = @tiles.sample

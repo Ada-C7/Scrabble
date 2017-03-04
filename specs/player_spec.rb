@@ -21,7 +21,6 @@ describe "Scrabble player" do
       @player = Scrabble::Player.new("Monalisa")
     end
 
-    # check  argument is string and letters using regex.
     it "Validates the argument" do
       proc{
         @player.play(12345)
@@ -106,12 +105,19 @@ describe "Scrabble player" do
     it "Fills tiles array until it has 7 letters from the given tile bag" do
       @player.draw_tiles(@tile_bag)
       @player.tiles.length.must_equal 7
+    end
+
+    it "Fills tiles array, after player uses the tiles" do
+      @player.draw_tiles(@tile_bag)
       word = @player.tiles.join
       @player.play(word)
-
       @player.tiles.length.must_equal 0
-      # @player.draw_tiles(@tile_bag)
-      # @player.tiles.length.must_equal 0
+
+      @player.draw_tiles(@tile_bag)
+      @player.tiles.length.must_equal 7
     end
+
+    # Note: We wanted to make a test that check the last draw happens regardless
+    # of the number of tiles left in the tile bag.
   end
 end

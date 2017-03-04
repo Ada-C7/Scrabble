@@ -56,12 +56,10 @@ module Scrabble
       if max_score_word_pairs.any? { |word_pair| word_pair[1].length == 7 }
         return max_score_word_pairs.select { |word_pair| word_pair[1].length == 7 }.first[1]
       end
-
+      
       # For ties cases without 7 letter words, it returns the first shortest length word
       min_length = max_score_word_pairs.min_by { |word_pair| word_pair[1].length }[1].length
-
       return max_score_word_pairs.select { |word_pair| word_pair[1].length == min_length }.first[1]
-
     end
   end
 end

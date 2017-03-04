@@ -56,6 +56,12 @@ describe "Scrabble tilebag" do
   end
 
   describe "tiles_remaining method" do
+    it "Raises an error for invalid parameter data type" do
+      proc {
+        @tilebag.draw_tiles("three")
+      }.must_raise ArgumentError
+    end
+
     it "Returns the number of tiles remaining in the bag" do
       @tilebag.draw_tiles(7)
       @tilebag.tiles_remaining.must_equal 91

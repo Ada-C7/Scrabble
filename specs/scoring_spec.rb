@@ -1,11 +1,11 @@
 require_relative 'spec_helper'
-require_relative '../lib/scrabble'
+require_relative '../lib/scoring'
 
 
 
 describe "Scrabble Scoring" do
 
-  describe "Self.score method tests" do
+  describe "#Self.score method" do
 
     it "Method can be called without an error" do
       Scrabble::Scoring.must_respond_to :score
@@ -29,7 +29,7 @@ describe "Scrabble Scoring" do
       Scrabble::Scoring.score("").class.must_equal Integer
       Scrabble::Scoring.score("").must_be :>=, 0
       Scrabble::Scoring.score("").must_equal 0
-      Scrabble::Scoring.score("hat").must_equal 6
+      Scrabble::Scoring.score("a").must_equal 1
     end
 
     it "Addes additional 50 points to the word passed if it's 7 letters" do
@@ -38,7 +38,7 @@ describe "Scrabble Scoring" do
 
   end
 
-  describe "self.highest_score_from method tests" do
+  describe "#self.highest_score_from method" do
     it "Method can be called without an error" do
       Scrabble::Scoring.must_respond_to :highest_score_from
     end

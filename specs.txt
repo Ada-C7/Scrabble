@@ -1,0 +1,37 @@
+Chosen tests
+
+1. Class exists (A)
+2. self-score returns integer (A)
+  -self-score returns the correct integer
+3. self.highest word returns string (T)
+4. self.score throws argument error if given anything other than alphabet characters (T)
+5. test self.score to see if seven letter word returns with extra 50 points
+6. tiebreaker returns 7 letter words first
+7. tiebreaker returns shorter words over longer
+8. returns word equal to seven even if called after higher word
+
+Wave 2 specs
+1. Instantiates with name
+2. callng .won? upon instantiation returns false
+2. can call .plays and return an array
+3. play(word) returns an integers if won? == false
+4. play(word) returns false if won? == true
+5. total_score returns correct score
+6. highest_scoring_word returns the correct value
+7. highest_scoring_word returns a string
+8. highest_word_score returns an integer
+9. highest_word_score returns the correct value
+10. play(word) returns an error if called with an integer
+11. play(word) returns the correct value for the word
+
+Wave 3 specs
+. Tilebag class exists
+. TileBag class initalizes with empty player_hand array
+. Tilebag class initializes with full bag []
+. draw_tiles removes (num) tiles from bag []
+. draw_tiles raises error if passed !String
+. draw_tiles returns array .length 7
+. tiles_remaining returns bag.length 7
+
+. Player class can call .tiles and return an array
+. calling .tiles after .draw_tiles return array.length 7

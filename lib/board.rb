@@ -5,11 +5,11 @@ module Scrabble
       @board = create_new_board
     end
 
-    def self.create_new_board
+    def create_new_board
       @board = Array.new(15) {Array.new(15, "[ ]")}
     end
 
-    def self.display_board
+    def display_board
       n = 1
       @board.each do |x|
         print n
@@ -21,9 +21,12 @@ module Scrabble
       end
     end
 
-    def self.check_word_on_board(word, row, col, direction)
+    def check_word_on_board(word, row, col, direction)
       if (row > 15 || row < 1) || (col > 15 || col < 1)
         raise ArgumentError.new("Row and colon must be between 1 and 15")
+      end
+      if (word.class != String) || (direction.class != String)
+          raise ArgumentError.new("Word and direction must be string!")
       end
       case direction
       when "up"
@@ -36,15 +39,12 @@ module Scrabble
         col - word.length >= 0 ? true : false
       end
     end
-
-
-
   end # end of class
 end # end of Module
-
-Scrabble::Board.create_new_board
-Scrabble::Board.display_board
-puts Scrabble::Board.check_word_on_board("apple", 5, 6, "up")
-puts Scrabble::Board.check_word_on_board("apple", 11, 6, "down")
-puts Scrabble::Board.check_word_on_board("apple", 11, 11, "right")
-puts Scrabble::Board.check_word_on_board("apple", 7, 4, "left")
+b = Scrabble::Board.new
+b.create_new_board
+b.display_board
+puts b.check_word_on_board("apple", 5, 6, "up")
+puts b.check_word_on_board("apple", 11, 6, "down")
+puts b.check_word_on_board("apple", 11, 11, "right")
+puts b.check_word_on_board("apple", 7, 4, "left")

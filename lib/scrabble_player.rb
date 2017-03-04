@@ -26,6 +26,8 @@ module Scrabble
 
     def play(word)
 
+      raise ArgumentError.new "Error. You cannot play an empty word. Please try again." if word =~ /^$|\s+/
+
       raise ArgumentError.new "Error. You cannot play anymore. Please restart game." if @score_tracker.inject { |sum, n| sum + n } > 100
       #determines whether or not player can continue the game based on how many points they have
 

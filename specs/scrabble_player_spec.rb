@@ -36,6 +36,12 @@ describe "Scrabble::Player" do
       @my_player.play("def")
       @my_player.plays.must_equal ["", "abc", "def"]
     end
+
+    it "raises argument error if the words played is empty" do
+      proc {
+        @my_player.play(" ")
+      }.must_raise ArgumentError
+    end
   end
 
   describe "play(word) method" do

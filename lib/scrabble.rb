@@ -24,6 +24,8 @@ module Scrabble
 
       raise ArgumentError.new "Error. Please enter a string of letters." if word.match(/^[[:alpha:]]+$/) == nil
 
+      raise ArgumentError.new "Error. Please enter a string that is less than 7 characters." if word.length > 7
+
       word_array = word.downcase.scan /\w/ # regex that checks to make sure the string consists of only letters
 
       # this checks the value of our letters
@@ -54,7 +56,7 @@ module Scrabble
       if winning_words.length > 1 ##
         winning_words.any? { |word| word.length == 7 } ? winning_words.find { |word| word.length == 7 } : winning_words.min_by { |word| word.length}
       end
-      
+
       return winning_words[0]
 
     end

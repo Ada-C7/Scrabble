@@ -34,6 +34,12 @@ describe "Scrabble::Scoring" do
         Scrabble::Scoring.score("***")
       }.must_raise ArgumentError
     end
+
+    it "raises argument error if the word is more than 7 characters long" do
+      proc {
+        Scrabble::Scoring.score("mississippi")
+      }.must_raise ArgumentError
+    end
   end
 
   describe "self.highest_score_from" do

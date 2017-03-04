@@ -1,7 +1,5 @@
 
-require 'minitest/autorun'
-require 'minitest/reporters'
-require 'minitest/skip_dsl'
+require_relative 'spec_helper'
 require_relative '../lib/player_class'
 
 describe "Player Class" do
@@ -49,7 +47,7 @@ describe "Player Class" do
 
 
   it "Play(word) adds a word to @plays array" do
-    
+
     previous_length = @ada.plays.length
     @ada.play("quizzed")
     @ada.plays.length.must_be :>, previous_length
@@ -58,19 +56,28 @@ describe "Player Class" do
 
   it " won? returns 'true' if player has greater than or equal to 100 points " do
     skip
+    11.times do
+      @ada.play(@word)
+    end
+    @ada.won?.must_equal true
   end
 
   it " won? returns 'false' if player has less than 100 points " do
-    skip
+    5.times do
+      @ada.play(@word)
+    end
+    @ada.won?.must_equal false
   end
 
 
   it " highest_word_score returns the *score* for the highest scoring word" do
-    skip
+
+    @ada.highest_word_score(@array).must_be_instance_of Integer
+
   end
 
   it "highest_scoring_word returns the *word* with the highest score" do
-    skip
+    @ada.highest_scoring_word(@array).must_be_instance_of String
   end
 
 end

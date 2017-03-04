@@ -1,4 +1,4 @@
-# Scrabble
+a # Scrabble
 Use __Test Driven Development (TDD)__ to create a collection of Ruby classes that would provide the foundation for creating a scrabble game. Don't actually build an interactive game (yet)!
 
 ### Learning Goals
@@ -13,9 +13,7 @@ This is Level 2 pair project.
 From the project root, you should be able to execute all of your specs by running `rake`. Each Ruby class should be in its own file in `lib/`, and the entire project should be in a `module` called `Scrabble`. You will need to use `require`, `require_relative`, `include` and/or `extend` to tell Ruby how to work with classes in multiple files.
 
 ### Tests
-We will use [minitest](https://github.com/seattlerb/minitest) for this project. This is the same test framework that we've used for your previous project. Your spec descriptions should be meaningful and organized into `describe` blocks that reflect your intent on how to use the code.
-
-Do not move onto a new tier of requirements until the minimum requirements of the previous tier are complete and your specs are green across the board. Use __TDD__ to drive your development and document your edge cases.
+We will use [minitest](https://github.com/seattlerb/minitest) for this project. This is the same test framework that we've used for your previous project. Your spec descriptions should be meaningful and organized into `describe` blocks that reflect your intent on h ur specs are green across the board. Use __TDD__ to drive your development and document your edge cases.
 
 ### Pair Programming
 Utilize good pair programming practices. Refer to articles from the [Agile Alliance](http://guide.agilealliance.org/guide/pairing.html) and the [Agile Institute](http://powersoftwo.agileinstitute.com/2015/02/benefits-of-pair-programming-revisited.html) if you need a refresher for some best practices. Switch _driver_ and _navigator_ roles often. When there is uncertainity or confusion, step away from the keyboard and discuss, plan, and document on paper or whiteboard before continuing.
@@ -34,10 +32,10 @@ Utilize good pair programming practices. Refer to articles from the [Agile Allia
 First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience. Second, review the requirements for Wave 1 and come up with a "plan of action" for your implementation.
 
 #### Implementation
-- Create a `Scrabble` module at the project root.
-- Create a `Scrabble::Scoring` **class** which contains some sort of data structure to store the **individual letter scores** listed below.
-- Create a Spec file which corresponds to your `Scrabble::Scoring` class. This spec should contain one __red__ test as a starting point (this test can be modified as your get further through the requirements).
-- Be able to execute your one test using `rake` from the project root.
+**x** Create a `Scrabble` module at the project root.
+**x** Create a `Scrabble::Scoring` **class** which contains some sort of data structure to store the **individual letter scores** listed below.
+**x** Create a Spec file which corresponds to your `Scrabble::Scoring` class. This spec should contain one __red__ test as a starting point (this test can be modified as your get further through the requirements).
+**x** Be able to execute your one test using `rake` from the project root.
 
 #### Score chart
 |Letter                        | Value|
@@ -56,6 +54,7 @@ Create a `Scrabble::Scoring` class with a __minimum of 8 specs__. The class shou
 
 - `self.score(word)`: returns the total score for the given word. The word is input as a string (case insensitive). The chart in the baseline requirements shows the point value for a given letter.
   - A seven letter word means that a player used all the tiles. Seven letter words receive a __50__ point bonus.
+
 - `self.highest_score_from(array_of_words)`: returns **the word in the array with the highest score**. In the case of tie, use these tiebreaking rules:
     - It’s better to use fewer tiles, in the case of a tie, prefer the word with the fewest letters.
     - There is a bonus for words that are seven letters. If the top score is tied between multiple words and one used all seven letters, choose the one with seven letters over the one with fewer tiles.
@@ -64,17 +63,18 @@ Create a `Scrabble::Scoring` class with a __minimum of 8 specs__. The class shou
 
 ## Wave 2
 ### Primary Requirements
-Create a `Scrabble::Player` class with a __minimum of 11 specs__. The only required parameter for instances of the class is the player's `name`. Instances of the class should repond to the following messages (note, this does not necessarily mean that each of these need to be written as _new methods_):
+Create a `Scrabble::Player` class with a __minimum of 11 specs__. The only required parameter for instances of the class is the player's `name`. Instances of the class should respond to the following messages (note, this does not necessarily mean that each of these need to be written as _new methods_):
 
-- `#name`: returns the value of the `@name` instance variable
-- `#plays`: returns an Array of the words played by the player
-- `#play(word)`: Adds the input word to the `plays` Array
+*x* `#name`: returns the value of the `@name` instance variable
+*x* `#plays`: returns an Array of the words played by the player
+*x* `#play(word)`: Adds the input word to the `plays` Array
     - Returns `false` if player has already won
     - Returns the score of the `word`
-- `#total_score`: Returns the sum of scores of played words
-- `#won?`: If the player has over 100 points, returns `true`, otherwise returns `false`
-- `#highest_scoring_word`: Returns the highest scoring played word
-- `#highest_word_score`: Returns the `highest_scoring_word` score
+*x* `#total_score`: Returns the sum of scores of played words
+*x* `#won?`: If the player has over 100 points, returns `true`, otherwise returns `false`
+*x* `#highest_scoring_word`: Returns the highest scoring played word
+*x* `#highest_word_score`: Returns the `highest_scoring_word` score
+
 
 For example,
 ```ruby
@@ -87,9 +87,9 @@ player.name #=> "Ada"
 #### `TileBag`
 Create a `Scrabble::TileBag` class with a __minimum of 5 specs__. It should have the following class and instance methods:
 
-- `#initialize` Should set up the instance with a collection of all default tiles
-- `#draw_tiles(num)` returns a collection of random tiles, removes the tiles from the default set
-- `#tiles_remaining` returns the number of tiles remaining in the bag
+*x* `#initialize` Should set up the instance with a collection of all default tiles
+*x* `#draw_tiles(num)` returns a collection of random tiles, removes the tiles from the default set
+*x* `#tiles_remaining` returns the number of tiles remaining in the bag
 
 ##### Initial Distribution of Letters
 | Letter : Qty. | Letter : Qty. |

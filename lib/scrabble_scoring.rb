@@ -43,11 +43,9 @@ module Scrabble
 
       word_score_hash = Hash[arry_of_words.zip(arry_of_scores)]
       max_hash = word_score_hash.select{|word, score| score == word_score_hash.values.max}
-      max_arry = max_hash.keys.to_a
+      max_arry = max_hash.keys
 
       if max_arry.length != 1
-        # if there are multiple words that tie, then choose the shortest word
-        # max_sorted = max_hash.sort_by {|key, value| key.length}
         max_sorted =  max_arry.sort_by {|word| word.size}
         max_sorted.each do |word|
           if word.size == 7
@@ -69,7 +67,7 @@ end
 
 # puts Scrabble::Scoring.score("purple")
 # puts Scrabble::Scoring.highest_score_from(["black", "orange", "bijoux", "purple", "BANJAX", "quiz"])
-puts Scrabble::Scoring.highest_score_from(["banjax", "quiz", "blue", "qqqqqq",  "aaaaaaf" ])
+# puts Scrabble::Scoring.highest_score_from(["banjax", "quiz", "blue", "qqqqqq",  "aaaaaaf" ])
 # a = [5, 2, 3, 3, 5]
 # b = ["E", "B", "C", "D", "A"]
 # c = Hash[b.zip(a)]

@@ -28,6 +28,11 @@ describe "score" do
   it "the method self.score(word) should return total score" do
     Scrabble::Scoring.score("yay").must_equal 9
   end
+
+  it "a seven letter word gets 50 point bonus" do
+    Scrabble::Scoring.score("aeiouln").must_equal 57
+  end
+
 end
 
 

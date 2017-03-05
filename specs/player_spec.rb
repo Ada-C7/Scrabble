@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
 require_relative '../lib/player'
+require_relative '../lib/tilebag'
 
 describe "Player class" do
 
@@ -20,7 +21,6 @@ describe "Player class" do
     end
 
     it "returns false if player already won" do
-      #copy of "if played has >100 points return true" test, changed true to false
       player = Scrabble::Player.new("Ada")
       player.play("bar")
       player.play("foo")
@@ -38,18 +38,13 @@ describe "Player class" do
     end
 
     it "returns an array of the words played by the player" do
-      #().must_be_kind_of Array
-      #maybe for what goes in the brackets is something like this
       player = Scrabble::Player.new("Ada")
       player.play("bar")
       player.play("foo")
       player.play("qzqzqzq")
-      # now should be able to call similar to name method
       player.plays.must_be_kind_of Array
     end
-
   end
-
 
   describe "total_score method" do
     it "returns sum of scores of played words" do
@@ -59,7 +54,6 @@ describe "Player class" do
       player.play("bar")
 
       player.total_score.must_equal 15
-
     end
   end
 
@@ -79,8 +73,6 @@ describe "Player class" do
       player.play("foo")
       player.play("bar")
 
-      # player.total_score -- no longer needs to be called
-      #modified code so .won? already calls .total_score
       player.won?.must_be_same_as false
     end
   end
@@ -92,8 +84,6 @@ describe "Player class" do
       player.play("foo")
       player.play("bar")
 
-      # player.total_score -- no longer needs to be called
-      #modified code so .won? already calls .total_score
       player.highest_scoring_word.must_equal "foo"
     end
   end
@@ -105,10 +95,18 @@ describe "Player class" do
       player.play("foo")
       player.play("bar")
 
-      # player.total_score -- no longer needs to be called
-      #modified code so .won? already calls .total_score
       player.highest_word_score.must_equal 6
     end
   end
 
+  describe "tiles method" do
+    it "Returns collection of letters that the player can play" do
+      # Code for tiles method and draw_tiles (modifications from Wave 3) weren't finished at time of turning in assignment, so test is skipped here
+      skip
+      player = Scrabble::Player.new("Ada")
+      tiles = Scrabble::TileBag.new
+      player.draw_tiles(7)
+      player.tiles.length.must_equal 7
+    end
+  end
 end

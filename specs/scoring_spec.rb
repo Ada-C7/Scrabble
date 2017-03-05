@@ -26,18 +26,14 @@ describe "Scoring class" do
 
   describe "self.highest_score_from(array_of_words)" do
     it "loop through and find highest scoring word" do
-
+      # skip
       words_array = Scrabble::Scoring.highest_score_from(["andrea", "kaitlin"])
-      # words_array.must_equal 61
       words_array.must_equal "kaitlin"
-       #seven letter word wins
-      #test will also return winning word
     end
 
     it "in tie, fewest letters wins" do
       # skip
       words_array = Scrabble::Scoring.highest_score_from(["aei", "ad"])
-      #"ad" should be returned. How do we make a word from array return?
       words_array.must_equal "ad"
     end
 
@@ -45,13 +41,11 @@ describe "Scoring class" do
       # skip
       words_array = Scrabble::Scoring.highest_score_from(["qzqzqj", "aeiould"])
       words_array.must_equal "aeiould"
-      #should return aeiould (58 points) and qzqzqj (58 points), b/c aeiould is seven letters and wins
-
+      #should return aeiould (58 points) over qzqzqj (58 points), b/c aeiould is seven letters and wins
     end
 
     it "In case of tie, min_by returns winning word by minimum word length rather than minimum lexicographical order value" do
       words_array = Scrabble::Scoring.highest_score_from(["aei", "ag"])
-      #"ad" should be returned. How do we make a word from array return?
       words_array.must_equal "ag"
     end
 
@@ -60,6 +54,5 @@ describe "Scoring class" do
       words_array = Scrabble::Scoring.highest_score_from(["aei", "oul"])
       words_array.must_equal "aei"
     end
-
   end
 end

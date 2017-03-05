@@ -49,8 +49,8 @@ describe "highest_score_from" do
   end
 
   it "top score is tied between multiple words and one used all seven letters, return the one with seven letters " do
-    word_arry = ["banjax", "quiz", "aigbmkk", "blue", "qqqqqq" ]
-    Scrabble::Scoring.highest_score_from(word_arry).must_equal "aigbmkk"
+    word_arry = ["banjax", "quiz",  "blue", "qqqqqq", "aaaaaaf"]
+    Scrabble::Scoring.highest_score_from(word_arry).must_equal "aaaaaaf"
   end
 
   it "If there are multiple words that are the same score and same length, return the first one in the supplied list." do

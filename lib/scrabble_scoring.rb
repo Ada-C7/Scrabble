@@ -17,13 +17,10 @@ module Scrabble
       raise ArgumentError.new("Enter a word") if word.class != String
       word = word.upcase
       total = []
+
       word.each_char do |letter|
-        # print "Letter: #{letter}  \n"
         LETTERS.each do |key, array|
-          # print "Key: #{key}  "
-          # print "Array: #{array}\n"
           if array.include?(letter)
-            # print array
             total << key
           end
         end
@@ -36,25 +33,32 @@ module Scrabble
       end
     end
 
-    def self.highest_score_from(array_of_words)
-      raise ArgumentError.new("Enter an array of words") if array_of_words.class != Array
-      score = []
-      array_of_words.each do |word|
-        score << score(word)
-      end
-      word_score_hash = Hash[array_of_words.zip(score)]
-      max_score_word = word_score_hash.select{|word, score| score == word_score_hash.values.max}
+    def self.highest_score_from(arry_of_words)
+      raise ArgumentError.new("Enter an array of words") if arry_of_words.class != Array
+      arry_of_scores = []
 
-      if max_score_word != 1
-        #if there are multiple words that tie, then choose the shortest word
-        max_score_sorted = max_score_word.sort_by {|key, value| key.length}
-          max_score_word.each do |word, score|
-            if max_score_word.keys.length == 7
-              return word
-            else
-              return max_score_sorted[0][0]
-            end
+      arry_of_words.each do |word|
+        arry_of_scores << self.score(word)
+      end
+
+      word_score_hash = Hash[arry_of_words.zip(arry_of_scores)]
+      max_hash = word_score_hash.select{|word, score| score == word_score_hash.values.max}
+      max_arry = max_hash.keys.to_a
+
+      if max_arry.length != 1
+        # if there are multiple words that tie, then choose the shortest word
+        # max_sorted = max_hash.sort_by {|key, value| key.length}
+        max_sorted =  max_arry.sort_by {|word| word.size}
+        max_sorted.each do |word|
+          if word.size == 7
+            @winning_word = word
+          else
+            @winning_word = max_sorted[0]
           end
+        end
+        return @winning_word
+      else
+        return max_arry[0]
       end
 
     end
@@ -65,8 +69,7 @@ end
 
 # puts Scrabble::Scoring.score("purple")
 # puts Scrabble::Scoring.highest_score_from(["black", "orange", "bijoux", "purple", "BANJAX", "quiz"])
-
-
+puts Scrabble::Scoring.highest_score_from(["banjax", "quiz", "blue", "qqqqqq",  "aaaaaaf" ])
 # a = [5, 2, 3, 3, 5]
 # b = ["E", "B", "C", "D", "A"]
 # c = Hash[b.zip(a)]

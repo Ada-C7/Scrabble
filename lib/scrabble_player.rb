@@ -38,11 +38,18 @@ module Scrabble
         return false
       end
     end
+
+    def tiles(num)
+      Scrabble::TileBag.draw_tiles(num)
+      raise ArgumentError.new("You can only play 7 tiles max") if num > 7
+    end
+
+    #draw_tiles(tile_bag) fills tiles array until it has 7 letters from the given tile bag
+    def draw_tiles(tile_bag)
+      tiles = []
+      tiles << Scrabble::TileBag.draw_tiles(7)
+    end
+
+
   end
 end
-
-new_game = Scrabble::Player.new("allison")
-new_game.play("hello")
-new_game.play("how")
-new_game.highest_scoring_word
-new_game.won?

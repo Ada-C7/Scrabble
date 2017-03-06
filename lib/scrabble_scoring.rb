@@ -67,7 +67,3 @@ module Scrabble
     end
   end
 end
-
-Scrabble::Scoring.new
-print Scrabble::Scoring.score("hello")
-print Scrabble::Scoring.highest_score_from(["hello", "yay"])
